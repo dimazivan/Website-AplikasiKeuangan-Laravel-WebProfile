@@ -19,9 +19,14 @@ class LoginController extends Controller
     public function index()
     {
         $title = "Login Page";
-        return view('admin.login', [
-            'title' => $title,
-        ]);
+
+        if (auth()->user() != null) {
+            return redirect('/');
+        } else {
+            return view('admin.login', [
+                'title' => $title,
+            ]);
+        }
     }
 
     public function login(Request $request)
@@ -36,6 +41,7 @@ class LoginController extends Controller
         // dd(
         //     $request->all(),
         //     $waktu,
+        //     $validator->errors(),
         // );
 
         if ($validator->fails()) {
@@ -46,11 +52,9 @@ class LoginController extends Controller
             } else {
                 if (Auth::attempt($request->only('username', 'password'))) {
                     if (auth()->user()->role == 'admin') {
-                        // Alert::success('Congrats', 'You\'ve Successfully Login');
                         toast('You\'ve Successfully Login!', 'success');
                         return redirect('/');
                     } elseif (auth()->user()->role == 'keuangan') {
-                        // Alert::success('Congrats', 'You\'ve Successfully Login');
                         toast('You\'ve Successfully Login!', 'success');
                         return redirect('/');
                     } else {
@@ -58,11 +62,9 @@ class LoginController extends Controller
                     }
                 } else {
                     toast('Username atau Password Anda Salah', 'warning');
-                    // Alert::warning('Login Gagal', 'Username atau Password Anda Salah');
                     return redirect('/login');
                 }
             }
-
             // return redirect()->route("user.index")->with("info", "Data Users has been saved");
         }
     }
@@ -70,7 +72,6 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::logout();
-        // Alert::success('Congrats', 'You\'ve Successfully Logout');
         toast('You\'ve Successfully Logout!', 'success');
         return redirect('/login');
     }

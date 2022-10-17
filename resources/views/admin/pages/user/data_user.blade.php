@@ -55,6 +55,7 @@
                                                 <th>Nama User</th>
                                                 <th>Username</th>
                                                 <th>Role</th>
+                                                <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -63,6 +64,24 @@
                                                 <td>{{ $user->first_name }}&nbsp;{{ $user->last_name }}</td>
                                                 <td>{{ substr_replace($user->username,'*****',3,3) }}</td>
                                                 <td style="text-transform:uppercase;">{{ $user->role }}</td>
+                                                <td style="width:5%;">
+                                                    <a id="drop4" href="#" class="dropdown-toggle"
+                                                        data-toggle="dropdown" aria-haspopup="true" role="button"
+                                                        aria-expanded="false">
+                                                        Aksi
+                                                        <span class="caret"></span>
+                                                    </a>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                        <a href="#" target="_blank" class="dropdown-item">
+                                                            <i class="fa fa-pencil"></i>&nbsp;
+                                                            Edit User
+                                                        </a>
+                                                        <a href="#" class="dropdown-item">
+                                                            <i class="fa fa-trash"></i>&nbsp;
+                                                            Delete User
+                                                        </a>
+                                                    </div>
+                                                </td>
                                             </tr>
                                             @empty
                                             <tr>

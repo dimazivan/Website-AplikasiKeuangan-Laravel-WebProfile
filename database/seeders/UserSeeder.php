@@ -26,5 +26,17 @@ class UserSeeder extends Seeder
             'address'=> 'Jl. Manukan Lor, Surabaya',
             'detail_address'=> 'Paling pojok pager warna putih',
         ]);
+
+        DB::table('users')->insert([
+            'first_name'=> 'Dimaz Ivan',
+            'last_name'=>  'keuangan',
+            'username'=> 'dimazkeuangan',
+            'email'=> 'dimaz12@gmail.com',
+            'password' => bcrypt('dimazivan'),
+            'role'=> 'keuangan',
+            'phone'=> '08123128327',
+            'address'=> 'Jl. Manukan Lor Keuangan, Surabaya',
+            'detail_address'=> 'Paling pojok pager warna hijau keuangan',
+        ]);
     }
 }

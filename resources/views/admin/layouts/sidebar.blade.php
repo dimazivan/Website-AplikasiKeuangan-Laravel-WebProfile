@@ -14,7 +14,9 @@
                 <img src="{{ asset('asset/icon/dimaz4.png') }}" alt="dimaz4.png" class="img-circle profile_img">
             </div>
             <div class="profile_info">
-                <span>Access {{ auth()->user()->role }}</span>
+                <span>
+                    Access <span style="text-transform:uppercase;">{{ auth()->user()->role }}</span>
+                </span>
                 <h2>{{ auth()->user()->first_name }}&nbsp;{{ auth()->user()->last_name }}</h2>
             </div>
         </div>

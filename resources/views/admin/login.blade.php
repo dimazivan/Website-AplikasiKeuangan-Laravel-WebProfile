@@ -49,6 +49,7 @@
                 <section class="login_content">
                     <form action="{{ route('login') }}" method="post" validate>
                         @csrf
+                        <h1>Login Page</h1>
                         @if(\Session::has('info'))
                         <div class="alert alert-danger alert-dismissible " role="alert">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
@@ -67,7 +68,6 @@
                         </div>
                         @endforeach
                         @endif
-                        <h1>Login Page</h1>
                         <div>
                             <input type="text" class="form-control" placeholder="Username" name="username" required />
                         </div>
