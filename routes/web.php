@@ -34,6 +34,9 @@ Route::group([
     'namespace' => 'App\Http\Controllers\Admin',
     'middleware' => ['auth','CekRole:admin,keuangan']
 ], function () {
+    // Api
+    Route::resource('api', 'ApiController');
+
     Route::get('/', function () {
         return view('admin.index');
     });

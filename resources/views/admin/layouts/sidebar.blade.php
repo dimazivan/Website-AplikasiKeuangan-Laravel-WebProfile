@@ -49,6 +49,17 @@
             </div>
             @endif
             <div class="menu_section">
+                <h3>Data Api</h3>
+                <ul class="nav side-menu">
+                    <li><a><i class="fa fa-database"></i>Data Api<span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="/api">Daftar Data Api</a></li>
+                            <!-- <li><a href="/api/create">Tambah Data Api</a></li> -->
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="menu_section">
                 <h3>Keuangan</h3>
                 <ul class="nav side-menu">
                     <li><a><i class="fa fa-usd"></i>Data Keuangan<span class="fa fa-chevron-down"></span></a>
