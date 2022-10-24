@@ -45,6 +45,12 @@
                             <li><a href="/user/create">Tambah Data User</a></li>
                         </ul>
                     </li>
+                    <li><a><i class="fa fa-archive"></i>Data Produk<span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="/product">Daftar Data Produk</a></li>
+                            <li><a href="/product/create">Tambah Data Produk</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
             @endif

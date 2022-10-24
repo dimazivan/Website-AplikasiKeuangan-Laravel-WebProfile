@@ -7,10 +7,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Models\Product;
 use Carbon\Carbon;
 use Redirect;
 
-class ApiController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,39 +21,17 @@ class ApiController extends Controller
     public function index()
     {
         $title = "Halaman Data Api";
-        $url = "https://dummyjson.com/products";
-
-        // $data = json_decode(file_get_contents('https://dummyjson.com/products'), true);
-        // $data = $this->json('GET', $url)->seeStatusCode(200)->decodeResponseJson();
-        // $data = $this->get($url)->seeStatusCode(200)->response->getContent();
-
-        $data = file_get_contents('https://dummyjson.com/products');
-        $myData = json_decode($data);
-        $dataMap = $myData->products;
+        $data = Product::all();
 
         // dd(
+        //     $title,
         //     $data,
-        //     compact('data'),
-        //     $data['products'],
-        //     $data['products'][0],
-        //     $data['products'][1]['id'],
         // );
 
-        // dd(
-        //     $data,
-        //     $dataMap,
-        //     compact('data'),
-        // );
-
-        return view(
-            'admin.pages.api.data_api',
-            [
+        return view('admin.pages.product.data_product', [
             'title' => $title,
-            'dataMap' => $dataMap,
-        ],
-            // ini untuk menjadikan data kedalam bentuk array tapi tidak dipakai
-            compact('data')
-        );
+            'data' => $data,
+        ]);
     }
 
     /**

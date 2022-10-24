@@ -9,7 +9,7 @@
             <div class="title_left">
                 <p>
                     <a href="/">Home</a>&nbsp;<small><i class="fa fa-long-arrow-right"></small></i>
-                    <a href="#">Data API</a>&nbsp;
+                    <a href="#">Data Product</a>&nbsp;
                 </p>
             </div>
         </div>
@@ -18,7 +18,7 @@
             <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Data API</h2>
+                        <h2>Data Product</h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                             </li>
@@ -37,7 +37,10 @@
                             <div class="col-sm-12">
                                 <div class="card-box table-responsive">
                                     <p class="text-muted font-13 m-b-30">
-                                        Data Api.
+                                        Data Produk berasal dari data API yang disimpan ke database lokal,
+                                        <a href="https://dummyjson.com/products" target="_blank">
+                                            Link https://dummyjson.com/products
+                                        </a>
                                     </p>
                                     @if(\Session::has('info'))
                                     <div class="alert alert-info alert-dismissible" role="alert" data-timeout="2000">
@@ -62,23 +65,23 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @forelse($dataMap as $data_api => $item)
+                                            @forelse($data as $data_product)
                                             <tr>
-                                                <td>{{ $item->id }}</td>
-                                                <td>{{ $item->title }}</td>
-                                                <td>${{ $item->price }}</td>
-                                                <td>Rp.{{ number_format($item->price*15000,2,',','.') }}</td>
-                                                <td>{{ $item->stock }} Pcs</td>
-                                                <td>{{ $item->brand }}</td>
+                                                <td>{{ $data_product->id }}</td>
+                                                <td>{{ $data_product->title }}</td>
+                                                <td>${{ $data_product->price }}</td>
+                                                <td>Rp.{{ number_format($data_product->price*15000,2,',','.') }}</td>
+                                                <td>{{ $data_product->stock }} Pcs</td>
+                                                <td>{{ $data_product->brand }}</td>
                                                 <td>
-                                                    <a href="{{ $item->images[0] }}" target="_blank">
-                                                        Link {{ $item->title }}
+                                                    <a href="{{ $data_product->images[0] }}" target="_blank">
+                                                        Link {{ $data_product->title }}
                                                     </a>
                                                 </td>
                                             </tr>
                                             @empty
                                             <tr>
-                                                <td colspan="7">Data Api Kosong</td>
+                                                <td colspan="7">Data Product Kosong</td>
                                             </tr>
                                             @endforelse
                                         </tbody>

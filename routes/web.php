@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Auth\LoginController;
 
 /*
@@ -27,6 +28,9 @@ Route::group([
 ], function () {
     // Route User
     Route::resource('user', 'UserController');
+
+    // Route Product
+    Route::resource('product', 'ProductController');
 });
 
 // User
