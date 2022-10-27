@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\User;
+use App\Models\Log_users;
 use Carbon\Carbon;
 use Redirect;
 
@@ -57,14 +58,21 @@ class UserController extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
             'username' => 'required',
-            'email' => 'required|email',
-            'password' => 'required',
+            'email' => 'required|sometimes|email',
+            'password' => 'required|min:5|max:40',
             'cbrole' => 'required',
-            'phone' => 'required|numeric|sometimes|min:10|max:13',
+            // 'phone' => 'required|numeric|sometimes|min:10|max:13',
+            'phone' => 'required|numeric|digits_between:10,13',
             'address' => 'required|max:255',
             'desc' => 'max:255',
             'file_foto' => 'mimes:jpeg,jpg,png,gif|max:10000',
-        ]);
+        ])->setAttributeNames(
+            [
+                'first_name' => '"Nama Depan"',
+                'last_name' => '"Nama Belakang"',
+                'phone' => '"Nomor Telepon"',
+            ],
+        );
 
         // dd(
         //     $request->all(),
@@ -73,6 +81,16 @@ class UserController extends Controller
         // );
 
         if ($validator->fails()) {
+            // Log
+            Log_users::create([
+                'users_id' => auth()->user()->id,
+                'role' => auth()->user()->role,
+                'activity' => 'insert Data',
+                'description' => 'error validation',
+                'status' => "failed",
+                'mac_address' => '',
+            ]);
+
             return back()->withErrors($validator->errors());
         } else {
             // Cek Data
@@ -92,13 +110,33 @@ class UserController extends Controller
                     'phone' => $request->phone,
                     'address' => $request->address,
                     'detail_address' => $request->desc,
-                    'password' => $request->password,
+                    'password' => bcrypt($request->password),
                     'created_at' => $waktu,
                     'updated_at' => $waktu,
                 ]);
 
+                // Log
+                Log_users::create([
+                    'users_id' => auth()->user()->id,
+                    'role' => auth()->user()->role,
+                    'activity' => 'insert Data',
+                    'description' => 'data saved',
+                    'status' => "success",
+                    'mac_address' => '',
+                ]);
+
                 return redirect()->route("user.index")->with("info", "Data Users has been saved");
             } else {
+                // Log
+                Log_users::create([
+                    'users_id' => auth()->user()->id,
+                    'role' => auth()->user()->role,
+                    'activity' => 'insert Data',
+                    'description' => 'duplicated entity',
+                    'status' => "failed",
+                    'mac_address' => '',
+                ]);
+
                 return back()->with("info", "Duplicated Data Users Found");
             }
         }
@@ -146,6 +184,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        dd(
+            $id
+        );
     }
 }

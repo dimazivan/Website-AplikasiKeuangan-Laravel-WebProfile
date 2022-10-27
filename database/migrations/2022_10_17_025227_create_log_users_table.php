@@ -18,6 +18,7 @@ return new class () extends Migration {
             $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('role');
             $table->string('activity');
+            $table->string('description');
             $table->string('status');
             $table->string('mac_address')->nullable();
             $table->timestamps();

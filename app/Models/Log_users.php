@@ -15,6 +15,7 @@ class Log_users extends Model
         'users_id',
         'role',
         'activity',
+        'description',
         'status',
         'mac_address',
     ];

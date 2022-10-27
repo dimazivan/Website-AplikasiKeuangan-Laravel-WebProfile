@@ -9,7 +9,7 @@
             <div class="title_left">
                 <p>
                     <a href="/">Home</a>&nbsp;<small><i class="fa fa-long-arrow-right"></small></i>
-                    <a href="#">Data User</a>&nbsp;
+                    <a href="#">Log Data User</a>&nbsp;
                 </p>
             </div>
         </div>
@@ -18,7 +18,7 @@
             <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Data User</h2>
+                        <h2>Log Data User</h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                             </li>
@@ -26,8 +26,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                     aria-expanded="false"><i class="fa fa-wrench"></i></a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="/user/create">Tambah Data</a>
-                                    <a class="dropdown-item" href="/log_user">Cek Log User</a>
+                                    <!-- <a class="dropdown-item" href="#">Tambah Data</a> -->
                                 </div>
                             </li>
                         </ul>
@@ -53,20 +52,33 @@
                                         width="100%">
                                         <thead>
                                             <tr>
-                                                <th>Nama User</th>
-                                                <th>Username</th>
-                                                <th>Role</th>
-                                                <th>Aksi</th>
+                                                <th>Nama User (Username)</th>
+                                                <th>Activity Log</th>
+                                                <th>Status</th>
+                                                <th>Time</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @forelse($data as $data_user)
+                                            @forelse($data as $log_users)
                                             <tr>
-                                                <td>{{ $data_user->first_name }}&nbsp;{{ $data_user->last_name }}</td>
-                                                <td>{{ substr_replace($data_user->username,'*****',3,3) }}</td>
-                                                <td style="text-transform:uppercase;">{{ $data_user->role }}</td>
-                                                <td style="width:5%;">
-                                                    <a id="drop4" href="#" class="dropdown-toggle"
+                                                <td>
+                                                    {{ $log_users->nama_depan }}&nbsp;{{ $log_users->nama_belakang }}
+                                                    ({{ substr_replace($log_users->username,'*****',3,3) }})
+                                                </td>
+                                                <td style="text-transform:uppercase;">{{ $log_users->activity }}</td>
+                                                <td style="text-transform:uppercase;">
+                                                    @if($log_users->status == "success")
+                                                    <span class="badge badge-success">{{ $log_users->status }}</span>
+                                                    @elseif($log_users->status == "failed")
+                                                    <span class="badge badge-danger">{{ $log_users->status }}</span>
+                                                    @else
+                                                    <span class="badge badge-warning">{{ $log_users->status }}</span>
+                                                    @endif
+                                                </td>
+                                                <td>{{ $log_users->updated_at }}</td>
+                                                <td style="width:50px;">
+                                                    <a id="dropdown" href="#" class="dropdown-toggle"
                                                         data-toggle="dropdown" aria-haspopup="true" role="button"
                                                         aria-expanded="false">
                                                         Aksi
@@ -74,26 +86,19 @@
                                                     </a>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                         <a href="#" target="_blank" class="dropdown-item">
-                                                            <i class="fa fa-pencil"></i>&nbsp;
-                                                            Edit User
+                                                            <i class="fa fa-eye"></i>
+                                                            Detail
                                                         </a>
-                                                        @if(auth()->user()->role == "admin")
-                                                        <form action="{{route('user.destroy', $data_user->id)}}"
-                                                            method="post">
-                                                            @csrf
-                                                            @method('delete')
-                                                            <button type="submit" class="dropdown-item">
-                                                                <i class="fa fa-trash-o"></i>&nbsp;
-                                                                Delete User
-                                                            </button>
-                                                        </form>
-                                                        @endif
+                                                        <a href="#" target="_blank" class="dropdown-item">
+                                                            <i class="fa fa-trash"></i>
+                                                            Hapus Data
+                                                        </a>
                                                     </div>
                                                 </td>
                                             </tr>
                                             @empty
                                             <tr>
-                                                <td colspan="3">Data User Kosong</td>
+                                                <td colspan="5">Data Log User Kosong</td>
                                             </tr>
                                             @endforelse
                                         </tbody>

@@ -13,7 +13,16 @@
     @else
     <title>Admin || Keuangan</title>
     @endif
-
+    <style>
+        #preloader {
+            background: white url('asset/icon/logogif.gif') no-repeat center center;
+            height: 100vh;
+            width: 100%;
+            position: fixed;
+            z-index: 99999;
+            opacity: 50%;
+        }
+    </style>
     <!-- Bootstrap -->
     <link href="{{asset('admin/vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Font Awesome -->
@@ -52,6 +61,7 @@
 </head>
 
 <body class="nav-md">
+    <div id="preloader" class="preloader"></div>
     <div class="container body">
         <div class="main_container">
             @include('sweetalert::alert')
@@ -132,6 +142,13 @@
     @hasSection('script')
     @yield('script')
     @endif
+    <script>
+        var loader = document.getElementById('preloader');
+
+        window.addEventListener("load", function() {
+            loader.style.display = "none";
+        });
+    </script>
 </body>
 
 </html>

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Log\Log_UserController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Auth\LoginController;
 
@@ -33,7 +34,16 @@ Route::group([
     Route::resource('product', 'ProductController');
 });
 
-// User
+// Log Data
+Route::group([
+    'namespace' => 'App\Http\Controllers\Log',
+    'middleware' => ['auth','CekRole:admin']
+], function () {
+    // Route User
+    Route::resource('log_user', 'Log_UserController');
+});
+
+// User Keuangan
 Route::group([
     'namespace' => 'App\Http\Controllers\Admin',
     'middleware' => ['auth','CekRole:admin,keuangan']
