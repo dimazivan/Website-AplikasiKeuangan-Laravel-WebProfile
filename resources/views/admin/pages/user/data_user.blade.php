@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('title')
-{{ $title }}
+{{ isset($title) ? $title : "Halaman Data User"; }}
 @endsection
 @section('content')
 <div class="right_col" role="main">
@@ -62,7 +62,10 @@
                                         <tbody>
                                             @forelse($data as $data_user)
                                             <tr>
-                                                <td>{{ $data_user->first_name }}&nbsp;{{ $data_user->last_name }}</td>
+                                                <td>
+                                                    {{ $data_user->first_name }}&nbsp;
+                                                    {{ $data_user->last_name }}
+                                                </td>
                                                 <td>{{ substr_replace($data_user->username,'*****',3,3) }}</td>
                                                 <td style="text-transform:uppercase;">{{ $data_user->role }}</td>
                                                 <td style="width:5%;">
@@ -73,12 +76,14 @@
                                                         <span class="caret"></span>
                                                     </a>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        <a href="#" target="_blank" class="dropdown-item">
+                                                        <a href="{{ route('user.edit',[Crypt::encrypt($data_user->id)]) }}"
+                                                            target="_blank" class="dropdown-item">
                                                             <i class="fa fa-pencil"></i>&nbsp;
                                                             Edit User
                                                         </a>
                                                         @if(auth()->user()->role == "admin")
-                                                        <form action="{{route('user.destroy', $data_user->id)}}"
+                                                        <form
+                                                            action="{{route('user.destroy', [Crypt::encrypt($data_user->id)])}}"
                                                             method="post">
                                                             @csrf
                                                             @method('delete')

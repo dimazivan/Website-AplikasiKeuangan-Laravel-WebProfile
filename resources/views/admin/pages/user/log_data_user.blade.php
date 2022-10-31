@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('title')
-{{ $title }}
+{{ isset($title) ? $title : "Halaman Log Data User"; }}
 @endsection
 @section('content')
 <div class="right_col" role="main">

@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Log\Log_UserController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Auth\LoginController;
+use RealRashid\SweetAlert\Facades\Alert;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,4 +55,9 @@ Route::group([
     Route::get('/', function () {
         return view('admin.index');
     });
+});
+
+Route::fallback(function () {
+    // Alert::info('Proses Gagal', 'Halaman tidak ditemukan');
+    return view('error.404');
 });

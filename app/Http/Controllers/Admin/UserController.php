@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Contracts\Encryption\DecryptException;
 use App\Models\User;
 use App\Models\Log_users;
 use Carbon\Carbon;
@@ -63,10 +65,14 @@ class UserController extends Controller
             'cbrole' => 'required',
             // 'phone' => 'required|numeric|sometimes|min:10|max:13',
             'phone' => 'required|numeric|digits_between:10,13',
+            // 'phone' => 'required',
             'address' => 'required|max:255',
             'desc' => 'max:255',
             'file_foto' => 'mimes:jpeg,jpg,png,gif|max:10000',
-        ])->setAttributeNames(
+        // ], [
+        //     'phone.required' => 'Silahkan Masukan Nomor Telepon antara 10 sampai 13 digit angka',
+        // ]);
+        ], )->setAttributeNames(
             [
                 'first_name' => '"Nama Depan"',
                 'last_name' => '"Nama Belakang"',
@@ -161,7 +167,42 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $title = "Halaman Data User";
+
+        try {
+            $decrypted = decrypt($id);
+            // Log
+        } catch (DecryptException $e) {
+            return view('error.e_throw', [
+                'e' => ["Invalid Data"],
+            ]);
+        }
+
+        // dd(
+        //     $id,
+        //     Crypt::decrypt($id),
+        //     isset($id),
+        // );
+
+        if (isset($id)) {
+            $newid = Crypt::decrypt($id);
+
+            $data = User::where('id', $newid)
+            ->get();
+
+            // dd(
+            //     $data,
+            // );
+
+            if (empty($data[0])) {
+                return view('error.404');
+            }
+
+            return view('admin.pages.user.edit_user', [
+                'title' => $title,
+                'data' => $data,
+            ]);
+        }
     }
 
     /**
@@ -185,7 +226,8 @@ class UserController extends Controller
     public function destroy($id)
     {
         dd(
-            $id
+            $id,
+            Crypt::decrypt($id),
         );
     }
 }

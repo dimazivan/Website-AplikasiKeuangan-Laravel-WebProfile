@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('title')
-Test titled
+{{ isset($title) ? $title : "Dashboard"; }}
 @endsection
 @section('content')
 <div class="right_col" role="main">

@@ -16,7 +16,7 @@ class ProductSeeder extends Seeder
     public function run()
     {
         // Looping dulu ges
-        $data = file_get_contents('https://dummyjson.com/products');
+        $data = file_get_contents('https://dummyjson.com/products?limit=100');
         $myData = json_decode($data);
         $dataMap = $myData->products;
         foreach ($dataMap as $data_api => $item) {
