@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Log_users;
+use App\Models\Log_auth;
 use Carbon\Carbon;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -33,6 +35,19 @@ class LoginController extends Controller
     {
         $waktu = Carbon::now();
 
+        //whether ip is from share internet
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+            $ip_address = $_SERVER['HTTP_CLIENT_IP'];
+        }
+        //whether ip is from proxy
+        elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $ip_address = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        }
+        //whether ip is from remote address
+        else {
+            $ip_address = $_SERVER['REMOTE_ADDR'];
+        }
+
         $validator = Validator::make(request()->all(), [
             'username' => 'required',
             'password' => 'required',
@@ -42,15 +57,43 @@ class LoginController extends Controller
         //     $request->all(),
         //     $waktu,
         //     $validator->errors(),
+        //     $ip_address,
         // );
 
         if ($validator->fails()) {
+            // Log
+            Log_auth::create([
+                'ip_address' => $ip_address,
+                'activity' => 'login',
+                'description' => 'error validation',
+                'status' => "failed",
+                'mac_address' => '',
+            ]);
+
             return back()->withErrors($validator->errors());
         } else {
             if (auth()->user() != null) {
+                // Log
+                Log_auth::create([
+                    'ip_address' => $ip_address,
+                    'activity' => 'login',
+                    'description' => 'error validation',
+                    'status' => "failed",
+                    'mac_address' => '',
+                ]);
+
                 return redirect('/');
             } else {
                 if (Auth::attempt($request->only('username', 'password'))) {
+                    // Log
+                    Log_auth::create([
+                        'ip_address' => $ip_address,
+                        'activity' => 'login',
+                        'description' => 'login success as'.$request->username,
+                        'status' => "success",
+                        'mac_address' => '',
+                    ]);
+
                     if (auth()->user()->role == 'admin') {
                         toast('You\'ve Successfully Login!', 'success');
                         return redirect('/');
@@ -61,6 +104,15 @@ class LoginController extends Controller
                         return redirect('/login');
                     }
                 } else {
+                    // Log
+                    Log_auth::create([
+                        'ip_address' => $ip_address,
+                        'activity' => 'login',
+                        'description' => 'invalid data login',
+                        'status' => "failed",
+                        'mac_address' => '',
+                    ]);
+
                     toast('Username atau Password Anda Salah', 'warning');
                     return redirect('/login');
                 }
@@ -71,6 +123,27 @@ class LoginController extends Controller
 
     public function logout()
     {
+        //whether ip is from share internet
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+            $ip_address = $_SERVER['HTTP_CLIENT_IP'];
+        }
+        //whether ip is from proxy
+        elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $ip_address = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        }
+        //whether ip is from remote address
+        else {
+            $ip_address = $_SERVER['REMOTE_ADDR'];
+        }
+
+        Log_auth::create([
+            'ip_address' => $ip_address,
+            'activity' => 'logout',
+            'description' => 'logout success as'.auth()->user()->username,
+            'status' => "success",
+            'mac_address' => '',
+        ]);
+
         Auth::logout();
         toast('You\'ve Successfully Logout!', 'success');
         return redirect('/login');

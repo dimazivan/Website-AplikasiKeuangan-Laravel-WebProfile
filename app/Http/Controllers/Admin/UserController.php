@@ -57,10 +57,10 @@ class UserController extends Controller
         $waktu = Carbon::now();
 
         $validator = Validator::make(request()->all(), [
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'username' => 'required',
-            'email' => 'required|sometimes|email',
+            'first_name' => 'required|max:255',
+            'last_name' => 'required|max:255',
+            'username' => 'required|min:5|max:255',
+            'email' => 'required|email',
             'password' => 'required|min:5|max:40',
             'cbrole' => 'required',
             // 'phone' => 'required|numeric|sometimes|min:10|max:13',
@@ -105,33 +105,56 @@ class UserController extends Controller
             ->get();
 
             if (empty($cek[0])) {
-                // Query insert
-                User::create([
-                    'first_name' => $request->first_name,
-                    'last_name' => $request->last_name,
-                    'username' => $request->username,
-                    'email' => $request->email,
-                    'password' => $request->password,
-                    'role' => $request->cbrole,
-                    'phone' => $request->phone,
-                    'address' => $request->address,
-                    'detail_address' => $request->desc,
-                    'password' => bcrypt($request->password),
-                    'created_at' => $waktu,
-                    'updated_at' => $waktu,
-                ]);
+                if ($request->hasFile('file_foto')) {
+                    if (filesize($request->file_foto) > 1000 * 10000) {
+                        return back()->with("info", "File foto anda melebihi batas maksimal ukuran upload");
+                    }
+                }
 
-                // Log
-                Log_users::create([
-                    'users_id' => auth()->user()->id,
-                    'role' => auth()->user()->role,
-                    'activity' => 'insert Data',
-                    'description' => 'data saved',
-                    'status' => "success",
-                    'mac_address' => '',
-                ]);
+                if ($request->file_foto->getClientOriginalExtension() == "jpg" ||
+                $request->file_foto->getClientOriginalExtension() == "jpeg" ||
+                $request->file_foto->getClientOriginalExtension() == "png" ||
+                $request->file_foto->getClientOriginalExtension() == "gif") {
+                    if ($request->hasFile('file_foto')) {
+                        $file = $request->file('file_foto');
+                        $nama_file = time() . "_" . $file->getClientOriginalName();
+                        $tujuan_upload = 'data_file/user/foto';
+                        $file->move($tujuan_upload, $nama_file);
+                    } else {
+                        $nama_file = "";
+                    }
 
-                return redirect()->route("user.index")->with("info", "Data Users has been saved");
+                    // Query insert
+                    User::create([
+                        'first_name' => $request->first_name,
+                        'last_name' => $request->last_name,
+                        'username' => $request->username,
+                        'email' => $request->email,
+                        'password' => $request->password,
+                        'role' => $request->cbrole,
+                        'phone' => $request->phone,
+                        'address' => $request->address,
+                        'detail_address' => $request->desc,
+                        'password' => bcrypt($request->password),
+                        'file_foto' => $nama_file,
+                        'created_at' => $waktu,
+                        'updated_at' => $waktu,
+                    ]);
+
+                    // Log
+                    Log_users::create([
+                        'users_id' => auth()->user()->id,
+                        'role' => auth()->user()->role,
+                        'activity' => 'insert Data',
+                        'description' => 'data saved',
+                        'status' => "success",
+                        'mac_address' => '',
+                    ]);
+
+                    return redirect()->route("user.index")->with("info", "Data Users has been saved");
+                } else {
+                    return back()->with("info", "Pastikan format file foto anda bertipe gambar");
+                }
             } else {
                 // Log
                 Log_users::create([
@@ -214,7 +237,116 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $decrypted = decrypt($request->id_user);
+            // Log
+        } catch (DecryptException $e) {
+            return view('error.e_throw', [
+                'e' => ["Invalid Data"],
+            ]);
+        }
+
+        $validator = Validator::make(request()->all(), [
+            'first_name' => 'required|max:255',
+            'last_name' => 'required|max:255',
+            'password' => 'required|min:5|max:40',
+            'cbrole' => 'required',
+            'phone' => 'required|numeric|digits_between:10,13',
+            'address' => 'required|max:255',
+            'desc' => 'max:255',
+            'file_foto' => 'mimes:jpeg,jpg,png,gif|max:10000',
+        ], )->setAttributeNames(
+            [
+                'first_name' => '"Nama Depan"',
+                'last_name' => '"Nama Belakang"',
+                'phone' => '"Nomor Telepon"',
+            ],
+        );
+
+        // dd(
+        //     $request->all(),
+        //     $id,
+        //     strlen($id),
+        //     decrypt($id),
+        //     decrypt($request->id_user),
+        // );
+
+        if ($validator->fails()) {
+            // Log
+            Log_users::create([
+                'users_id' => auth()->user()->id,
+                'role' => auth()->user()->role,
+                'activity' => 'update data',
+                'description' => 'error validation',
+                'status' => "failed",
+                'mac_address' => '',
+            ]);
+            return back()->withErrors($validator->errors());
+        }
+
+        if ($request->hasFile('file_foto')) {
+            if (filesize($request->file_foto) > 1000 * 10000) {
+                Log_users::create([
+                    'users_id' => auth()->user()->id,
+                    'role' => auth()->user()->role,
+                    'activity' => 'update data',
+                    'description' => 'error validation file size',
+                    'status' => "failed",
+                    'mac_address' => '',
+                ]);
+
+                return back()->with("info", "File foto anda melebihi batas maksimal ukuran upload");
+            }
+        }
+
+        if ($request->file_foto->getClientOriginalExtension() == "jpg" ||
+        $request->file_foto->getClientOriginalExtension() == "jpeg" ||
+        $request->file_foto->getClientOriginalExtension() == "png" ||
+        $request->file_foto->getClientOriginalExtension() == "gif") {
+            if ($request->hasFile('file_foto')) {
+                $file = $request->file('file_foto');
+                $nama_file = time() . "_" . $file->getClientOriginalName();
+                $tujuan_upload = 'data_file/user/foto';
+                $file->move($tujuan_upload, $nama_file);
+            } else {
+                $nama_file = "";
+            }
+
+            $newid = decrypt($id);
+            // Update
+            DB::table('users')->where('id', $newid)->update([
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'password' => bcrypt($request->password),
+                'role' => $request->cbrole,
+                'phone' => $request->phone,
+                'address' => $request->address,
+                'detail_address' => $request->desc,
+                'file_foto' => $nama_file,
+            ]);
+
+            Log_users::create([
+                'users_id' => auth()->user()->id,
+                'role' => auth()->user()->role,
+                'activity' => 'update data',
+                'description' => 'data updated',
+                'status' => "success",
+                'mac_address' => '',
+            ]);
+
+            return redirect()->route("user.index")->with("info", "Data Users has been saved");
+        } else {
+            Log_users::create([
+                'users_id' => auth()->user()->id,
+                'role' => auth()->user()->role,
+                'activity' => 'update data',
+                'description' => 'error validation file format',
+                'status' => "failed",
+                'mac_address' => '',
+            ]);
+
+            return back()->with("info", "Pastikan format file foto anda bertipe gambar");
+        }
     }
 
     /**
@@ -229,5 +361,10 @@ class UserController extends Controller
             $id,
             Crypt::decrypt($id),
         );
+
+        // $delete = User::findOrFail($id)
+        // ->where('id', '=', $id)
+        // ->where('umkms_id', '=', $idumkm[0]->umkms_id);
+        // $delete->delete();
     }
 }

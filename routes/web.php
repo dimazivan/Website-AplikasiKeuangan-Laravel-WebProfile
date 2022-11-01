@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Log\Log_UserController;
+use App\Http\Controllers\Log\Log_AuthController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Auth\LoginController;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -40,8 +41,11 @@ Route::group([
     'namespace' => 'App\Http\Controllers\Log',
     'middleware' => ['auth','CekRole:admin']
 ], function () {
-    // Route User
+    // Route Log Data User
     Route::resource('log_user', 'Log_UserController');
+
+    // Route Log Data User
+    Route::resource('log_auth', 'Log_AuthController');
 });
 
 // User Keuangan

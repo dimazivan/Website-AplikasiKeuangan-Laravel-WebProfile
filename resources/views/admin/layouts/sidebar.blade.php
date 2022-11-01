@@ -11,7 +11,12 @@
         <!-- menu profile quick info -->
         <div class="profile clearfix">
             <div class="profile_pic">
+                @if(auth()->user()->file_foto == null)
                 <img src="{{ asset('asset/icon/dimaz4.png') }}" alt="dimaz4.png" class="img-circle profile_img">
+                @else
+                <img src="{{ url('/data_file/user/foto/'.auth()->user()->file_foto) }}"
+                    alt="{{ auth()->user()->file_foto }}" class="img-circle profile_img">
+                @endif
             </div>
             <div class="profile_info">
                 <span>
@@ -36,6 +41,16 @@
                 </ul>
             </div>
             @if(auth()->user()->role == "admin")
+            <div class="menu_section">
+                <h3>Data Log (Admin)</h3>
+                <ul class="nav side-menu">
+                    <li><a><i class="fa fa-cog"></i>Log Auth<span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="/log_auth">Daftar Data Log Auth</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
             <div class="menu_section">
                 <h3>Data Master (Admin)</h3>
                 <ul class="nav side-menu">

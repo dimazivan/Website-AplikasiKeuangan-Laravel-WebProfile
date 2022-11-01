@@ -33,8 +33,10 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <form class="" action="#" method="post" validate enctype="multipart/form-data">
+                        <form class="" action="{{ route('user.update',[Crypt::encrypt($data[0]->id)]) }}" method="post"
+                            validate enctype="multipart/form-data">
                             @csrf
+                            @method('put')
                             <p>Masukkan data user dengan benar digunakan sebagai login sistem</p>
                             <span class="section">Personal Info</span>
                             @if(($errors->any()) != null)
@@ -55,6 +57,7 @@
                                 <strong>{{ \Session::get('info') }}</strong>
                             </div>
                             @endif
+                            <input type="text" name="id_user" value="{{ Crypt::encrypt($data[0]->id) }}" hidden>
                             <div class="field item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3 label-align">Nama Depan<span
                                         class="required">*</span></label>

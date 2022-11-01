@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('title')
-{{ isset($title) ? $title : "Halaman Log Data User"; }}
+{{ isset($title) ? $title : "Halaman Log Data Auth"; }}
 @endsection
 @section('content')
 <div class="right_col" role="main">
@@ -9,7 +9,7 @@
             <div class="title_left">
                 <p>
                     <a href="/">Home</a>&nbsp;<small><i class="fa fa-long-arrow-right"></small></i>
-                    <a href="#">Log Data User</a>&nbsp;
+                    <a href="#">Log Data Auth</a>&nbsp;
                 </p>
             </div>
         </div>
@@ -18,7 +18,7 @@
             <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Log Data User</h2>
+                        <h2>Log Data Auth</h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                             </li>
@@ -37,7 +37,7 @@
                             <div class="col-sm-12">
                                 <div class="card-box table-responsive">
                                     <p class="text-muted font-13 m-b-30">
-                                        Data user digunakan untuk pengguna melakukan proses login pada aplikasi.
+                                        Data auth merupakan informasi rincian aktivitas login yang dilakukan user.
                                     </p>
                                     @if(\Session::has('info'))
                                     <div class="alert alert-info alert-dismissible" role="alert" data-timeout="2000">
@@ -52,7 +52,7 @@
                                         width="100%">
                                         <thead>
                                             <tr>
-                                                <th>Nama User (Username)</th>
+                                                <th>Ip Address</th>
                                                 <th>Activity Log</th>
                                                 <th>Status</th>
                                                 <th>Time</th>
@@ -60,25 +60,22 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @forelse($data as $log_users)
+                                            @forelse($data as $log_auth)
                                             <tr>
-                                                <td>
-                                                    {{ $log_users->nama_depan }}&nbsp;{{ $log_users->nama_belakang }}
-                                                    ({{ substr_replace($log_users->username,'*****',3,3) }})
-                                                </td>
-                                                <td style="text-transform:uppercase;">{{ $log_users->activity }}</td>
+                                                <td>{{ $log_auth->ip_address }}</td>
+                                                <td style="text-transform:uppercase;">{{ $log_auth->activity }}</td>
                                                 <td style="text-transform:uppercase;">
-                                                    @if($log_users->status == "success")
-                                                    <span class="badge badge-success">{{ $log_users->status }}</span>
-                                                    @elseif($log_users->status == "failed")
-                                                    <span class="badge badge-danger">{{ $log_users->status }}</span>
+                                                    @if($log_auth->status == "success")
+                                                    <span class="badge badge-success">{{ $log_auth->status }}</span>
+                                                    @elseif($log_auth->status == "failed")
+                                                    <span class="badge badge-danger">{{ $log_auth->status }}</span>
                                                     @else
-                                                    <span class="badge badge-warning">{{ $log_users->status }}</span>
+                                                    <span class="badge badge-warning">{{ $log_auth->status }}</span>
                                                     @endif
                                                 </td>
-                                                <td>{{ $log_users->updated_at }}&nbsp;||
+                                                <td>{{ $log_auth->updated_at }}&nbsp;||
                                                     {{
-                                                    $log_users->updated_at->diffForHumans([
+                                                    $log_auth->updated_at->diffForHumans([
                                                     'parts' => 3,
                                                     'join' => true,
                                                     ])
@@ -105,7 +102,7 @@
                                             </tr>
                                             @empty
                                             <tr>
-                                                <td colspan="5">Data Log User Kosong</td>
+                                                <td colspan="5">Data Log Auth Kosong</td>
                                             </tr>
                                             @endforelse
                                         </tbody>

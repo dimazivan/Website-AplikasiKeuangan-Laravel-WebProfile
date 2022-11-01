@@ -8,7 +8,13 @@
                 <li class="nav-item dropdown open" style="padding-left: 15px;">
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown"
                         data-toggle="dropdown" aria-expanded="false">
-                        <img src="{{ asset('asset/icon/dimaz4.png') }}" alt="">{{ auth()->user()->first_name }}
+                        @if(auth()->user()->file_foto == null)
+                        <img src="{{ asset('asset/icon/dimaz4.png') }}" alt="Foto Profil">
+                        @else
+                        <img src="{{ url('/data_file/user/foto/'.auth()->user()->file_foto) }}"
+                            alt="{{ auth()->user()->file_foto }}">
+                        @endif
+                        {{ auth()->user()->first_name }}
                         &nbsp;{{ auth()->user()->last_name }}
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
