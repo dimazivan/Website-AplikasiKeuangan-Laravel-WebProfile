@@ -40,6 +40,16 @@
                     </li>
                 </ul>
             </div>
+            <div class="menu_section">
+                <h3>Data Latihan (Admin)</h3>
+                <ul class="nav side-menu">
+                    <li><a><i class="fa fa-bookmark"></i>Latihan<span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="/latihan">Halaman Latihan</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
             @if(auth()->user()->role == "admin")
             <div class="menu_section">
                 <h3>Data Log (Admin)</h3>

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\LatihanController;
 use App\Http\Controllers\Log\Log_UserController;
 use App\Http\Controllers\Log\Log_AuthController;
 use App\Http\Controllers\Admin\ProductController;
@@ -29,6 +30,9 @@ Route::group([
     'namespace' => 'App\Http\Controllers\Admin',
     'middleware' => ['auth','CekRole:admin']
 ], function () {
+    // Route Latihan
+    Route::resource('latihan', 'LatihanController');
+
     // Route User
     Route::resource('user', 'UserController');
 

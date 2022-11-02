@@ -49,7 +49,7 @@
                                     @endif
                                     <table id="datatable-responsive"
                                         class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0"
-                                        width="100%">
+                                        width="100%" data-order='[[ 3, "desc" ]]'>
                                         <thead>
                                             <tr>
                                                 <th>Ip Address</th>
