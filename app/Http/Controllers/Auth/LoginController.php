@@ -66,7 +66,7 @@ class LoginController extends Controller
                 'ip_address' => $ip_address,
                 'activity' => 'login',
                 'description' => 'error validation',
-                'status' => "failed",
+                'status' => 'failed',
                 'mac_address' => '',
             ]);
 
@@ -78,7 +78,7 @@ class LoginController extends Controller
                     'ip_address' => $ip_address,
                     'activity' => 'login',
                     'description' => 'error validation',
-                    'status' => "failed",
+                    'status' => 'failed',
                     'mac_address' => '',
                 ]);
 
@@ -90,7 +90,7 @@ class LoginController extends Controller
                         'ip_address' => $ip_address,
                         'activity' => 'login',
                         'description' => 'login success as'.$request->username,
-                        'status' => "success",
+                        'status' => 'success',
                         'mac_address' => '',
                     ]);
 
@@ -109,7 +109,7 @@ class LoginController extends Controller
                         'ip_address' => $ip_address,
                         'activity' => 'login',
                         'description' => 'invalid data login',
-                        'status' => "failed",
+                        'status' => 'failed',
                         'mac_address' => '',
                     ]);
 
@@ -136,11 +136,24 @@ class LoginController extends Controller
             $ip_address = $_SERVER['REMOTE_ADDR'];
         }
 
+        if (auth()->user() == null) {
+            Log_auth::create([
+                'ip_address' => $ip_address,
+                'activity' => 'logout',
+                'description' => 'failed logout auth or session not found',
+                'status' => 'failed',
+                'mac_address' => '',
+            ]);
+
+            toast('Logout Failed Session or User Not Found', 'info');
+            return redirect('/login');
+        }
+
         Log_auth::create([
             'ip_address' => $ip_address,
             'activity' => 'logout',
             'description' => 'logout success as'.auth()->user()->username,
-            'status' => "success",
+            'status' => 'success',
             'mac_address' => '',
         ]);
 

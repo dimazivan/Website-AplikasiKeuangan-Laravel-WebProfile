@@ -32,6 +32,10 @@ class Log_UserController extends Controller
         ->join('users', 'users.id', '=', 'log_users.users_id')
         ->get();
 
+        if (auth()->user()->role != 'admin') {
+            return back()->with("info", "User didnt have authorization");
+        }
+
         // dd(
         //     $data,
         // );

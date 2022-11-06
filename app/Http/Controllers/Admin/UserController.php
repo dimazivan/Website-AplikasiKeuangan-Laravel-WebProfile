@@ -93,7 +93,7 @@ class UserController extends Controller
                 'role' => auth()->user()->role,
                 'activity' => 'insert Data',
                 'description' => 'error validation',
-                'status' => "failed",
+                'status' => 'failed',
                 'mac_address' => '',
             ]);
 
@@ -147,7 +147,7 @@ class UserController extends Controller
                         'role' => auth()->user()->role,
                         'activity' => 'insert Data',
                         'description' => 'data saved',
-                        'status' => "success",
+                        'status' => 'success',
                         'mac_address' => '',
                     ]);
 
@@ -162,7 +162,7 @@ class UserController extends Controller
                     'role' => auth()->user()->role,
                     'activity' => 'insert Data',
                     'description' => 'duplicated entity',
-                    'status' => "failed",
+                    'status' => 'failed',
                     'mac_address' => '',
                 ]);
 
@@ -278,7 +278,7 @@ class UserController extends Controller
                 'role' => auth()->user()->role,
                 'activity' => 'update data',
                 'description' => 'error validation',
-                'status' => "failed",
+                'status' => 'failed',
                 'mac_address' => '',
             ]);
             return back()->withErrors($validator->errors());
@@ -291,7 +291,7 @@ class UserController extends Controller
                     'role' => auth()->user()->role,
                     'activity' => 'update data',
                     'description' => 'error validation file size',
-                    'status' => "failed",
+                    'status' => 'failed',
                     'mac_address' => '',
                 ]);
 
@@ -330,7 +330,7 @@ class UserController extends Controller
                 'role' => auth()->user()->role,
                 'activity' => 'update data',
                 'description' => 'data updated',
-                'status' => "success",
+                'status' => 'success',
                 'mac_address' => '',
             ]);
 
@@ -341,7 +341,7 @@ class UserController extends Controller
                 'role' => auth()->user()->role,
                 'activity' => 'update data',
                 'description' => 'error validation file format',
-                'status' => "failed",
+                'status' => 'failed',
                 'mac_address' => '',
             ]);
 

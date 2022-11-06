@@ -25,6 +25,10 @@ class Log_AuthController extends Controller
         $title = "Halaman Log Data Auth";
         $data = Log_auth::all();
 
+        if (auth()->user()->role != 'admin') {
+            return back()->with("info", "User didnt have authorization");
+        }
+
         return view('admin.pages.auth.log_auth', [
             'title' => $title,
             'data' => $data,
