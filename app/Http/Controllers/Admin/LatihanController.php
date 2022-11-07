@@ -35,7 +35,7 @@ class LatihanController extends Controller
         $data_matriks = [1,2,3,4];
 
         for ($m=0; $m < sizeof($data_matriks) ; $m++) {
-            //
+            // matriks belom
         }
 
         // dd(
