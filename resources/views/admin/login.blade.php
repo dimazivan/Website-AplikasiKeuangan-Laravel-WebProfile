@@ -15,27 +15,27 @@
     @endif
 
     <!-- Bootstrap -->
-    <link href="{{ asset('admin/vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('backend/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="{{ asset('admin/vendors/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('backend/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <!-- NProgress -->
-    <link href="{{ asset('admin/vendors/nprogress/nprogress.css')}}" rel="stylesheet">
+    <link href="{{ asset('backend/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
     <!-- Animate.css -->
-    <link href="{{ asset('admin/vendors/animate.css/animate.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('backend/vendors/animate.css/animate.min.css') }}" rel="stylesheet">
     <!-- bootstrap-wysiwyg -->
-    <link href="{{asset('admin/vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet')}}">
+    <link href="{{ asset('backend/vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet') }}">
     <!-- Select2 -->
-    <link href="{{asset('admin/vendors/select2/dist/css/select2.min.css" rel="stylesheet')}}">
+    <link href="{{ asset('backend/vendors/select2/dist/css/select2.min.css" rel="stylesheet') }}">
     <!-- Switchery -->
-    <link href="{{asset('admin/vendors/switchery/dist/switchery.min.css" rel="stylesheet')}}">
+    <link href="{{ asset('backend/vendors/switchery/dist/switchery.min.css" rel="stylesheet') }}">
     <!-- starrr -->
-    <link href="{{asset('admin/vendors/starrr/dist/starrr.css" rel="stylesheet')}}">
+    <link href="{{ asset('backend/vendors/starrr/dist/starrr.css" rel="stylesheet') }}">
     <!-- Custom Theme Style -->
-    <link href="{{asset('admin/build/css/custom.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('backend/build/css/custom.min.css') }}" rel="stylesheet">
     <!-- PNotify -->
-    <link href="{{asset('admin/vendors/pnotify/dist/pnotify.css')}}" rel="stylesheet">
-    <link href="{{asset('admin/vendors/pnotify/dist/pnotify.buttons.css')}}" rel="stylesheet">
-    <link href="{{asset('admin/vendors/pnotify/dist/pnotify.nonblock.css')}}" rel="stylesheet">
+    <link href="{{ asset('backend/vendors/pnotify/dist/pnotify.css') }}" rel="stylesheet">
+    <link href="{{ asset('backend/vendors/pnotify/dist/pnotify.buttons.css') }}" rel="stylesheet">
+    <link href="{{ asset('backend/vendors/pnotify/dist/pnotify.nonblock.css') }}" rel="stylesheet">
 </head>
 
 <body class="login">
@@ -134,31 +134,31 @@
         </div>
     </div>
     <!-- jQuery -->
-    <script src="{{asset('admin/vendors/jquery/dist/jquery.min.js')}}"></script>
+    <script src="{{ asset('backend/vendors/jquery/dist/jquery.min.js') }}"></script>
     <!-- bootstrap-wysiwyg -->
-    <script src="{{asset('admin/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js')}}"></script>
-    <script src="{{asset('admin/vendors/jquery.hotkeys/jquery.hotkeys.js')}}"></script>
-    <script src="{{asset('admin/vendors/google-code-prettify/src/prettify.js')}}"></script>
+    <script src="{{ asset('backend/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js') }}"></script>
+    <script src="{{ asset('backend/vendors/jquery.hotkeys/jquery.hotkeys.js') }}"></script>
+    <script src="{{ asset('backend/vendors/google-code-prettify/src/prettify.js') }}"></script>
     <!-- jQuery Tags Input -->
-    <script src="{{asset('admin/vendors/jquery.tagsinput/src/jquery.tagsinput.js')}}"></script>
+    <script src="{{ asset('backend/vendors/jquery.tagsinput/src/jquery.tagsinput.js') }}"></script>
     <!-- Switchery -->
-    <script src="{{asset('admin/vendors/switchery/dist/switchery.min.js')}}"></script>
+    <script src="{{ asset('backend/vendors/switchery/dist/switchery.min.js') }}"></script>
     <!-- Select2 -->
-    <script src="{{asset('admin/vendors/select2/dist/js/select2.full.min.js')}}"></script>
+    <script src="{{ asset('backend/vendors/select2/dist/js/select2.full.min.js') }}"></script>
     <!-- Parsley -->
-    <script src="{{asset('admin/vendors/parsleyjs/dist/parsley.min.js')}}"></script>
+    <script src="{{ asset('backend/vendors/parsleyjs/dist/parsley.min.js') }}"></script>
     <!-- Autosize -->
-    <script src="{{asset('admin/vendors/autosize/dist/autosize.min.js')}}"></script>
+    <script src="{{ asset('backend/vendors/autosize/dist/autosize.min.js') }}"></script>
     <!-- jQuery autocomplete -->
-    <script src="{{asset('admin/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js')}}"></script>
+    <script src="{{ asset('backend/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js') }}"></script>
     <!-- starrr -->
-    <script src="{{asset('admin/vendors/starrr/dist/starrr.js')}}"></script>
+    <script src="{{ asset('backend/vendors/starrr/dist/starrr.js') }}"></script>
     <!-- PNotify -->
-    <script src="{{asset('admin/vendors/pnotify/dist/pnotify.js')}}"></script>
-    <script src="{{asset('admin/vendors/pnotify/dist/pnotify.buttons.js')}}"></script>
-    <script src="{{asset('admin/vendors/pnotify/dist/pnotify.nonblock.js')}}"></script>
+    <script src="{{ asset('backend/vendors/pnotify/dist/pnotify.js') }}"></script>
+    <script src="{{ asset('backend/vendors/pnotify/dist/pnotify.buttons.js') }}"></script>
+    <script src="{{ asset('backend/vendors/pnotify/dist/pnotify.nonblock.js') }}"></script>
     <!-- Custom Theme Scripts -->
-    <script src="{{asset('admin/build/js/custom.min.js')}}"></script>
+    <script src="{{ asset('backend/build/js/custom.min.js') }}"></script>
 </body>
 
 </html>
