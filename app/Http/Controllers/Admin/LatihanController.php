@@ -25,6 +25,32 @@ class LatihanController extends Controller
             $hasil[] = str_split($data[$i]);
         }
 
+        for ($b=0; $b < sizeof($data); $b++) {
+            for ($c=0; $c < strlen($data[$b]); $c++) {
+                $sementara[] = $data[$b][$c];
+            }
+        }
+
+        $result = [];
+        for ($e=0; $e < sizeof($data); $e++) {
+            for ($f=0; $f < strlen($data[$e]); $f++) {
+                for ($g=0; $g < sizeof($sementara); $g++) {
+                    if ($data[$e][$f] === $sementara[$g]) {
+                        //
+                    } else {
+                        for ($z=0; $z > sizeof($result) ; $z++) {
+                            if ($result[$z] === $data[$e][$f]) {
+                                //
+                            } else {
+                                $result[] = $data[$e][$f];
+                            }
+                        }
+                    }
+                }
+                // $result[] = $data[$e][$f];
+            }
+        }
+
         // for ($z=0; $z < sizeof($hasil); $z++) {
         //     $result_merge[] = array_merge($hasil[$z]);
         // }
@@ -38,9 +64,24 @@ class LatihanController extends Controller
             // matriks belom
         }
 
+        dd(
+            $sementara,
+            $sementara[0],
+            $sementara[0]!==$sementara[0],
+            $sementara[0]===$data[0][0],
+            $sementara[0]===$data[0][1],
+            sizeof($sementara),
+            $result,
+            sizeof($result),
+        );
+
         // dd(
+        //     $title,
+        //     $title[1],
         //     $data,
         //     $data[0],
+        //     $data[0][1],
+        //     strlen($data[0]),
         //     $data[1],
         //     $data[2],
         //     $data[3],

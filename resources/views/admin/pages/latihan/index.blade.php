@@ -47,20 +47,22 @@
                                         <strong>{{ \Session::get('info') }}</strong>
                                     </div>
                                     @endif
-                                    <table id="datatable-responsive"
-                                        class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0"
-                                        width="100%">
-                                        <thead>
-                                            <tr>
-                                                <th>Hasil</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td colspan="1">Apa in_array</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                    <hr>
+                                    <div class="col-md-12">
+                                        <div class="col-md-6">
+                                            <h4 style="text-align:center;">
+                                                Hasil Pemecahan Array
+                                            </h4>
+                                            <hr>
+                                            <p>Data : </p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h4 style="text-align:center;">
+                                                Hasil Perhitungan Matriks
+                                            </h4>
+                                            <hr>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
