@@ -9,6 +9,8 @@
             <div class="title_left">
                 <p>
                     <a href="/">Home</a>&nbsp;<small><i class="fa fa-long-arrow-right"></small></i>
+                    <a href="{{ route('user.index') }}">Data User</a>&nbsp;<small><i
+                            class="fa fa-long-arrow-right"></small></i>
                     <a href="#">Log Data User</a>&nbsp;
                 </p>
             </div>

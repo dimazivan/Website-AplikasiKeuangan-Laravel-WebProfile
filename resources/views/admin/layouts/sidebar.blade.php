@@ -45,7 +45,7 @@
                 <ul class="nav side-menu">
                     <li><a><i class="fa fa-bookmark"></i>Latihan<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="/latihan">Halaman Latihan</a></li>
+                            <li><a href="{{ route('latihan.index') }}">Halaman Latihan</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -56,7 +56,7 @@
                 <ul class="nav side-menu">
                     <li><a><i class="fa fa-cog"></i>Log Auth<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="/log_auth">Daftar Data Log Auth</a></li>
+                            <li><a href="{{ route('log_auth.index') }}">Daftar Data Log Auth</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -66,13 +66,13 @@
                 <ul class="nav side-menu">
                     <li><a><i class="fa fa-user"></i>Data User<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="/user">Daftar Data User</a></li>
-                            <li><a href="/user/create">Tambah Data User</a></li>
+                            <li><a href="{{ route('user.index') }}">Daftar Data User</a></li>
+                            <li><a href="{{ route('user.create') }}">Tambah Data User</a></li>
                         </ul>
                     </li>
                     <li><a><i class="fa fa-archive"></i>Data Produk<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="/product">Daftar Data Produk</a></li>
+                            <li><a href="{{ route('product.index') }}">Daftar Data Produk</a></li>
                             <li><a href="#">Tambah Data Produk</a></li>
                         </ul>
                     </li>
@@ -84,7 +84,7 @@
                 <ul class="nav side-menu">
                     <li><a><i class="fa fa-database"></i>Data Api<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="/api">Daftar Data Api</a></li>
+                            <li><a href="{{ route('api.index') }}">Daftar Data Api</a></li>
                             <!-- <li><a href="/api/create">Tambah Data Api</a></li> -->
                         </ul>
                     </li>

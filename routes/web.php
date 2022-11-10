@@ -22,11 +22,31 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 // LOGIN
 Route::get('/login', [LoginController::class,'index'])->name('index.login');
-Route::any('/login/cek', [LoginController::class, 'login'])->name('login');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// Admin
+// URL Auth
 Route::group([
+    'prefix' => 'auth',
+    'namespace' => 'App\Http\Controllers\Auth',
+], function () {
+    // Login
+    Route::any('/login/cek', [LoginController::class, 'login'])->name('login');
+});
+
+// Homepage
+Route::group([
+    'namespace' => 'App\Http\Controllers\Admin',
+    'middleware' => ['auth','CekRole:admin,keuangan']
+], function () {
+    Route::get('/', function () {
+        return view('admin.index');
+    });
+});
+
+// Admin
+// URL ADMIN
+Route::group([
+    'prefix' => 'admin',
     'namespace' => 'App\Http\Controllers\Admin',
     'middleware' => ['auth','CekRole:admin']
 ], function () {
@@ -41,7 +61,9 @@ Route::group([
 });
 
 // Log Data
+// URL LOG
 Route::group([
+    'prefix' => 'log',
     'namespace' => 'App\Http\Controllers\Log',
     'middleware' => ['auth','CekRole:admin']
 ], function () {
@@ -53,16 +75,14 @@ Route::group([
 });
 
 // User Keuangan
+// URL API
 Route::group([
+    'prefix' => 'api',
     'namespace' => 'App\Http\Controllers\Admin',
     'middleware' => ['auth','CekRole:admin,keuangan']
 ], function () {
     // Api
     Route::resource('api', 'ApiController');
-
-    Route::get('/', function () {
-        return view('admin.index');
-    });
 });
 
 Route::fallback(function () {

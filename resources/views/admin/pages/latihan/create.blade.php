@@ -9,7 +9,8 @@
             <div class="title_left">
                 <p>
                     <a href="/">Home</a>&nbsp;<small><i class="fa fa-long-arrow-right"></small></i>
-                    <a href="/latihan">Latihan</a>&nbsp;<small><i class="fa fa-long-arrow-right"></small></i>
+                    <a href="{{ route('latihan.index') }}">Latihan</a>&nbsp;<small><i
+                            class="fa fa-long-arrow-right"></small></i>
                     <a href="#">Form Latihan</a>
                 </p>
             </div>

@@ -10,7 +10,8 @@
             <div class="title_left">
                 <p>
                     <a href="/">Home</a>&nbsp;<small><i class="fa fa-long-arrow-right"></small></i>
-                    <a href="/user">Data User</a>&nbsp;<small><i class="fa fa-long-arrow-right"></small></i>
+                    <a href="{{ route('user.index') }}">Data User</a>&nbsp;<small><i
+                            class="fa fa-long-arrow-right"></small></i>
                     <a href="#">Edit Data User, Id:</a>
                 </p>
             </div>
