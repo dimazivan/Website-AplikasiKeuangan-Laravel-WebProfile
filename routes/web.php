@@ -78,11 +78,12 @@ Route::group([
 // URL API
 Route::group([
     'prefix' => 'api',
-    'namespace' => 'App\Http\Controllers\Admin',
+    'namespace' => 'App\Http\Controllers\Api',
     'middleware' => ['auth','CekRole:admin,keuangan']
 ], function () {
-    // Api
+    // Api Product
     Route::resource('api', 'ApiController');
+    Route::resource('api_product', 'Api_ProductController');
 });
 
 Route::fallback(function () {

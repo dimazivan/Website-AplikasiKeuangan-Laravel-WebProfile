@@ -35,6 +35,12 @@ class LoginController extends Controller
     {
         $waktu = Carbon::now();
 
+        // dd(
+        //     $request->all(),
+        // );
+
+        echo csrf_token();
+
         //whether ip is from share internet
         if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
             $ip_address = $_SERVER['HTTP_CLIENT_IP'];
