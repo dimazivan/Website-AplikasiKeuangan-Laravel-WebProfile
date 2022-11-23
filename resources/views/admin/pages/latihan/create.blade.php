@@ -84,7 +84,7 @@
                                         <br>
                                         <button type='submit' class="btn btn-primary">Proses</button>
                                         <button type='reset' class="btn btn-success">Reset</button>
-                                        <!-- <a href="/" class="btn btn-danger">Batal</a> -->
+                                        <!-- <a href="{{ route('latihan.index') }}" class="btn btn-danger">Batal</a> -->
                                     </div>
                                 </div>
                             </div>

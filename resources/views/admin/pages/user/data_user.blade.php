@@ -40,6 +40,11 @@
                                     <p class="text-muted font-13 m-b-30">
                                         Data user digunakan untuk pengguna melakukan proses login pada aplikasi.
                                     </p>
+                                    <button class="btn btn-primary" class="btn btn-primary" data-toggle="modal"
+                                        data-target=".modaladduser">
+                                        Tambah Data (Ajax)
+                                    </button>
+                                    <br>
                                     @if(\Session::has('info'))
                                     <div class="alert alert-info alert-dismissible" role="alert" data-timeout="2000">
                                         <button type="button" class="close" data-dismiss="alert"
@@ -59,7 +64,7 @@
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="tabel_user">
                                             @forelse($data as $data_user)
                                             <tr>
                                                 <td>
@@ -113,6 +118,11 @@
     </div>
 </div>
 @endsection
+<!-- additional components -->
+@section('components')
+@include('admin.components.modal.modal_add_user')
+@endsection
+<!-- additional script -->
 @section('script')
 <script type="text/javascript">
     $(document).ready(function() {

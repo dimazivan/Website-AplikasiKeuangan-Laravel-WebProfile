@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="{{ asset('asset/icon/dimaz4.png') }}" type="image/ico" />
     @hasSection('title')
     <title>@yield('title')</title>
@@ -57,13 +58,17 @@
     <link href="{{ asset('backend/vendors/pnotify/dist/pnotify.css') }}" rel="stylesheet">
     <link href="{{ asset('backend/vendors/pnotify/dist/pnotify.buttons.css') }}" rel="stylesheet">
     <link href="{{ asset('backend/vendors/pnotify/dist/pnotify.nonblock.css') }}" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="{{ asset('backend/vendors/jquery/dist/jquery.min.js') }}"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @hasSection('style')
     @yield('style')
     @endif
 </head>
 
 <body class="nav-md">
-    <div id="preloader" class="preloader"></div>
+    @include('admin.components.preload.preload')
+    <!-- <div id="preloader" class="preloader"></div> -->
     <div class="container body">
         <div class="main_container">
             @include('sweetalert::alert')
@@ -85,8 +90,6 @@
         </div>
     </div>
 
-    <!-- jQuery -->
-    <script src="{{ asset('backend/vendors/jquery/dist/jquery.min.js') }}"></script>
     <!-- Bootstrap -->
     <script src="{{ asset('backend/vendors/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
     <!-- FastClick -->
@@ -141,6 +144,11 @@
     <script src="{{ asset('backend/vendors/pnotify/dist/pnotify.nonblock.js') }}"></script>
     <!-- Custom Theme Scripts -->
     <script src="{{ asset('backend/build/js/custom.min.js') }}"></script>
+    <!-- additional components -->
+    @hasSection('components')
+    @yield('components')
+    @endif
+    <!-- additional script -->
     @hasSection('script')
     @yield('script')
     @endif

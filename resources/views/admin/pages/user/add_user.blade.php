@@ -177,7 +177,7 @@
                                         <br>
                                         <button type='submit' class="btn btn-primary">Simpan</button>
                                         <button type='reset' class="btn btn-success">Reset</button>
-                                        <a href="/user" class="btn btn-danger">Batal</a>
+                                        <a href="{{ route('user.index') }}" class="btn btn-danger">Batal</a>
                                     </div>
                                 </div>
                             </div>

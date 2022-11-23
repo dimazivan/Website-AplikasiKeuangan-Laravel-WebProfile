@@ -109,7 +109,7 @@
             <a data-toggle="tooltip" data-placement="top" title="Settings">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
             </a>
-            <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+            <a data-toggle="tooltip" data-placement="top" title="FullScreen" onClick="go_full_screen();">
                 <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
             </a>
             <a data-toggle="tooltip" data-placement="top" title="Lock">
@@ -122,3 +122,17 @@
         <!-- /menu footer buttons -->
     </div>
 </div>
+<script>
+    function go_full_screen() {
+        var elem = document.documentElement;
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.msRequestFullscreen) {
+            elem.msRequestFullscreen();
+        } else if (elem.mozRequestFullScreen) {
+            elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullscreen) {
+            elem.webkitRequestFullscreen();
+        }
+    }
+</script>
