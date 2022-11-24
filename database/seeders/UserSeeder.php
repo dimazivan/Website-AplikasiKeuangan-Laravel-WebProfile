@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class UserSeeder extends Seeder
 {
@@ -25,6 +26,8 @@ class UserSeeder extends Seeder
             'phone'=> '08123128327',
             'address'=> 'Jl. Manukan Lor, Surabaya',
             'detail_address'=> 'Paling pojok pager warna putih',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
 
         DB::table('users')->insert([
@@ -37,6 +40,8 @@ class UserSeeder extends Seeder
             'phone'=> '08123128327',
             'address'=> 'Jl. Manukan Lor Keuangan, Surabaya',
             'detail_address'=> 'Paling pojok pager warna hijau keuangan',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
     }
 }

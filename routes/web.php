@@ -84,6 +84,7 @@ Route::group([
     // Api Product
     Route::resource('api', 'ApiController');
     Route::resource('api_product', 'Api_ProductController');
+    Route::resource('api_user', 'Api_UserController');
 });
 
 Route::fallback(function () {

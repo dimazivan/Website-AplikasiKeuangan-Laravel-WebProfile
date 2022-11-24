@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class ProductSeeder extends Seeder
 {
@@ -32,6 +33,8 @@ class ProductSeeder extends Seeder
                 'thumbnail'=> $item->thumbnail,
                 // Sementara haruse dua relasi ambek ambil data looping lagi
                 'images'=> $item->images[0],
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ]);
         }
     }

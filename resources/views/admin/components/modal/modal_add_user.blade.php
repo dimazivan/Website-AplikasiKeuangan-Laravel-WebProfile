@@ -185,14 +185,15 @@
         let file_foto = $('#file_foto').val();
         let token = $("meta[name='csrf-token']").attr("content");
 
-        // console.log(first_name)
+        console.log(file_foto)
 
         //ajax
         $.ajax({
             // alert('apa iya');
 
-            url: `/admin/user`,
+            url: `/api/api_user`,
             type: "POST",
+            mimeType: "multipart/form-data",
             cache: false,
             data: {
                 "first_name": first_name,
@@ -208,9 +209,9 @@
                 "_token": token
             },
             success: function(response) {
-                console.log(response.message)
-                console.log(response.data)
-                console.log(response.responseJSON)
+                // console.log(response.message)
+                // console.log(response.data)
+                // console.log(response.responseJSON)
                 //show success message
                 Swal.fire({
                     icon: 'success',

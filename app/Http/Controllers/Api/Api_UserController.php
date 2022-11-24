@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\PostResource;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Models\Log_users;
 use Carbon\Carbon;
 use Redirect;
 
