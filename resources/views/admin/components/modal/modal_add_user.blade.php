@@ -58,9 +58,9 @@
                         <label class="col-form-label col-md-3 col-sm-3 label-align">Username<span
                                 class="required">*</span></label>
                         <div class="col-md-6 col-sm-6">
-                            <input class="form-control" name="username" placeholder="Username Login" required
-                                oninvalid="this.setCustomValidity('Silahkan masukan username user')" id="username"
-                                oninput="this.setCustomValidity('')" min-length="5" />
+                            <input class="form-control" name="username" id="username" placeholder="Username Login"
+                                required oninvalid="this.setCustomValidity('Silahkan masukan username user')"
+                                id="username" oninput="this.setCustomValidity('')" min-length="5" />
                         </div>
                     </div>
                     <div class="field item form-group">
@@ -127,7 +127,7 @@
                         <label class="col-form-label col-md-3 col-sm-3 label-align">Deskripsi Alamat<span
                                 class="required">*</span></label>
                         <div class="col-md-6 col-sm-6">
-                            <textarea id="message" class="form-control" name="desc" data-parsley-trigger="keyup"
+                            <textarea id="desc" class="form-control" name="desc" data-parsley-trigger="keyup"
                                 data-parsley-minlength="20" data-parsley-maxlength="100"
                                 data-parsley-minlength-message="Masukkan deskripsi alamat anda"
                                 data-parsley-validation-threshold="10"
@@ -182,10 +182,10 @@
         let phone = $('#phone').val();
         let address = $('#address').val();
         let desc = $('#message').val();
-        let file_foto = $('#file_foto').val();
+        // let file_foto = $('#file_foto').val();
         let token = $("meta[name='csrf-token']").attr("content");
 
-        console.log(file_foto)
+        // console.log(file_foto)
 
         //ajax
         $.ajax({
@@ -205,7 +205,7 @@
                 "phone": phone,
                 "address": address,
                 "desc": desc,
-                "file_foto": file_foto,
+                // "file_foto": file_foto,
                 "_token": token
             },
             success: function(response) {
@@ -257,16 +257,9 @@
 
                 //append to table
                 $('#tabel_user').prepend(post);
-                //clear form
-                $('#first_name').val('');
-                $('#last_name').val('');
-                $('#username').val('');
-                $('#email').val('');
-                $('#password').val('');
-                $('#phone').val('');
-                $('#address').val('');
-                $('#desc').val('');
-                $('#flie_foto').val('');
+                // reload
+                $('#modal').modal('hide');
+                location.reload();
             },
 
             error: function(error) {

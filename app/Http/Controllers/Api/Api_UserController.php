@@ -95,74 +95,74 @@ class Api_UserController extends Controller
                ->get();
 
         if (empty($cek[0])) {
-            if ($request->hasFile('file_foto')) {
-                if (filesize($request->file_foto) > 1000 * 10000) {
-                    // return back()->with("info", "File foto anda melebihi batas maksimal ukuran upload");
-                    return response()->json($validator->errors(), 422);
-                }
-            }
+            // if ($request->hasFile('file_foto')) {
+            //     if (filesize($request->file_foto) > 1000 * 10000) {
+            //         // return back()->with("info", "File foto anda melebihi batas maksimal ukuran upload");
+            //         return response()->json($validator->errors(), 422);
+            //     }
+            // }
 
-            if ($request->file_foto->getClientOriginalExtension() == "jpg" ||
-            $request->file_foto->getClientOriginalExtension() == "jpeg" ||
-            $request->file_foto->getClientOriginalExtension() == "png" ||
-            $request->file_foto->getClientOriginalExtension() == "gif") {
-                // if ($request->hasFile('file_foto')) {
+            // if ($request->file_foto->getClientOriginalExtension() == "jpg" ||
+            // $request->file_foto->getClientOriginalExtension() == "jpeg" ||
+            // $request->file_foto->getClientOriginalExtension() == "png" ||
+            // $request->file_foto->getClientOriginalExtension() == "gif") {
+            // if ($request->hasFile('file_foto')) {
                 //     $file = $request->file('file_foto');
                 //     $nama_file = time() . "_" . $file->getClientOriginalName();
                 //     $tujuan_upload = 'data_file/user/foto';
                 //     $file->move($tujuan_upload, $nama_file);
-                // } else {
+            // } else {
                 //     $nama_file = "";
-                // }
+            // }
 
-                // Query insert
-                $post = User::create([
-                    'first_name' => $request->first_name,
-                    'last_name' => $request->last_name,
-                    'username' => $request->username,
-                    'email' => $request->email,
-                    'password' => $request->password,
-                    'role' => $request->cbrole,
-                    'phone' => $request->phone,
-                    'address' => $request->address,
-                    'detail_address' => $request->desc,
-                    'password' => bcrypt($request->password),
-                    'file_foto' => $nama_file,
-                    'created_at' => $waktu,
-                    'updated_at' => $waktu,
-                ]);
+            // Query insert
+            $post = User::create([
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'username' => $request->username,
+                'email' => $request->email,
+                'password' => $request->password,
+                'role' => $request->cbrole,
+                'phone' => $request->phone,
+                'address' => $request->address,
+                'detail_address' => $request->desc,
+                'password' => bcrypt($request->password),
+                // 'file_foto' => $nama_file,
+                'created_at' => $waktu,
+                'updated_at' => $waktu,
+            ]);
 
-                // Log
-                // Log_users::create([
-                //     'users_id' => auth()->user()->id,
-                //     'role' => auth()->user()->role,
-                //     'activity' => 'insert Data',
-                //     'description' => 'data saved',
-                //     'status' => 'success',
-                //     'mac_address' => '',
-                // ]);
+            // Log
+            Log_users::create([
+                'users_id' => auth()->user()->id,
+                'role' => auth()->user()->role,
+                'activity' => 'insert Data',
+                'description' => 'data saved',
+                'status' => 'success',
+                'mac_address' => '',
+            ]);
 
-                // return redirect()->route("user.index")->with("info", "Data Users has been saved");
+            // return redirect()->route("user.index")->with("info", "Data Users has been saved");
 
-                return response()->json([
-                    'success' => true,
-                    'message' => 'Data Users has been saved',
-                    'data'    => $post
-                ]);
-            } else {
-                // return back()->with("info", "Pastikan format file foto anda bertipe gambar");
-                return response()->json($validator->errors(), 422);
-            }
+            return response()->json([
+                'success' => true,
+                'message' => 'Data Users has been saved',
+                'data'    => $post
+            ]);
+        // } else {
+            //     // return back()->with("info", "Pastikan format file foto anda bertipe gambar");
+            //     return response()->json($validator->errors(), 422);
+        // }
         } else {
             // Log
-            // Log_users::create([
-            //     'users_id' => auth()->user()->id,
-            //     'role' => auth()->user()->role,
-            //     'activity' => 'insert Data',
-            //     'description' => 'duplicated entity',
-            //     'status' => 'failed',
-            //     'mac_address' => '',
-            // ]);
+            Log_users::create([
+                'users_id' => auth()->user()->id,
+                'role' => auth()->user()->role,
+                'activity' => 'insert Data',
+                'description' => 'duplicated entity',
+                'status' => 'failed',
+                'mac_address' => '',
+            ]);
 
             // return back()->with("info", "Duplicated Data Users Found");
             return response()->json($validator->errors(), 422);

@@ -297,21 +297,56 @@ class UserController extends Controller
 
                 return back()->with("info", "File foto anda melebihi batas maksimal ukuran upload");
             }
-        }
 
-        if ($request->file_foto->getClientOriginalExtension() == "jpg" ||
-        $request->file_foto->getClientOriginalExtension() == "jpeg" ||
-        $request->file_foto->getClientOriginalExtension() == "png" ||
-        $request->file_foto->getClientOriginalExtension() == "gif") {
-            if ($request->hasFile('file_foto')) {
-                $file = $request->file('file_foto');
-                $nama_file = time() . "_" . $file->getClientOriginalName();
-                $tujuan_upload = 'data_file/user/foto';
-                $file->move($tujuan_upload, $nama_file);
+            if ($request->file_foto->getClientOriginalExtension() == "jpg" ||
+            $request->file_foto->getClientOriginalExtension() == "jpeg" ||
+            $request->file_foto->getClientOriginalExtension() == "png" ||
+            $request->file_foto->getClientOriginalExtension() == "gif") {
+                if ($request->hasFile('file_foto')) {
+                    $file = $request->file('file_foto');
+                    $nama_file = time() . "_" . $file->getClientOriginalName();
+                    $tujuan_upload = 'data_file/user/foto';
+                    $file->move($tujuan_upload, $nama_file);
+                } else {
+                    $nama_file = "";
+                }
+
+                $newid = decrypt($id);
+                // Update
+                DB::table('users')->where('id', $newid)->update([
+                    'first_name' => $request->first_name,
+                    'last_name' => $request->last_name,
+                    'password' => bcrypt($request->password),
+                    'role' => $request->cbrole,
+                    'phone' => $request->phone,
+                    'address' => $request->address,
+                    'detail_address' => $request->desc,
+                    'file_foto' => $nama_file,
+                ]);
+
+                Log_users::create([
+                    'users_id' => auth()->user()->id,
+                    'role' => auth()->user()->role,
+                    'activity' => 'update data',
+                    'description' => 'data updated',
+                    'status' => 'success',
+                    'mac_address' => '',
+                ]);
+
+                return redirect()->route("user.index")->with("info", "Data Users has been updated");
             } else {
-                $nama_file = "";
-            }
+                Log_users::create([
+                    'users_id' => auth()->user()->id,
+                    'role' => auth()->user()->role,
+                    'activity' => 'update data',
+                    'description' => 'error validation file format',
+                    'status' => 'failed',
+                    'mac_address' => '',
+                ]);
 
+                return back()->with("info", "Pastikan format file foto anda bertipe gambar");
+            }
+        } else {
             $newid = decrypt($id);
             // Update
             DB::table('users')->where('id', $newid)->update([
@@ -322,7 +357,6 @@ class UserController extends Controller
                 'phone' => $request->phone,
                 'address' => $request->address,
                 'detail_address' => $request->desc,
-                'file_foto' => $nama_file,
             ]);
 
             Log_users::create([
@@ -334,18 +368,7 @@ class UserController extends Controller
                 'mac_address' => '',
             ]);
 
-            return redirect()->route("user.index")->with("info", "Data Users has been saved");
-        } else {
-            Log_users::create([
-                'users_id' => auth()->user()->id,
-                'role' => auth()->user()->role,
-                'activity' => 'update data',
-                'description' => 'error validation file format',
-                'status' => 'failed',
-                'mac_address' => '',
-            ]);
-
-            return back()->with("info", "Pastikan format file foto anda bertipe gambar");
+            return redirect()->route("user.index")->with("info", "Data Users has been updated");
         }
     }
 
@@ -357,14 +380,37 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        dd(
-            $id,
-            Crypt::decrypt($id),
-        );
+        // dd(
+        //     $id,
+        //     Crypt::decrypt($id),
+        // );
 
-        // $delete = User::findOrFail($id)
-        // ->where('id', '=', $id)
-        // ->where('umkms_id', '=', $idumkm[0]->umkms_id);
-        // $delete->delete();
+        if (isset($id)) {
+            try {
+                $decrypted = decrypt($id);
+                // Log
+            } catch (DecryptException $e) {
+                return view('error.e_throw', [
+                    'e' => ["Invalid Data"],
+                ]);
+            }
+
+            $newid = Crypt::decrypt($id);
+
+            $delete = User::findOrFail($newid)
+            ->where('id', '=', $newid);
+            $delete->delete();
+
+            Log_users::create([
+                'users_id' => auth()->user()->id,
+                'role' => auth()->user()->role,
+                'activity' => 'delete data',
+                'description' => 'data deleted',
+                'status' => 'success',
+                'mac_address' => '',
+            ]);
+        }
+
+        return redirect()->route("user.index")->with("info", "Data Users has been deleted");
     }
 }

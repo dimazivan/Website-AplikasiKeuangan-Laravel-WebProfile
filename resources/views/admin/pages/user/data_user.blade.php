@@ -42,7 +42,7 @@
                                     </p>
                                     <button class="btn btn-primary" class="btn btn-primary" data-toggle="modal"
                                         data-target=".modaladduser">
-                                        Tambah Data (Ajax)
+                                        Tambah Data Ajax (Under Develop)
                                     </button>
                                     <br>
                                     @if(\Session::has('info'))
