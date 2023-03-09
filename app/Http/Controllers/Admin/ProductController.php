@@ -20,7 +20,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $title = "Halaman Data Api";
+        $title = "Halaman Data Produk";
         $data = Product::all();
 
         // dd(
@@ -28,7 +28,14 @@ class ProductController extends Controller
         //     $data,
         // );
 
-        return view('admin.pages.product.data_product', [
+        // Tabel
+        // return view('admin.pages.product.data_product', [
+        //     'title' => $title,
+        //     'data' => $data,
+        // ]);
+
+        // Card
+        return view('admin.pages.product.card_product', [
             'title' => $title,
             'data' => $data,
         ]);

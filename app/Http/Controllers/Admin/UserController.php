@@ -109,6 +109,35 @@ class UserController extends Controller
                     if (filesize($request->file_foto) > 1000 * 10000) {
                         return back()->with("info", "File foto anda melebihi batas maksimal ukuran upload");
                     }
+                } else {
+                    // Query insert
+                    User::create([
+                        'first_name' => $request->first_name,
+                        'last_name' => $request->last_name,
+                        'username' => $request->username,
+                        'email' => $request->email,
+                        'password' => $request->password,
+                        'role' => $request->cbrole,
+                        'phone' => $request->phone,
+                        'address' => $request->address,
+                        'detail_address' => $request->desc,
+                        'password' => bcrypt($request->password),
+                        // 'file_foto' => $nama_file,
+                        'created_at' => $waktu,
+                        'updated_at' => $waktu,
+                    ]);
+
+                    // Log
+                    Log_users::create([
+                        'users_id' => auth()->user()->id,
+                        'role' => auth()->user()->role,
+                        'activity' => 'insert Data',
+                        'description' => 'data saved',
+                        'status' => 'success',
+                        'mac_address' => '',
+                    ]);
+
+                    return redirect()->route("user.index")->with("info", "Data Users has been saved");
                 }
 
                 if ($request->file_foto->getClientOriginalExtension() == "jpg" ||
