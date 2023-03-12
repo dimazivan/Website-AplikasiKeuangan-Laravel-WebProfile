@@ -58,6 +58,9 @@ Route::group([
 
     // Route Product
     Route::resource('product', 'ProductController');
+
+    // Route Service
+    Route::resource('service', 'ServiceController');
 });
 
 // Log Data
