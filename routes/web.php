@@ -88,6 +88,7 @@ Route::group([
     Route::resource('api', 'ApiController');
     Route::resource('api_product', 'Api_ProductController');
     Route::resource('api_user', 'Api_UserController');
+    Route::resource('api_email', 'Api_SendermailController');
 });
 
 Route::fallback(function () {

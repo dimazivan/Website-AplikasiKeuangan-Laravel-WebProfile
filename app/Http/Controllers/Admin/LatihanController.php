@@ -64,17 +64,6 @@ class LatihanController extends Controller
             // matriks belom
         }
 
-        dd(
-            $sementara,
-            $sementara[0],
-            $sementara[0]!==$sementara[0],
-            $sementara[0]===$data[0][0],
-            $sementara[0]===$data[0][1],
-            sizeof($sementara),
-            $result,
-            sizeof($result),
-        );
-
         // dd(
         //     $title,
         //     $title[1],
@@ -94,6 +83,17 @@ class LatihanController extends Controller
         //     $data_matriks,
         // );
 
+        // dd(
+        //     $sementara,
+        //     $sementara[0],
+        //     $sementara[0]!==$sementara[0],
+        //     $sementara[0]===$data[0][0],
+        //     $sementara[0]===$data[0][1],
+        //     sizeof($sementara),
+        //     $result,
+        //     sizeof($result),
+        // );
+
         return view('admin.pages.latihan.index', [
             'title' => $title,
             'data' => $data,
@@ -109,7 +109,7 @@ class LatihanController extends Controller
     {
         $title = "Halaman Latihan";
 
-        return view('admin.pages.latihan.create', [
+        return view('admin.pages.latihan.create_canvas', [
             'title' => $title,
         ]);
     }
