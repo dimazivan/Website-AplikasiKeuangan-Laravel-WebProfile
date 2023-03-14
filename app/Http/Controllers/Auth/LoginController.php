@@ -22,7 +22,29 @@ class LoginController extends Controller
     {
         $title = "Login Page";
 
+        //whether ip is from share internet
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+            $ip_address = $_SERVER['HTTP_CLIENT_IP'];
+        }
+        //whether ip is from proxy
+        elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $ip_address = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        }
+        //whether ip is from remote address
+        else {
+            $ip_address = $_SERVER['REMOTE_ADDR'];
+        }
+
         if (auth()->user() != null) {
+            // Log
+            Log_auth::create([
+                'ip_address' => $ip_address,
+                'activity' => 'login',
+                'description' => 'user already have session or login',
+                'status' => 'failed',
+                'mac_address' => '',
+            ]);
+
             return redirect('/');
         } else {
             return view('admin.login', [
