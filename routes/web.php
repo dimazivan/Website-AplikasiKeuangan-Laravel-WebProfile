@@ -31,6 +31,7 @@ Route::group([
 ], function () {
     // Login
     Route::any('/login/cek', [LoginController::class, 'login'])->name('login');
+    Route::resource('reset', 'ResetController');
 });
 
 // Homepage

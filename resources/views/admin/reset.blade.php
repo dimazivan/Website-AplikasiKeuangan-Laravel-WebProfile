@@ -23,7 +23,7 @@
     @hasSection('title')
     <title>{{ $title }}</title>
     @else
-    <title>Login Page</title>
+    <title>Reset Password Page</title>
     @endif
 </head>
 
@@ -32,11 +32,7 @@
     <div class="limiter">
         <div class="container-login100">
             <div class="wrap-login100">
-                <div class="login100-pic js-tilt" data-tilt>
-                    <img src="{{ asset('asset/icon/dimaz4.png') }}" alt="IMG">
-                    <!-- <img src="{{ asset('gate/images/img-01.png') }}" alt="IMG"> -->
-                </div>
-                <form class="login100-form validate-form" action="{{ route('login') }}" method="post" validate>
+                <form class="login100-form validate-form" action="#" method="post" validate>
                     @csrf
                     @if(\Session::has('info'))
                     <div class="alert alert-danger alert-dismissible " role="alert">
@@ -57,8 +53,15 @@
                     @endforeach
                     @endif
                     <span class="login100-form-title">
-                        Member Login
+                        Reset Password Page
                     </span>
+                    <div class="wrap-input100 validate-input" data-validate="Email is required">
+                        <input class="input100" type="text" name="email" placeholder="Email">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </span>
+                    </div>
                     <div class="wrap-input100 validate-input" data-validate="Username is required">
                         <input class="input100" type="text" name="username" placeholder="Username">
                         <span class="focus-input100"></span>
@@ -67,7 +70,7 @@
                         </span>
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="Password is required">
-                        <input class="input100" type="password" name="password" placeholder="Password">
+                        <input class="input100" type="password" name="password" placeholder="New Password">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-lock" aria-hidden="true"></i>
@@ -75,15 +78,15 @@
                     </div>
                     <div class="container-login100-form-btn">
                         <button class="login100-form-btn" type="submit">
-                            Login
+                            Reset
                         </button>
                     </div>
                     <div class="text-center p-t-12">
                         <span class="txt1">
-                            Forgot
+                            Already Know
                         </span>
-                        <a class="txt2" href="{{ route('reset.index') }}">
-                            Ur Password?
+                        <a class="txt2" href="{{ route('index.login') }}">
+                            Ur Password ?
                         </a>
                     </div>
                     <div class="text-center p-t-136">
@@ -92,6 +95,10 @@
                         </a>
                     </div>
                 </form>
+                <div class="login100-pic js-tilt" data-tilt>
+                    <img src="{{ asset('asset/icon/dimaz4.png') }}" alt="IMG">
+                    <!-- <img src="{{ asset('gate/images/img-01.png') }}" alt="IMG"> -->
+                </div>
             </div>
         </div>
     </div>
