@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Component;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Log_auth;
+use App\Http\Controllers\Controller;
 
-class ResetController extends Controller
+class CaptchaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,37 +14,12 @@ class ResetController extends Controller
      */
     public function index()
     {
-        $title = "Reset Password Page";
+        //
+    }
 
-        //whether ip is from share internet
-        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-            $ip_address = $_SERVER['HTTP_CLIENT_IP'];
-        }
-        //whether ip is from proxy
-        elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-            $ip_address = $_SERVER['HTTP_X_FORWARDED_FOR'];
-        }
-        //whether ip is from remote address
-        else {
-            $ip_address = $_SERVER['REMOTE_ADDR'];
-        }
-
-        if (auth()->user() != null) {
-            // Log
-            Log_auth::create([
-                'ip_address' => $ip_address,
-                'activity' => 'reset',
-                'description' => 'user already have session or login',
-                'status' => 'failed',
-                'mac_address' => '',
-            ]);
-
-            return redirect('/');
-        } else {
-            return view('admin.reset', [
-                'title' => $title,
-            ]);
-        }
+    public function generate()
+    {
+        return response()->json(['captcha' => captcha_img()]); // @ignore
     }
 
     /**

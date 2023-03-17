@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <!--===============================================================================================-->
     <link rel="icon" href="{{ asset('asset/icon/dimaz4.png') }}" type="image/ico" />
     <!--===============================================================================================-->
@@ -73,6 +74,17 @@
                             <i class="fa fa-lock" aria-hidden="true"></i>
                         </span>
                     </div>
+                    <div class="captcha" style="margin-bottom: 10px;margin-left: 5px;">
+                        <span>{!! captcha_img() !!}</span>
+                        <button class="btn btn-danger reload" id="reload" type="button">&#x21bb;</button>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="Captcha is required">
+                        <input class="input100" type="text" name="captcha" placeholder="Captcha">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-link" aria-hidden="true"></i>
+                        </span>
+                    </div>
                     <div class="container-login100-form-btn">
                         <button class="login100-form-btn" type="submit">
                             Login
@@ -119,6 +131,19 @@
                 });
             }, 5000);
 
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#reload').click(function() {
+                $.ajax({
+                    type: 'GET',
+                    url: 'reload-captcha',
+                    success: function(data) {
+                        $(".captcha span").html(data.captcha)
+                    }
+                });
+            });
         });
     </script>
     <!--===============================================================================================-->

@@ -31,6 +31,20 @@ class UserSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
+            'first_name'=> 'Clara Devinda Jaya',
+            'last_name'=>  'Sutrisna',
+            'username'=> 'claradevinda',
+            'email'=> 'clara@gmail.com',
+            'password' => bcrypt('claradevinda'),
+            'role'=> 'admin',
+            'phone'=> '08123128327',
+            'address'=> 'Jl. Jalan Jalan, Surabaya',
+            'detail_address'=> 'Paling pojok pager warna putih',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('users')->insert([
             'first_name'=> 'Dimaz Ivan',
             'last_name'=>  'keuangan',
             'username'=> 'dimazkeuangan',

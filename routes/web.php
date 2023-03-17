@@ -7,6 +7,7 @@ use App\Http\Controllers\Log\Log_UserController;
 use App\Http\Controllers\Log\Log_AuthController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Component\CaptchaController;
 use RealRashid\SweetAlert\Facades\Alert;
 
 /*
@@ -23,6 +24,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 // LOGIN
 Route::get('/login', [LoginController::class,'index'])->name('index.login');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/reload-captcha', [CaptchaController::class, 'generate'])->name('captcha.generate');
 
 // URL Auth
 Route::group([
