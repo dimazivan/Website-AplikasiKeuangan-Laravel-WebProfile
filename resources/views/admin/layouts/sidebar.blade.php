@@ -84,7 +84,8 @@
                 <ul class="nav side-menu">
                     <li><a><i class="fa fa-database"></i>Data Api<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="{{ route('api.index') }}">Daftar Data Api</a></li>
+                            <li><a href="{{ route('api.index') }}">Daftar Data API Produk</a></li>
+                            <li><a href="{{ route('api_product.index') }}">Daftar Data API Produk (EndPoint)</a></li>
                             <!-- <li><a href="/api/create">Tambah Data Api</a></li> -->
                         </ul>
                     </li>

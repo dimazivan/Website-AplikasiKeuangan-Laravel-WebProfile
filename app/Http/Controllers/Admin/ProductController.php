@@ -25,20 +25,21 @@ class ProductController extends Controller
 
         // dd(
         //     $title,
+        //     $data[0]->images,
         //     $data,
         // );
 
         // Tabel
-        // return view('admin.pages.product.data_product', [
-        //     'title' => $title,
-        //     'data' => $data,
-        // ]);
-
-        // Card
-        return view('admin.pages.product.card_product', [
+        return view('admin.pages.product.data_product', [
             'title' => $title,
             'data' => $data,
         ]);
+
+        // Card
+        // return view('admin.pages.product.card_product', [
+        //     'title' => $title,
+        //     'data' => $data,
+        // ]);
     }
 
     /**
