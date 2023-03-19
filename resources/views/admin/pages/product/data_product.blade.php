@@ -8,7 +8,7 @@
         <div class="col-md-12 col-sm-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2><i class="fa fa-bars"></i>&nbsp;Tabs<small>Float left</small></h2>
+                    <h2><i class="fa fa-archive"></i>&nbsp;Product<small>Inventory</small></h2>
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
