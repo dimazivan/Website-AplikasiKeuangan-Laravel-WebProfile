@@ -19,7 +19,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="javascript:;"> Profile</a>
-                        <a class="dropdown-item" href="login.html">
+                        <a class="dropdown-item" href="{{ route('user.show',[Crypt::encrypt(auth()->user()->id)]) }}">
                             <i class="fa fa-cog pull-right"></i>
                             Setting
                         </a>

@@ -118,7 +118,7 @@ class LoginController extends Controller
                     Log_auth::create([
                         'ip_address' => $ip_address,
                         'activity' => 'login',
-                        'description' => 'login success as'.$request->username,
+                        'description' => 'login success as '.$request->username,
                         'status' => 'success',
                         'mac_address' => '',
                     ]);
@@ -181,7 +181,7 @@ class LoginController extends Controller
         Log_auth::create([
             'ip_address' => $ip_address,
             'activity' => 'logout',
-            'description' => 'logout success as'.auth()->user()->username,
+            'description' => 'logout success as '.auth()->user()->username,
             'status' => 'success',
             'mac_address' => '',
         ]);

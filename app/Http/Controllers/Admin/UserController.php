@@ -208,7 +208,43 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $title = "Halaman Profile User";
+
+        if (isset($id)) {
+            try {
+                $decrypted = decrypt($id);
+                // Log
+            } catch (DecryptException $e) {
+                return view('error.e_throw', [
+                    'e' => ["Invalid Data"],
+                ]);
+            }
+
+            $newid = Crypt::decrypt($id);
+            $data = User::where('id', $newid)
+            ->get();
+
+            $datalog = Log_users::where('users_id', $newid)
+            ->get();
+
+            dd(
+                $data,
+                $id,
+                $newid,
+                $data[0],
+                $datalog,
+            );
+
+            if (empty($data[0])) {
+                return view('error.404');
+            }
+
+            return view('admin.pages.profile.profile', [
+                'title' => $title,
+                'data' => $data,
+                'datalog' => $datalog,
+            ]);
+        }
     }
 
     /**
