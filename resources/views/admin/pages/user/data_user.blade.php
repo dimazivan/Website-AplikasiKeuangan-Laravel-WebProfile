@@ -41,7 +41,7 @@
                                         Data user digunakan untuk pengguna melakukan proses login pada aplikasi.
                                     </p>
                                     <button class="btn btn-primary" class="btn btn-primary" data-toggle="modal"
-                                        data-target=".modaladduser">
+                                        data-target=".modaladduser" disabled>
                                         Tambah Data Ajax (Under Develop)
                                     </button>
                                     <br>

@@ -18,8 +18,8 @@
                                 aria-controls="data" aria-selected="true">Data</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                                aria-controls="profile" aria-selected="false">Profile</a>
+                            <a class="nav-link" id="upload-tab" data-toggle="tab" href="#upload" role="tab"
+                                aria-controls="upload" aria-selected="false">Upload</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
@@ -114,11 +114,76 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                            Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
-                            Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan
-                            four loko farm-to-table craft beer twee. Qui photo
-                            booth letterpress, commodo enim craft beer mlkshk aliquip
+                        <div class="tab-pane fade" id="upload" role="tabpanel" aria-labelledby="upload-tab">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="x_panel">
+                                        <div class="x_title">
+                                            <h2>Form Tambah Data Produk</h2>
+                                            <ul class="nav navbar-right panel_toolbox">
+                                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                                </li>
+                                                <li class="dropdown">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                                        role="button" aria-expanded="false"><i
+                                                            class="fa fa-wrench"></i></a>
+                                                </li>
+                                            </ul>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="x_content">
+                                            <form class="" action="#" method="post" validate
+                                                enctype="multipart/form-data">
+                                                @csrf
+                                                <p>Silahkan masukan file dengan tipe ekstensi .XLS .XLSX .CSV</p>
+                                                <span class="section">Form Upload</span>
+                                                @if(($errors->any()) != null)
+                                                @foreach ($errors->all() as $error)
+                                                <div class="alert alert-danger alert-dismissible " role="alert">
+                                                    <button type="button" class="close" data-dismiss="alert"
+                                                        aria-label="Close"><span aria-hidden="true">x</span>
+                                                    </button>
+                                                    {{ $error }}
+                                                </div>
+                                                @endforeach
+                                                @endif
+                                                @if(\Session::has('info'))
+                                                <div class="alert alert-info alert-dismissible" role="alert"
+                                                    data-timeout="2000">
+                                                    <button type="button" class="close" data-dismiss="alert"
+                                                        aria-label="Close"><span aria-hidden="true">x</span>
+                                                    </button>
+                                                    <strong>{{ \Session::get('info') }}</strong>
+                                                </div>
+                                                @endif
+                                                <div class="field item form-group">
+                                                    <label class="col-form-label col-md-3 col-sm-3 label-align">File
+                                                        Excel<span class="required">*</span></label>
+                                                    <div class="col-md-6 col-sm-6 ">
+                                                        <input type="file" name="file_produk"
+                                                            accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                                                            required>
+                                                        <br>
+                                                        <small>Besar file: maksimum 10.000.000 bytes (10 Megabytes).
+                                                            Ekstensi file yang
+                                                            diperbolehkan: .XLS .XLSX .CSV</small>
+                                                    </div>
+                                                </div>
+                                                <div class="ln_solid">
+                                                    <div class="form-group">
+                                                        <div class="col-md-6 offset-md-3">
+                                                            <br>
+                                                            <button type='submit'
+                                                                class="btn btn-primary">Upload</button>
+                                                            <button type='reset' class="btn btn-success">Reset</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                             xxFood truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
@@ -134,6 +199,30 @@
 </div>
 @endsection
 @section('script')
+<script>
+    // initialize a validator instance from the "FormValidator" constructor.
+    // A "<form>" element is optionally passed as an argument, but is not a must
+    var validator = new FormValidator({
+        "events": ['blur', 'input', 'change']
+    }, document.forms[0]);
+    // on form "submit" event
+    document.forms[0].onsubmit = function(e) {
+        var submit = true,
+            validatorResult = validator.checkAll(this);
+        console.log(validatorResult);
+        return !!validatorResult.valid;
+    };
+    // on form "reset" event
+    document.forms[0].onreset = function(e) {
+        validator.reset();
+    };
+    // stuff related ONLY for this demo page:
+    $('.toggleValidationTooltips').change(function() {
+        validator.settings.alerts = !this.checked;
+        if (this.checked)
+            $('form .alert').remove();
+    }).prop('checked', false);
+</script>
 <script type="text/javascript">
     $(document).ready(function() {
         window.setTimeout(function() {
