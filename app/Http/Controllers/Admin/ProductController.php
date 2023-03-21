@@ -60,7 +60,27 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd(
+            $request->all(),
+            $request->file_produk,
+            empty($request->file_produk),
+            !empty($request->file_produk),
+        );
+        // Validation
+        $validator = Validator::make(request()->all(), [
+            'file_produk' => 'mimes:xls,xlsx,csv|max:10000',
+        ], )->setAttributeNames(
+            [
+                'file_produk' => 'File',
+            ],
+        );
+
+
+        if (!empty($request->file_produkk)) {
+            //
+        } elseif ($request->all()!= null) {
+            //
+        }
     }
 
     /**

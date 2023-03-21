@@ -132,7 +132,7 @@
                                             <div class="clearfix"></div>
                                         </div>
                                         <div class="x_content">
-                                            <form class="" action="#" method="post" validate
+                                            <form class="" action="{{ route('product.store') }}" method="post" validate
                                                 enctype="multipart/form-data">
                                                 @csrf
                                                 <p>Silahkan masukan file dengan tipe ekstensi .XLS .XLSX .CSV</p>
