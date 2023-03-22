@@ -60,12 +60,12 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        dd(
-            $request->all(),
-            $request->file_produk,
-            empty($request->file_produk),
-            !empty($request->file_produk),
-        );
+        // dd(
+        //     $request->all(),
+        //     $request->file_produk,
+        //     empty($request->file_produk),
+        //     !empty($request->file_produk),
+        // );
         // Validation
         $validator = Validator::make(request()->all(), [
             'file_produk' => 'mimes:xls,xlsx,csv|max:10000',
@@ -75,11 +75,16 @@ class ProductController extends Controller
             ],
         );
 
+        if ($validator->fails()) {
+            // Log
 
-        if (!empty($request->file_produkk)) {
-            //
-        } elseif ($request->all()!= null) {
-            //
+            return back()->withErrors($validator->errors());
+        } else {
+            if (!empty($request->file_produkk)) {
+                //
+            } elseif ($request->all()!= null) {
+                //
+            }
         }
     }
 

@@ -67,6 +67,25 @@
                                                             <strong>{{ \Session::get('info') }}</strong>
                                                         </div>
                                                         @endif
+                                                        @if(($errors->any()) != null)
+                                                        @foreach ($errors->all() as $error)
+                                                        <div class="alert alert-danger alert-dismissible " role="alert">
+                                                            <button type="button" class="close" data-dismiss="alert"
+                                                                aria-label="Close"><span aria-hidden="true">x</span>
+                                                            </button>
+                                                            {{ $error }}
+                                                        </div>
+                                                        @endforeach
+                                                        @endif
+                                                        @if(\Session::has('info'))
+                                                        <div class="alert alert-info alert-dismissible" role="alert"
+                                                            data-timeout="2000">
+                                                            <button type="button" class="close" data-dismiss="alert"
+                                                                aria-label="Close"><span aria-hidden="true">x</span>
+                                                            </button>
+                                                            <strong>{{ \Session::get('info') }}</strong>
+                                                        </div>
+                                                        @endif
                                                         <table id="datatable-responsive"
                                                             class="table table-striped table-bordered dt-responsive nowrap"
                                                             cellspacing="0" width="100%">
