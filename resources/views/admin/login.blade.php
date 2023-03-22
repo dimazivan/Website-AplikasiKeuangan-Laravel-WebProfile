@@ -85,6 +85,9 @@
                             <i class="fa fa-link" aria-hidden="true"></i>
                         </span>
                     </div>
+                    <!-- <div class="" style="margin-left: 5px;">
+                        <input type="checkbox" name="cbrememberme" disabled> Remember Me
+                    </div> -->
                     <div class="container-login100-form-btn">
                         <button class="login100-form-btn" type="submit">
                             Login
@@ -96,6 +99,14 @@
                         </span>
                         <a class="txt2" href="{{ route('reset.index') }}">
                             Ur Password?
+                        </a>
+                    </div>
+                    <div class="text-center">
+                        <span class="txt1">
+                            What's new or upcoming ?
+                        </span>
+                        <a class="txt2" href="#">
+                            Here...
                         </a>
                     </div>
                     <div class="text-center p-t-136">
