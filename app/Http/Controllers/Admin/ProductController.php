@@ -66,6 +66,7 @@ class ProductController extends Controller
         //     empty($request->file_produk),
         //     !empty($request->file_produk),
         // );
+
         // Validation
         $validator = Validator::make(request()->all(), [
             'file_produk' => 'mimes:xls,xlsx,csv|max:10000',
