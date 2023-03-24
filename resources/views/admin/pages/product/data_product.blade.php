@@ -29,10 +29,79 @@
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="data" role="tabpanel" aria-labelledby="data-tab">
                             <div class="row">
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="x_panel">
+                                        <div class="x_title">
+                                            <h2>Form Tambah Data Produk</h2>
+                                            <ul class="nav navbar-right panel_toolbox">
+                                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                                </li>
+                                                <li class="dropdown">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                                        role="button" aria-expanded="false"><i
+                                                            class="fa fa-wrench"></i></a>
+                                                </li>
+                                            </ul>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="x_content">
+                                            <form class="" action="{{ route('product.store') }}" method="post" validate
+                                                enctype="multipart/form-data">
+                                                @csrf
+                                                <p>Silahkan masukan file dengan tipe ekstensi .XLS .XLSX .CSV</p>
+                                                <span class="section">Form Upload</span>
+                                                @if(($errors->any()) != null)
+                                                @foreach ($errors->all() as $error)
+                                                <div class="alert alert-danger alert-dismissible " role="alert">
+                                                    <button type="button" class="close" data-dismiss="alert"
+                                                        aria-label="Close"><span aria-hidden="true">x</span>
+                                                    </button>
+                                                    {{ $error }}
+                                                </div>
+                                                @endforeach
+                                                @endif
+                                                @if(\Session::has('info'))
+                                                <div class="alert alert-info alert-dismissible" role="alert"
+                                                    data-timeout="2000">
+                                                    <button type="button" class="close" data-dismiss="alert"
+                                                        aria-label="Close"><span aria-hidden="true">x</span>
+                                                    </button>
+                                                    <strong>{{ \Session::get('info') }}</strong>
+                                                </div>
+                                                @endif
+                                                <div class="field item form-group">
+                                                    <label class="col-form-label col-md-3 col-sm-3 label-align">File
+                                                        Excel<span class="required">*</span></label>
+                                                    <div class="col-md-6 col-sm-6 ">
+                                                        <input type="file" name="file_produk"
+                                                            accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                                                            required>
+                                                        <br>
+                                                        <small>Besar file: maksimum 10.000.000 bytes (10 Megabytes).
+                                                            Ekstensi file yang
+                                                            diperbolehkan: .XLS .XLSX .CSV</small>
+                                                    </div>
+                                                </div>
+                                                <div class="ln_solid">
+                                                    <div class="form-group">
+                                                        <div class="col-md-6 offset-md-3">
+                                                            <br>
+                                                            <button type='submit'
+                                                                class="btn btn-primary">Upload</button>
+                                                            <button type='reset' class="btn btn-success">Reset</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-12 col-sm-12 ">
                                     <div class="x_panel">
                                         <div class="x_title">
-                                            <h2>Data Product</h2>
+                                            <h2>Data Produk</h2>
                                             <ul class="nav navbar-right panel_toolbox">
                                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                                 </li>
