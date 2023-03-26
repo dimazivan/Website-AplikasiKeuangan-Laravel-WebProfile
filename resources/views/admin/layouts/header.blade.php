@@ -18,10 +18,17 @@
                         &nbsp;{{ auth()->user()->last_name }}
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="javascript:;"> Profile</a>
                         <a class="dropdown-item" href="{{ route('user.show',[Crypt::encrypt(auth()->user()->id)]) }}">
+                            <i class="fa fa-user pull-right"></i>
+                            Profile
+                        </a>
+                        <a class="dropdown-item" href="#">
                             <i class="fa fa-cog pull-right"></i>
                             Setting
+                        </a>
+                        <a class="dropdown-item" href="javascript:darkMode();" style="cursor: default;">
+                            <i class="fa fa-cog pull-right"></i>
+                            Dark Mode
                         </a>
                         <a class="dropdown-item" href="/logout">
                             <i class="fa fa-sign-out pull-right"></i>

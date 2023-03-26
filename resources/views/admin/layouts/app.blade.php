@@ -25,6 +25,16 @@
             opacity: 50%;
         }
     </style>
+    <!-- <style>
+        .dark-mode,
+        .nav_menu,
+        .x_panel,
+        .left_col {
+            background-color: #000;
+            background: #000;
+            color: #fff;
+        }
+    </style> -->
     <!-- Bootstrap -->
     <link href="{{ asset('backend/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Font Awesome -->
@@ -160,6 +170,15 @@
             loader.style.display = "none";
         });
     </script>
+    <!-- <script>
+        function darkMode() {
+            var element = document.body;
+            element.classList.toggle("dark-mode");
+            element.classList.toggle("nav_menu");
+            element.classList.toggle("x_panel");
+            element.classList.toggle("left_col");
+        }
+    </script> -->
 </body>
 
 </html>
