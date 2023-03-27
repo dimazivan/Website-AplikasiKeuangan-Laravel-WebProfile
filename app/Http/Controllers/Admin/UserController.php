@@ -227,13 +227,13 @@ class UserController extends Controller
             $datalog = Log_users::where('users_id', $newid)
             ->get();
 
-            dd(
-                $data,
-                $id,
-                $newid,
-                $data[0],
-                $datalog,
-            );
+            // dd(
+            //     $data,
+            //     $id,
+            //     $newid,
+            //     $data[0],
+            //     $datalog,
+            // );
 
             if (empty($data[0])) {
                 return view('error.404');

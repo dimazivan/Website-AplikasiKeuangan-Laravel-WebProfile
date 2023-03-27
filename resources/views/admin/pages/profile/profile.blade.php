@@ -31,15 +31,23 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <div class="col-md-3 col-sm-3  profile_left">
+                        <div class="col-md-3 col-sm-3 profile_left">
                             <div class="profile_img">
                                 <div id="crop-avatar">
                                     <!-- Current avatar -->
-                                    <img class="img-responsive avatar-view" src="images/picture.jpg" alt="Avatar"
-                                        title="Change the avatar">
+                                    @if(auth()->user()->file_foto == null)
+                                    <img class="img-responsive avatar-view" src="{{ asset('asset/icon/dimaz4.png') }}"
+                                        alt="Avatar" title="Change the avatar"
+                                        style="max-width: 300px;max-height:300px;object-fit:cover;object-position:center">
+                                    @else
+                                    <img class="img-responsive avatar-view"
+                                        src="{{ url('/data_file/user/foto/'.auth()->user()->file_foto) }}"
+                                        alt="{{ auth()->user()->file_foto }}" title="Change the avatar"
+                                        style="max-width: 300px;max-height:300px;object-fit:cover;object-position:center">
+                                    @endif
                                 </div>
                             </div>
-                            <h3>Samuel Doe</h3>
+                            <h3>{{ auth()->user()->first_name }}&nbsp;{{ auth()->user()->last_name }}</h3>
                             <ul class="list-unstyled user_data">
                                 <li><i class="fa fa-map-marker user-profile-icon"></i> San Francisco, California, USA
                                 </li>
@@ -53,10 +61,10 @@
                                     <a href="http://www.kimlabs.com/profile/" target="_blank">www.kimlabs.com</a>
                                 </li>
                             </ul>
-                            <a class="btn btn-success" style="color:white;">
+                            <!-- <a class="btn btn-success" style="color:white;">
                                 <i class="fa fa-edit m-right-xs"></i>
                                 Edit Profile
-                            </a>
+                            </a> -->
                             <br />
                             <!-- start skills -->
                             <h4>Skills</h4>

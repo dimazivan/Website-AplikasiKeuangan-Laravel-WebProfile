@@ -12,7 +12,8 @@
                         <img src="{{ asset('asset/icon/dimaz4.png') }}" alt="Foto Profil">
                         @else
                         <img src="{{ url('/data_file/user/foto/'.auth()->user()->file_foto) }}"
-                            alt="{{ auth()->user()->file_foto }}">
+                            alt="{{ auth()->user()->file_foto }}"
+                            style="max-width: 29px;max-height:29px;object-fit:cover;object-position:center">
                         @endif
                         {{ auth()->user()->first_name }}
                         &nbsp;{{ auth()->user()->last_name }}

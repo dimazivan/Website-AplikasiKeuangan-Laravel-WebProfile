@@ -156,33 +156,11 @@
     <script src="{{ asset('gate/vendor/select2/select2.min.js') }}"></script>
     <!--===============================================================================================-->
     <script src="{{ asset('gate/vendor/tilt/tilt.jquery.min.js') }}"></script>
+
     <script>
         $('.js-tilt').tilt({
             scale: 1.1
         })
-        // if (sessionStorage.getItem("dark-mode-login") == "dark") {
-        //     var elementbg = document.getElementById("bg");
-        //     var elementform = document.getElementById("bgform");
-        //     var elementtext = document.getElementById("bgtext");
-        //     elementbg.classList.toggle("dark-mode-bg");
-        //     elementform.classList.toggle("dark-mode-form");
-        //     elementtext.classList.toggle("dark-mode-text");
-        //     sessionStorage.setItem("dark-mode-login", "dark");
-        //     console.log(sessionStorage.getItem("dark-mode-login"));
-        //     // var element = document.body;
-        // } else if (sessionStorage.getItem("dark-mode-login") == "light") {
-        //     var elementbg = document.getElementById("bg");
-        //     var elementform = document.getElementById("bgform");
-        //     var elementtext = document.getElementById("bgtext");
-        //     elementbg.classList.toggle("dark-mode-bg");
-        //     elementform.classList.toggle("dark-mode-form");
-        //     elementtext.classList.toggle("dark-mode-text");
-        //     sessionStorage.setItem("dark-mode-login", "light");
-        //     console.log(sessionStorage.getItem("dark-mode-login"));
-        //     // var element = document.body;
-        // } else {
-        //     // 
-        // }
     </script>
     <script type="text/javascript">
         $(document).ready(function() {
@@ -227,6 +205,8 @@
             });
         });
     </script>
+    <!-- Dark Mode hanya menggunakan storage session dimana hanya dapat menyimpan 
+    string dan akan hilang apabila di buka di tab selanjutnya -->
     <script>
         function darkMode(obj) {
             if ($(obj).is(":checked")) {
