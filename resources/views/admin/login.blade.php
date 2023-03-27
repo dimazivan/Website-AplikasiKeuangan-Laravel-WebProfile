@@ -26,13 +26,36 @@
     @else
     <title>Login Page</title>
     @endif
+    <style>
+        .dark-mode-bg {
+            background: -webkit-linear-gradient(315deg, #000, #2d3436);
+            background: -o-linear-gradient(315deg, #000, #2d3436);
+            background: -moz-linear-gradient(315deg, #000, #2d3436);
+            background: linear-gradient(315deg, #000, #2d3436);
+            /* background-color: #000;
+            background: #000;
+            color: #fff; */
+        }
+
+        .dark-mode-form {
+            background: linear-gradient(109.6deg, rgb(43, 1, 91) 13.4%, rgb(122, 2, 54) 100.2%);
+            /* background-color: transparent; */
+            /* background: none; */
+            color: #fff;
+            /* text-color: #fff; */
+        }
+
+        .dark-mode-text {
+            color: #fff;
+        }
+    </style>
 </head>
 
 <body>
     @include('sweetalert::alert')
     <div class="limiter">
-        <div class="container-login100">
-            <div class="wrap-login100">
+        <div class="container-login100" id="bg">
+            <div class="wrap-login100" id="bgform">
                 <div class="login100-pic js-tilt" data-tilt>
                     <img src="{{ asset('asset/icon/dimaz4.png') }}" alt="IMG">
                     <!-- <img src="{{ asset('gate/images/img-01.png') }}" alt="IMG"> -->
@@ -57,7 +80,7 @@
                     </div>
                     @endforeach
                     @endif
-                    <span class="login100-form-title">
+                    <span class="login100-form-title" id="bgtext">
                         Member Login
                     </span>
                     <div class="wrap-input100 validate-input" data-validate="Username is required">
@@ -94,7 +117,7 @@
                         </button>
                     </div>
                     <div class="text-center p-t-12">
-                        <span class="txt1">
+                        <span class="txt1" id="bgtext">
                             Forgot
                         </span>
                         <a class="txt2" href="{{ route('reset.index') }}">
@@ -102,17 +125,21 @@
                         </a>
                     </div>
                     <div class="text-center">
-                        <span class="txt1">
+                        <span class="txt1" id="bgtext">
                             What's new or upcoming ?
                         </span>
                         <a class="txt2" href="#">
                             Here...
                         </a>
                     </div>
-                    <div class="text-center p-t-136">
-                        <a class="txt2" href="#">
-                            <!-- <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i> -->
-                        </a>
+                    <div class="text-center p-t-136" style="margin-top: -100px;margin-left:117px;">
+                        <input type="checkbox" id="switch" onchange="darkMode(this)" disabled />
+                        <label for="switch">Dark Mode</label>
+                        <!-- <span id="bgtext">Dark Mode (Beta)</span> -->
+                        <!-- <a class="txt2" href="#">
+                            <input type="checkbox" onchange="darkMode(this)">
+                            <span id="bgtext">Dark Mode (Beta)</span>
+                        </a> -->
                     </div>
                 </form>
             </div>
@@ -133,6 +160,29 @@
         $('.js-tilt').tilt({
             scale: 1.1
         })
+        // if (sessionStorage.getItem("dark-mode-login") == "dark") {
+        //     var elementbg = document.getElementById("bg");
+        //     var elementform = document.getElementById("bgform");
+        //     var elementtext = document.getElementById("bgtext");
+        //     elementbg.classList.toggle("dark-mode-bg");
+        //     elementform.classList.toggle("dark-mode-form");
+        //     elementtext.classList.toggle("dark-mode-text");
+        //     sessionStorage.setItem("dark-mode-login", "dark");
+        //     console.log(sessionStorage.getItem("dark-mode-login"));
+        //     // var element = document.body;
+        // } else if (sessionStorage.getItem("dark-mode-login") == "light") {
+        //     var elementbg = document.getElementById("bg");
+        //     var elementform = document.getElementById("bgform");
+        //     var elementtext = document.getElementById("bgtext");
+        //     elementbg.classList.toggle("dark-mode-bg");
+        //     elementform.classList.toggle("dark-mode-form");
+        //     elementtext.classList.toggle("dark-mode-text");
+        //     sessionStorage.setItem("dark-mode-login", "light");
+        //     console.log(sessionStorage.getItem("dark-mode-login"));
+        //     // var element = document.body;
+        // } else {
+        //     // 
+        // }
     </script>
     <script type="text/javascript">
         $(document).ready(function() {
@@ -143,6 +193,26 @@
             }, 5000);
 
         });
+
+        if (sessionStorage.getItem("dark-mode-login") == "dark") {
+            localStorage.removeItem("dark-mode-login");
+            var elementbg = document.getElementById("bg");
+            var elementform = document.getElementById("bgform");
+            var elementtext = document.getElementById("bgtext");
+            elementbg.classList.toggle("dark-mode-bg");
+            elementform.classList.toggle("dark-mode-form");
+            elementtext.classList.toggle("dark-mode-text");
+            sessionStorage.setItem("dark-mode-login", "dark");
+            console.log(sessionStorage.getItem("dark-mode-login"));
+            document.getElementById("switch").checked = true;
+        } else if (sessionStorage.getItem("dark-mode-login") == "light") {
+            localStorage.removeItem("dark-mode-login");
+            sessionStorage.setItem("dark-mode-login", "light");
+            console.log(sessionStorage.getItem("dark-mode-login"));
+            document.getElementById("switch").checked = false;
+        } else {
+            // 
+        }
     </script>
     <script>
         $(document).ready(function() {
@@ -156,6 +226,34 @@
                 });
             });
         });
+    </script>
+    <script>
+        function darkMode(obj) {
+            if ($(obj).is(":checked")) {
+                localStorage.removeItem("dark-mode-login");
+                var elementbg = document.getElementById("bg");
+                var elementform = document.getElementById("bgform");
+                var elementtext = document.getElementById("bgtext");
+                elementbg.classList.toggle("dark-mode-bg");
+                elementform.classList.toggle("dark-mode-form");
+                elementtext.classList.toggle("dark-mode-text");
+                sessionStorage.setItem("dark-mode-login", "dark");
+                console.log(sessionStorage.getItem("dark-mode-login"));
+            } else if ($(obj).prop('checked', false)) {
+                localStorage.removeItem("dark-mode-login");
+                var elementbg = document.getElementById("bg");
+                var elementform = document.getElementById("bgform");
+                var elementtext = document.getElementById("bgtext");
+                elementbg.classList.toggle("dark-mode-bg");
+                elementform.classList.toggle("dark-mode-form");
+                elementtext.classList.toggle("dark-mode-text");
+                sessionStorage.setItem("dark-mode-login", "light");
+                console.log(sessionStorage.getItem("dark-mode-login"));
+            }
+        }
+    </script>
+    <script>
+        $('input').removeAttr('disabled');
     </script>
     <!--===============================================================================================-->
     <script src="{{ asset('gate/js/main.js') }}"></script>
