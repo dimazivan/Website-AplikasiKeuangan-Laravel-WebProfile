@@ -172,7 +172,7 @@
 
         });
 
-        if (sessionStorage.getItem("dark-mode-login") == "dark") {
+        if (localStorage.getItem("dark-mode-login") == "dark") {
             localStorage.removeItem("dark-mode-login");
             var elementbg = document.getElementById("bg");
             var elementform = document.getElementById("bgform");
@@ -180,13 +180,13 @@
             elementbg.classList.toggle("dark-mode-bg");
             elementform.classList.toggle("dark-mode-form");
             elementtext.classList.toggle("dark-mode-text");
-            sessionStorage.setItem("dark-mode-login", "dark");
-            console.log(sessionStorage.getItem("dark-mode-login"));
+            localStorage.setItem("dark-mode-login", "dark");
+            console.log(localStorage.getItem("dark-mode-login"));
             document.getElementById("switch").checked = true;
-        } else if (sessionStorage.getItem("dark-mode-login") == "light") {
+        } else if (localStorage.getItem("dark-mode-login") == "light") {
             localStorage.removeItem("dark-mode-login");
-            sessionStorage.setItem("dark-mode-login", "light");
-            console.log(sessionStorage.getItem("dark-mode-login"));
+            localStorage.setItem("dark-mode-login", "light");
+            console.log(localStorage.getItem("dark-mode-login"));
             document.getElementById("switch").checked = false;
         } else {
             // 
@@ -207,6 +207,8 @@
     </script>
     <!-- Dark Mode hanya menggunakan storage session dimana hanya dapat menyimpan 
     string dan akan hilang apabila di buka di tab selanjutnya -->
+    <!-- Dark Mode sekarang menggunakan local storage dimana bisa 
+    digunakan dalam browser yang sama -->
     <script>
         function darkMode(obj) {
             if ($(obj).is(":checked")) {
@@ -217,8 +219,9 @@
                 elementbg.classList.toggle("dark-mode-bg");
                 elementform.classList.toggle("dark-mode-form");
                 elementtext.classList.toggle("dark-mode-text");
-                sessionStorage.setItem("dark-mode-login", "dark");
-                console.log(sessionStorage.getItem("dark-mode-login"));
+                localStorage.setItem("dark-mode-login", "dark");
+                // sessionStorage.setItem("dark-mode-login", "dark");
+                console.log(localStorage.getItem("dark-mode-login"));
             } else if ($(obj).prop('checked', false)) {
                 localStorage.removeItem("dark-mode-login");
                 var elementbg = document.getElementById("bg");
@@ -227,8 +230,8 @@
                 elementbg.classList.toggle("dark-mode-bg");
                 elementform.classList.toggle("dark-mode-form");
                 elementtext.classList.toggle("dark-mode-text");
-                sessionStorage.setItem("dark-mode-login", "light");
-                console.log(sessionStorage.getItem("dark-mode-login"));
+                localStorage.setItem("dark-mode-login", "light");
+                console.log(localStorage.getItem("dark-mode-login"));
             }
         }
     </script>
