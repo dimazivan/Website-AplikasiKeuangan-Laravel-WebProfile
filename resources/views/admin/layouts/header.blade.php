@@ -1,5 +1,5 @@
 <div class="top_nav">
-    <div class="nav_menu">
+    <div class="nav_menu" id="nav_menu">
         <div class="nav toggle">
             <a id="menu_toggle"><i class="fa fa-bars"></i></a>
         </div>
@@ -27,10 +27,16 @@
                             <i class="fa fa-cog pull-right"></i>
                             Setting
                         </a>
-                        <a class="dropdown-item" href="javascript:darkMode();" style="cursor: default;">
+                        <!-- <a class="dropdown-item" href="javascript:darkMode();" style="cursor: default;">
                             <i class="fa fa-cog pull-right"></i>
                             Dark Mode
-                        </a>
+                        </a> -->
+                        <label for="switch" class="dropdown-item">
+                            <span style="padding-right: 85px;" disabled>
+                                Dark Mode
+                            </span>
+                            <input type="checkbox" class="js-switch" id="switch" onchange="darkMode(this)" />
+                        </label>
                         <a class="dropdown-item" href="/logout">
                             <i class="fa fa-sign-out pull-right"></i>
                             Log Out

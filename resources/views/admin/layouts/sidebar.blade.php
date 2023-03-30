@@ -1,6 +1,6 @@
-<div class="col-md-3 left_col">
-    <div class="left_col scroll-view">
-        <div class="navbar nav_title" style="border: 0;">
+<div class="col-md-3 left_col" id="bgsidebar1">
+    <div class="left_col scroll-view" id="bgsidebar2">
+        <div class="navbar nav_title" style="border: 0;" id="bgsidebar3">
             <a href="/" class="site_title"><i class="fa fa-database"></i>
                 <span>
                     Dashboard
@@ -123,6 +123,7 @@
         <!-- /menu footer buttons -->
     </div>
 </div>
+@section('script')
 <script>
     function go_full_screen() {
         var elem = document.documentElement;
@@ -137,3 +138,4 @@
         }
     }
 </script>
+@endsection

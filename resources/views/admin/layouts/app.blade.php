@@ -24,6 +24,10 @@
             z-index: 99999;
             opacity: 50%;
         }
+
+        .dark-mode-bg {
+            background: #21262d !important;
+        }
     </style>
     <!-- <style>
         .dark-mode,
@@ -54,15 +58,15 @@
     <link href="{{ asset('backend/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css') }}"
         rel="stylesheet">
     <!-- bootstrap-wysiwyg -->
-    <link href="{{ asset('backend/vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet') }}">
+    <link href="{{ asset('backend/vendors/google-code-prettify/bin/prettify.min.css') }}" rel="stylesheet">
     <!-- Select2 -->
-    <link href="{{ asset('backend/vendors/select2/dist/css/select2.min.css" rel="stylesheet') }}">
+    <link href="{{ asset('backend/vendors/select2/dist/css/select2.min.css') }}" rel="stylesheet">
     <!-- Switchery -->
-    <link href="{{ asset('backend/vendors/switchery/dist/switchery.min.css" rel="stylesheet') }}">
+    <link href="{{ asset('backend/vendors/switchery/dist/switchery.min.css') }}" rel="stylesheet">
     <!-- starrr -->
-    <link href="{{ asset('backend/vendors/starrr/dist/starrr.css" rel="stylesheet') }}">
+    <link href="{{ asset('backend/vendors/starrr/dist/starrr.css') }}" rel="stylesheet">
     <!-- bootstrap-daterangepicker -->
-    <link href="{{ asset('backend/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet') }}">
+    <link href="{{ asset('backend/vendors/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="{{ asset('backend/build/css/custom.min.css')}}" rel="stylesheet">
     <!-- PNotify -->
@@ -81,7 +85,7 @@
     @include('admin.components.preload.preload')
     <!-- <div id="preloader" class="preloader"></div> -->
     <div class="container body">
-        <div class="main_container">
+        <div class="main_container" id="maincontainer">
             @include('sweetalert::alert')
             <!-- Sidebar -->
             @include('admin.layouts.sidebar')
@@ -90,10 +94,11 @@
             <!-- header navigation -->
             @include('admin.layouts.header')
             <!-- /header navigation -->
-
-            <!-- page content -->
-            @yield('content')
-            <!-- /page content -->
+            <div class="right_col" role="main" id="rightcol">
+                <!-- page content -->
+                @yield('content')
+                <!-- /page content -->
+            </div>
 
             <!-- footer content -->
             @include('admin.layouts.footer')
@@ -169,6 +174,32 @@
         window.addEventListener("load", function() {
             loader.style.display = "none";
         });
+    </script>
+    <script>
+        function darkMode(obj) {
+            if ($(obj).is(":checked")) {
+                localStorage.removeItem("dark-mode-dashboard");
+                var elementbg1 = document.getElementById("maincontainer");
+                // var elementbg2 = document.getElementById("rightcol");
+                var elementbg3 = document.getElementById("bgsidebar1");
+                var elementbg4 = document.getElementById("bgsidebar2");
+                var elementbg5 = document.getElementById("bgsidebar3");
+                var elementbg6 = document.getElementById("nav_menu");
+                var elementbg7 = document.getElementById("footer");
+                elementbg1.classList.toggle("dark-mode-bg");
+                // elementbg2.classList.toggle("dark-mode-bg");
+                elementbg3.classList.toggle("dark-mode-bg");
+                elementbg4.classList.toggle("dark-mode-bg");
+                elementbg5.classList.toggle("dark-mode-bg");
+                elementbg6.classList.toggle("dark-mode-bg");
+                elementbg7.classList.toggle("dark-mode-bg");
+                localStorage.setItem("dark-mode-dashboard", "dark");
+                console.log(localStorage.getItem("dark-mode-dashboard"));
+                document.getElementById("switch").checked = true;
+            } else if ($(obj).prop('checked', false)) {
+                console.log(localStorage.getItem("dark-mode-dashboard"));
+            }
+        }
     </script>
     <!-- <script>
         function darkMode() {
