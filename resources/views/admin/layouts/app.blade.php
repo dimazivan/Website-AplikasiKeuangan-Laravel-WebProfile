@@ -29,16 +29,6 @@
             background: #21262d !important;
         }
     </style>
-    <!-- <style>
-        .dark-mode,
-        .nav_menu,
-        .x_panel,
-        .left_col {
-            background-color: #000;
-            background: #000;
-            color: #fff;
-        }
-    </style> -->
     <!-- Bootstrap -->
     <link href="{{ asset('backend/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Font Awesome -->
@@ -180,14 +170,14 @@
             if ($(obj).is(":checked")) {
                 localStorage.removeItem("dark-mode-dashboard");
                 var elementbg1 = document.getElementById("maincontainer");
-                // var elementbg2 = document.getElementById("rightcol");
+                var elementbg2 = document.getElementById("rightcol");
                 var elementbg3 = document.getElementById("bgsidebar1");
                 var elementbg4 = document.getElementById("bgsidebar2");
                 var elementbg5 = document.getElementById("bgsidebar3");
                 var elementbg6 = document.getElementById("nav_menu");
                 var elementbg7 = document.getElementById("footer");
                 elementbg1.classList.toggle("dark-mode-bg");
-                // elementbg2.classList.toggle("dark-mode-bg");
+                elementbg2.classList.toggle("dark-mode-bg");
                 elementbg3.classList.toggle("dark-mode-bg");
                 elementbg4.classList.toggle("dark-mode-bg");
                 elementbg5.classList.toggle("dark-mode-bg");
