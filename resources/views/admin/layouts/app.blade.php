@@ -28,6 +28,10 @@
         .dark-mode-bg {
             background: #21262d !important;
         }
+
+        .dark-mode-text {
+            color: white;
+        }
     </style>
     <!-- Bootstrap -->
     <link href="{{ asset('backend/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -164,9 +168,40 @@
         window.addEventListener("load", function() {
             loader.style.display = "none";
         });
+        if (localStorage.getItem("dark-mode-dashboard") == "dark") {
+            localStorage.removeItem("dark-mode-dashboard");
+            var elementbg1 = document.getElementById("maincontainer");
+            var elementbg2 = document.getElementById("rightcol");
+            var elementbg3 = document.getElementById("bgsidebar1");
+            var elementbg4 = document.getElementById("bgsidebar2");
+            var elementbg5 = document.getElementById("bgsidebar3");
+            var elementbg6 = document.getElementById("nav_menu");
+            var elementbg7 = document.getElementById("footer");
+            var elementbg8 = document.getElementById("navbarDropdown");
+            var elementbg9 = document.getElementById("namauser");
+            elementbg1.classList.toggle("dark-mode-bg");
+            elementbg2.classList.toggle("dark-mode-bg");
+            elementbg3.classList.toggle("dark-mode-bg");
+            elementbg4.classList.toggle("dark-mode-bg");
+            elementbg5.classList.toggle("dark-mode-bg");
+            elementbg6.classList.toggle("dark-mode-bg");
+            elementbg7.classList.toggle("dark-mode-bg");
+            elementbg8.classList.toggle("dark-mode-text");
+            elementbg9.classList.toggle("dark-mode-text");
+            localStorage.setItem("dark-mode-dashboard", "dark");
+            console.log(localStorage.getItem("dark-mode-dashboard"));
+            document.getElementById("switch").checked = true;
+        } else if (localStorage.getItem("dark-mode-dashboard") == "light") {
+            localStorage.removeItem("dark-mode-dashboard");
+            localStorage.setItem("dark-mode-dashboard", "light");
+            console.log(localStorage.getItem("dark-mode-dashboard"));
+            document.getElementById("switch").checked = false;
+        } else {
+            // 
+        }
     </script>
     <script>
-        function darkMode(obj) {
+        function darkModeAdm(obj) {
             if ($(obj).is(":checked")) {
                 localStorage.removeItem("dark-mode-dashboard");
                 var elementbg1 = document.getElementById("maincontainer");
@@ -176,6 +211,11 @@
                 var elementbg5 = document.getElementById("bgsidebar3");
                 var elementbg6 = document.getElementById("nav_menu");
                 var elementbg7 = document.getElementById("footer");
+                var elementbg8 = document.getElementById("navbarDropdown");
+                var elementbg9 = document.getElementById("namauser");
+                // var elementbg9 = document.getElementById("word1");
+                // var elementbg10 = document.getElementById("word2");
+                // var elementbg11 = document.getElementById("word3");
                 elementbg1.classList.toggle("dark-mode-bg");
                 elementbg2.classList.toggle("dark-mode-bg");
                 elementbg3.classList.toggle("dark-mode-bg");
@@ -183,23 +223,41 @@
                 elementbg5.classList.toggle("dark-mode-bg");
                 elementbg6.classList.toggle("dark-mode-bg");
                 elementbg7.classList.toggle("dark-mode-bg");
+                elementbg8.classList.toggle("dark-mode-text");
+                elementbg9.classList.toggle("dark-mode-text");
+                // elementbg10.classList.toggle("dark-mode-text");
+                // elementbg11.classList.toggle("dark-mode-text");
                 localStorage.setItem("dark-mode-dashboard", "dark");
                 console.log(localStorage.getItem("dark-mode-dashboard"));
                 document.getElementById("switch").checked = true;
             } else if ($(obj).prop('checked', false)) {
+                localStorage.removeItem("dark-mode-dashboard");
+                var elementbg1 = document.getElementById("maincontainer");
+                var elementbg2 = document.getElementById("rightcol");
+                var elementbg3 = document.getElementById("bgsidebar1");
+                var elementbg4 = document.getElementById("bgsidebar2");
+                var elementbg5 = document.getElementById("bgsidebar3");
+                var elementbg6 = document.getElementById("nav_menu");
+                var elementbg7 = document.getElementById("footer");
+                var elementbg8 = document.getElementById("navbarDropdown");
+                var elementbg9 = document.getElementById("namauser");
+                elementbg1.classList.toggle("dark-mode-bg");
+                elementbg2.classList.toggle("dark-mode-bg");
+                elementbg3.classList.toggle("dark-mode-bg");
+                elementbg4.classList.toggle("dark-mode-bg");
+                elementbg5.classList.toggle("dark-mode-bg");
+                elementbg6.classList.toggle("dark-mode-bg");
+                elementbg7.classList.toggle("dark-mode-bg");
+                elementbg8.classList.toggle("dark-mode-text");
+                elementbg9.classList.toggle("dark-mode-text");
+                localStorage.setItem("dark-mode-dashboard", "light");
                 console.log(localStorage.getItem("dark-mode-dashboard"));
+                document.getElementById("switch").checked = false;
+            } else {
+
             }
         }
     </script>
-    <!-- <script>
-        function darkMode() {
-            var element = document.body;
-            element.classList.toggle("dark-mode");
-            element.classList.toggle("nav_menu");
-            element.classList.toggle("x_panel");
-            element.classList.toggle("left_col");
-        }
-    </script> -->
 </body>
 
 </html>

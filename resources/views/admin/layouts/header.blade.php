@@ -15,8 +15,10 @@
                             alt="{{ auth()->user()->file_foto }}"
                             style="max-width: 29px;max-height:29px;object-fit:cover;object-position:center">
                         @endif
-                        {{ auth()->user()->first_name }}
-                        &nbsp;{{ auth()->user()->last_name }}
+                        <span id="namauser">
+                            {{ auth()->user()->first_name }}
+                            &nbsp;{{ auth()->user()->last_name }}
+                        </span>
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ route('user.show',[Crypt::encrypt(auth()->user()->id)]) }}">
@@ -31,12 +33,12 @@
                             <i class="fa fa-cog pull-right"></i>
                             Dark Mode
                         </a> -->
-                        <label for="switch" class="dropdown-item">
+                        <!-- <label for="switch" class="dropdown-item">
                             <span style="padding-right: 85px;" disabled>
                                 Dark Mode
                             </span>
-                            <input type="checkbox" class="js-switch" id="switch" onchange="darkMode(this)" />
-                        </label>
+                            <input type="checkbox" class="js-switch" id="switch" onchange="darkModeAdm(this)" />
+                        </label> -->
                         <a class="dropdown-item" href="/logout">
                             <i class="fa fa-sign-out pull-right"></i>
                             Log Out

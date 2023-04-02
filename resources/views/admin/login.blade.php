@@ -232,6 +232,8 @@
                 elementtext.classList.toggle("dark-mode-text");
                 localStorage.setItem("dark-mode-login", "light");
                 console.log(localStorage.getItem("dark-mode-login"));
+            } else {
+
             }
         }
     </script>

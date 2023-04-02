@@ -5,12 +5,12 @@
 @section('content')
 <div class="">
     <div class="page-title">
-        <div class="title_left">
+        <div class="title_left" id="word">
             <p>
-                <a href="/">Home</a>&nbsp;<small><i class="fa fa-long-arrow-right"></small></i>
-                <a href="{{ route('latihan.index') }}">Latihan</a>&nbsp;<small><i
+                <a href="/" id="word1">Home</a>&nbsp;<small><i class="fa fa-long-arrow-right"></small></i>
+                <a href="{{ route('latihan.index') }}" id="word2">Latihan</a>&nbsp;<small><i
                         class="fa fa-long-arrow-right"></small></i>
-                <a href="#">Form Latihan</a>
+                <a href="#" id="word3">Form Latihan</a>
             </p>
         </div>
     </div>

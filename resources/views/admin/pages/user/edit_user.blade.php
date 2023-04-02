@@ -6,12 +6,12 @@
 <!-- page content -->
 <div class="">
     <div class="page-title">
-        <div class="title_left">
+        <div class="title_left" id="word">
             <p>
-                <a href="/">Home</a>&nbsp;<small><i class="fa fa-long-arrow-right"></small></i>
-                <a href="{{ route('user.index') }}">Data User</a>&nbsp;<small><i
+                <a href="/" id="word1">Home</a>&nbsp;<small><i class="fa fa-long-arrow-right"></small></i>
+                <a href="{{ route('user.index') }}" id="word2">Data User</a>&nbsp;<small><i
                         class="fa fa-long-arrow-right"></small></i>
-                <a href="#">Edit Data User, Id:</a>
+                <a href="#" id="word3">Edit Data User, Id:</a>
             </p>
         </div>
     </div>
