@@ -30,6 +30,10 @@ class User extends Authenticatable
         'role',
         'phone',
         'address',
+        'district',
+        'ward',
+        'city',
+        'country',
         'detail_address',
         'file_foto',
     ];

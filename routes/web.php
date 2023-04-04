@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\LatihanController;
 use App\Http\Controllers\Log\Log_UserController;
 use App\Http\Controllers\Log\Log_AuthController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Api\Api_WilayahController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Component\CaptchaController;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -87,11 +88,26 @@ Route::group([
     'namespace' => 'App\Http\Controllers\Api',
     'middleware' => ['auth','CekRole:admin,keuangan']
 ], function () {
+    // Route::get('/api_wilayah/kota/{$id}', [Api_WilayahController::class, 'ambilKota'])->name('ambil.kota');
+    // Route::get('/api_wilayah/kelurahan/{$id}', [Api_WilayahController::class, 'ambilKelurahan'])->name('ambil.kelurahan');
+    // Route::get('/api_wilayah/kecamatan/{$id}', [Api_WilayahController::class, 'ambilKecamatan'])->name('ambil.kecamatan');
+
     // Api Product
     Route::resource('api', 'ApiController');
     Route::resource('api_product', 'Api_ProductController');
+
+    // Api User
     Route::resource('api_user', 'Api_UserController');
+
+    // Test Email
     Route::resource('api_email', 'Api_SendermailController');
+
+    // Get Cb Wilayah Indonesia
+    Route::resource('api_wilayah', 'Api_WilayahController');
+    Route::get('/data/cb/kota/{id}', [Api_WilayahController::class,'ambilkota'])->name('ambil.kota');
+    Route::get('/data/cb/kecamatan/{id}', [Api_WilayahController::class,'ambilkecamatan'])->name('ambil.kecamatan');
+    Route::get('/data/cb/kelurahan/{id}', [Api_WilayahController::class,'ambilkelurahan'])->name('ambil.kelurahan');
+
 });
 
 Route::fallback(function () {

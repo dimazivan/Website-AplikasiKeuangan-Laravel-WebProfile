@@ -2,6 +2,38 @@
 @section('title')
 {{ $title }}
 @endsection
+@section('style_right_menu')
+<style>
+    #right_menu {
+        position: fixed;
+        z-index: 10000;
+        width: 150px;
+        background: #1b1a1a;
+        border-radius: 5px;
+        /* display: none; */
+        transform: scale(0);
+        transform-origin: top left;
+    }
+
+    #right_menu.visible {
+        /* display: block; */
+        transform: scale(1);
+        transition: transform 200ms ease-in-out;
+    }
+
+    #right_menu .right_menu_item {
+        padding: 8px 10px;
+        font-size: 15px;
+        color: #eee;
+        cursor: pointer;
+        border-radius: inherit;
+    }
+
+    #right_menu .right_menu_item:hover {
+        background: #343434
+    }
+</style>
+@endsection
 @section('content')
 <div class="">
     <div class="page-title">
@@ -14,7 +46,58 @@
     </div>
     <div class="clearfix"></div>
     <div class="row">
-        <div class="col-md-12 col-sm-12">
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 ">
+            <div class="tile-stats">
+                <div class="icon">
+                    <i class="fa fa-archive"></i>
+                </div>
+                <a href="#">
+                    <div class="count">179</div>
+                </a>
+                <h3>Total Item</h3>
+                <p>Lorem ipsum psdea itgum rixt.</p>
+            </div>
+        </div>
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6  ">
+            <div class="tile-stats">
+                <div class="icon">
+                    <i class="fa fa-inbox"></i>
+                </div>
+                <a href="#">
+                    <div class="count">179</div>
+                </a>
+                <h3>Total Stock</h3>
+                <p>Lorem ipsum psdea itgum rixt.</p>
+            </div>
+        </div>
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6  ">
+            <div class="tile-stats">
+                <div class="icon">
+                    <i class="fa fa-clone"></i>
+                </div>
+                <a href="#">
+                    <div class="count">179</div>
+                </a>
+                <h3>Total Category</h3>
+                <p>Lorem ipsum psdea itgum rixt.</p>
+            </div>
+        </div>
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6  ">
+            <div class="tile-stats">
+                <div class="icon">
+                    <i class="fa fa-trash"></i>
+                </div>
+                <a href="#">
+                    <div class="count">179</div>
+                </a>
+                <h3>Void</h3>
+                <p>Lorem ipsum psdea itgum rixt.</p>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class=" col-md-12 col-sm-12">
             <div class="x_panel">
                 <div class="x_title">
                     <h2><i class="fa fa-archive"></i>&nbsp;Product<small>Inventory</small></h2>
@@ -32,7 +115,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
-                                aria-controls="contact" aria-selected="false">Contact</a>
+                                aria-controls="contact" aria-selected="false">Coming Soon</a>
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
@@ -169,6 +252,13 @@
                                                             cellspacing="0" width="100%">
                                                             <thead>
                                                                 <tr>
+                                                                    <th width="20px;">
+                                                                        <div class="checkbox">
+                                                                            <label>
+                                                                                <input type="checkbox" class="flat">
+                                                                            </label>
+                                                                        </div>
+                                                                    </th>
                                                                     <th>Id</th>
                                                                     <th>Nama Produk</th>
                                                                     <th>Harga Produk (USD)</th>
@@ -181,6 +271,13 @@
                                                             <tbody>
                                                                 @forelse($data as $data_product)
                                                                 <tr>
+                                                                    <td>
+                                                                        <div class="checkbox">
+                                                                            <label>
+                                                                                <input type="checkbox" class="flat">
+                                                                            </label>
+                                                                        </div>
+                                                                    </td>
                                                                     <td>{{ $data_product->id }}</td>
                                                                     <td>{{ $data_product->title }}</td>
                                                                     <td>${{ $data_product->price }}</td>
@@ -293,40 +390,154 @@
             </div>
         </div>
     </div>
-    @endsection
-    @section('script')
-    <script>
-        // initialize a validator instance from the "FormValidator" constructor.
-        // A "<form>" element is optionally passed as an argument, but is not a must
-        var validator = new FormValidator({
-            "events": ['blur', 'input', 'change']
-        }, document.forms[0]);
-        // on form "submit" event
-        document.forms[0].onsubmit = function(e) {
-            var submit = true,
-                validatorResult = validator.checkAll(this);
-            console.log(validatorResult);
-            return !!validatorResult.valid;
-        };
-        // on form "reset" event
-        document.forms[0].onreset = function(e) {
-            validator.reset();
-        };
-        // stuff related ONLY for this demo page:
-        $('.toggleValidationTooltips').change(function() {
-            validator.settings.alerts = !this.checked;
-            if (this.checked)
-                $('form .alert').remove();
-        }).prop('checked', false);
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            window.setTimeout(function() {
-                $(".alert").fadeTo(1000, 0).slideUp(1000, function() {
-                    $(this).remove();
-                });
-            }, 5000);
+</div>
+@endsection
+@section('content_right_menu')
+<div id="right_menu">
+    <div class="right_menu_item">Info</div>
+    <div class="right_menu_item">Menu 2</div>
+    <div class="right_menu_item">Menu 3</div>
+    <div class="right_menu_item">Menu 4</div>
+    <div class="right_menu_item">Delete</div>
+</div>
+@endsection
+@section('script')
+<script>
+    // initialize a validator instance from the "FormValidator" constructor.
+    // A "<form>" element is optionally passed as an argument, but is not a must
+    var validator = new FormValidator({
+        "events": ['blur', 'input', 'change']
+    }, document.forms[0]);
+    // on form "submit" event
+    document.forms[0].onsubmit = function(e) {
+        var submit = true,
+            validatorResult = validator.checkAll(this);
+        console.log(validatorResult);
+        return !!validatorResult.valid;
+    };
+    // on form "reset" event
+    document.forms[0].onreset = function(e) {
+        validator.reset();
+    };
+    // stuff related ONLY for this demo page:
+    $('.toggleValidationTooltips').change(function() {
+        validator.settings.alerts = !this.checked;
+        if (this.checked)
+            $('form .alert').remove();
+    }).prop('checked', false);
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        window.setTimeout(function() {
+            $(".alert").fadeTo(1000, 0).slideUp(1000, function() {
+                $(this).remove();
+            });
+        }, 5000);
 
+    });
+</script>
+@endsection
+@section('script_right_menu')
+<!-- <script>
+        if (document.addEventListener) {
+            document.addEventListener('contextmenu', function(e) {
+                alert("You've tried to open context menu"); //here you draw your own menu
+                e.preventDefault();
+            }, false);
+        } else {
+            document.attachEvent('oncontextmenu', function() {
+                alert("You've tried to open context menu");
+                window.event.returnValue = false;
+            });
+        }
+    </script> -->
+<script>
+    const contextMenu = document.getElementById("right_menu");
+    const scope = document.querySelector("body");
+
+    scope.addEventListener("contextmenu", (event) => {
+        event.preventDefault();
+
+        const {
+            clientX: mouseX,
+            clientY: mouseY
+        } = event;
+
+        contextMenu.style.top = `${mouseY}px`;
+        contextMenu.style.left = `${mouseX}px`;
+
+        contextMenu.classList.remove("visible");
+
+        setTimeout(() => {
+            contextMenu.classList.add("visible");
         });
-    </script>
-    @endsection
+    });
+
+    scope.addEventListener("click", (e) => {
+        if (e.target.offsetParent != contextMenu) {
+            contextMenu.classList.remove("visible");
+        }
+    });
+
+    // const normalizePozition = (mouseX, mouseY) => {
+    //     // ? compute what is the mouse position relative to the container element (scope)
+    //     const {
+    //         left: scopeOffsetX,
+    //         top: scopeOffsetY,
+    //     } = scope.getBoundingClientRect();
+
+    //     const scopeX = mouseX - scopeOffsetX;
+    //     const scopeY = mouseY - scopeOffsetY;
+
+    //     // ? check if the element will go out of bounds
+    //     const outOfBoundsOnX =
+    //         scopeX + contextMenu.clientWidth > scope.clientWidth;
+
+    //     const outOfBoundsOnY =
+    //         scopeY + contextMenu.clientHeight > scope.clientHeight;
+
+    //     let normalizedX = mouseX;
+    //     let normalizedY = mouseY;
+
+    //     // ? normalzie on X
+    //     if (outOfBoundsOnX) {
+    //         normalizedX =
+    //             scopeOffsetX + scope.clientWidth - contextMenu.clientWidth;
+    //     }
+
+    //     // ? normalize on Y
+    //     if (outOfBoundsOnY) {
+    //         normalizedY =
+    //             scopeOffsetY + scope.clientHeight - contextMenu.clientHeight;
+    //     }
+
+    //     return {
+    //         normalizedX,
+    //         normalizedY
+    //     };
+    // };
+
+    // scope.addEventListener("contextmenu", (event) => {
+    //     event.preventDefault();
+
+    //     const {
+    //         offsetX: mouseX,
+    //         offsetY: mouseY
+    //     } = event;
+
+    //     const {
+    //         normalizedX,
+    //         normalizedY
+    //     } = normalizePozition(mouseX, mouseY);
+
+    //     contextMenu.style.top = `${normalizedY}px`;
+    //     contextMenu.style.left = `${normalizedX}px`;
+
+    //     contextMenu.classList.remove("visible");
+
+    //     setTimeout(() => {
+    //         contextMenu.classList.add("visible");
+    //     });
+    // });
+</script>
+@endsection

@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<?php
+$bg = asset('asset/icon/logogif.gif');
+?>
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -17,7 +20,7 @@
     @endif
     <style>
         #preloader {
-            background: white url('asset/icon/logogif.gif') no-repeat center center;
+            background: white url("<?php echo asset('asset/icon/logogif.gif') ?>") no-repeat center center;
             height: 100vh;
             width: 100%;
             position: fixed;
@@ -73,10 +76,49 @@
     @hasSection('style')
     @yield('style')
     @endif
+    @hasSection('style_right_menu')
+    @yield('style_right_menu')
+    @else
+    <style>
+        #right_menu {
+            position: fixed;
+            z-index: 10000;
+            width: 150px;
+            background: #1b1a1a;
+            border-radius: 5px;
+            /* display: none; */
+            transform: scale(0);
+            transform-origin: top left;
+        }
+
+        #right_menu.visible {
+            /* display: block; */
+            transform: scale(1);
+            transition: transform 200ms ease-in-out;
+        }
+
+        #right_menu .right_menu_item {
+            padding: 8px 10px;
+            font-size: 15px;
+            color: #eee;
+            cursor: pointer;
+            border-radius: inherit;
+        }
+
+        #right_menu .right_menu_item:hover {
+            background: #343434
+        }
+    </style>
+    @endif
 </head>
 
-<body class="nav-md">
+<body class="nav-md footer_fixed">
     @include('admin.components.preload.preload')
+    @hasSection('content_right_menu')
+    @yield('content_right_menu')
+    @else
+    @include('admin.components.right_menu.right_menu')
+    @endif
     <!-- <div id="preloader" class="preloader"></div> -->
     <div class="container body">
         <div class="main_container" id="maincontainer">
@@ -161,6 +203,99 @@
     <!-- additional script -->
     @hasSection('script')
     @yield('script')
+    @endif
+    @hasSection('script_right_menu')
+    @yield('script_right_menu')
+    @else
+    <script>
+        const contextMenu = document.getElementById("right_menu");
+        const scope = document.querySelector("body");
+
+        scope.addEventListener("contextmenu", (event) => {
+            event.preventDefault();
+
+            const {
+                clientX: mouseX,
+                clientY: mouseY
+            } = event;
+
+            contextMenu.style.top = `${mouseY}px`;
+            contextMenu.style.left = `${mouseX}px`;
+
+            contextMenu.classList.remove("visible");
+
+            setTimeout(() => {
+                contextMenu.classList.add("visible");
+            });
+        });
+
+        scope.addEventListener("click", (e) => {
+            if (e.target.offsetParent != contextMenu) {
+                contextMenu.classList.remove("visible");
+            }
+        });
+
+        // const normalizePozition = (mouseX, mouseY) => {
+        //     // ? compute what is the mouse position relative to the container element (scope)
+        //     const {
+        //         left: scopeOffsetX,
+        //         top: scopeOffsetY,
+        //     } = scope.getBoundingClientRect();
+
+        //     const scopeX = mouseX - scopeOffsetX;
+        //     const scopeY = mouseY - scopeOffsetY;
+
+        //     // ? check if the element will go out of bounds
+        //     const outOfBoundsOnX =
+        //         scopeX + contextMenu.clientWidth > scope.clientWidth;
+
+        //     const outOfBoundsOnY =
+        //         scopeY + contextMenu.clientHeight > scope.clientHeight;
+
+        //     let normalizedX = mouseX;
+        //     let normalizedY = mouseY;
+
+        //     // ? normalzie on X
+        //     if (outOfBoundsOnX) {
+        //         normalizedX =
+        //             scopeOffsetX + scope.clientWidth - contextMenu.clientWidth;
+        //     }
+
+        //     // ? normalize on Y
+        //     if (outOfBoundsOnY) {
+        //         normalizedY =
+        //             scopeOffsetY + scope.clientHeight - contextMenu.clientHeight;
+        //     }
+
+        //     return {
+        //         normalizedX,
+        //         normalizedY
+        //     };
+        // };
+
+        // scope.addEventListener("contextmenu", (event) => {
+        //     event.preventDefault();
+
+        //     const {
+        //         offsetX: mouseX,
+        //         offsetY: mouseY
+        //     } = event;
+
+        //     const {
+        //         normalizedX,
+        //         normalizedY
+        //     } = normalizePozition(mouseX, mouseY);
+
+        //     contextMenu.style.top = `${normalizedY}px`;
+        //     contextMenu.style.left = `${normalizedX}px`;
+
+        //     contextMenu.classList.remove("visible");
+
+        //     setTimeout(() => {
+        //         contextMenu.classList.add("visible");
+        //     });
+        // });
+    </script>
     @endif
     <script>
         var loader = document.getElementById('preloader');

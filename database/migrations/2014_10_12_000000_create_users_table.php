@@ -23,6 +23,10 @@ return new class () extends Migration {
             $table->string('role');
             $table->string('phone');
             $table->string('address');
+            $table->string('district');
+            $table->string('ward');
+            $table->string('city');
+            $table->string('country');
             $table->string('detail_address')->nullable();
             $table->string('file_foto')->nullable();
             $table->rememberToken();

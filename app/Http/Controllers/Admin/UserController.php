@@ -10,6 +10,10 @@ use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
 use App\Models\User;
+use App\Models\Province;
+use App\Models\Regency;
+use App\Models\District;
+use App\Models\Village;
 use App\Models\Log_users;
 use Carbon\Carbon;
 use Redirect;
@@ -40,10 +44,20 @@ class UserController extends Controller
     public function create()
     {
         $title = "Halaman Data User";
+        $province = Province::pluck('name', 'id');
 
-        return view('admin.pages.user.add_user', [
+        // dd(
+        //     $province,
+        // );
+
+        return view(
+            'admin.pages.user.add_user',
+            [
             'title' => $title,
-        ]);
+
+        ],
+            compact('province')
+        );
     }
 
     /**
@@ -63,6 +77,11 @@ class UserController extends Controller
             'email' => 'required|email',
             'password' => 'required|min:5|max:40',
             'cbrole' => 'required',
+            'cbcountry' => 'required',
+            'cbprovince' => 'required',
+            'cbcity' => 'required',
+            'cbdistrict' => 'required',
+            'cbward' => 'required',
             // 'phone' => 'required|numeric|sometimes|min:10|max:13',
             'phone' => 'required|numeric|digits_between:10,13',
             // 'phone' => 'required',

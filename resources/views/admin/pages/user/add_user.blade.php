@@ -138,6 +138,71 @@
                             </div>
                         </div>
                         <div class="field item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">Negara<span
+                                    class="required">*</span></label>
+                            <div class="col-md-6 col-sm-6">
+                                <select class="form-control" id="cbcountry" name="cbcountry" required
+                                    oninvalid="this.setCustomValidity('Silahkan pilih Negara Anda')"
+                                    oninput="this.setCustomValidity('')">
+                                    <option value="" selected disabled>Pilih Negara</option>
+                                    <option value="1">Indonesia</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="field item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">Provinsi<span
+                                    class="required">*</span></label>
+                            <div class="col-md-6 col-sm-6">
+                                <select class="form-control" id="cbprovince" name="cbprovince" required
+                                    oninvalid="this.setCustomValidity('Silahkan pilih provinsi Anda')"
+                                    oninput="this.setCustomValidity('')">
+                                    <option value="" selected disabled>Pilih Provinsi</option>
+                                    <!-- <option value="#">Provinsi</option> -->
+                                    @forelse($province as $provinces=> $values)
+                                    <option value="{{ $provinces }}">{{ $values }}</option>
+                                    @empty
+                                    <option value="" selected disabled>Data Provinsi Kosong</option>
+                                    @endforelse
+                                </select>
+                            </div>
+                        </div>
+                        <div class="field item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">Kota<span
+                                    class="required">*</span></label>
+                            <div class="col-md-6 col-sm-6">
+                                <select class="form-control" id="cbcity" name="cbcity" required
+                                    oninvalid="this.setCustomValidity('Silahkan pilih kota Anda')"
+                                    oninput="this.setCustomValidity('')">
+                                    <option value="" selected disabled>Pilih Kota</option>
+                                    <option value="#">Kota</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="field item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">Kecamatan<span
+                                    class="required">*</span></label>
+                            <div class="col-md-6 col-sm-6">
+                                <select class="form-control" id="cbdistrict" name="cbdistrict" required
+                                    oninvalid="this.setCustomValidity('Silahkan pilih kecamatan Anda')"
+                                    oninput="this.setCustomValidity('')">
+                                    <option value="" selected disabled>Pilih Kecamatan</option>
+                                    <option value="#">Kecamatan</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="field item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">Kelurahan<span
+                                    class="required">*</span></label>
+                            <div class="col-md-6 col-sm-6">
+                                <select class="form-control" id="cbward" name="cbward" required
+                                    oninvalid="this.setCustomValidity('Silahkan pilih kelurahan Anda')"
+                                    oninput="this.setCustomValidity('')">
+                                    <option value="" selected disabled>Pilih Kelurahan</option>
+                                    <option value="#">Kelurahan</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="field item form-group">
                             <label class="col-form-label col-md-3 col-sm-3 label-align">Alamat<span
                                     class="required">*</span></label>
                             <div class="col-md-6 col-sm-6">
@@ -169,13 +234,6 @@
                                     diperbolehkan: .JPG .JPEG .PNG</small>
                             </div>
                         </div>
-                        <!-- <div class="field item form-group">
-                            <div class="">
-                                <label>
-                                    <input type="checkbox" class="js-switch" checked /> Checked
-                                </label>
-                            </div>
-                        </div> -->
                         <div class="ln_solid">
                             <div class="form-group">
                                 <div class="col-md-6 offset-md-3">
@@ -248,4 +306,5 @@
 
     });
 </script>
+<script src="{{ asset('asset/js/data_wilayah.js') }}"></script>
 @endsection

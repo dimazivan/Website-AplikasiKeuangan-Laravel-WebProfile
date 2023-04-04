@@ -53,10 +53,17 @@
                                 </div>
                                 @endif
                                 <table id="datatable-responsive"
-                                    class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0"
-                                    width="100%">
+                                    class="table table-striped table-bordered dt-responsive nowrap bulk_action"
+                                    cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
+                                            <th width="20px;">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" class="flat">
+                                                    </label>
+                                                </div>
+                                            </th>
                                             <th>Nama User</th>
                                             <th>Username</th>
                                             <th>Role</th>
@@ -66,6 +73,13 @@
                                     <tbody id="tabel_user">
                                         @forelse($data as $data_user)
                                         <tr>
+                                            <td>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" class="flat">
+                                                    </label>
+                                                </div>
+                                            </td>
                                             <td>
                                                 {{ $data_user->first_name }}&nbsp;
                                                 {{ $data_user->last_name }}

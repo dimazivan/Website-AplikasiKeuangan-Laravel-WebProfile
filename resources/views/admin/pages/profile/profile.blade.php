@@ -48,13 +48,14 @@
                         </div>
                         <h3>{{ auth()->user()->first_name }}&nbsp;{{ auth()->user()->last_name }}</h3>
                         <ul class="list-unstyled user_data">
-                            <li><i class="fa fa-map-marker user-profile-icon"></i> San Francisco, California, USA
-                            </li>
-
                             <li>
-                                <i class="fa fa-briefcase user-profile-icon"></i> Software Engineer
+                                <i class="fa fa-map-marker user-profile-icon"></i>&nbsp;
+                                {{ auth()->user()->address }}
                             </li>
-
+                            <li>
+                                <i class="fa fa-lock user-profile-icon"></i>&nbsp;
+                                Access {{ auth()->user()->role }}
+                            </li>
                             <li class="m-top-xs">
                                 <i class="fa fa-external-link user-profile-icon"></i>
                                 <a href="http://www.kimlabs.com/profile/" target="_blank">www.kimlabs.com</a>
