@@ -20,5 +20,21 @@ class Product extends Model
         'category',
         'thumbnail',
         'images',
+        'fvoid',
     ];
+
+    public function scopeallItem($query)
+    {
+        return $query->where('fvoid', 0);
+    }
+
+    public function scopeCategory($query)
+    {
+        return $query->select('category')->groupBy('category');
+    }
+
+    public function scopefVoid($query)
+    {
+        return $query->where('fvoid', 1);
+    }
 }

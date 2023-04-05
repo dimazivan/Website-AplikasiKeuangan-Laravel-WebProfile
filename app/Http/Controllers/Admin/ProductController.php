@@ -22,17 +22,26 @@ class ProductController extends Controller
     {
         $title = "Halaman Data Produk";
         $data = Product::all();
+        $jml_product = Product::allItem()->count();
+        $jml_product_all = Product::all()->count();
+        $categoryProduct = Product::Category()->count();
 
         // dd(
         //     $title,
         //     $data[0]->images,
         //     $data,
+        //     $categoryProduct,
+        //     $categoryProduct[0],
+        //     $categoryProduct[0]->category,
+        //     sizeof($categoryProduct),
         // );
 
         // Tabel
         return view('admin.pages.product.data_product', [
             'title' => $title,
             'data' => $data,
+            'jml_product' => $jml_product,
+            'jml_product_all' => $jml_product_all,
         ]);
 
         // Card

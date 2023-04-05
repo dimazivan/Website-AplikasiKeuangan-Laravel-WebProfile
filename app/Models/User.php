@@ -57,6 +57,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
+    // public function scoperole($query, $type)
+    // {
+    //     return $query->selectrole($type);
+    // }
+
+    public function scopeRole($query)
+    {
+        return $query->select('role')->groupBy('role');
+    }
+
     public function log_users()
     {
         return $this->hasMany('App\Models\Log_users');

@@ -29,6 +29,11 @@ class UserController extends Controller
     {
         $title = "Halaman Data User";
         $data = User::all();
+        $role = User::Role()->count();
+
+        dd(
+            $role,
+        );
 
         return view('admin.pages.user.data_user', [
             'title' => $title,

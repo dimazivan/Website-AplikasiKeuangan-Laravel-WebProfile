@@ -24,6 +24,7 @@ return new class () extends Migration {
             $table->string('category');
             $table->string('thumbnail');
             $table->string('images');
+            $table->integer('fvoid');
             $table->timestamps();
         });
     }

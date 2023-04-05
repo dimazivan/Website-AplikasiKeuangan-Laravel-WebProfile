@@ -52,10 +52,10 @@
                     <i class="fa fa-archive"></i>
                 </div>
                 <a href="#">
-                    <div class="count">179</div>
+                    <div class="count">{{ $jml_product }}&nbsp;Item</div>
                 </a>
-                <h3>Total Item</h3>
-                <p>Lorem ipsum psdea itgum rixt.</p>
+                <h3>Total Item (Non Void)</h3>
+                <p>Total Item (All Item)&nbsp;{{ $jml_product_all }}&nbsp;Item</p>
             </div>
         </div>
         <div class="animated flipInY col-lg-3 col-md-3 col-sm-6  ">
@@ -248,16 +248,13 @@
                                                         </div>
                                                         @endif
                                                         <table id="datatable-responsive"
-                                                            class="table table-striped table-bordered dt-responsive nowrap"
+                                                            class="table table-striped table-bordered dt-responsive nowrap bulk_action"
                                                             cellspacing="0" width="100%">
                                                             <thead>
                                                                 <tr>
-                                                                    <th width="20px;">
-                                                                        <div class="checkbox">
-                                                                            <label>
-                                                                                <input type="checkbox" class="flat">
-                                                                            </label>
-                                                                        </div>
+                                                                    <th>
+                                                                        <input type="checkbox" id="check-all"
+                                                                            class="flat">
                                                                     </th>
                                                                     <th>Id</th>
                                                                     <th>Nama Produk</th>
@@ -266,17 +263,16 @@
                                                                     <th>Stok Produk (Pcs)</th>
                                                                     <th>Brand Produk</th>
                                                                     <th>Gambar Produk</th>
+                                                                    <th width="20px;">fVoid</th>
+                                                                    <th>Action</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
                                                                 @forelse($data as $data_product)
                                                                 <tr>
-                                                                    <td>
-                                                                        <div class="checkbox">
-                                                                            <label>
-                                                                                <input type="checkbox" class="flat">
-                                                                            </label>
-                                                                        </div>
+                                                                    <td class="a-center">
+                                                                        <input type="checkbox" class="flat"
+                                                                            name="table_records">
                                                                     </td>
                                                                     <td>{{ $data_product->id }}</td>
                                                                     <td>{{ $data_product->title }}</td>
@@ -292,10 +288,41 @@
                                                                             Link {{ $data_product->title }}
                                                                         </a>
                                                                     </td>
+                                                                    <td class="a-center">
+                                                                        <input type="checkbox" class="flat"
+                                                                            name="table_records">
+                                                                    </td>
+                                                                    <td>
+                                                                        <a id="drop4" href="#" class="dropdown-toggle"
+                                                                            data-toggle="dropdown" aria-haspopup="true"
+                                                                            role="button" aria-expanded="false">
+                                                                            Aksi
+                                                                            <span class="caret"></span>
+                                                                        </a>
+                                                                        <div class="dropdown-menu"
+                                                                            aria-labelledby="dropdownMenuButton">
+                                                                            <a href="#" target="_blank"
+                                                                                class="dropdown-item">
+                                                                                <i class="fa fa-pencil"></i>&nbsp;
+                                                                                Edit Data
+                                                                            </a>
+                                                                            @if(auth()->user()->role == "admin")
+                                                                            <form action="#" method="post">
+                                                                                @csrf
+                                                                                @method('delete')
+                                                                                <button type="submit"
+                                                                                    class="dropdown-item">
+                                                                                    <i class="fa fa-trash-o"></i>&nbsp;
+                                                                                    Delete Data
+                                                                                </button>
+                                                                            </form>
+                                                                            @endif
+                                                                        </div>
+                                                                    </td>
                                                                 </tr>
                                                                 @empty
                                                                 <tr>
-                                                                    <td colspan="7">Data Product Kosong</td>
+                                                                    <td colspan="9">Data Product Kosong</td>
                                                                 </tr>
                                                                 @endforelse
                                                             </tbody>

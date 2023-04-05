@@ -96,7 +96,7 @@
                                                     <a href="{{ route('user.edit',[Crypt::encrypt($data_user->id)]) }}"
                                                         target="_blank" class="dropdown-item">
                                                         <i class="fa fa-pencil"></i>&nbsp;
-                                                        Edit User
+                                                        Edit Data
                                                     </a>
                                                     @if(auth()->user()->role == "admin")
                                                     <form
@@ -106,7 +106,7 @@
                                                         @method('delete')
                                                         <button type="submit" class="dropdown-item">
                                                             <i class="fa fa-trash-o"></i>&nbsp;
-                                                            Delete User
+                                                            Delete Data
                                                         </button>
                                                     </form>
                                                     @endif
