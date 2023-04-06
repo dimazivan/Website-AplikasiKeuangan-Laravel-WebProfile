@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Crypt;
@@ -31,8 +33,13 @@ class UserController extends Controller
         $data = User::all();
         $jml_role = User::Role()->count();
 
+        // $exists = Storage::url('data/image/user/'.auth()->user()->file_foto);
+        // $test = Storage::get('/app/data/image/user/'.auth()->user()->file_foto);
+
         // dd(
         //     $jml_role,
+        //     $exists,
+        //     $test,
         // );
 
         return view('admin.pages.user.data_user', [
@@ -71,7 +78,8 @@ class UserController extends Controller
     public function create()
     {
         $title = "Halaman Data User";
-        $province = Province::pluck('name', 'id');
+        $province = Province::orderBy('name', 'asc')
+        ->pluck('name', 'id');
 
         // dd(
         //     $province,
@@ -165,6 +173,11 @@ class UserController extends Controller
                         'email' => $request->email,
                         'password' => $request->password,
                         'role' => $request->cbrole,
+                        'country' => $request->cbcountry,
+                        'province' => $request->cbprovince,
+                        'city' => $request->cbcity,
+                        'district' => $request->cbdistrict,
+                        'ward' => $request->cbward,
                         'phone' => $request->phone,
                         'address' => $request->address,
                         'detail_address' => $request->desc,
@@ -194,8 +207,14 @@ class UserController extends Controller
                     if ($request->hasFile('file_foto')) {
                         $file = $request->file('file_foto');
                         $nama_file = time() . "_" . $file->getClientOriginalName();
-                        $tujuan_upload = 'data_file/user/foto';
-                        $file->move($tujuan_upload, $nama_file);
+                        // $tujuan_upload = 'data_file/user/foto';
+                        // $file->move($tujuan_upload, $nama_file);
+                        $file->storeAs('/data/image/user/', $nama_file);
+
+                    // $img = Image::make($file->getRealPath());
+                    // $img->stream();
+
+                    // Storage::disk('local')->put('/data/image/user/' . Carbon::now() .'/', $nama_file);
                     } else {
                         $nama_file = "";
                     }
@@ -208,6 +227,11 @@ class UserController extends Controller
                         'email' => $request->email,
                         'password' => $request->password,
                         'role' => $request->cbrole,
+                        'country' => $request->cbcountry,
+                        'province' => $request->cbprovince,
+                        'city' => $request->cbcity,
+                        'district' => $request->cbdistrict,
+                        'ward' => $request->cbward,
                         'phone' => $request->phone,
                         'address' => $request->address,
                         'detail_address' => $request->desc,

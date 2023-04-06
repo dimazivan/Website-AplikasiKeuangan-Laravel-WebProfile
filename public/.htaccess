@@ -3,6 +3,8 @@
         Options -MultiViews -Indexes
     </IfModule>
     Options +FollowSymlinks
+    # Disable Directory Browsing
+    Options All -Indexes
     RewriteEngine On
 
     # Handle Authorization Header
@@ -18,4 +20,11 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+    # RewriteRule ^ public [L]
+
+    # RewriteCond %{HTTP_REFERER} !^http://(www\.)?localhost:8000 [NC] 
+    # RewriteCond %{HTTP_REFERER} !^http://(www\.)?localhost:8000.*$ [NC] 
+    # RewriteRule \.(jpeg|jpg|png|gif)$ - [F]
+    
+
 </IfModule>

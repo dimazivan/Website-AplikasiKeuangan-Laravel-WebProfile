@@ -34,6 +34,7 @@ class User extends Authenticatable
         'ward',
         'city',
         'country',
+        'province',
         'detail_address',
         'file_foto',
     ];

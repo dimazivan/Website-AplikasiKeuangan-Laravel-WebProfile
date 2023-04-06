@@ -14,8 +14,11 @@
                 @if(auth()->user()->file_foto == null)
                 <img src="{{ asset('asset/icon/dimaz4.png') }}" alt="dimaz4.png" class="img-circle profile_img">
                 @else
-                <img src="{{ url('/data_file/user/foto/'.auth()->user()->file_foto) }}"
-                    alt="{{ auth()->user()->file_foto }}" class="img-circle profile_img">
+                <img src="{{ asset('storage/data/image/user/'.auth()->user()->file_foto) }}"
+                    alt="{{ auth()->user()->file_foto }}" class="img-circle profile_img"
+                    style="max-width: 57px;max-height: 57px;object-fit:cover;object-position:center">
+                <!-- <img src="{{ url('/data_file/user/foto/'.auth()->user()->file_foto) }}"
+                    alt="{{ auth()->user()->file_foto }}" class="img-circle profile_img"> -->
                 @endif
             </div>
             <div class="profile_info">
@@ -106,7 +109,7 @@
         <!-- /sidebar menu -->
 
         <!-- /menu footer buttons -->
-        <div class="sidebar-footer hidden-small">
+        <div class="sidebar-footer hidden-small" id="bgsidebar4">
             <a data-toggle="tooltip" data-placement="top" title="Settings">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
             </a>

@@ -112,6 +112,13 @@ Route::group([
     Route::get('/data/cb/kelurahan/{id}', [Api_WilayahController::class,'ambilkelurahan'])->name('ambil.kelurahan');
 });
 
+// Route::group([
+//     'prefix' => 'asset','backend','data_file','gate','vendor',
+//     'middleware' => ['auth','CekRole:admin,keuangan']
+// ], function () {
+//     Route::get('image/{imagename}', '...');
+// });
+
 Route::fallback(function () {
     // Alert::info('Proses Gagal', 'Halaman tidak ditemukan');
     return view('error.404');

@@ -26,6 +26,7 @@ return new class () extends Migration {
             $table->string('district');
             $table->string('ward');
             $table->string('city');
+            $table->string('province');
             $table->string('country');
             $table->string('detail_address')->nullable();
             $table->string('file_foto')->nullable();

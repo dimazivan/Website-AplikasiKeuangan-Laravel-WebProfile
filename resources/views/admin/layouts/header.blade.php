@@ -11,9 +11,12 @@
                         @if(auth()->user()->file_foto == null)
                         <img src="{{ asset('asset/icon/dimaz4.png') }}" alt="Foto Profil">
                         @else
-                        <img src="{{ url('/data_file/user/foto/'.auth()->user()->file_foto) }}"
+                        <img src="{{ asset('storage/data/image/user/'.auth()->user()->file_foto) }}"
                             alt="{{ auth()->user()->file_foto }}"
                             style="max-width: 29px;max-height:29px;object-fit:cover;object-position:center">
+                        <!-- <img src="{{ url('/data_file/user/foto/'.auth()->user()->file_foto) }}"
+                            alt="{{ auth()->user()->file_foto }}"
+                            style="max-width: 29px;max-height:29px;object-fit:cover;object-position:center"> -->
                         @endif
                         <span id="namauser">
                             {{ auth()->user()->first_name }}

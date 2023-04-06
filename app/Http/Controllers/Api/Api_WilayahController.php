@@ -39,7 +39,9 @@ class Api_WilayahController extends Controller
      */
     public function ambilkota($id)
     {
-        $city = Regency::where('province_id', $id)->pluck('name', 'id');
+        $city = Regency::where('province_id', $id)
+        ->orderBy('name', 'asc')
+        ->pluck('name', 'id');
 
         // dd(
         //     $id,
@@ -51,7 +53,9 @@ class Api_WilayahController extends Controller
 
     public function ambilkecamatan($id)
     {
-        $district = District::where('regency_id', $id)->pluck('name', 'id');
+        $district = District::where('regency_id', $id)
+        ->orderBy('name', 'asc')
+        ->pluck('name', 'id');
 
         // dd(
         //     $id,
@@ -63,7 +67,9 @@ class Api_WilayahController extends Controller
 
     public function ambilkelurahan($id)
     {
-        $ward = Village::where('district_id', $id)->pluck('name', 'id');
+        $ward = Village::where('district_id', $id)
+        ->orderBy('name', 'asc')
+        ->pluck('name', 'id');
 
         // dd(
         //     $id,
