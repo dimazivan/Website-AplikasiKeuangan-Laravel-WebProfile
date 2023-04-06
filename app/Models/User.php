@@ -68,6 +68,16 @@ class User extends Authenticatable
         return $query->select('role')->groupBy('role');
     }
 
+    public function scopeCekUsername($query, $value)
+    {
+        return $query->select('username')->where('username', $value);
+    }
+
+    public function scopeCekEmail($query, $value)
+    {
+        return $query->select('email')->where('email', $value);
+    }
+
     public function log_users()
     {
         return $this->hasMany('App\Models\Log_users');

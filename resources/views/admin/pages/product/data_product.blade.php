@@ -122,11 +122,11 @@
                         <div class="tab-pane fade show active" id="data" role="tabpanel" aria-labelledby="data-tab">
                             <div class="row">
                                 <div class="col-md-12 col-sm-12">
-                                    <div class="x_panel">
+                                    <div class="x_panel" style="height: auto;">
                                         <div class="x_title">
                                             <h2>Form Tambah Data Produk</h2>
                                             <ul class="nav navbar-right panel_toolbox">
-                                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                                <li><a class="collapse-link"><i class="fa fa-chevron-down"></i></a>
                                                 </li>
                                                 <li class="dropdown">
                                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"
@@ -136,7 +136,7 @@
                                             </ul>
                                             <div class="clearfix"></div>
                                         </div>
-                                        <div class="x_content">
+                                        <div class="x_content" style="display: none;">
                                             <form class="" action="{{ route('product.store') }}" method="post" validate
                                                 enctype="multipart/form-data">
                                                 @csrf
@@ -252,7 +252,7 @@
                                                             cellspacing="0" width="100%">
                                                             <thead>
                                                                 <tr>
-                                                                    <th>
+                                                                    <th width="20px">
                                                                         <input type="checkbox" id="check-all"
                                                                             class="flat">
                                                                     </th>

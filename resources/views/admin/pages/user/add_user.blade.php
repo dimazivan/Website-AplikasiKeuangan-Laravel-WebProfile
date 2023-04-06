@@ -83,20 +83,26 @@
                             <label class="col-form-label col-md-3 col-sm-3 label-align">Username<span
                                     class="required">*</span></label>
                             <div class="col-md-6 col-sm-6">
-                                <input class="form-control" name="username" placeholder="Username Login" required
-                                    oninvalid="this.setCustomValidity('Silahkan masukan username user')"
-                                    oninput="this.setCustomValidity('')" min-length="5" />
+                                <input class="form-control" id="username" name="username" placeholder="Username Login"
+                                    required oninvalid="this.setCustomValidity('Silahkan masukan username user')"
+                                    oninput="this.setCustomValidity('')" min-length="5" type="text" />
+                                <div class="cekusername" id="cekusername">
+                                    <!--  -->
+                                </div>
                             </div>
                         </div>
                         <div class="field item form-group">
                             <label class="col-form-label col-md-3 col-sm-3 label-align">Email<span
                                     class="required">*</span></label>
                             <div class="col-md-6 col-sm-6">
-                                <input type="email" class="form-control has-feedback-left" name="email" class="email"
-                                    placeholder="Email User" required
+                                <input type="email" class="form-control has-feedback-left" id="email" name="email"
+                                    class="email" placeholder="Email User" required
                                     oninvalid="this.setCustomValidity('Silahkan masukan alamat email user')"
                                     oninput="this.setCustomValidity('')">
                                 <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+                                <div class="cekemail" id="cekemail">
+                                    <!--  -->
+                                </div>
                             </div>
                         </div>
                         <div class="field item form-group">
@@ -307,4 +313,6 @@
     });
 </script>
 <script src="{{ asset('asset/js/data_wilayah.js') }}"></script>
+<script src="{{ asset('asset/js/cek_username.js') }}"></script>
+<script src="{{ asset('asset/js/cek_email.js') }}"></script>
 @endsection

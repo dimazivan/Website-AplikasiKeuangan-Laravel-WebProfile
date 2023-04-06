@@ -57,12 +57,8 @@
                                     cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
-                                            <th width="20px;">
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" class="flat">
-                                                    </label>
-                                                </div>
+                                            <th width="20px">
+                                                <input type="checkbox" id="check-all" class="flat">
                                             </th>
                                             <th>Nama User</th>
                                             <th>Username</th>
@@ -73,12 +69,8 @@
                                     <tbody id="tabel_user">
                                         @forelse($data as $data_user)
                                         <tr>
-                                            <td>
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" class="flat">
-                                                    </label>
-                                                </div>
+                                            <td class="a-center">
+                                                <input type="checkbox" class="flat" name="table_records">
                                             </td>
                                             <td>
                                                 {{ $data_user->first_name }}&nbsp;

@@ -29,16 +29,38 @@ class UserController extends Controller
     {
         $title = "Halaman Data User";
         $data = User::all();
-        $role = User::Role()->count();
+        $jml_role = User::Role()->count();
 
-        dd(
-            $role,
-        );
+        // dd(
+        //     $jml_role,
+        // );
 
         return view('admin.pages.user.data_user', [
             'title' => $title,
             'data' => $data,
         ]);
+    }
+
+    public function cekUsername($username)
+    {
+        $cekusername = User::CekUsername($username)->pluck('username');
+
+        // dd(
+        //     $cekusername
+        // );
+
+        return json_encode($cekusername);
+    }
+
+    public function cekEmail($email)
+    {
+        $cekemail = User::CekEmail($email)->pluck('email');
+
+        // dd(
+        //     $cekemail
+        // );
+
+        return json_encode($cekemail);
     }
 
     /**
@@ -124,7 +146,8 @@ class UserController extends Controller
             return back()->withErrors($validator->errors());
         } else {
             // Cek Data
-            $cek = User::where('username', $request->username)
+            $cek = User::cekUsername($request->username)
+            // $cek = User::where('username', $request->username)
             ->orWhere('email', $request->email)
             ->get();
 
