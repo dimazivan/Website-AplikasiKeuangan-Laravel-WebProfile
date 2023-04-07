@@ -79,6 +79,11 @@ class User extends Authenticatable
         return $query->select('email')->where('email', $value);
     }
 
+    public function scopeCekFileFoto($query, $value)
+    {
+        return $query->select('file_foto')->where('id', $value);
+    }
+
     public function log_users()
     {
         return $this->hasMany('App\Models\Log_users');

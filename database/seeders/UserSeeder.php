@@ -36,6 +36,44 @@ class UserSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
+            'first_name'=> 'Dimaz',
+            'last_name'=>  'admin',
+            'username'=> 'dimazadmin',
+            'email'=> 'dimaz123@gmail.com',
+            'password' => bcrypt('dimazivan'),
+            'role'=> 'admin',
+            'phone'=> '08123128327',
+            'address'=> 'Jl. Manukan Lor Keuangan',
+            'district' =>'3578150',
+            'ward' =>'3578150011',
+            'city' =>'3578',
+            'province' =>'35',
+            'country' =>'1',
+            'detail_address'=> 'Paling pojok pager warna hijau keuangan',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('users')->insert([
+            'first_name'=> 'User',
+            'last_name'=>  'testing',
+            'username'=> 'testinguser',
+            'email'=> 'dima13123z123@gmail.com',
+            'password' => bcrypt('dimazivan'),
+            'role'=> 'admin',
+            'phone'=> '081234567811',
+            'address'=> 'Jl. Manukan Lor Keuangan',
+            'district' =>'3578150',
+            'ward' =>'3578150011',
+            'city' =>'3578',
+            'province' =>'35',
+            'country' =>'1',
+            'detail_address'=> 'Paling pojok pager warna hijau keuangan',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('users')->insert([
             'first_name'=> 'Dimaz Ivan',
             'last_name'=>  'keuangan',
             'username'=> 'dimazkeuangan',

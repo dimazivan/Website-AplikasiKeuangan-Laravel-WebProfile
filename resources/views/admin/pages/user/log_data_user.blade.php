@@ -24,8 +24,8 @@
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i
+                                    class="fa fa-wrench"></i></a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <!-- <a class="dropdown-item" href="#">Tambah Data</a> -->
                             </div>

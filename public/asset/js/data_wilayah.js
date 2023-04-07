@@ -17,7 +17,7 @@ var DataWilayah = function () {
 
             // Ambil Kota
             // var BASE_URL = 'http://localhost:8000';
-            $('#cbprovince').on('change', function () {
+            $('#cbprovince').on('click change', function () {
                 // alert('ahay');
                 let provinceId = $(this).val();
                 console.log(provinceId);
@@ -31,10 +31,14 @@ var DataWilayah = function () {
                         dataType: "json",
                         success: function (data) {
                             $('#cbcity').empty();
+                            $('select[name="cbcity"]').append(
+                                '<option value="#" disabled selected>Pilih Kota</option>');
                             $.each(data, function(id, nama) {
                                 $('select[name="cbcity"]').append(
-                                    '<option value="' + id + '">' + nama +
+                                    '<option value="' + id + '">' 
+                                    + nama +
                                     '</option>');
+                            console.log(nama);
                             });
                         },
                     });
@@ -43,11 +47,13 @@ var DataWilayah = function () {
                     // console.log(value);
                 } else {
                     $('#cbcity').empty();
+                    $('select[name="cbcity"]').append(
+                        '<option value="#" disabled selected>Pilih Kota</option>');
                 }
             });
 
             // Ambil Kecamatan
-            $('#cbcity').on('change', function () {
+            $('#cbcity').on('click change', function () {
                 // alert('ahay');
                 let cityId = $(this).val();
                 console.log(cityId);
@@ -58,9 +64,12 @@ var DataWilayah = function () {
                         dataType: "json",
                         success: function (data) {
                             $('#cbdistrict').empty();
+                            $('select[name="cbdistrict"]').append(
+                                '<option value="#" disabled selected>Pilih Kecamatan</option>');
                             $.each(data, function(id, nama) {
                                 $('select[name="cbdistrict"]').append(
-                                    '<option value="' + id + '">' + nama +
+                                    '<option value="' + id + '" >' 
+                                    + nama +
                                     '</option>');
                             });
                         },
@@ -70,11 +79,13 @@ var DataWilayah = function () {
                     // console.log(value);
                 } else {
                     $('#cbdistrict').empty();
+                    $('select[name="cbdistrict"]').append(
+                        '<option value="#" disabled selected>Pilih Kecamatan</option>');
                 }
             });
 
             // Ambil Kelurahan
-            $('#cbdistrict').on('change', function () {
+            $('#cbdistrict').on('click change', function () {
                 // alert('ahay');
                 let districtId = $(this).val();
                 console.log(districtId);
@@ -85,9 +96,12 @@ var DataWilayah = function () {
                         dataType: "json",
                         success: function (data) {
                             $('#cbward').empty();
+                            $('select[name="cbward"]').append(
+                                '<option value="#" disabled selected>Pilih Kelurahan</option>');
                             $.each(data, function(id, nama) {
                                 $('select[name="cbward"]').append(
-                                    '<option value="' + id + '">' + nama +
+                                    '<option value="' + id + '">' 
+                                    + nama +
                                     '</option>');
                             });
                         },
@@ -97,6 +111,8 @@ var DataWilayah = function () {
                     // console.log(value);
                 } else {
                     $('#cbward').empty();
+                    $('select[name="cbward"]').append(
+                        '<option value="#" disabled selected>Pilih Kelurahan</option>');
                 }
             });
         }

@@ -39,10 +39,10 @@
                                 <p class="text-muted font-13 m-b-30">
                                     Data user digunakan untuk pengguna melakukan proses login pada aplikasi.
                                 </p>
-                                <button class="btn btn-primary" class="btn btn-primary" data-toggle="modal"
+                                <!-- <button class="btn btn-primary" class="btn btn-primary" data-toggle="modal"
                                     data-target=".modaladduser" disabled>
                                     Tambah Data Ajax (Under Develop)
-                                </button>
+                                </button> -->
                                 <br>
                                 @if(\Session::has('info'))
                                 <div class="alert alert-info alert-dismissible" role="alert" data-timeout="2000">
@@ -93,21 +93,54 @@
                                                     @if(auth()->user()->role == "admin")
                                                     <form
                                                         action="{{route('user.destroy', [Crypt::encrypt($data_user->id)])}}"
-                                                        method="post">
+                                                        method="post" id="formdel{{Crypt::encrypt($data_user->id)}}">
                                                         @csrf
                                                         @method('delete')
-                                                        <button type="submit" class="dropdown-item">
+                                                        <button type="submit"
+                                                            id="btndel{{Crypt::encrypt($data_user->id)}}"
+                                                            class="dropdown-item" onclick="delFunction()">
                                                             <i class="fa fa-trash-o"></i>&nbsp;
                                                             Delete Data
                                                         </button>
                                                     </form>
+                                                    <script>
+                                                        function delFunction() {
+                                                            event.preventDefault(); // prevent form submit
+                                                            var form = event.target.form; // storing the form
+                                                            console.log(form);
+                                                            swal({
+                                                                    title: "Are you sure?",
+                                                                    text: "You cannt recover data permanently",
+                                                                    type: "warning",
+                                                                    showCancelButton: true,
+                                                                    confirmButtonColor: "#DD6B55",
+                                                                    confirmButtonText: "Yes, delete it!",
+                                                                    cancelButtonText: "No, cancel it!",
+                                                                    closeOnConfirm: false,
+                                                                    closeOnCancel: false
+                                                                },
+                                                                function(isConfirm) {
+                                                                    if (isConfirm) {
+                                                                        form
+                                                                            .submit(); // submitting the form when user press yes
+                                                                        swal("Success",
+                                                                            "Your data already deleted :)",
+                                                                            "success");
+                                                                    } else {
+                                                                        swal("Cancelled",
+                                                                            "Your data is safe :)",
+                                                                            "error");
+                                                                    }
+                                                                });
+                                                        }
+                                                    </script>
                                                     @endif
                                                 </div>
                                             </td>
                                         </tr>
                                         @empty
                                         <tr>
-                                            <td colspan="3">Data User Kosong</td>
+                                            <td colspan="5">Data User Kosong</td>
                                         </tr>
                                         @endforelse
                                     </tbody>

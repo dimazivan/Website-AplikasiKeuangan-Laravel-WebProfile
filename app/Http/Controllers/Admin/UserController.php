@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserStoreRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
@@ -101,47 +102,21 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserStoreRequest $request)
     {
         $waktu = Carbon::now();
 
-        $validator = Validator::make(request()->all(), [
-            'first_name' => 'required|max:255',
-            'last_name' => 'required|max:255',
-            'username' => 'required|min:5|max:255',
-            'email' => 'required|email',
-            'password' => 'required|min:5|max:40',
-            'cbrole' => 'required',
-            'cbcountry' => 'required',
-            'cbprovince' => 'required',
-            'cbcity' => 'required',
-            'cbdistrict' => 'required',
-            'cbward' => 'required',
-            // 'phone' => 'required|numeric|sometimes|min:10|max:13',
-            'phone' => 'required|numeric|digits_between:10,13',
-            // 'phone' => 'required',
-            'address' => 'required|max:255',
-            'desc' => 'max:255',
-            'file_foto' => 'mimes:jpeg,jpg,png,gif|max:10000',
-        // ], [
-        //     'phone.required' => 'Silahkan Masukan Nomor Telepon antara 10 sampai 13 digit angka',
-        // ]);
-        ], )->setAttributeNames(
-            [
-                'first_name' => '"Nama Depan"',
-                'last_name' => '"Nama Belakang"',
-                'phone' => '"Nomor Telepon"',
-            ],
-        );
+        $validator = $request->validated();
 
         // dd(
         //     $request->all(),
-        //     $validator->fails(),
+        //     $validator,
+        //     !$validator,
         //     $waktu,
         // );
 
-        if ($validator->fails()) {
-            // Log
+        if (!$validator) {
+            // Log user error validation
             Log_users::create([
                 'users_id' => auth()->user()->id,
                 'role' => auth()->user()->role,
@@ -155,8 +130,7 @@ class UserController extends Controller
         } else {
             // Cek Data
             $cek = User::cekUsername($request->username)
-            // $cek = User::where('username', $request->username)
-            ->orWhere('email', $request->email)
+            ->cekEmail($request->email)
             ->get();
 
             if (empty($cek[0])) {
@@ -164,62 +138,64 @@ class UserController extends Controller
                     if (filesize($request->file_foto) > 1000 * 10000) {
                         return back()->with("info", "File foto anda melebihi batas maksimal ukuran upload");
                     }
-                } else {
-                    // Query insert
-                    User::create([
-                        'first_name' => $request->first_name,
-                        'last_name' => $request->last_name,
-                        'username' => $request->username,
-                        'email' => $request->email,
-                        'password' => $request->password,
-                        'role' => $request->cbrole,
-                        'country' => $request->cbcountry,
-                        'province' => $request->cbprovince,
-                        'city' => $request->cbcity,
-                        'district' => $request->cbdistrict,
-                        'ward' => $request->cbward,
-                        'phone' => $request->phone,
-                        'address' => $request->address,
-                        'detail_address' => $request->desc,
-                        'password' => bcrypt($request->password),
-                        // 'file_foto' => $nama_file,
-                        'created_at' => $waktu,
-                        'updated_at' => $waktu,
-                    ]);
 
-                    // Log
-                    Log_users::create([
-                        'users_id' => auth()->user()->id,
-                        'role' => auth()->user()->role,
-                        'activity' => 'insert Data',
-                        'description' => 'data saved',
-                        'status' => 'success',
-                        'mac_address' => '',
-                    ]);
+                    if ($request->file_foto->getClientOriginalExtension() == "jpg" ||
+                    $request->file_foto->getClientOriginalExtension() == "jpeg" ||
+                    $request->file_foto->getClientOriginalExtension() == "png" ||
+                    $request->file_foto->getClientOriginalExtension() == "gif") {
+                        if ($request->hasFile('file_foto')) {
+                            $file = $request->file('file_foto');
+                            $nama_file = time() . "_" . $file->getClientOriginalName();
+                            // $tujuan_upload = 'data_file/user/foto';
+                            // $file->move($tujuan_upload, $nama_file);
+                            $file->storeAs('/data/image/user/', $nama_file);
 
-                    return redirect()->route("user.index")->with("info", "Data Users has been saved");
-                }
+                        // $img = Image::make($file->getRealPath());
+                        // $img->stream();
 
-                if ($request->file_foto->getClientOriginalExtension() == "jpg" ||
-                $request->file_foto->getClientOriginalExtension() == "jpeg" ||
-                $request->file_foto->getClientOriginalExtension() == "png" ||
-                $request->file_foto->getClientOriginalExtension() == "gif") {
-                    if ($request->hasFile('file_foto')) {
-                        $file = $request->file('file_foto');
-                        $nama_file = time() . "_" . $file->getClientOriginalName();
-                        // $tujuan_upload = 'data_file/user/foto';
-                        // $file->move($tujuan_upload, $nama_file);
-                        $file->storeAs('/data/image/user/', $nama_file);
+                        // Storage::disk('local')->put('/data/image/user/' . Carbon::now() .'/', $nama_file);
+                        } else {
+                            $nama_file = "";
+                        }
 
-                    // $img = Image::make($file->getRealPath());
-                    // $img->stream();
+                        // Query insert dengan foto
+                        User::create([
+                            'first_name' => $request->first_name,
+                            'last_name' => $request->last_name,
+                            'username' => $request->username,
+                            'email' => $request->email,
+                            'password' => $request->password,
+                            'role' => $request->cbrole,
+                            'country' => $request->cbcountry,
+                            'province' => $request->cbprovince,
+                            'city' => $request->cbcity,
+                            'district' => $request->cbdistrict,
+                            'ward' => $request->cbward,
+                            'phone' => $request->phone,
+                            'address' => $request->address,
+                            'detail_address' => $request->desc,
+                            'password' => bcrypt($request->password),
+                            'file_foto' => $nama_file,
+                            'created_at' => $waktu,
+                            'updated_at' => $waktu,
+                        ]);
 
-                    // Storage::disk('local')->put('/data/image/user/' . Carbon::now() .'/', $nama_file);
+                        // Log
+                        Log_users::create([
+                            'users_id' => auth()->user()->id,
+                            'role' => auth()->user()->role,
+                            'activity' => 'insert Data',
+                            'description' => 'data saved',
+                            'status' => 'success',
+                            'mac_address' => '',
+                        ]);
+
+                        return redirect()->route("user.index")->with("info", "Data Users has been saved");
                     } else {
-                        $nama_file = "";
+                        return back()->with("info", "Pastikan format file foto anda bertipe gambar");
                     }
-
-                    // Query insert
+                } else {
+                    // Query insert tanpa foto
                     User::create([
                         'first_name' => $request->first_name,
                         'last_name' => $request->last_name,
@@ -236,7 +212,6 @@ class UserController extends Controller
                         'address' => $request->address,
                         'detail_address' => $request->desc,
                         'password' => bcrypt($request->password),
-                        'file_foto' => $nama_file,
                         'created_at' => $waktu,
                         'updated_at' => $waktu,
                     ]);
@@ -252,11 +227,9 @@ class UserController extends Controller
                     ]);
 
                     return redirect()->route("user.index")->with("info", "Data Users has been saved");
-                } else {
-                    return back()->with("info", "Pastikan format file foto anda bertipe gambar");
                 }
             } else {
-                // Log
+                // Log user duplicated
                 Log_users::create([
                     'users_id' => auth()->user()->id,
                     'role' => auth()->user()->role,
@@ -327,6 +300,8 @@ class UserController extends Controller
     public function edit($id)
     {
         $title = "Halaman Data User";
+        $province = Province::orderBy('name', 'asc')
+        ->pluck('name', 'id');
 
         try {
             $decrypted = decrypt($id);
@@ -357,10 +332,14 @@ class UserController extends Controller
                 return view('error.404');
             }
 
-            return view('admin.pages.user.edit_user', [
+            return view(
+                'admin.pages.user.edit_user',
+                [
                 'title' => $title,
                 'data' => $data,
-            ]);
+            ],
+                compact('province')
+            );
         }
     }
 
@@ -371,7 +350,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserStoreRequest $request, $id)
     {
         try {
             $decrypted = decrypt($request->id_user);
@@ -382,22 +361,9 @@ class UserController extends Controller
             ]);
         }
 
-        $validator = Validator::make(request()->all(), [
-            'first_name' => 'required|max:255',
-            'last_name' => 'required|max:255',
-            'password' => 'required|min:5|max:40',
-            'cbrole' => 'required',
-            'phone' => 'required|numeric|digits_between:10,13',
-            'address' => 'required|max:255',
-            'desc' => 'max:255',
-            'file_foto' => 'mimes:jpeg,jpg,png,gif|max:10000',
-        ], )->setAttributeNames(
-            [
-                'first_name' => '"Nama Depan"',
-                'last_name' => '"Nama Belakang"',
-                'phone' => '"Nomor Telepon"',
-            ],
-        );
+        $newid = decrypt($id);
+
+        $validator = $request->validated();
 
         // dd(
         //     $request->all(),
@@ -407,7 +373,7 @@ class UserController extends Controller
         //     decrypt($request->id_user),
         // );
 
-        if ($validator->fails()) {
+        if (!$validator) {
             // Log
             Log_users::create([
                 'users_id' => auth()->user()->id,
@@ -439,15 +405,30 @@ class UserController extends Controller
             $request->file_foto->getClientOriginalExtension() == "png" ||
             $request->file_foto->getClientOriginalExtension() == "gif") {
                 if ($request->hasFile('file_foto')) {
+                    $oldfile = User::CekFileFoto($newid)->get();
+                    // dd(
+                    //     $oldfile[0]->file_foto,
+                    //     $oldfile[0],
+                    //     empty($oldfile[0]->file_foto),
+                    //     '/storage/data/image/user/'.$oldfile[0]->file_foto,
+                    //     Storage::exists('data/image/user/1680859411_DSC_1675 4x6.jpg'),
+                    //     Storage::exists('data/image/user/'.$oldfile[0]->file_foto),
+                    //     !Storage::exists('data/image/user/'.$oldfile[0]->file_foto),
+                    // );
+
+                    if(!empty($oldfile[0]->file_foto)) {
+                        if(Storage::exists('data/image/user/'.$oldfile[0]->file_foto)) {
+                            Storage::delete('data/image/user/'.$oldfile[0]->file_foto);
+                        }
+                    }
+
                     $file = $request->file('file_foto');
                     $nama_file = time() . "_" . $file->getClientOriginalName();
-                    $tujuan_upload = 'data_file/user/foto';
-                    $file->move($tujuan_upload, $nama_file);
+                    $file->storeAs('/data/image/user/', $nama_file);
                 } else {
                     $nama_file = "";
                 }
 
-                $newid = decrypt($id);
                 // Update
                 DB::table('users')->where('id', $newid)->update([
                     'first_name' => $request->first_name,
@@ -547,6 +528,14 @@ class UserController extends Controller
             ->where('id', '=', $newid);
             $delete->delete();
 
+            $oldfile = User::CekFileFoto($newid)->get();
+
+            if(!empty($oldfile[0]->file_foto)) {
+                if(Storage::exists('data/image/user/'.$oldfile[0]->file_foto)) {
+                    Storage::delete('data/image/user/'.$oldfile[0]->file_foto);
+                }
+            }
+
             Log_users::create([
                 'users_id' => auth()->user()->id,
                 'role' => auth()->user()->role,
@@ -556,6 +545,8 @@ class UserController extends Controller
                 'mac_address' => '',
             ]);
         }
+
+        sleep(3);
 
         return redirect()->route("user.index")->with("info", "Data Users has been deleted");
     }
