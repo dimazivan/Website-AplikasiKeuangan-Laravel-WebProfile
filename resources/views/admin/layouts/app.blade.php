@@ -117,12 +117,11 @@ $bg = asset('asset/icon/logogif.gif');
 
 <body class="nav-md footer_fixed">
     @include('admin.components.preload.preload')
-    @hasSection('content_right_menu')
+    <!-- @hasSection('content_right_menu')
     @yield('content_right_menu')
     @else
     @include('admin.components.right_menu.right_menu')
-    @endif
-    <!-- <div id="preloader" class="preloader"></div> -->
+    @endif -->
     <div class="container body">
         <div class="main_container" id="maincontainer">
             @include('sweetalert::alert')
@@ -207,7 +206,7 @@ $bg = asset('asset/icon/logogif.gif');
     @hasSection('script')
     @yield('script')
     @endif
-    @hasSection('script_right_menu')
+    <!-- @hasSection('script_right_menu')
     @yield('script_right_menu')
     @else
     <script>
@@ -299,7 +298,7 @@ $bg = asset('asset/icon/logogif.gif');
         //     });
         // });
     </script>
-    @endif
+    @endif -->
     <script>
         var loader = document.getElementById('preloader');
 

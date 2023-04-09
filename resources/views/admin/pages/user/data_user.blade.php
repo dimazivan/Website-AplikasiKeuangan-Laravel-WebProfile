@@ -70,7 +70,9 @@
                                         @forelse($data as $data_user)
                                         <tr>
                                             <td class="a-center">
-                                                <input type="checkbox" class="flat" name="table_records">
+                                                <input type="checkbox" id="cbdbuser{{ Crypt::encrypt($data_user->id) }}"
+                                                    class="flat" name="table_records"
+                                                    value="{{ Crypt::encrypt($data_user->id) }}">
                                             </td>
                                             <td>
                                                 {{ $data_user->first_name }}&nbsp;
@@ -169,5 +171,16 @@
         }, 5000);
 
     });
+</script>
+<script>
+    // $(function() {
+    //     var val = [];
+    //     $(':checkbox').change(function() {
+    //         $(':checkbox:checked').each(function(i) {
+    //             val[i] = $(this).val();
+    //         });
+    //     });
+    //     console.log(val);
+    // });
 </script>
 @endsection
