@@ -39,10 +39,18 @@
                                 <p class="text-muted font-13 m-b-30">
                                     Data user digunakan untuk pengguna melakukan proses login pada aplikasi.
                                 </p>
-                                <!-- <button class="btn btn-primary" class="btn btn-primary" data-toggle="modal"
+                                <!-- <button class="btn btn-primary" data-toggle="modal"
                                     data-target=".modaladduser" disabled>
                                     Tambah Data Ajax (Under Develop)
                                 </button> -->
+                                <a class="btn btn-app">
+                                    <i class="fa fa-search"></i>
+                                    Cek Data
+                                </a>
+                                <a class="btn btn-app">
+                                    <i class="fa fa-trash"></i>
+                                    Delete Data
+                                </a>
                                 <br>
                                 @if(\Session::has('info'))
                                 <div class="alert alert-info alert-dismissible" role="alert" data-timeout="2000">
@@ -173,14 +181,15 @@
     });
 </script>
 <script>
-    // $(function() {
-    //     var val = [];
-    //     $(':checkbox').change(function() {
-    //         $(':checkbox:checked').each(function(i) {
-    //             val[i] = $(this).val();
-    //         });
-    //     });
-    //     console.log(val);
-    // });
+    $(document).ready(function() {
+        $("button").click(function() {
+            var arr = [];
+            $.each($("input[name='table_records']:checked"), function() {
+                arr.push($(this).val());
+            });
+            //   alert("Your selected languages are: " + arr.join(", "));
+            console.log(arr);
+        });
+    });
 </script>
 @endsection
