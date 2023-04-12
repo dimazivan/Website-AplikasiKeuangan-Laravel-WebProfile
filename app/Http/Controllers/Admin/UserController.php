@@ -71,6 +71,26 @@ class UserController extends Controller
         return json_encode($cekemail);
     }
 
+    public function deactiveUser(Request $request)
+    {
+        if (!empty($request->cbckuserid)) {
+            try {
+                $decrypted = decrypt($request->cbckuserid);
+                // Log
+            } catch (DecryptException $e) {
+                return view('error.e_throw', [
+                    'e' => ["Invalid Data"],
+                ]);
+            }
+
+            dd(
+                $request->all(),
+                $decrypted,
+            );
+        }
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -14,7 +14,7 @@ return new class () extends Migration {
     {
         Schema::create('log_auths', function (Blueprint $table) {
             $table->id();
-            $table->string('ip_address');
+            $table->string('ip_address', 45);
             $table->string('activity');
             $table->string('description');
             $table->string('status');

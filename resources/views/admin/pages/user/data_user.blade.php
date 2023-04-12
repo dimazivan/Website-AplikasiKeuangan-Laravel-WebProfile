@@ -62,7 +62,7 @@
                                 @endif
                                 <table id="datatable-responsive"
                                     class="table table-striped table-bordered dt-responsive nowrap bulk_action"
-                                    cellspacing="0" width="100%">
+                                    cellspacing="0" width="100%" data-order='[[ 2, "asc" ]]'>
                                     <thead>
                                         <tr>
                                             <th width="20px">
@@ -71,6 +71,7 @@
                                             <th>Nama User</th>
                                             <th>Username</th>
                                             <th>Role</th>
+                                            <th width="20px">Status (Aktif)</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -78,9 +79,8 @@
                                         @forelse($data as $data_user)
                                         <tr>
                                             <td class="a-center">
-                                                <input type="checkbox" id="cbdbuser{{ Crypt::encrypt($data_user->id) }}"
-                                                    class="flat" name="table_records"
-                                                    value="{{ Crypt::encrypt($data_user->id) }}">
+                                                <input type="checkbox" id="cbckuser" class="flat" name="table_records"
+                                                    value="[{{ Crypt::encrypt($data_user->id) }}]"></input>
                                             </td>
                                             <td>
                                                 {{ $data_user->first_name }}&nbsp;
@@ -88,6 +88,71 @@
                                             </td>
                                             <td>{{ substr_replace($data_user->username,'*****',3,3) }}</td>
                                             <td style="text-transform:uppercase;">{{ $data_user->role }}</td>
+                                            <td>
+                                                <form action="{{ route('deactive.user') }}" method="post"
+                                                    id="formcbckuser{{Crypt::encrypt($data_user->id)}}">
+                                                    @csrf
+                                                    @method('post')
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            @if($data_user->status == 1)
+                                                            <input type="checkbox" class="js-switch"
+                                                                id="cbckuser{{ Crypt::encrypt($data_user->id) }}"
+                                                                name="cbckuserid"
+                                                                value="{{ Crypt::encrypt($data_user->id) }}" checked
+                                                                onclick="activeUser();">
+                                                            @elseif($data_user->status == 2)
+                                                            <input type="checkbox" class="js-switch"
+                                                                id="cbckuser{{ Crypt::encrypt($data_user->id) }}"
+                                                                name="cbckuserid"
+                                                                value="{{ Crypt::encrypt($data_user->id) }}"
+                                                                onclick="deactiveUser()">
+                                                            @else
+                                                            <input type="checkbox" class="js-switch"
+                                                                id="cbckuser{{ Crypt::encrypt($data_user->id) }}"
+                                                                name="cbckuserid"
+                                                                value="{{ Crypt::encrypt($data_user->id) }}"
+                                                                onclick="deactiveUser()">
+                                                            @endif
+                                                        </label>
+                                                    </div>
+                                                </form>
+                                                <script>
+                                                    function activeUser() {
+                                                        event.preventDefault(); // prevent form submit
+                                                        var formcbckuser = event.target.form; // storing the form
+                                                        console.log(formcbckuser);
+                                                        swal({
+                                                                title: "Are you sure to deactive this user?",
+                                                                text: "You can turn it back active later",
+                                                                type: "warning",
+                                                                showCancelButton: true,
+                                                                confirmButtonColor: "#DD6B55",
+                                                                confirmButtonText: "Yes, deactive it!",
+                                                                cancelButtonText: "No, cancel it!",
+                                                                closeOnConfirm: false,
+                                                                closeOnCancel: false
+                                                            },
+                                                            function(isConfirm) {
+                                                                if (isConfirm) {
+                                                                    formcbckuser
+                                                                        .submit(); // submitting the form when user press yes
+                                                                    swal("Success",
+                                                                        "Your data already updated :)",
+                                                                        "success");
+                                                                } else {
+                                                                    swal("Cancelled",
+                                                                        "You cancelled :)",
+                                                                        "error");
+                                                                }
+                                                            });
+                                                    }
+
+                                                    function deactiveUser() {
+                                                        // 
+                                                    }
+                                                </script>
+                                            </td>
                                             <td style="width:5%;">
                                                 <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown"
                                                     aria-haspopup="true" role="button" aria-expanded="false">
@@ -181,15 +246,8 @@
     });
 </script>
 <script>
-    $(document).ready(function() {
-        $("button").click(function() {
-            var arr = [];
-            $.each($("input[name='table_records']:checked"), function() {
-                arr.push($(this).val());
-            });
-            //   alert("Your selected languages are: " + arr.join(", "));
-            console.log(arr);
-        });
+    $('.flat').on('ifToggled', function() {
+        console.log('TEST');
     });
 </script>
 @endsection

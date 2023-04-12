@@ -74,6 +74,8 @@ $bg = asset('asset/icon/logogif.gif');
         href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
     <!-- jQuery -->
     <script src="{{ asset('backend/vendors/jquery/dist/jquery.min.js') }}"></script>
+    <!-- Bootstrap -->
+    <script src="{{ asset('backend/vendors/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
     @hasSection('style')
@@ -144,12 +146,10 @@ $bg = asset('asset/icon/logogif.gif');
         </div>
     </div>
 
-    <!-- Bootstrap -->
-    <script src="{{ asset('backend/vendors/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
     <!-- FastClick -->
     <script src="{{ asset('backend/vendors/fastclick/lib/fastclick.js') }}"></script>
     <!-- NProgress -->
-    <script src="{{ asset('backend/vendors/nprogress/nprogress.js') }}"></script>
+    <!-- <script src="{{ asset('backend/vendors/nprogress/nprogress.js') }}"></script> -->
     <!-- Chart.js -->
     <script src="{{ asset('backend/vendors/Chart.js/dist/Chart.min.js') }}"></script>
     <!-- gauge.js -->
@@ -191,7 +191,7 @@ $bg = asset('asset/icon/logogif.gif');
     <!-- jQuery autocomplete -->
     <script src="{{ asset('backend/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js') }}"></script>
     <!-- starrr -->
-    <script src="{{ asset('backend/vendors/starrr/dist/starrr.js') }}"></script>
+    <!-- <script src="{{ asset('backend/vendors/starrr/dist/starrr.js') }}"></script> -->
     <!-- PNotify -->
     <script src="{{ asset('backend/vendors/pnotify/dist/pnotify.js') }}"></script>
     <script src="{{ asset('backend/vendors/pnotify/dist/pnotify.buttons.js') }}"></script>

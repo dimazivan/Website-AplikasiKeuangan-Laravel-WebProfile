@@ -62,6 +62,7 @@ Route::group([
     // Cek Data
     Route::get('/data/cb/username/{username}', [UserController::class,'cekUsername'])->name('cek.username');
     Route::get('/data/cb/email/{email}', [UserController::class,'cekEmail'])->name('cek.email');
+    Route::post('/data/cb/user/deactive', [UserController::class,'deactiveUser'])->name('deactive.user');
 
     // Route Product
     Route::resource('product', 'ProductController');

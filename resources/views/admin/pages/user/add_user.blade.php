@@ -240,6 +240,13 @@
                                     diperbolehkan: .JPG .JPEG .PNG</small>
                             </div>
                         </div>
+                        <!-- <div class="field item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">Syarat dan Ketentuan<span
+                                    class="required">*</span></label>
+                            <div class="col-md-6 col-sm-6" style="margin-top:7px;">
+                                <input type="checkbox" class="flat" name="status" onclick="alert(1);">
+                            </div>
+                        </div> -->
                         <div class="ln_solid">
                             <div class="form-group">
                                 <div class="col-md-6 offset-md-3">
