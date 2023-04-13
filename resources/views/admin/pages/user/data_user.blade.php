@@ -2,6 +2,13 @@
 @section('title')
 {{ isset($title) ? $title : "Halaman Data User"; }}
 @endsection
+@section('style')
+<style>
+    tr {
+        cursor: pointer;
+    }
+</style>
+@endsection
 @section('content')
 <div class="">
     <div class="page-title">
@@ -61,11 +68,14 @@
                                 </div>
                                 @endif
                                 <table id="datatable-responsive"
-                                    class="table table-striped table-bordered dt-responsive nowrap bulk_action"
-                                    cellspacing="0" width="100%" data-order='[[ 2, "asc" ]]'>
+                                    class="table table-hover table-striped table-bordered dt-responsive nowrap bulk_action"
+                                    cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
-                                            <th width="20px">
+                                            <th hidden>
+                                                Data
+                                            </th>
+                                            <th width="20px;">
                                                 <input type="checkbox" id="check-all" class="flat">
                                             </th>
                                             <th>Nama User</th>
@@ -78,9 +88,12 @@
                                     <tbody id="tabel_user">
                                         @forelse($data as $data_user)
                                         <tr>
-                                            <td class="a-center">
-                                                <input type="checkbox" id="cbckuser" class="flat" name="table_records"
-                                                    value="[{{ Crypt::encrypt($data_user->id) }}]"></input>
+                                            <td hidden>
+                                                {{ Crypt::encrypt($data_user->id) }}
+                                            </td>
+                                            <td class="a-center ">
+                                                <input type="checkbox" class="flat" name="table_records" id="cbnouser"
+                                                    value="{{ Crypt::encrypt($data_user->id) }}">
                                             </td>
                                             <td>
                                                 {{ $data_user->first_name }}&nbsp;
@@ -235,6 +248,23 @@
 @endsection
 <!-- additional script -->
 @section('script')
+<script>
+    $('#datatable-responsive').dataTable({
+        "order": [2, "asc"],
+        "columnDefs": [{
+            "targets": [0, 3, 6],
+            "orderable": false,
+        }]
+    });
+</script>
+<script>
+    var table = $('#datatable-responsive').DataTable();
+
+    $('#datatable-responsive tbody').on('click', 'tr', function() {
+        console.log(table.row(this).data());
+        console.log(table[0].row(this).data());
+    });
+</script>
 <script type="text/javascript">
     $(document).ready(function() {
         window.setTimeout(function() {
@@ -245,9 +275,12 @@
 
     });
 </script>
-<script>
-    $('.flat').on('ifToggled', function() {
-        console.log('TEST');
+<!-- <script>
+    $(document).ready(function() {
+        $('input:checkbox[name=table_records]').on('ifToggled', function(event) {
+            // console.log('test');
+            $('input:checkbox[name=table_records]').val();
+        });
     });
-</script>
+</script> -->
 @endsection
