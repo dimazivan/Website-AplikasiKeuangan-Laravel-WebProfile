@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Log_users;
+use App\Models\Roles;
 use App\Models\Log_auth;
 use Carbon\Carbon;
 use RealRashid\SweetAlert\Facades\Alert;

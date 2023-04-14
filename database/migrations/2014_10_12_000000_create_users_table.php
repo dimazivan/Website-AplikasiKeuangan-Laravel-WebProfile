@@ -20,6 +20,8 @@ return new class () extends Migration {
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->unsignedBigInteger('roles_id')->nullable();
+            $table->foreign('roles_id')->references('id')->on('roles')->onDelete('cascade');
             $table->string('role');
             $table->integer('status');
             $table->string('phone');

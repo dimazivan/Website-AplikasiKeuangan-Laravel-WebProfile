@@ -27,6 +27,7 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
+        'roles_id',
         'role',
         'status',
         'phone',
@@ -83,6 +84,11 @@ class User extends Authenticatable
     public function scopeCekFileFoto($query, $value)
     {
         return $query->select('file_foto')->where('id', $value);
+    }
+
+    public function roles()
+    {
+        return $this->belongsto('App\Models\Roles');
     }
 
     public function log_users()

@@ -22,6 +22,6 @@ class Log_users extends Model
 
     public function users()
     {
-        return $this->belongsto('App\Models\Users');
+        return $this->belongsto('App\Models\User');
     }
 }
