@@ -102,39 +102,43 @@
                                             <td>{{ substr_replace($data_user->username,'*****',3,3) }}</td>
                                             <td style="text-transform:uppercase;">{{ $data_user->role }}</td>
                                             <td>
-                                                <form action="{{ route('deactive.user') }}" method="post"
-                                                    id="formcbckuser{{Crypt::encrypt($data_user->id)}}">
-                                                    @csrf
-                                                    @method('post')
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            @if($data_user->status == 1)
+                                                <div class="checkbox">
+                                                    <label>
+                                                        @if($data_user->status == 1)
+                                                        <form action="{{ route('deactive.user') }}" method="post"
+                                                            id="formcbckuser{{Crypt::encrypt($data_user->id)}}">
+                                                            @csrf
+                                                            @method('post')
                                                             <input type="checkbox" class="js-switch"
                                                                 id="cbckuser{{ Crypt::encrypt($data_user->id) }}"
                                                                 name="cbckuserid"
                                                                 value="{{ Crypt::encrypt($data_user->id) }}" checked
-                                                                onclick="activeUser();">
-                                                            @elseif($data_user->status == 2)
-                                                            <input type="checkbox" class="js-switch"
-                                                                id="cbckuser{{ Crypt::encrypt($data_user->id) }}"
-                                                                name="cbckuserid"
-                                                                value="{{ Crypt::encrypt($data_user->id) }}"
-                                                                onclick="deactiveUser()">
-                                                            @else
-                                                            <input type="checkbox" class="js-switch"
-                                                                id="cbckuser{{ Crypt::encrypt($data_user->id) }}"
-                                                                name="cbckuserid"
-                                                                value="{{ Crypt::encrypt($data_user->id) }}"
-                                                                onclick="deactiveUser()">
-                                                            @endif
-                                                        </label>
-                                                    </div>
-                                                </form>
+                                                                onclick="deactiveUser(this);">
+                                                        </form>
+                                                        @elseif($data_user->status == 2)
+                                                        <input type="checkbox" class="js-switch"
+                                                            id="cbckuser{{ Crypt::encrypt($data_user->id) }}"
+                                                            name="cbckuserid"
+                                                            value="{{ Crypt::encrypt($data_user->id) }}"
+                                                            onclick="activeUser()">
+                                                        @else
+                                                        <input type="checkbox" class="js-switch"
+                                                            id="cbckuser{{ Crypt::encrypt($data_user->id) }}"
+                                                            name="cbckuserid"
+                                                            value="{{ Crypt::encrypt($data_user->id) }}"
+                                                            onclick="activeUser()">
+                                                        @endif
+                                                    </label>
+                                                </div>
                                                 <script>
-                                                    function activeUser() {
+                                                    function deactiveUser(ck) {
                                                         event.preventDefault(); // prevent form submit
                                                         var formcbckuser = event.target.form; // storing the form
                                                         console.log(formcbckuser);
+                                                        var $this = $(ck);
+                                                        console.log(ck);
+                                                        console.log($this);
+                                                        console.log(ck.checked);
                                                         swal({
                                                                 title: "Are you sure to deactive this user?",
                                                                 text: "You can turn it back active later",
@@ -148,12 +152,14 @@
                                                             },
                                                             function(isConfirm) {
                                                                 if (isConfirm) {
+                                                                    $this.prop('checked', false);
                                                                     formcbckuser
                                                                         .submit(); // submitting the form when user press yes
                                                                     swal("Success",
                                                                         "Your data already updated :)",
                                                                         "success");
                                                                 } else {
+                                                                    $this.prop('checked', true);
                                                                     swal("Cancelled",
                                                                         "You cancelled :)",
                                                                         "error");
@@ -161,7 +167,7 @@
                                                             });
                                                     }
 
-                                                    function deactiveUser() {
+                                                    function activeUser() {
                                                         // 
                                                     }
                                                 </script>
@@ -228,7 +234,7 @@
                                         </tr>
                                         @empty
                                         <tr>
-                                            <td colspan="5">Data User Kosong</td>
+                                            <td colspan="6">Data User Kosong</td>
                                         </tr>
                                         @endforelse
                                     </tbody>
@@ -261,8 +267,10 @@
     var table = $('#datatable-responsive').DataTable();
 
     $('#datatable-responsive tbody').on('click', 'tr', function() {
+        var datatb = [];
+        datatb = table.row(this).data();
         console.log(table.row(this).data());
-        console.log(table[0].row(this).data());
+        console.log(datatb[0]);
     });
 </script>
 <script type="text/javascript">

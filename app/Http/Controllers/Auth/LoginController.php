@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Log_users;
 use App\Models\Roles;
 use App\Models\Log_auth;
+use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class LoginController extends Controller
@@ -114,38 +116,91 @@ class LoginController extends Controller
 
                 return redirect('/');
             } else {
-                if (Auth::attempt($request->only('username', 'password'))) {
-                    // Log
-                    Log_auth::create([
-                        'ip_address' => $ip_address,
-                        'activity' => 'login',
-                        'description' => 'login success as '.$request->username,
-                        'status' => 'success',
-                        'mac_address' => '',
-                    ]);
+                // $test = Auth::attempt($request->only('username', 'password'));
 
-                    if (auth()->user()->role == 'admin') {
-                        toast('You\'ve Successfully Login!', 'success');
-                        return redirect('/');
-                    } elseif (auth()->user()->role == 'keuangan') {
-                        toast('You\'ve Successfully Login!', 'success');
-                        return redirect('/');
+                // $cek_status = User::where('username', $request->username)
+                // ->where('password', bcrypt($request->password))
+                // ->get();
+
+                // $cek_status2 = Auth::attempt([
+                //     'username' => $request->username,
+                //     'password' => bcrypt($request->password),
+                //     'status' => 1
+                // ]);
+
+                // $cek_status3 = Auth::attempt($request->only('username', 'password'));
+
+                // $getpass = User::where('username', $request->username)
+                // ->get();
+
+                // dd(
+                //     $test,
+                //     $request->all(),
+                //     bcrypt($request->password),
+                //     Hash::check($request->password, bcrypt('dimazivan')),
+                //     Hash::check($request->password, $getpass[0]->password),
+                //     $cek_status,
+                //     $cek_status2,
+                //     $cek_status3,
+                // );
+
+                $cekaktif = User::where('username', $request->username)
+                    ->where('status', 1)
+                    ->get();
+
+                // dd(
+                //     $cekaktif,
+                //     empty($cekaktif[0]),
+                //     !empty($cekaktif[0]),
+                // );
+
+                if(!empty($cekaktif[0])) {
+                    if (Auth::attempt($request->only('username', 'password'))) {
+                        // Log
+                        Log_auth::create([
+                            'ip_address' => $ip_address,
+                            'activity' => 'login',
+                            'description' => 'login success as '.$request->username,
+                            'status' => 'success',
+                            'mac_address' => '',
+                        ]);
+
+                        if (auth()->user()->role == 'admin') {
+                            toast('You\'ve Successfully Login!', 'success');
+                            return redirect('/');
+                        } elseif (auth()->user()->role == 'keuangan') {
+                            toast('You\'ve Successfully Login!', 'success');
+                            return redirect('/');
+                        } else {
+                            return redirect('/login');
+                        }
                     } else {
+                        // Log
+                        Log_auth::create([
+                            'ip_address' => $ip_address,
+                            'activity' => 'login',
+                            'description' => 'invalid data login',
+                            'status' => 'failed',
+                            'mac_address' => '',
+                        ]);
+
+                        toast('Username atau Password Anda Salah', 'warning');
                         return redirect('/login');
                     }
                 } else {
-                    // Log
+                    // Log tidak aktif
                     Log_auth::create([
                         'ip_address' => $ip_address,
                         'activity' => 'login',
-                        'description' => 'invalid data login',
+                        'description' => 'invalid crendential status as '.$request->username,
                         'status' => 'failed',
                         'mac_address' => '',
                     ]);
 
-                    toast('Username atau Password Anda Salah', 'warning');
+                    toast('Status krendential Anda tidak aktif', 'warning');
                     return redirect('/login');
                 }
+
             }
             // return redirect()->route("user.index")->with("info", "Data Users has been saved");
         }
