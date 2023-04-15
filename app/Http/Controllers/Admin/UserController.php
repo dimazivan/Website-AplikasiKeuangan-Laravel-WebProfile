@@ -87,6 +87,8 @@ class UserController extends Controller
                 $request->all(),
                 $decrypted,
             );
+        } else {
+            return view('error.404');
         }
 
     }
