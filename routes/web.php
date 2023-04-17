@@ -98,13 +98,6 @@ Route::group([
 
     // Api Product
     Route::resource('api', 'ApiController');
-    Route::resource('api_product', 'Api_ProductController');
-
-    // Api User
-    Route::resource('api_user', 'Api_UserController');
-
-    // Test Email
-    Route::resource('api_email', 'Api_SendermailController');
 
     // Get Cb Wilayah Indonesia
     Route::resource('api_wilayah', 'Api_WilayahController');

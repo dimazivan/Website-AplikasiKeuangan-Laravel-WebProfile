@@ -247,6 +247,7 @@
 <!-- additional components -->
 @section('components')
 @include('admin.components.modal.modal_add_user')
+@include('admin.components.modal.modal_datatable')
 @endsection
 <!-- additional script -->
 @section('script')
@@ -261,12 +262,14 @@
 </script>
 <script>
     var table = $('#datatable-responsive').DataTable();
-
     $('#datatable-responsive tbody').on('click', 'tr', function() {
         var datatb = [];
         datatb = table.row(this).data();
         // console.log(table.row(this).data());
         // console.log(datatb[0]);
+
+        // Modal
+        $('#modaldatatable').modal('show');
     });
 </script>
 <script type="text/javascript">
