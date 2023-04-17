@@ -33,7 +33,7 @@
                 </div>
                 <div class="x_content">
                     <form class="" action="{{ route('user.store') }}" method="post" validate
-                        enctype="multipart/form-data">
+                        enctype="multipart/form-data" autocomplete="off">
                         @csrf
                         <p>Masukkan data user dengan benar digunakan sebagai login sistem</p>
                         <span class="section">Personal Info</span>

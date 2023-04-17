@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Resources\PostResource;
 use Illuminate\Support\Facades\DB;
+use App\Http\Resources\PostResource;
 use App\Models\User;
 use App\Models\Log_users;
 use Carbon\Carbon;
@@ -107,12 +107,12 @@ class Api_UserController extends Controller
             // $request->file_foto->getClientOriginalExtension() == "png" ||
             // $request->file_foto->getClientOriginalExtension() == "gif") {
             // if ($request->hasFile('file_foto')) {
-                //     $file = $request->file('file_foto');
-                //     $nama_file = time() . "_" . $file->getClientOriginalName();
-                //     $tujuan_upload = 'data_file/user/foto';
-                //     $file->move($tujuan_upload, $nama_file);
+            //     $file = $request->file('file_foto');
+            //     $nama_file = time() . "_" . $file->getClientOriginalName();
+            //     $tujuan_upload = 'data_file/user/foto';
+            //     $file->move($tujuan_upload, $nama_file);
             // } else {
-                //     $nama_file = "";
+            //     $nama_file = "";
             // }
 
             // Query insert
@@ -150,8 +150,8 @@ class Api_UserController extends Controller
                 'data'    => $post
             ]);
         // } else {
-            //     // return back()->with("info", "Pastikan format file foto anda bertipe gambar");
-            //     return response()->json($validator->errors(), 422);
+        //     // return back()->with("info", "Pastikan format file foto anda bertipe gambar");
+        //     return response()->json($validator->errors(), 422);
         // }
         } else {
             // Log

@@ -86,7 +86,7 @@
                                         </tr>
                                     </thead>
                                     <tbody id="tabel_user">
-                                        @forelse($data as $data_user)
+                                        @forelse($data_user as $data_user)
                                         <tr>
                                             <td hidden>
                                                 {{ Crypt::encrypt($data_user->id) }}
@@ -113,7 +113,7 @@
                                                                 id="cbckuser{{ Crypt::encrypt($data_user->id) }}"
                                                                 name="cbckuserid"
                                                                 value="{{ Crypt::encrypt($data_user->id) }}" checked
-                                                                onclick="deactiveUser(this);">
+                                                                onclick="deactiveUser();">
                                                         </form>
                                                         @elseif($data_user->status == 2)
                                                         <input type="checkbox" class="js-switch"
@@ -131,14 +131,11 @@
                                                     </label>
                                                 </div>
                                                 <script>
-                                                    function deactiveUser(ck) {
-                                                        event.preventDefault(); // prevent form submit
-                                                        var formcbckuser = event.target.form; // storing the form
-                                                        console.log(formcbckuser);
-                                                        var $this = $(ck);
-                                                        console.log(ck);
-                                                        console.log($this);
-                                                        console.log(ck.checked);
+                                                    function deactiveUser() {
+                                                        var formcbckuser = event.target.form;
+                                                        // event.preventDefault(); // prevent form submit
+                                                        // var formcbckuser = event.target.form; // storing the form
+                                                        // console.log(formcbckuser);
                                                         swal({
                                                                 title: "Are you sure to deactive this user?",
                                                                 text: "You can turn it back active later",
@@ -152,14 +149,13 @@
                                                             },
                                                             function(isConfirm) {
                                                                 if (isConfirm) {
-                                                                    $this.prop('checked', false);
-                                                                    formcbckuser
-                                                                        .submit(); // submitting the form when user press yes
+                                                                    console.log(formcbckuser);
+                                                                    formcbckuser.submit();
                                                                     swal("Success",
                                                                         "Your data already updated :)",
                                                                         "success");
                                                                 } else {
-                                                                    $this.prop('checked', true);
+
                                                                     swal("Cancelled",
                                                                         "You cancelled :)",
                                                                         "error");
@@ -269,8 +265,8 @@
     $('#datatable-responsive tbody').on('click', 'tr', function() {
         var datatb = [];
         datatb = table.row(this).data();
-        console.log(table.row(this).data());
-        console.log(datatb[0]);
+        // console.log(table.row(this).data());
+        // console.log(datatb[0]);
     });
 </script>
 <script type="text/javascript">

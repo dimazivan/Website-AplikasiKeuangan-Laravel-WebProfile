@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\Mail\MailSender;
-use Illuminate\Support\Facades\Mail;
 
 class Api_SendermailController extends Controller
 {
