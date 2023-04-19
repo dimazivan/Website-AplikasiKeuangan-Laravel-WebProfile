@@ -60,6 +60,7 @@ Route::group([
     // Route User
     Route::resource('user', 'UserController');
     // Cek Data
+    Route::get('/data/cb/id/{id}', [UserController::class,'cekId'])->name('cek.id');
     Route::get('/data/cb/username/{username}', [UserController::class,'cekUsername'])->name('cek.username');
     Route::get('/data/cb/email/{email}', [UserController::class,'cekEmail'])->name('cek.email');
     Route::post('/data/cb/user/deactive', [UserController::class,'deactiveUser'])->name('deactive.user');
@@ -98,12 +99,6 @@ Route::group([
 
     // Api Product
     Route::resource('api', 'ApiController');
-
-    // Get Cb Wilayah Indonesia
-    Route::resource('api_wilayah', 'Api_WilayahController');
-    Route::get('/data/cb/kota/{id}', [Api_WilayahController::class,'ambilkota'])->name('ambil.kota');
-    Route::get('/data/cb/kecamatan/{id}', [Api_WilayahController::class,'ambilkecamatan'])->name('ambil.kecamatan');
-    Route::get('/data/cb/kelurahan/{id}', [Api_WilayahController::class,'ambilkelurahan'])->name('ambil.kelurahan');
 });
 
 // Route::group([

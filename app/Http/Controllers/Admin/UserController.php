@@ -53,6 +53,32 @@ class UserController extends Controller
         ]);
     }
 
+    public function cekId($id)
+    {
+        if(isset($id)) {
+            try {
+                $decrypted = decrypt($id);
+                // Log
+            } catch (DecryptException $e) {
+                return view('error.e_throw', [
+                    'e' => ["Invalid Data"],
+                ]);
+            }
+
+            $newid = Crypt::decrypt($id);
+
+            $cekid = User::where('id', $newid)->get();
+
+            // dd(
+            //     $id,
+            //     $cekid,
+            // );
+
+            return json_encode($cekid);
+        }
+
+    }
+
     public function cekUsername($username)
     {
         $cekusername = User::CekUsername($username)->pluck('username');

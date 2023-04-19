@@ -8,7 +8,9 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>Test</p>
+                <div class="datatablecontent" id="datatablecontent">
+
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

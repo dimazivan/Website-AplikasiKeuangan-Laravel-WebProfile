@@ -255,21 +255,45 @@
     $('#datatable-responsive').dataTable({
         "order": [2, "asc"],
         "columnDefs": [{
-            "targets": [0, 3, 6],
+            "targets": [1, 3, 6],
             "orderable": false,
         }]
     });
 </script>
 <script>
     var table = $('#datatable-responsive').DataTable();
-    $('#datatable-responsive tbody').on('click', 'tr', function() {
+    $('#datatable-responsive tbody').on('click', 'td', function() {
         var datatb = [];
         datatb = table.row(this).data();
         // console.log(table.row(this).data());
-        // console.log(datatb[0]);
+        console.log(datatb[0]);
 
         // Modal
-        $('#modaldatatable').modal('show');
+        if (datatb[0]) {
+            jQuery.ajax({
+                url: '/admin/data/cb/id/' + datatb[0],
+                type: "GET",
+                dataType: "json",
+                success: function(data) {
+                    console.log(data);
+                    console.log(data[0]);
+                    if (data.length === 0) {
+                        $("#datatablecontent").find("#content").remove();
+                        $('#datatablecontent').append(
+                            '<div id="content">Data Kosong</div>'
+                        );
+                    } else {
+                        $("#datatablecontent").find("#content").remove();
+                        $('#datatablecontent').append(
+                            '<div id="content">Test konten bawah</div>'
+                        );
+                    }
+                },
+            });
+            // console.log(key);
+            // console.log(value);
+            $('#modaldatatable').modal('show');
+        }
     });
 </script>
 <script type="text/javascript">
