@@ -41,7 +41,7 @@ $bg = asset('asset/icon/logogif.gif');
     <!-- Font Awesome -->
     <link href="{{ asset('backend/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <!-- NProgress -->
-    <link href="{{ asset('backend/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
+    <!-- <link href="{{ asset('backend/vendors/nprogress/nprogress.css') }}" rel="stylesheet"> -->
     <!-- iCheck -->
     <link href="{{ asset('backend/vendors/iCheck/skins/flat/green.css') }}" rel="stylesheet">
     <!-- Datatables -->
@@ -61,15 +61,15 @@ $bg = asset('asset/icon/logogif.gif');
     <!-- Switchery -->
     <link href="{{ asset('backend/vendors/switchery/dist/switchery.min.css') }}" rel="stylesheet">
     <!-- starrr -->
-    <link href="{{ asset('backend/vendors/starrr/dist/starrr.css') }}" rel="stylesheet">
+    <!-- <link href="{{ asset('backend/vendors/starrr/dist/starrr.css') }}" rel="stylesheet"> -->
     <!-- bootstrap-daterangepicker -->
     <link href="{{ asset('backend/vendors/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="{{ asset('backend/build/css/custom.min.css')}}" rel="stylesheet">
     <!-- PNotify -->
-    <link href="{{ asset('backend/vendors/pnotify/dist/pnotify.css') }}" rel="stylesheet">
+    <!-- <link href="{{ asset('backend/vendors/pnotify/dist/pnotify.css') }}" rel="stylesheet">
     <link href="{{ asset('backend/vendors/pnotify/dist/pnotify.buttons.css') }}" rel="stylesheet">
-    <link href="{{ asset('backend/vendors/pnotify/dist/pnotify.nonblock.css') }}" rel="stylesheet">
+    <link href="{{ asset('backend/vendors/pnotify/dist/pnotify.nonblock.css') }}" rel="stylesheet"> -->
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
     <!-- jQuery -->
@@ -193,9 +193,9 @@ $bg = asset('asset/icon/logogif.gif');
     <!-- starrr -->
     <!-- <script src="{{ asset('backend/vendors/starrr/dist/starrr.js') }}"></script> -->
     <!-- PNotify -->
-    <script src="{{ asset('backend/vendors/pnotify/dist/pnotify.js') }}"></script>
+    <!-- <script src="{{ asset('backend/vendors/pnotify/dist/pnotify.js') }}"></script>
     <script src="{{ asset('backend/vendors/pnotify/dist/pnotify.buttons.js') }}"></script>
-    <script src="{{ asset('backend/vendors/pnotify/dist/pnotify.nonblock.js') }}"></script>
+    <script src="{{ asset('backend/vendors/pnotify/dist/pnotify.nonblock.js') }}"></script> -->
     <!-- Custom Theme Scripts -->
     <script src="{{ asset('backend/build/js/custom.min.js') }}"></script>
     <!-- additional components -->

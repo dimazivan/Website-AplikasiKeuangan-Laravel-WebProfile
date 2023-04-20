@@ -36,7 +36,17 @@ class UserController extends Controller
         $jml_role = User::Role()->count();
 
         $data_user = Cache::remember('data', 120, function () {
-            return DB::table('users')->get();
+            return User::with('roles')
+            // return DB::table('users')
+            ->select(
+                'users.id',
+                'users.username',
+                'users.first_name',
+                'users.last_name',
+                'users.role as role',
+                'users.status',
+            )
+            ->get();
         });
 
         // $exists = Storage::url('data/image/user/'.auth()->user()->file_foto);
@@ -44,7 +54,7 @@ class UserController extends Controller
 
         // dd(
         //     $jml_role,
-        //     $data,
+        //     $data_user,
         // );
 
         return view('admin.pages.user.data_user', [
@@ -218,6 +228,7 @@ class UserController extends Controller
                             'email' => $request->email,
                             'password' => $request->password,
                             'role' => $request->cbrole,
+                            'status' => 2,
                             'country' => $request->cbcountry,
                             'province' => $request->cbprovince,
                             'city' => $request->cbcity,
@@ -255,6 +266,7 @@ class UserController extends Controller
                         'email' => $request->email,
                         'password' => $request->password,
                         'role' => $request->cbrole,
+                        'status' => 2,
                         'country' => $request->cbcountry,
                         'province' => $request->cbprovince,
                         'city' => $request->cbcity,

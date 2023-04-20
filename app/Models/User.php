@@ -71,19 +71,26 @@ class User extends Authenticatable
         return $query->select('role')->groupBy('role');
     }
 
+    // public function scopeCekDuplicate($query, $value)
+    // {
+    //     return $query->select('username')
+    //     ->where('username', $value)
+    //     ->where('email', $value);
+    // }
+
     public function scopeCekUsername($query, $value)
     {
-        return $query->select('username')->where('username', $value);
+        return $query->select('username')->orWhere('username', $value);
     }
 
     public function scopeCekEmail($query, $value)
     {
-        return $query->select('email')->where('email', $value);
+        return $query->select('email')->orWhere('email', $value);
     }
 
     public function scopeCekFileFoto($query, $value)
     {
-        return $query->select('file_foto')->where('id', $value);
+        return $query->select('file_foto')->orWhere('id', $value);
     }
 
     public function roles()

@@ -13,7 +13,17 @@
 
     <style>
         body {
-            background-color: #f1f1f1;
+            background-color: white;
+            /* background-color: #f1f1f1; */
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        p {
+            color: black
         }
 
         .vertical-center {
