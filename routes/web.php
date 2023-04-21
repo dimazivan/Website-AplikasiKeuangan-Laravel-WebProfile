@@ -109,6 +109,5 @@ Route::group([
 // });
 
 Route::fallback(function () {
-    // Alert::info('Proses Gagal', 'Halaman tidak ditemukan');
     return view('error.404');
 });
