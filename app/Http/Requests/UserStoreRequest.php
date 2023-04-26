@@ -73,12 +73,11 @@ class UserStoreRequest extends FormRequest
                 'last_name.required' => 'Nama Belakang Silahkan Diisi',
                 'username.required' => 'Username Silahkan Diisi',
                 'email.required' => 'Email Silahkan Diisi',
-                'password.required' => 'PAssword Silahkan Diisi',
+                'password.required' => 'Password Silahkan Diisi',
                 'cbrole.required' => 'Role User Silahkan Dipilih',
                 'phone.required' => 'Nomor Telepon Silahkan Diisi',
                 'address.required' => 'Alamat Silahkan Diisi',
                 'desc.required' => 'Detail Alamat Silahkan Diisi',
-                'file_foto.required' => 'Silahkan Mengupload File Foto',
             ];
         } else {
             return[
@@ -91,7 +90,6 @@ class UserStoreRequest extends FormRequest
                 'phone.required' => 'Nomor Telepon Silahkan Diisi',
                 'address.required' => 'Alamat Silahkan Diisi',
                 'desc.required' => 'Detail Alamat Silahkan Diisi',
-                'file_foto.required' => 'Silahkan Mengupload File Foto',
             ];
         }
     }
