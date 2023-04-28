@@ -89,7 +89,7 @@ Route::group([
 // User Keuangan
 // URL API
 Route::group([
-    'prefix' => 'api',
+    'prefix' => 'data_api',
     'namespace' => 'App\Http\Controllers\Api',
     'middleware' => ['auth','CekRole:admin,keuangan']
 ], function () {

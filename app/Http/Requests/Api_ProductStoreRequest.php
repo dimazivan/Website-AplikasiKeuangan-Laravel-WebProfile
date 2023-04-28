@@ -13,7 +13,8 @@ class Api_ProductStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
+        // return false;
     }
 
     /**
@@ -27,7 +28,7 @@ class Api_ProductStoreRequest extends FormRequest
             return[
                 'title' => 'required|max:255',
                 'description' => 'required|max:255',
-                'price' => 'required|numeric|min:5|max:255',
+                'price' => 'required|numeric|digits_between:3,100',
                 'discountPercentage' => 'numeric',
                 // 'rating' => 'required',
                 'stock' => 'required|numeric',
@@ -41,7 +42,7 @@ class Api_ProductStoreRequest extends FormRequest
             return[
                 'title' => 'required|max:255',
                 'description' => 'required|max:255',
-                'price' => 'required|numeric|min:5|max:255',
+                'price' => 'required|numeric|digits_between:3,100',
                 'discountPercentage' => 'numeric',
                 // 'rating' => 'required',
                 'stock' => 'required|numeric',
