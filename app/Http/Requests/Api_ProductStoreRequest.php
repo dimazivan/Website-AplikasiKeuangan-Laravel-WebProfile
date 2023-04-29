@@ -38,6 +38,20 @@ class Api_ProductStoreRequest extends FormRequest
                 'images' => 'mimes:jpeg,jpg,png,gif|max:10000',
                 'fvoid' => 'required',
             ];
+        } elseif(request()->isMethod('put')) {
+            return[
+                'title' => 'required|max:255',
+                'description' => 'required|max:255',
+                'price' => 'required|numeric|digits_between:3,100',
+                'discountPercentage' => 'numeric',
+                // 'rating' => 'required',
+                'stock' => 'required|numeric',
+                'brand' => 'required',
+                'category' => 'required',
+                'thumbnail' => 'required',
+                'images' => 'mimes:jpeg,jpg,png,gif|max:10000',
+                'fvoid' => 'required',
+            ];
         } else {
             return[
                 'title' => 'required|max:255',
@@ -58,6 +72,17 @@ class Api_ProductStoreRequest extends FormRequest
     public function messages()
     {
         if (request()->isMethod('post')) {
+            return[
+                'title.required' => 'Judul/Nama Produk Silahkan Diisi',
+                'description.required' => 'Deskripsi Produk Silahkan Diisi',
+                'price' => 'Harga Produk Silahkan Diisi',
+                // 'rating' => 'Rating Produk Silahkan Diisi',
+                'stock' => 'Stok Produk Silahkan Diisi',
+                'brand' => 'Nama Brand Produk Silahkan Diisi',
+                'category' => 'Kategori Produk Silahkan Dipilih',
+                'thumbnail' => 'Thumbnail Produk Silahkan Diisi',
+            ];
+        } elseif(request()->isMethod('put')) {
             return[
                 'title.required' => 'Judul/Nama Produk Silahkan Diisi',
                 'description.required' => 'Deskripsi Produk Silahkan Diisi',

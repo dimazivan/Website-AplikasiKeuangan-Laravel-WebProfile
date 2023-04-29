@@ -169,6 +169,10 @@ class Api_ProductController extends Controller
      */
     public function update(Api_ProductStoreRequest $request, $id)
     {
+        // dd(
+        //     $request->all(),
+        // );
+
         $validator = $request->validated();
 
         //response error validation
