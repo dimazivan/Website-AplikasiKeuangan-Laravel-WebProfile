@@ -34,7 +34,7 @@ class ProductSeeder extends Seeder
                 'thumbnail'=> $item->thumbnail,
                 // Sementara haruse dua relasi ambek ambil data looping lagi
                 'images'=> $item->images[0],
-                'fvoid'=> 0,
+                'fvoid'=> 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]);
@@ -44,6 +44,15 @@ class ProductSeeder extends Seeder
         for ($i=0; $i < sizeof($categoryProduct); $i++) {
             DB::table('products_category')->insert([
                 'name'=> $categoryProduct[$i]->category,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]);
+        }
+
+        $brandProduct = Product::Brand()->get();
+        for ($i=0; $i < sizeof($brandProduct); $i++) {
+            DB::table('products_brand')->insert([
+                'name'=> $brandProduct[$i]->brand,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]);

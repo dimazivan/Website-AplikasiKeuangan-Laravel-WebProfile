@@ -17,13 +17,13 @@ return new class () extends Migration {
             $table->string('title');
             $table->text('description');
             $table->integer('price');
-            $table->integer('discountPercentage');
-            $table->string('rating');
+            $table->integer('discountPercentage')->nullable();
+            $table->string('rating')->nullable();
             $table->integer('stock');
             $table->string('brand');
             $table->string('category');
             $table->string('thumbnail');
-            $table->string('images');
+            $table->string('images')->nullable();
             $table->integer('fvoid');
             $table->timestamps();
         });

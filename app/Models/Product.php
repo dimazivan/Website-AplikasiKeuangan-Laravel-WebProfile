@@ -33,6 +33,11 @@ class Product extends Model
         return $query->select('category')->groupBy('category');
     }
 
+    public function scopeBrand($query)
+    {
+        return $query->select('brand')->groupBy('brand');
+    }
+
     public function scopefVoid($query)
     {
         return $query->where('fvoid', 1);

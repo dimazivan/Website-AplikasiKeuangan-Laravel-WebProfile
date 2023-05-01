@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Api\Api_WilayahController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Component\CaptchaController;
+use App\Models\Product;
 use RealRashid\SweetAlert\Facades\Alert;
 
 /*
@@ -55,4 +56,25 @@ Route::group([
 ], function () {
     // Api Product
     Route::resource('api_product', 'Api_ProductController');
+});
+
+Route::get('/data/cb/brand/product', function () {
+    // return Response::json(Product::Brand()->get());
+
+    return response()->json([
+        'success' => true,
+        'message' => 'List Data Brand Product',
+        'data'    => Product::Brand()->get()
+    ], 200);
+});
+
+Route::get('/data/cb/category/product', function () {
+    // return Response::json(Product::Brand()->get());
+
+    return response()->json([
+        'success' => true,
+        'message' => 'List Data Category Product',
+        'data'    => Product::Category()->get()
+    ], 200);
+
 });

@@ -7,6 +7,7 @@ use App\Http\Requests\Api_ProductStoreRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cache;
 use App\Http\Resources\PostResource;
 use App\Models\Product;
 use Carbon\Carbon;
@@ -31,6 +32,10 @@ class Api_ProductController extends Controller
 
         //get data from table product
         $product = Product::latest()->get();
+
+        // $product = Cache::remember('api_product', 120, function () {
+        //     return Product::get();
+        // });
 
         //make response JSON
         return response()->json([
@@ -61,8 +66,14 @@ class Api_ProductController extends Controller
         //set validation
         $validator = $request->validated();
 
+        // dd(
+        //     $request->validate(),
+        //     $validator,
+        //     $request->all(),
+        // );
+
         //response error validation
-        if ($validator->fails()) {
+        if (!$validator) {
             return response()->json($validator->errors(), 400);
         }
 
@@ -139,14 +150,24 @@ class Api_ProductController extends Controller
     public function show($id)
     {
         //find post by ID
-        $product = Product::findOrfail($id);
+        $product = Product::find($id);
+        // $product = Product::findOrfail($id);
 
-        //make response JSON
+        if($product) {
+            //make response JSON
+            return response()->json([
+                'success' => true,
+                'message' => 'Detail Data Product',
+                'data'    => $product
+            ], 200);
+        }
+
+        //data product not found
         return response()->json([
-            'success' => true,
-            'message' => 'Detail Data Product',
-            'data'    => $product
-        ], 200);
+            'success' => false,
+            'message' => 'Product Not Found',
+        ], 404);
+
     }
 
     /**
@@ -176,12 +197,12 @@ class Api_ProductController extends Controller
         $validator = $request->validated();
 
         //response error validation
-        if ($validator->fails()) {
+        if (!$validator) {
             return response()->json($validator->errors(), 400);
         }
 
         //find product by ID
-        $product = Product::findOrFail($request->id);
+        $product = Product::findOrFail($id);
 
         if($product) {
             //update product
@@ -221,18 +242,16 @@ class Api_ProductController extends Controller
     public function destroy($id)
     {
         //find product by ID
-        $product = Product::findOrfail($id);
+        $product = Product::find($id);
+        // $product = Product::findOrfail($id);
 
         if($product) {
-
             //delete product
             $product->delete();
-
             return response()->json([
                 'success' => true,
                 'message' => 'Product Deleted',
             ], 200);
-
         }
 
         //data product not found
