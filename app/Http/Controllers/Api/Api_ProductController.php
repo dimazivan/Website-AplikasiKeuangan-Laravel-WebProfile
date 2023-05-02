@@ -31,7 +31,15 @@ class Api_ProductController extends Controller
         // return new PostResource($status, $message, $skip, $limit, $data);
 
         //get data from table product
-        $product = Product::latest()->get();
+        // $product = Product::latest()->get();
+        $product = DB::table('products')
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+        // dd(
+        //     $product,
+        //     $product->id,
+        // );
 
         // $product = Cache::remember('api_product', 120, function () {
         //     return Product::get();
@@ -96,6 +104,7 @@ class Api_ProductController extends Controller
 
                 // Query insert dengan foto
                 $product = Product::create([
+                    'id' => DB::raw('(UUID())'),
                     'title' => $request->title,
                     'description' => $request->description,
                     'price' => $request->price,
@@ -106,12 +115,14 @@ class Api_ProductController extends Controller
                     'category'   => $request->category,
                     'thumbnail'   => $request->thumbnail,
                     'images'   => $nama_file,
-                    'fvoid'   => 1,
+                    'fvoid'   => $request->fvoid,
+                    // 'fvoid'   => 1,
                 ]);
             }
         } else {
             // Query insert tanpa foto
             $product = Product::create([
+                'id' => DB::raw('(UUID())'),
                 'title' => $request->title,
                 'description' => $request->description,
                 'price' => $request->price,
@@ -121,7 +132,8 @@ class Api_ProductController extends Controller
                 'brand'     => $request->brand,
                 'category'   => $request->category,
                 'thumbnail'   => $request->thumbnail,
-                'fvoid'   => 1,
+                'fvoid'   => $request->fvoid,
+                // 'fvoid'   => 1,
             ]);
 
         }
@@ -216,7 +228,8 @@ class Api_ProductController extends Controller
                 'brand'     => $request->brand,
                 'category'   => $request->category,
                 'thumbnail'   => $request->thumbnail,
-                'fvoid'   => 1,
+                'fvoid'   => $request->fvoid,
+                // 'fvoid'   => 1,
             ]);
 
             return response()->json([

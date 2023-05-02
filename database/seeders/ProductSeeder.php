@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use App\Models\Product;
 use Carbon\Carbon;
 
@@ -23,6 +24,7 @@ class ProductSeeder extends Seeder
         $dataMap = $myData->products;
         foreach ($dataMap as $data_api => $item) {
             DB::table('products')->insert([
+                // 'id'=> Str::uuid(),
                 'title'=> $item->title,
                 'description'=>  $item->description,
                 'price'=> $item->price,

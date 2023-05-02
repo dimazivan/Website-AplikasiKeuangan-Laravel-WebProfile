@@ -29,31 +29,34 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // URL API AUTH
-Route::group([
-    'namespace' => 'App\Http\Controllers\Api',
-    'middleware' => ['auth','CekRole:admin,keuangan']
-], function () {
-    // Api Product
-    // Route::resource('api', 'ApiController');
+// Route::group([
+//     'namespace' => 'App\Http\Controllers\Api',
+//     'middleware' => ['auth','CekRole:admin,keuangan']
+// ], function () {
+//     // Api Product
+//     // Route::resource('api', 'ApiController');
 
-    // Api User
-    Route::resource('api_user', 'Api_UserController');
+//     // Api User
+//     Route::resource('api_user', 'Api_UserController');
 
-    // Test Email
-    Route::resource('api_email', 'Api_SendermailController');
+//     // Test Email
+//     Route::resource('api_email', 'Api_SendermailController');
 
-    // Get Cb Wilayah Indonesia
-    Route::resource('api_wilayah', 'Api_WilayahController');
-    Route::get('/data/cb/kota/{id}', [Api_WilayahController::class,'ambilkota'])->name('ambil.kota');
-    Route::get('/data/cb/kecamatan/{id}', [Api_WilayahController::class,'ambilkecamatan'])->name('ambil.kecamatan');
-    Route::get('/data/cb/kelurahan/{id}', [Api_WilayahController::class,'ambilkelurahan'])->name('ambil.kelurahan');
-});
+//     // Get Cb Wilayah Indonesia
+//     Route::resource('api_wilayah', 'Api_WilayahController');
+
+// });
 
 
 // URL API PUBLIC
 Route::group([
     'namespace' => 'App\Http\Controllers\Api',
 ], function () {
+    // Get Cb Wilayah Indonesia
+    Route::get('/data/cb/kota/{id}', [Api_WilayahController::class,'ambilkota'])->name('ambil.kota');
+    Route::get('/data/cb/kecamatan/{id}', [Api_WilayahController::class,'ambilkecamatan'])->name('ambil.kecamatan');
+    Route::get('/data/cb/kelurahan/{id}', [Api_WilayahController::class,'ambilkelurahan'])->name('ambil.kelurahan');
+
     // Api Product
     Route::resource('api_product', 'Api_ProductController');
 });

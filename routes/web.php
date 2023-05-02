@@ -97,6 +97,9 @@ Route::group([
     // Route::get('/api_wilayah/kelurahan/{$id}', [Api_WilayahController::class, 'ambilKelurahan'])->name('ambil.kelurahan');
     // Route::get('/api_wilayah/kecamatan/{$id}', [Api_WilayahController::class, 'ambilKecamatan'])->name('ambil.kecamatan');
 
+    // Test Email
+    Route::resource('api_email', 'Api_SendermailController');
+
     // Api Product
     Route::resource('api', 'ApiController');
 });
