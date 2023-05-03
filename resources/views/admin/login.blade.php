@@ -3,6 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
+    @hasSection('title')
+    <title>{{ $title }}</title>
+    @else
+    <title>Login Page</title>
+    @endif
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <!--===============================================================================================-->
@@ -21,11 +26,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('gate/css/util.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('gate/css/main.css') }}">
     <!--===============================================================================================-->
-    @hasSection('title')
-    <title>{{ $title }}</title>
-    @else
-    <title>Login Page</title>
-    @endif
+
     <style>
         .dark-mode-bg {
             background: -webkit-linear-gradient(315deg, #000, #2d3436);
@@ -175,7 +176,11 @@
         </div>
     </div>
     <div id="right_menu">
-        <div class="right_menu_item">Menu 1</div>
+        <div class="right_menu_item">
+            <a href="/register">
+                Register Page
+            </a>
+        </div>
         <div class="right_menu_item">Menu 2</div>
         <div class="right_menu_item">Menu 3</div>
         <div class="right_menu_item">Menu 4</div>
