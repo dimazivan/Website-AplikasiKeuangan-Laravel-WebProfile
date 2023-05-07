@@ -250,7 +250,7 @@ textarea.form-control {
     .actions li a:before {
       content: '\f301';
       position: absolute;
-      top: 14px;
+      top: 10px;
       right: 28px;
       font-family: Material-Design-Iconic-Font; }
     .actions li a:hover {
@@ -261,7 +261,7 @@ textarea.form-control {
     .actions li:first-child a:before {
       content: '\f2ff';
       position: absolute;
-      top: 14px;
+      top: 10px;
       left: 26px;
       font-family: Material-Design-Iconic-Font; }
   .actions li:nth-child(2) a, .actions li:last-child a {
@@ -275,7 +275,7 @@ textarea.form-control {
     .actions li:last-child a:before {
       content: '\f26b';
       position: absolute;
-      top: 13px;
+      /* top: 13px; */
       right: 28px;
       font-family: Material-Design-Iconic-Font; }
   .actions li[aria-disabled="true"] a {
@@ -304,7 +304,7 @@ textarea.form-control {
     display: block; }
 .checkbox-tick .checkmark {
   position: absolute;
-  top: 3px;
+  /* top: 3px; */
   left: 0;
   height: 13px;
   width: 13px;
@@ -314,7 +314,7 @@ textarea.form-control {
   color: #fff;
   font-size: 11px; }
   .checkbox-tick .checkmark:after {
-    top: 0;
+    top: -2px;
     left: 2px;
     position: absolute;
     display: none;

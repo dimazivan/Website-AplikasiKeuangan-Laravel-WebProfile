@@ -7,8 +7,8 @@ $(function(){
         transitionEffectSpeed: 500,
         labels: {
             finish: "Submit",
-            next: "Forward",
-            previous: "Backward"
+            next: "Next",
+            previous: "Previous"
         }
     });
     $('.wizard > .steps li a').click(function(){

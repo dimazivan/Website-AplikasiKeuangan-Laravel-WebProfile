@@ -20,7 +20,7 @@ var DataWilayah = function () {
             $('#cbprovince').on('click change', function () {
                 // alert('ahay');
                 let provinceId = $(this).val();
-                console.log(provinceId);
+                // console.log(provinceId);
                 if (provinceId) {
                     jQuery.ajax({
                         url: '/api/data/cb/kota/' + provinceId,
@@ -38,7 +38,7 @@ var DataWilayah = function () {
                                     '<option value="' + id + '">' 
                                     + nama +
                                     '</option>');
-                            console.log(nama);
+                            // console.log(nama);
                             });
                         },
                     });
@@ -56,7 +56,7 @@ var DataWilayah = function () {
             $('#cbcity').on('click change', function () {
                 // alert('ahay');
                 let cityId = $(this).val();
-                console.log(cityId);
+                // console.log(cityId);
                 if (cityId) {
                     jQuery.ajax({
                         url: '/api/data/cb/kecamatan/' + cityId,
@@ -88,7 +88,7 @@ var DataWilayah = function () {
             $('#cbdistrict').on('click change', function () {
                 // alert('ahay');
                 let districtId = $(this).val();
-                console.log(districtId);
+                // console.log(districtId);
                 if (districtId) {
                     jQuery.ajax({
                         url: '/api/data/cb/kelurahan/' + districtId,

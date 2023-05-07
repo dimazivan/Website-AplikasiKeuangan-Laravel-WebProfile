@@ -29,7 +29,15 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/reload-captcha', [CaptchaController::class, 'generate'])->name('captcha.generate');
 
 // REGISTER
-Route::get('/register', [RegisterController::class,'index'])->name('index.register');
+// Route::get('/register', [RegisterController::class,'index'])->name('index.register');
+
+Route::group([
+    'namespace' => 'App\Http\Controllers\Auth',
+], function () {
+    // Login
+    Route::resource('register', 'RegisterController');
+});
+
 
 // URL Auth
 Route::group([
@@ -65,8 +73,6 @@ Route::group([
     Route::resource('user', 'UserController');
     // Cek Data
     Route::get('/data/cb/id/{id}', [UserController::class,'cekId'])->name('cek.id');
-    Route::get('/data/cb/username/{username}', [UserController::class,'cekUsername'])->name('cek.username');
-    Route::get('/data/cb/email/{email}', [UserController::class,'cekEmail'])->name('cek.email');
     Route::post('/data/cb/user/deactive', [UserController::class,'deactiveUser'])->name('deactive.user');
 
     // Route Product
@@ -74,6 +80,17 @@ Route::group([
 
     // Route Service
     Route::resource('service', 'ServiceController');
+});
+
+// Admin
+// URL ADMIN
+Route::group([
+    'prefix' => 'admin',
+    'namespace' => 'App\Http\Controllers\Admin',
+], function () {
+    // Cek Data
+    Route::get('/data/cb/username/{username}', [UserController::class,'cekUsername'])->name('cek.username');
+    Route::get('/data/cb/email/{email}', [UserController::class,'cekEmail'])->name('cek.email');
 });
 
 // Log Data

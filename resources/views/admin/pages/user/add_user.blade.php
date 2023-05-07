@@ -164,7 +164,7 @@
                                     oninput="this.setCustomValidity('')">
                                     <option value="" selected disabled>Pilih Provinsi</option>
                                     <!-- <option value="#">Provinsi</option> -->
-                                    @forelse($province as $provinces=> $values)
+                                    @forelse($province as $provinces => $values)
                                     <option value="{{ $provinces }}">{{ $values }}</option>
                                     @empty
                                     <option value="" selected disabled>Data Provinsi Kosong</option>

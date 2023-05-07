@@ -29,23 +29,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // URL API AUTH
-// Route::group([
-//     'namespace' => 'App\Http\Controllers\Api',
-//     'middleware' => ['auth','CekRole:admin,keuangan']
-// ], function () {
-//     // Api Product
-//     // Route::resource('api', 'ApiController');
+Route::group([
+    'namespace' => 'App\Http\Controllers\Api',
+    'middleware' => ['auth','CekRole:admin,keuangan']
+], function () {
+    // Api User
+    Route::resource('api_user', 'Api_UserController');
 
-//     // Api User
-//     Route::resource('api_user', 'Api_UserController');
-
-//     // Test Email
-//     Route::resource('api_email', 'Api_SendermailController');
-
-//     // Get Cb Wilayah Indonesia
-//     Route::resource('api_wilayah', 'Api_WilayahController');
-
-// });
+    // Get Cb Wilayah Indonesia
+    Route::resource('api_wilayah', 'Api_WilayahController');
+});
 
 
 // URL API PUBLIC
