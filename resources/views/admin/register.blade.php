@@ -243,6 +243,8 @@
 
 
             $("li:last a:first").on('click', function(event) {
+                // $("li:last a:first").attr('title', 'Click One More~');
+                $("li:last a:first").html('Again');
                 $("li:last a:first").click(function() {
                     document.getElementById('wizard').submit();
                 });

@@ -189,82 +189,44 @@ class UserController extends Controller
             ]);
 
             return back()->withErrors($validator->errors());
-        } else {
-            // Cek Data
-            $cek = User::cekUsername($request->username)
-            ->cekEmail($request->email)
-            ->get();
+        }
 
-            if (empty($cek[0])) {
-                if ($request->hasFile('file_foto')) {
-                    if (filesize($request->file_foto) > 1000 * 10000) {
-                        return back()->with("info", "File foto anda melebihi batas maksimal ukuran upload");
-                    }
+        // Cek Data
+        $cek = User::cekUsername($request->username)
+        ->cekEmail($request->email)
+        ->get();
 
-                    if ($request->file_foto->getClientOriginalExtension() == "jpg" ||
-                    $request->file_foto->getClientOriginalExtension() == "jpeg" ||
-                    $request->file_foto->getClientOriginalExtension() == "png" ||
-                    $request->file_foto->getClientOriginalExtension() == "gif") {
-                        if ($request->hasFile('file_foto')) {
-                            $file = $request->file('file_foto');
-                            $nama_file = time() . "_" . $file->getClientOriginalName();
-                            // $tujuan_upload = 'data_file/user/foto';
-                            // $file->move($tujuan_upload, $nama_file);
-                            $file->storeAs('/data/image/user/', $nama_file);
+        if (empty($cek[0])) {
+            if ($request->hasFile('file_foto')) {
+                if (filesize($request->file_foto) > 1000 * 10000) {
+                    return back()->with("info", "File foto anda melebihi batas maksimal ukuran upload");
+                }
 
-                        // $img = Image::make($file->getRealPath());
-                        // $img->stream();
+                if ($request->file_foto->getClientOriginalExtension() == "jpg" ||
+                $request->file_foto->getClientOriginalExtension() == "jpeg" ||
+                $request->file_foto->getClientOriginalExtension() == "png" ||
+                $request->file_foto->getClientOriginalExtension() == "gif") {
+                    if ($request->hasFile('file_foto')) {
+                        $file = $request->file('file_foto');
+                        $nama_file = time() . "_" . $file->getClientOriginalName();
+                        // $tujuan_upload = 'data_file/user/foto';
+                        // $file->move($tujuan_upload, $nama_file);
+                        $file->storeAs('/data/image/user/', $nama_file);
 
-                        // Storage::disk('local')->put('/data/image/user/' . Carbon::now() .'/', $nama_file);
-                        } else {
-                            $nama_file = "";
-                        }
+                    // $img = Image::make($file->getRealPath());
+                    // $img->stream();
 
-                        // Query insert dengan foto
-                        User::create([
-                            'first_name' => $request->first_name,
-                            'last_name' => $request->last_name,
-                            'username' => $request->username,
-                            'email' => $request->email,
-                            'password' => $request->password,
-                            'role' => $request->cbrole,
-                            'status' => 2,
-                            'country' => $request->cbcountry,
-                            'province' => $request->cbprovince,
-                            'city' => $request->cbcity,
-                            'district' => $request->cbdistrict,
-                            'ward' => $request->cbward,
-                            'phone' => $request->phone,
-                            'address' => $request->address,
-                            'detail_address' => $request->desc,
-                            'password' => bcrypt($request->password),
-                            'file_foto' => $nama_file,
-                            'created_at' => $waktu,
-                            'updated_at' => $waktu,
-                        ]);
-
-                        // Log
-                        Log_users::create([
-                            'users_id' => auth()->user()->id,
-                            'role' => auth()->user()->role,
-                            'activity' => 'insert Data',
-                            'description' => 'data saved',
-                            'status' => 'success',
-                            'mac_address' => '',
-                        ]);
-
-                        return redirect()->route("user.index")->with("info", "Data Users has been saved");
+                    // Storage::disk('local')->put('/data/image/user/' . Carbon::now() .'/', $nama_file);
                     } else {
-                        return back()->with("info", "Pastikan format file foto anda bertipe gambar");
+                        $nama_file = "";
                     }
-                } else {
-                    // Query insert tanpa foto
+
+                    // Query insert dengan foto
                     User::create([
                         'first_name' => $request->first_name,
                         'last_name' => $request->last_name,
                         'username' => $request->username,
                         'email' => $request->email,
-                        'password' => $request->password,
                         'role' => $request->cbrole,
                         'status' => 2,
                         'country' => $request->cbcountry,
@@ -276,6 +238,7 @@ class UserController extends Controller
                         'address' => $request->address,
                         'detail_address' => $request->desc,
                         'password' => bcrypt($request->password),
+                        'file_foto' => $nama_file,
                         'created_at' => $waktu,
                         'updated_at' => $waktu,
                     ]);
@@ -291,20 +254,55 @@ class UserController extends Controller
                     ]);
 
                     return redirect()->route("user.index")->with("info", "Data Users has been saved");
+                } else {
+                    return back()->with("info", "Pastikan format file foto anda bertipe gambar");
                 }
             } else {
-                // Log user duplicated
+                // Query insert tanpa foto
+                User::create([
+                    'first_name' => $request->first_name,
+                    'last_name' => $request->last_name,
+                    'username' => $request->username,
+                    'email' => $request->email,
+                    'role' => $request->cbrole,
+                    'status' => 2,
+                    'country' => $request->cbcountry,
+                    'province' => $request->cbprovince,
+                    'city' => $request->cbcity,
+                    'district' => $request->cbdistrict,
+                    'ward' => $request->cbward,
+                    'phone' => $request->phone,
+                    'address' => $request->address,
+                    'detail_address' => $request->desc,
+                    'password' => bcrypt($request->password),
+                    'created_at' => $waktu,
+                    'updated_at' => $waktu,
+                ]);
+
+                // Log
                 Log_users::create([
                     'users_id' => auth()->user()->id,
                     'role' => auth()->user()->role,
                     'activity' => 'insert Data',
-                    'description' => 'duplicated entity',
-                    'status' => 'failed',
+                    'description' => 'data saved',
+                    'status' => 'success',
                     'mac_address' => '',
                 ]);
 
-                return back()->with("info", "Duplicated Data Users Found");
+                return redirect()->route("user.index")->with("info", "Data Users has been saved");
             }
+        } else {
+            // Log user duplicated
+            Log_users::create([
+                'users_id' => auth()->user()->id,
+                'role' => auth()->user()->role,
+                'activity' => 'insert Data',
+                'description' => 'duplicated entity',
+                'status' => 'failed',
+                'mac_address' => '',
+            ]);
+
+            return back()->with("info", "Duplicated Data Users Found");
         }
     }
 

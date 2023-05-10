@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserStoreRequest;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Log_users;
@@ -11,6 +12,7 @@ use App\Models\Roles;
 use App\Models\Log_auth;
 use App\Models\Province;
 use App\Models\User;
+use App\Services\RegisterService;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -22,27 +24,32 @@ class RegisterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function __construct(RegisterService $registerService)
     {
-        $title = "Register Page";
-        $province = Province::orderBy('name', 'asc')
-        ->pluck('name', 'id');
-
-
-        return view(
-            'admin.register',
-            [
-            'title' => $title,
-        ],
-            compact('province')
-        );
+        $this->registerService = $registerService;
     }
 
+     public function index()
+     {
+         $title = "Register Page";
+         $province = Province::orderBy('name', 'asc')
+         ->pluck('name', 'id');
+
+
+         return view(
+             'admin.register',
+             [
+             'title' => $title,
+        ],
+             compact('province')
+         );
+     }
+
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+      * Show the form for creating a new resource.
+      *
+      * @return \Illuminate\Http\Response
+      */
     public function create()
     {
         //
@@ -54,11 +61,36 @@ class RegisterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserStoreRequest $request)
     {
         dd(
             $request->all(),
         );
+
+        $validator = $request->validated();
+
+        if (!$validator) {
+            // Log user error validation
+            Log_users::create([
+                'users_id' => '0',
+                'role' => 'register',
+                'activity' => 'insert Data',
+                'description' => 'error validation',
+                'status' => 'failed',
+                'mac_address' => '',
+            ]);
+
+            return back()->withErrors($validator->errors());
+        }
+
+        try {
+            $this->registerService->storeRegister($request);
+            return redirect()->route("index.login")->with("info", "Data Users has been saved");
+        } catch (\Exception $e) {
+            //throw $e
+            return redirect()->route("index.login")->with("error", $e->getMessage());
+            // return $this->exceptionError($e->getMessage());
+        }
     }
 
     /**
