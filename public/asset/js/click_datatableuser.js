@@ -5,7 +5,7 @@ var ClickDatatableUser = function () {
             // Cek Data
             // var BASE_URL = 'http://localhost:8000';
             var table = $('#datatable-responsive').DataTable();
-            $('#datatable-responsive tbody').on('click', 'td', function() {
+            $('#datatable-responsive tbody').on('click', 'td:nth-child(3),td:nth-child(4),td:nth-child(5)', function() {
                 var datatb = [];
                 datatb = table.row(this).data();
                 // console.log(table.row(this).data());

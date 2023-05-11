@@ -123,14 +123,20 @@
                                 <select class="form-control" id="cbrole" name="cbrole" required
                                     oninvalid="this.setCustomValidity('Silahkan pilih salah satu role tersedia')"
                                     oninput="this.setCustomValidity('')">
-                                    <option value="" disabled>Pilih Role User</option>
-                                    @if($data[0]->role == 'admin')
+                                    <option value="" selected disabled>Pilih Role User</option>
+                                    @forelse($roles as $role)
+                                    <option value="{{ $role->id }}" style="text-transform:uppercase;">{{ $role->name }}
+                                    </option>
+                                    @empty
+                                    <option value="#">Data Role Kosong</option>
+                                    @endforelse
+                                    <!-- @if($data[0]->role == 'admin')
                                     <option value="admin" selected>Admin</option>
                                     <option value="keuangan">Keuangan</option>
                                     @elseif($data[0]->role == 'keuangan')
                                     <option value="admin">Admin</option>
                                     <option value="keuangan" selected>Keuangan</option>
-                                    @endif
+                                    @endif -->
                                 </select>
                             </div>
                         </div>

@@ -6,7 +6,7 @@ var CekEmail = function () {
             // var BASE_URL = 'http://localhost:8000';
             $('#email').on('keyup', function () {
                 // alert('ahay');
-                $("ul").css("visibility","hidden");
+                // $("ul").css("visibility","hidden");
                 $(this).val($(this).val().replace(/\s+/g, ''));
                 if( !$(this).val() ) {
                     $("#cekemail").find("span").remove();
@@ -14,12 +14,12 @@ var CekEmail = function () {
                         '<span class="cekemailspan" style="font-size:14px;color:red;"><i class="fa fa-times"></i>'+
                         '&nbsp;Type ur email please...</span>'
                     );
-                    $("#cekemailregister").find("span").remove();
-                    $('#cekemailregister').append(
-                        '<span class="cekemailspan" style="font-size:14px;color:red;">'+
-                        '&nbsp;Type ur email please...</span>'
-                    );
-                    $("ul").css("visibility","hidden");
+                    // $("#cekemailregister").find("span").remove();
+                    // $('#cekemailregister').append(
+                    //     '<span class="cekemailspan" style="font-size:14px;color:red;">'+
+                    //     '&nbsp;Type ur email please...</span>'
+                    // );
+                    // $("ul").css("visibility","hidden");
                 }else{
                     let email = $(this).val();
                     var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
@@ -29,12 +29,12 @@ var CekEmail = function () {
                             '<span class="cekemailspan" style="font-size:14px;color:red;"><i class="fa fa-times"></i>'+
                             '&nbsp;Type correct email format please...</span>'
                         );
-                        $("#cekemailregister").find("span").remove();
-                        $('#cekemailregister').append(
-                            '<span class="cekemailspan" style="font-size:14px;color:red;">'+
-                            '&nbsp;Check your email format...</span>'
-                        );
-                        $("ul").css("visibility","hidden");
+                        // $("#cekemailregister").find("span").remove();
+                        // $('#cekemailregister').append(
+                        //     '<span class="cekemailspan" style="font-size:14px;color:red;">'+
+                        //     '&nbsp;Check your email format...</span>'
+                        // );
+                        // $("ul").css("visibility","hidden");
                     }else{
                         // console.log(email);
                         if (email) {
@@ -51,24 +51,24 @@ var CekEmail = function () {
                                             '<span class="cekemailspan" style="font-size:14px;color:green;"><i class="fa fa-check"></i>'+
                                             '&nbsp;You can use this email</span>'
                                         );
-                                        $("#cekemailregister").find("span").remove();
-                                        $('#cekemailregister').append(
-                                            '<span class="cekemailspan" style="font-size:14px;color:green;">'+
-                                            '&nbsp;You can use this email</span>'
-                                        );
-                                        $("ul").css("visibility","visible");
+                                        // $("#cekemailregister").find("span").remove();
+                                        // $('#cekemailregister').append(
+                                        //     '<span class="cekemailspan" style="font-size:14px;color:green;">'+
+                                        //     '&nbsp;You can use this email</span>'
+                                        // );
+                                        // $("ul").css("visibility","visible");
                                     }else{
                                         $("#cekemail").find("span").remove();
                                         $('#cekemail').append(
                                             '<span class="cekemailspan" style="font-size:14px;color:red;"><i class="fa fa-times"></i>'+
                                             '&nbsp;Email already used</span>'
                                         );
-                                        $("#cekemailregister").find("span").remove();
-                                        $('#cekemailregister').append(
-                                            '<span class="cekemailspan" style="font-size:14px;color:red;">'+
-                                            '&nbsp;Email already used</span>'
-                                        );
-                                        $("ul").css("visibility","hidden");
+                                        // $("#cekemailregister").find("span").remove();
+                                        // $('#cekemailregister').append(
+                                        //     '<span class="cekemailspan" style="font-size:14px;color:red;">'+
+                                        //     '&nbsp;Email already used</span>'
+                                        // );
+                                        // $("ul").css("visibility","hidden");
                                     }
                                 },
                             });
@@ -80,12 +80,12 @@ var CekEmail = function () {
                                 '<span class="cekemailspan" style="font-size:14px;color:red;"><i class="fa fa-times"></i>'+
                                 '&nbsp;Email already used/span>'
                             );
-                            $("#cekemailregister").find("span").remove();
-                            $('#cekemailregister').append(
-                                '<span class="cekemailspan" style="font-size:14px;color:red;">'+
-                                '&nbsp;Email already used/span>'
-                            );
-                            $("ul").css("visibility","hidden");
+                            // $("#cekemailregister").find("span").remove();
+                            // $('#cekemailregister').append(
+                            //     '<span class="cekemailspan" style="font-size:14px;color:red;">'+
+                            //     '&nbsp;Email already used/span>'
+                            // );
+                            // $("ul").css("visibility","hidden");
                         }
                     }
                 }

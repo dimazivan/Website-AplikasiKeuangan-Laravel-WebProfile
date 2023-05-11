@@ -24,31 +24,31 @@
 </head>
 
 <body>
+    @include('sweetalert::alert')
     <div class="wrapper">
-        <form action="{{ route('register.store') }}" id="wizard" method="post" validated>
+        <form action="{{ route('register.store') }}" id="wizard" method="post">
             @csrf
-            @method('post')
-            @if(\Session::has('info'))
-            <div class="alert alert-danger alert-dismissible " role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                        aria-hidden="true">x</span>
-                </button>
-                <strong>{{ \Session::get('info') }}</strong>
-            </div>
-            @endif
-            @if(($errors->any()) != null)
-            @foreach ($errors->all() as $error)
-            <div class="alert alert-danger alert-dismissible " role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                        aria-hidden="true">x</span>
-                </button>
-                {{ $error }}
-            </div>
-            @endforeach
-            @endif
             <!-- SECTION 1 -->
             <h2></h2>
             <section>
+                @if(\Session::has('info'))
+                <div class="alert alert-info alert-dismissible" role="alert" data-timeout="2000">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                            aria-hidden="true">x</span>
+                    </button>
+                    <strong>{{ \Session::get('info') }}</strong>
+                </div>
+                @endif
+                @if(($errors->any()) != null)
+                @foreach ($errors->all() as $error)
+                <div class="alert alert-danger alert-dismissible " role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                            aria-hidden="true">x</span>
+                    </button>
+                    {{ $error }}
+                </div>
+                @endforeach
+                @endif
                 <div class="inner">
                     <div class="image-holder">
                         <div class="gambar" style="margin-top:67px;">
@@ -112,16 +112,30 @@
                                 </div>
                             </div>
                             <div class="form-holder">
+                                @forelse($roles as $role)
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="rbgender" id="inlineRadio1"
-                                        value="admin" selected>
+                                    <input class="form-check-input" type="radio" name="cbrole" id="inlineRadio1"
+                                        value="{{ $role->id }}" selected>
+                                    <label class="form-check-label" for="inlineRadio1"
+                                        style="text-transform:uppercase;">{{ $role->name }}</label>
+                                </div>
+                                @empty
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="cbrole" id="inlineRadio1"
+                                        value="#" selected>
+                                    <label class="form-check-label" for="inlineRadio1">Data Role Kosong</label>
+                                </div>
+                                @endforelse
+                                <!-- <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="cbrole" id="inlineRadio1"
+                                        value="1" selected>
                                     <label class="form-check-label" for="inlineRadio1">Admin</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="rbgender" id="inlineRadio2"
-                                        value="keuangan">
+                                    <input class="form-check-input" type="radio" name="cbrole" id="inlineRadio2"
+                                        value="2">
                                     <label class="form-check-label" for="inlineRadio2">Keuangan</label>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="form-row">
@@ -156,12 +170,16 @@
                         <p>Please fill with additional info</p>
                         <div class="form-row">
                             <div class="form-holder w-100">
-                                <input type="text" placeholder="Address" class="form-control">
+                                <input type="text" placeholder="Address" name="address" class="form-control">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-holder">
                                 <div class="bs-aja">
+                                    <select class="form-select" aria-label="Default select example" name="cbcountry"
+                                        id="cbcountry" hidden>
+                                        <option value="1" selected>Indonesia</option>
+                                    </select>
                                     <select class="form-select" aria-label="Default select example" name="cbprovince"
                                         id="cbprovince">
                                         <option value="" selected disabled>Pilih Provinsi</option>
@@ -204,6 +222,11 @@
                     </div>
                 </div>
             </section>
+
+            <div class="text-center p-t-136" style="margin-top: -100px;">
+                <input type="checkbox" id="switch" onchange="darkMode(this)" disabled />
+                <label for="switch">Dark Mode</label>
+            </div>
         </form>
     </div>
 
@@ -216,6 +239,36 @@
     <script src="{{ asset('asset/js/cek_data.js') }}"></script>
     <script src="{{ asset('asset/js/data_wilayah.js') }}"></script>
     <!-- Template created and distributed by Colorlib -->
+    <script>
+        function darkMode(obj) {
+            if ($(obj).is(":checked")) {
+                localStorage.removeItem("dark-mode-register");
+                // var elementbg = document.getElementById("bg");
+                // elementbg.classList.toggle("dark-mode-bg");
+                localStorage.setItem("dark-mode-register", "dark");
+                console.log(localStorage.getItem("dark-mode-register"));
+            } else if ($(obj).prop('checked', false)) {
+                localStorage.removeItem("dark-mode-register");
+                localStorage.setItem("dark-mode-register", "light");
+                console.log(localStorage.getItem("dark-mode-register"));
+            } else {
+
+            }
+        }
+    </script>
+    <script>
+        $('input').removeAttr('disabled');
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            window.setTimeout(function() {
+                $(".alert").fadeTo(1000, 0).slideUp(1000, function() {
+                    $(this).remove();
+                });
+            }, 5000);
+
+        });
+    </script>
     <script>
         $(document).ready(function() {
             const togglePassword = document.querySelector('#togglePassword');

@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Register;
 
+use App\Models\Roles;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use App\Models\User;
 use Carbon\Carbon;
 
@@ -12,9 +14,11 @@ class RegisterService
     {
         $data = $request->all();
 
-        dd(
-            $data,
-        );
+        $cek_role = Roles::where('id', $request->cbrole)->get();
+
+        // dd(
+        //     $data,
+        // );
 
         // $data['first_name'] = Str::limit($data['first_name'], 10);
 
@@ -24,16 +28,18 @@ class RegisterService
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'role' => $data['cbrole'],
+            'roles_id' => $cek_role[0]->id,
+            'role' => $cek_role[0]->name,
             'status' => 2,
-            'country' => $data['cbcountry'],
+            'country' => 1,
+            // 'country' => $data['cbcountry'],
             'province' => $data['cbprovince'],
             'city' => $data['cbcity'],
             'district' => $data['cbdistrict'],
             'ward' => $data['cbward'],
             'phone' => $data['phone'],
             'address' => $data['address'],
-            'detail_address' => $data['desc'],
+            'detail_address' => $data['address'],
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);

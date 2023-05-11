@@ -2,6 +2,7 @@
 @section('title')
 {{ isset($title) ? $title : "Halaman Data User"; }}
 @endsection
+@if(auth()->user()->role == 'admin')
 @section('style')
 <style>
     tr {
@@ -9,6 +10,7 @@
     }
 </style>
 @endsection
+@endif
 @section('content')
 <div class="">
     <div class="page-title">
@@ -278,5 +280,7 @@
         });
     });
 </script> -->
+@if(auth()->user()->role == 'admin')
 <script src="{{ asset('asset/js/click_datatableuser.js') }}"></script>
+@endif
 @endsection

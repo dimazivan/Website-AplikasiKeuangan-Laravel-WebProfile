@@ -93,7 +93,7 @@
                 <form class="login100-form validate-form" action="{{ route('login') }}" method="post" validate>
                     @csrf
                     @if(\Session::has('info'))
-                    <div class="alert alert-danger alert-dismissible " role="alert">
+                    <div class="alert alert-info alert-dismissible" role="alert" data-timeout="2000">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
                                 aria-hidden="true">x</span>
                         </button>

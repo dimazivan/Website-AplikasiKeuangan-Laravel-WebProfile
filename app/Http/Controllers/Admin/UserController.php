@@ -19,6 +19,7 @@ use App\Models\Regency;
 use App\Models\District;
 use App\Models\Village;
 use App\Models\Log_users;
+use App\Models\Roles;
 use Carbon\Carbon;
 use Redirect;
 
@@ -32,22 +33,22 @@ class UserController extends Controller
     public function index()
     {
         $title = "Halaman Data User";
-        // $data = User::all();
+        $data_user = User::all();
         $jml_role = User::Role()->count();
 
-        $data_user = Cache::remember('data', 120, function () {
-            return User::with('roles')
-            // return DB::table('users')
-            ->select(
-                'users.id',
-                'users.username',
-                'users.first_name',
-                'users.last_name',
-                'users.role as role',
-                'users.status',
-            )
-            ->get();
-        });
+        // $data_user = Cache::remember('data', 1, function () {
+        //     return User::with('roles')
+        //     // return DB::table('users')
+        //     ->select(
+        //         'users.id',
+        //         'users.username',
+        //         'users.first_name',
+        //         'users.last_name',
+        //         'users.role as role',
+        //         'users.status',
+        //     )
+        //     ->get();
+        // });
 
         // $exists = Storage::url('data/image/user/'.auth()->user()->file_foto);
         // $test = Storage::get('/app/data/image/user/'.auth()->user()->file_foto);
@@ -141,6 +142,7 @@ class UserController extends Controller
     public function create()
     {
         $title = "Halaman Data User";
+        $roles = Roles::all();
         $province = Province::orderBy('name', 'asc')
         ->pluck('name', 'id');
 
@@ -152,6 +154,7 @@ class UserController extends Controller
             'admin.pages.user.add_user',
             [
             'title' => $title,
+            'roles' => $roles,
 
         ],
             compact('province')
@@ -196,6 +199,8 @@ class UserController extends Controller
         ->cekEmail($request->email)
         ->get();
 
+        $cek_role = Roles::where('id', $request->cbrole)->get();
+
         if (empty($cek[0])) {
             if ($request->hasFile('file_foto')) {
                 if (filesize($request->file_foto) > 1000 * 10000) {
@@ -227,7 +232,8 @@ class UserController extends Controller
                         'last_name' => $request->last_name,
                         'username' => $request->username,
                         'email' => $request->email,
-                        'role' => $request->cbrole,
+                        'roles_id' => $cek_role[0]->id,
+                        'role' => $cek_role[0]->name,
                         'status' => 2,
                         'country' => $request->cbcountry,
                         'province' => $request->cbprovince,
@@ -264,7 +270,8 @@ class UserController extends Controller
                     'last_name' => $request->last_name,
                     'username' => $request->username,
                     'email' => $request->email,
-                    'role' => $request->cbrole,
+                    'roles_id' => $cek_role[0]->id,
+                    'role' => $cek_role[0]->name,
                     'status' => 2,
                     'country' => $request->cbcountry,
                     'province' => $request->cbprovince,
@@ -448,6 +455,8 @@ class UserController extends Controller
             return back()->withErrors($validator->errors());
         }
 
+        $cek_role = Roles::where('id', $request->cbrole)->get();
+
         if ($request->hasFile('file_foto')) {
             if (filesize($request->file_foto) > 1000 * 10000) {
                 Log_users::create([
@@ -496,7 +505,8 @@ class UserController extends Controller
                     'first_name' => $request->first_name,
                     'last_name' => $request->last_name,
                     'password' => bcrypt($request->password),
-                    'role' => $request->cbrole,
+                    'roles_id' => $cek_role[0]->id,
+                    'role' => $cek_role[0]->name,
                     'country' => $request->cbcountry,
                     'province' => $request->cbprovince,
                     'city' => $request->cbcity,
@@ -537,7 +547,8 @@ class UserController extends Controller
                 'first_name' => $request->first_name,
                 'last_name' => $request->last_name,
                 'password' => bcrypt($request->password),
-                'role' => $request->cbrole,
+                'roles_id' => $cek_role[0]->id,
+                'role' => $cek_role[0]->name,
                 'country' => $request->cbcountry,
                 'province' => $request->cbprovince,
                 'city' => $request->cbcity,

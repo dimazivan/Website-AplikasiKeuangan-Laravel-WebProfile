@@ -39,8 +39,8 @@ class UserStoreRequest extends FormRequest
                 'cbward' => 'required',
                 'phone' => 'required|numeric|digits_between:10,13',
                 'address' => 'required|max:255',
-                'desc' => 'max:255',
-                'file_foto' => 'mimes:jpeg,jpg,png,gif|max:10000',
+                'desc' => 'max:255|nullable',
+                'file_foto' => 'mimes:jpeg,jpg,png,gif|max:10000|nullable',
             ];
         } else {
             return[
@@ -57,8 +57,8 @@ class UserStoreRequest extends FormRequest
                 'cbward' => 'required',
                 'phone' => 'required|numeric|digits_between:10,13',
                 'address' => 'required|max:255',
-                'desc' => 'max:255',
-                'file_foto' => 'mimes:jpeg,jpg,png,gif|max:10000',
+                'desc' => 'max:255|nullable',
+                'file_foto' => 'mimes:jpeg,jpg,png,gif|max:10000|nullable',
             ];
         }
     }

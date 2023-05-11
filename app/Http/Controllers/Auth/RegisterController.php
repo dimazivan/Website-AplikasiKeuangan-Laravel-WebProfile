@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserStoreRequest;
+use App\Services\Register\RegisterService;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Log_users;
@@ -12,7 +13,6 @@ use App\Models\Roles;
 use App\Models\Log_auth;
 use App\Models\Province;
 use App\Models\User;
-use App\Services\RegisterService;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -29,27 +29,29 @@ class RegisterController extends Controller
         $this->registerService = $registerService;
     }
 
-     public function index()
-     {
-         $title = "Register Page";
-         $province = Province::orderBy('name', 'asc')
-         ->pluck('name', 'id');
+    public function index()
+    {
+        $title = "Register Page";
+        $roles = Roles::all();
+        $province = Province::orderBy('name', 'asc')
+        ->pluck('name', 'id');
 
 
-         return view(
-             'admin.register',
-             [
-             'title' => $title,
+        return view(
+            'admin.register',
+            [
+            'title' => $title,
+            'roles' => $roles,
         ],
-             compact('province')
-         );
-     }
+            compact('province')
+        );
+    }
 
     /**
-      * Show the form for creating a new resource.
-      *
-      * @return \Illuminate\Http\Response
-      */
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         //
@@ -63,11 +65,17 @@ class RegisterController extends Controller
      */
     public function store(UserStoreRequest $request)
     {
-        dd(
-            $request->all(),
-        );
+        // dd(
+        //     $request->all(),
+        // );
 
         $validator = $request->validated();
+
+        // dd(
+        //     !$validator,
+        //     $validator,
+        //     $request->all(),
+        // );
 
         if (!$validator) {
             // Log user error validation

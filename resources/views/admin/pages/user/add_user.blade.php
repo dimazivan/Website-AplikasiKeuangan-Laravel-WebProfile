@@ -126,8 +126,14 @@
                                     oninvalid="this.setCustomValidity('Silahkan pilih salah satu role tersedia')"
                                     oninput="this.setCustomValidity('')">
                                     <option value="" selected disabled>Pilih Role User</option>
-                                    <option value="admin">Admin</option>
-                                    <option value="keuangan">Keuangan</option>
+                                    @forelse($roles as $role)
+                                    <option value="{{ $role->id }}" style="text-transform:uppercase;">{{ $role->name }}
+                                    </option>
+                                    @empty
+                                    <option value="#">Data Role Kosong</option>
+                                    @endforelse
+                                    <!-- <option value="admin">Admin</option>
+                                    <option value="keuangan">Keuangan</option> -->
                                 </select>
                             </div>
                         </div>
