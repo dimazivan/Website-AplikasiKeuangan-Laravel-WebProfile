@@ -114,14 +114,14 @@
                         Member Login
                     </span>
                     <div class="wrap-input100 validate-input" data-validate="Username is required">
-                        <input class="input100" type="text" name="username" placeholder="Username">
+                        <input class="input100" type="text" name="username" placeholder="Username" disabled>
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-user" aria-hidden="true"></i>
                         </span>
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="Password is required">
-                        <input class="input100" type="password" name="password" placeholder="Password">
+                        <input class="input100" type="password" name="password" placeholder="Password" disabled>
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-lock" aria-hidden="true"></i>
@@ -132,7 +132,7 @@
                         <button class="btn btn-danger reload" id="reload" type="button">&#x21bb;</button>
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="Captcha is required">
-                        <input class="input100" type="text" name="captcha" placeholder="Captcha">
+                        <input class="input100" type="text" name="captcha" placeholder="Captcha" disabled>
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-link" aria-hidden="true"></i>
