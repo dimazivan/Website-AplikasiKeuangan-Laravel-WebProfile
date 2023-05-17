@@ -91,6 +91,12 @@ Route::group([
     // Cek Data
     Route::get('/data/cb/username/{username}', [UserController::class,'cekUsername'])->name('cek.username');
     Route::get('/data/cb/email/{email}', [UserController::class,'cekEmail'])->name('cek.email');
+
+
+    // Component
+    Route::get("/data/component/user/", function () {
+        return view("admin.components.modal_content.content_modaluser");
+    });
 });
 
 // Log Data

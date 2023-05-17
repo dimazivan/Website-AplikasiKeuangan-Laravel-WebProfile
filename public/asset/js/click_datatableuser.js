@@ -5,7 +5,7 @@ var ClickDatatableUser = function () {
             // Cek Data
             // var BASE_URL = 'http://localhost:8000';
             var table = $('#datatable-responsive').DataTable();
-            $('#datatable-responsive tbody').on('click', 'td:nth-child(3),td:nth-child(4),td:nth-child(5)', function() {
+            $('#datatable-responsive tbody').on('click', 'td:nth-child(3),td:nth-child(4),td:nth-child(5),td:nth-child(6)', function() {
                 var datatb = [];
                 datatb = table.row(this).data();
                 // console.log(table.row(this).data());
@@ -20,16 +20,23 @@ var ClickDatatableUser = function () {
                         success: function(data) {
                             console.log(data);
                             console.log(data[0]);
+                            console.log(data[0].first_name);
+                            var nama_depan = data[0].first_name;
+                            var nama_belakang = data[0].last_name;
                             if (data.length === 0) {
                                 $("#datatablecontent").find("#content").remove();
                                 $('#datatablecontent').append(
                                     '<div id="content">Data Kosong</div>'
                                 );
                             } else {
+                                var modal = 'test konten bawah';
                                 $("#datatablecontent").find("#content").remove();
-                                $('#datatablecontent').append(
-                                    '<div id="content">Test konten bawah</div>'
-                                );
+                                // $('#datatablecontent').append(
+                                //     modal
+                                // );
+                                $.get('/admin/data/component/user/', function(result){
+                                    $('#datatablecontent').html(result);
+                                });
                             }
                         },
                     });

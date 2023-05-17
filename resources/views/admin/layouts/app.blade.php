@@ -198,13 +198,13 @@ $bg = asset('asset/icon/logogif.gif');
     <script src="{{ asset('backend/vendors/pnotify/dist/pnotify.nonblock.js') }}"></script> -->
     <!-- Custom Theme Scripts -->
     <script src="{{ asset('backend/build/js/custom.min.js') }}"></script>
-    <!-- additional components -->
-    @hasSection('components')
-    @yield('components')
-    @endif
     <!-- additional script -->
     @hasSection('script')
     @yield('script')
+    @endif
+    <!-- additional components -->
+    @hasSection('components')
+    @yield('components')
     @endif
     <!-- @hasSection('script_right_menu')
     @yield('script_right_menu')

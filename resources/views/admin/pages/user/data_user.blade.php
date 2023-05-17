@@ -52,9 +52,9 @@
                                     data-target=".modaladduser" disabled>
                                     Tambah Data Ajax (Under Develop)
                                 </button> -->
-                                <a class="btn btn-app">
+                                <a class="btn btn-app" data-toggle="modal" data-target=".modalscandata">
                                     <i class="fa fa-search"></i>
-                                    Cek Data
+                                    Scan QR
                                 </a>
                                 <a class="btn btn-app">
                                     <i class="fa fa-trash"></i>
@@ -80,6 +80,7 @@
                                             <th width="20px;">
                                                 <input type="checkbox" id="check-all" class="flat">
                                             </th>
+                                            <th width="30px;">QR Code</th>
                                             <th>Nama User</th>
                                             <th>Username</th>
                                             <th>Role</th>
@@ -96,6 +97,11 @@
                                             <td class="a-center ">
                                                 <input type="checkbox" class="flat" name="table_records" id="cbnouser"
                                                     value="{{ Crypt::encrypt($data_user->id) }}">
+                                            </td>
+                                            <td>
+                                                {{
+                                                QrCode::size(50)->generate($data_user->first_name)
+                                                }}
                                             </td>
                                             <td>
                                                 {{ $data_user->first_name }}&nbsp;
@@ -232,7 +238,7 @@
                                         </tr>
                                         @empty
                                         <tr>
-                                            <td colspan="6">Data User Kosong</td>
+                                            <td colspan="7">Data User Kosong</td>
                                         </tr>
                                         @endforelse
                                     </tbody>
@@ -246,18 +252,13 @@
     </div>
 </div>
 @endsection
-<!-- additional components -->
-@section('components')
-@include('admin.components.modal.modal_add_user')
-@include('admin.components.modal.modal_datatable')
-@endsection
 <!-- additional script -->
 @section('script')
 <script>
     $('#datatable-responsive').dataTable({
-        "order": [2, "asc"],
+        "order": [3, "asc"],
         "columnDefs": [{
-            "targets": [1, 3, 6],
+            "targets": [1, 2, 6, 7],
             "orderable": false,
         }]
     });
@@ -281,6 +282,15 @@
     });
 </script> -->
 @if(auth()->user()->role == 'admin')
+<!-- <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script> -->
 <script src="{{ asset('asset/js/click_datatableuser.js') }}"></script>
+<!-- <script type="text/javascript" src="{{ asset('asset/js/instascan.min.js') }}"></script> -->
+<!-- <script type="text/javascript" src="{{ asset('asset/js/scan.js') }}"></script> -->
 @endif
+@endsection
+<!-- additional components -->
+@section('components')
+@include('admin.components.modal.modal_add_user')
+@include('admin.components.modal.modal_datatable')
+@include('admin.components.modal.modal_scandata')
 @endsection
