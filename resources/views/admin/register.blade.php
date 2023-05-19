@@ -222,7 +222,6 @@
                     </div>
                 </div>
             </section>
-
             <div class="text-center p-t-136" style="margin-top: -100px;">
                 <input type="checkbox" id="switch" onchange="darkMode(this)" disabled />
                 <label for="switch">Dark Mode</label>

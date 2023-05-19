@@ -34,6 +34,11 @@ Route::get('/reload-captcha', [CaptchaController::class, 'generate'])->name('cap
 Route::group([
     'namespace' => 'App\Http\Controllers\Auth',
 ], function () {
+    // Landing
+    Route::get('/', function () {
+        return view('landing.index');
+    });
+
     // Login
     Route::resource('register', 'RegisterController');
 });
@@ -54,7 +59,7 @@ Route::group([
     'namespace' => 'App\Http\Controllers\Admin',
     'middleware' => ['auth','CekRole:admin,keuangan']
 ], function () {
-    Route::get('/', function () {
+    Route::get('/dashboard', function () {
         return view('admin.index');
     });
 });

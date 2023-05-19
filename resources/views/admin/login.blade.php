@@ -13,7 +13,8 @@
     <!--===============================================================================================-->
     <link rel="icon" href="{{ asset('asset/icon/dimaz4.png') }}" type="image/ico" />
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('gate/vendor/bootstrap/css/bootstrap.min.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" type="text/css" href="{{ asset('gate/vendor/bootstrap/css/bootstrap.min.css') }}"> -->
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{ asset('gate/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
     <!--===============================================================================================-->
@@ -158,7 +159,7 @@
                         <span class="txt1" id="bgtext">
                             What's new or upcoming ?
                         </span>
-                        <a class="txt2" href="#">
+                        <a class="txt2" href="#" data-toggle="modal" data-target=".modalversion">
                             Here...
                         </a>
                     </div>
@@ -186,6 +187,7 @@
         <div class="right_menu_item">Menu 4</div>
         <div class="right_menu_item">Menu 5</div>
     </div>
+    @include('admin.components.modal.modal_version')
 
     <!--===============================================================================================-->
     <script src="{{ asset('gate/vendor/jquery/jquery-3.2.1.min.js') }}"></script>

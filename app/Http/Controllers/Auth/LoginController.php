@@ -24,6 +24,7 @@ class LoginController extends Controller
     public function index()
     {
         $title = "Login Page";
+        $data = "a";
 
         //whether ip is from share internet
         if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
@@ -52,6 +53,7 @@ class LoginController extends Controller
         } else {
             return view('admin.login', [
                 'title' => $title,
+                'data' => $data,
             ]);
         }
     }

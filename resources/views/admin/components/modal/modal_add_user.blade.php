@@ -1,5 +1,5 @@
 <div class="modal fade modaladduser" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <form class="" action="#" method="post" validate enctype="multipart/form-data">
                 <div class="modal-header">
