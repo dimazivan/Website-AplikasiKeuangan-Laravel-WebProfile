@@ -7,22 +7,38 @@ use App\Http\Requests\UserStoreRequest;
 use App\Models\Roles;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AuthApiController extends Controller
 {
     public function register(Request $request)
-    // public function register(UserStoreRequest $request)
     {
         $waktu = Carbon::now();
 
-        // $validator = $request->validated();
+        $validator = Validator::make($request->all(), [
+            'first_name' => 'required|max:255',
+            'last_name' => 'required|max:255',
+            'username' => 'required|min:5|max:255',
+            'email' => 'required|email',
+            'password' => 'required|min:5|max:40',
+            'cbrole' => 'required',
+            'cbcountry' => 'required',
+            'cbprovince' => 'required',
+            'cbcity' => 'required',
+            'cbdistrict' => 'required',
+            'cbward' => 'required',
+            'phone' => 'required|numeric|digits_between:10,13',
+            'address' => 'required|max:255',
+            'desc' => 'max:255|nullable',
+            'file_foto' => 'mimes:jpeg,jpg,png,gif|max:10000|nullable',
+        ]);
 
         // if (!$validator) {
-        //     // if($validator->fails()) {
-        //     return response()->json($validator->errors());
-        // }
+        if($validator->fails()) {
+            return response()->json($validator->errors());
+        }
 
         // Cek Data
         $cek = User::cekUsername($request->username)
