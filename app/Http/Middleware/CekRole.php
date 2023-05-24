@@ -53,8 +53,9 @@ class CekRole
                 'mac_address' => '',
             ]);
 
-            Alert::warning('Ups...', 'Terjadi Kesalahan');
-            return redirect('/');
+            // Alert::warning('Ups...', 'Terjadi Kesalahan');
+            // return redirect('/');
+            abort(403, 'Unauthorized');
         }
 
         // Log
@@ -66,7 +67,10 @@ class CekRole
             'mac_address' => '',
         ]);
 
-        Alert::warning('Ups...', 'Terjadi Kesalahan');
-        return redirect('/');
+        // Alert::warning('Ups...', 'Terjadi Kesalahan');
+        // return redirect('/');
+
+        abort(403, 'Unauthorized');
+
     }
 }

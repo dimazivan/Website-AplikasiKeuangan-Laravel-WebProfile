@@ -143,7 +143,10 @@ class AuthApiController extends Controller
         // if (!Auth::attempt($request->only('email', 'password'))) {
         if (!Auth::attempt($request->only('username', 'password'))) {
             return response()
-                ->json(['message' => 'Unauthorized'], 401);
+            ->json([
+                'success'   => false,
+                'message' => ['These credentials do not match our records.']
+            ], 404);
         }
 
         // if(Auth::check()) {
@@ -166,6 +169,7 @@ class AuthApiController extends Controller
 
         return response()
             ->json([
+                'success' => true,
                 'message' => 'Hi '.$user->first_name.', welcome to home',
                 'role' => $user->name,
                 'access_token' => $token,
@@ -176,6 +180,12 @@ class AuthApiController extends Controller
     public function cek_login()
     {
         if(Auth::check()) {
+            // auth()->guard('web')->logout();
+            // dd(
+            //     auth(),
+            //     auth()->user(),
+            // );
+
             return response()->json([
                 'success' => false,
                 'message' => 'Wes login ya login maneh',
@@ -191,11 +201,28 @@ class AuthApiController extends Controller
     // method for user logout and delete token
     public function logout()
     {
-        auth()->user()->tokens()->delete();
-        auth()->guard('web')->logout();
+        // dd(
+        //     auth()->user()->tokens()->delete(),
+        //     auth()->user()->delete(),
+        //     auth()->check(),
+        //     Auth::check(),
+        //     Auth::user(),
+        // );
 
-        return [
-            'message' => 'You have successfully logged out and the token was successfully deleted'
-        ];
+        if(Auth::check()) {
+            auth()->user()->tokens()->delete();
+            auth()->user()->delete();
+
+            return [
+                'message' => 'You have successfully logged out and the token was successfully deleted'
+            ];
+        } else {
+            return response()->json([
+                'success' => true,
+                'message' => 'Kosong mas gas',
+            ], 200);
+        }
+
+
     }
 }

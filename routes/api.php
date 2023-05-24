@@ -36,14 +36,16 @@ Route::post('/login', [AuthApiController::class, 'login']);
 
 Route::get('/cek_login', [AuthApiController::class, 'cek_login']);
 
+// API route for logout user
+Route::post('/logout', [AuthApiController::class, 'logout']);
+
 //Protecting Routes
-Route::group(['middleware' => ['auth:sanctum']], function () {
+Route::group([
+    'middleware' => ['auth:sanctum','CekRole:admin']
+], function () {
     Route::get('/profile', function (Request $request) {
         return auth()->user();
     });
-
-    // API route for logout user
-    Route::post('/logout', [AuthApiController::class, 'logout']);
 
     // Api User
     Route::resource('api_user', 'Api_UserController');
