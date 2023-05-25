@@ -1,0 +1,1 @@
+<div id="preloader" class="preloader" hidden></div>

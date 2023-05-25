@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             ProductSeeder::class,
             ServiceSeeder::class,
             IndoRegionSeeder::class,
+            ChangeLogSeeder::class,
         ]);
     }
 }

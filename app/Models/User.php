@@ -102,4 +102,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Log_users');
     }
+
+    public function change_logs()
+    {
+        return $this->hasMany('App\Models\Change_logs');
+    }
 }

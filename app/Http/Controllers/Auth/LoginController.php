@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Change_logs;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Log_users;
@@ -24,7 +25,7 @@ class LoginController extends Controller
     public function index()
     {
         $title = "Login Page";
-        $data = "a";
+        $data = Change_logs::paginate(4);
 
         //whether ip is from share internet
         if (!empty($_SERVER['HTTP_CLIENT_IP'])) {

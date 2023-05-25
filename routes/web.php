@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\Api_WilayahController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Component\CaptchaController;
+use App\Http\Controllers\Log\Change_LogController;
 use RealRashid\SweetAlert\Facades\Alert;
 
 /*
@@ -27,6 +28,15 @@ use RealRashid\SweetAlert\Facades\Alert;
 Route::get('/login', [LoginController::class,'index'])->name('index.login');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/reload-captcha', [CaptchaController::class, 'generate'])->name('captcha.generate');
+
+Route::group([
+    'prefix' => 'log',
+    'namespace' => 'App\Http\Controllers\Log',
+], function () {
+    // Route Log Data User
+    Route::resource('change_log', 'Change_LogController');
+});
+
 
 // REGISTER
 // Route::get('/register', [RegisterController::class,'index'])->name('index.register');

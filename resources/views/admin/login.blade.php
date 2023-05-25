@@ -84,6 +84,7 @@
 
 <body>
     @include('sweetalert::alert')
+    @include('admin.components.preload.submitloading')
     <div class="limiter">
         <div class="container-login100" id="bg">
             <div class="wrap-login100" id="bgform">
@@ -185,7 +186,11 @@
         <div class="right_menu_item">Menu 2</div>
         <div class="right_menu_item">Menu 3</div>
         <div class="right_menu_item">Menu 4</div>
-        <div class="right_menu_item">Menu 5</div>
+        <div class="right_menu_item">
+            <a href="/" target="_blank">
+                Dashboard
+            </a>
+        </div>
     </div>
     @include('admin.components.modal.modal_version')
 
@@ -222,9 +227,11 @@
             var elementbg = document.getElementById("bg");
             var elementform = document.getElementById("bgform");
             var elementtext = document.getElementById("bgtext");
+            var elementmodal = document.getElementById("modalversion");
             elementbg.classList.toggle("dark-mode-bg");
             elementform.classList.toggle("dark-mode-form");
             elementtext.classList.toggle("dark-mode-text");
+            elementmodal.classList.toggle("dark-mode-bg");
             localStorage.setItem("dark-mode-login", "dark");
             console.log(localStorage.getItem("dark-mode-login"));
             document.getElementById("switch").checked = true;
@@ -261,9 +268,12 @@
                 var elementbg = document.getElementById("bg");
                 var elementform = document.getElementById("bgform");
                 var elementtext = document.getElementById("bgtext");
+                var elementmodal = document.getElementById("bgmodal");
+                var elementmodal = document.getElementById("modalversion");
                 elementbg.classList.toggle("dark-mode-bg");
                 elementform.classList.toggle("dark-mode-form");
                 elementtext.classList.toggle("dark-mode-text");
+                elementmodal.classList.toggle("dark-mode-bg");
                 localStorage.setItem("dark-mode-login", "dark");
                 // sessionStorage.setItem("dark-mode-login", "dark");
                 console.log(localStorage.getItem("dark-mode-login"));
@@ -272,9 +282,11 @@
                 var elementbg = document.getElementById("bg");
                 var elementform = document.getElementById("bgform");
                 var elementtext = document.getElementById("bgtext");
+                var elementmodal = document.getElementById("modalversion");
                 elementbg.classList.toggle("dark-mode-bg");
                 elementform.classList.toggle("dark-mode-form");
                 elementtext.classList.toggle("dark-mode-text");
+                elementmodal.classList.toggle("dark-mode-bg");
                 localStorage.setItem("dark-mode-login", "light");
                 console.log(localStorage.getItem("dark-mode-login"));
             } else {
@@ -376,7 +388,6 @@
         //     });
         // });
     </script>
-
 </body>
 
 </html>
