@@ -13,7 +13,7 @@
                         Welcome to my portofolio website
                     </h1>
                     <p class="ud-hero-desc">
-                        As you can see there's many services that i can do for your
+                        As you can see there's many services that we can do for your
                         business or project as a developer, choose your choice
                     </p>
                     <ul class="ud-hero-buttons">
@@ -55,20 +55,17 @@
             <div class="ud-about-content-wrapper">
                 <div class="ud-about-content">
                     <span class="tag">About Us</span>
-                    <h2>Brilliant Toolkit to Build Nextgen Website Faster.</h2>
+                    <h2>Simple but Efficient</h2>
                     <p>
-                        The main 'thrust' is to focus on educating attendees on how to
-                        best protect highly vulnerable business applications with
-                        interactive panel discussions and roundtables led by subject
-                        matter experts.
+                        We have some solutions for your business problem or project requirement and able to solve the
+                        problem
+                        with simple and efficent ways.
                     </p>
-
                     <p>
-                        The main 'thrust' is to focus on educating attendees on how to
-                        best protect highly vulnerable business applications with
-                        interactive panel.
+                        We give other solution with a good recommendation based on your business problem or project
+                        requirement.
                     </p>
-                    <a href="javascript:void(0)" class="ud-main-btn">Learn More</a>
+                    <a href="#contact" class="ud-main-btn">Ask Now</a>
                 </div>
             </div>
             <div class="ud-about-image">

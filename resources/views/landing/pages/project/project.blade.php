@@ -23,57 +23,17 @@
             <div class="col-lg-4 col-md-6">
                 <div class="ud-single-blog">
                     <div class="ud-blog-image">
-                        <a href="blog-details.html">
-                            <img src="assets/images/blog/blog-01.jpg" alt="blog" />
+                        <a href="#">
+                            <img src="{{ asset('portofolio/assets/images/project/dashboard.png')}}" alt="dashboard" />
                         </a>
+                        <!-- Modal -->
+
                     </div>
                     <div class="ud-blog-content">
                         <span class="ud-blog-date">Dec 22, 2023</span>
                         <h3 class="ud-blog-title">
-                            <a href="blog-details.html">
+                            <a href="#">
                                 Meet AutoManage, the best AI management tools
-                            </a>
-                        </h3>
-                        <p class="ud-blog-desc">
-                            Lorem Ipsum is simply dummy text of the printing and
-                            typesetting industry.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="ud-single-blog">
-                    <div class="ud-blog-image">
-                        <a href="blog-details.html">
-                            <img src="assets/images/blog/blog-02.jpg" alt="blog" />
-                        </a>
-                    </div>
-                    <div class="ud-blog-content">
-                        <span class="ud-blog-date">Dec 22, 2023</span>
-                        <h3 class="ud-blog-title">
-                            <a href="blog-details.html">
-                                How to earn more money as a wellness coach
-                            </a>
-                        </h3>
-                        <p class="ud-blog-desc">
-                            Lorem Ipsum is simply dummy text of the printing and
-                            typesetting industry.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="ud-single-blog">
-                    <div class="ud-blog-image">
-                        <a href="blog-details.html">
-                            <img src="assets/images/blog/blog-03.jpg" alt="blog" />
-                        </a>
-                    </div>
-                    <div class="ud-blog-content">
-                        <span class="ud-blog-date">Dec 22, 2023</span>
-                        <h3 class="ud-blog-title">
-                            <a href="blog-details.html">
-                                The no-fuss guide to upselling and cross selling
                             </a>
                         </h3>
                         <p class="ud-blog-desc">

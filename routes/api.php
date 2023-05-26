@@ -41,6 +41,7 @@ Route::post('/logout', [AuthApiController::class, 'logout']);
 
 //Protecting Routes
 Route::group([
+    'namespace' => 'App\Http\Controllers\Api',
     'middleware' => ['auth:sanctum','CekRole:admin']
 ], function () {
     Route::get('/profile', function (Request $request) {

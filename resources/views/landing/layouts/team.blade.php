@@ -7,8 +7,8 @@
                     <span>Developer</span>
                     <h2>Introduce Developer</h2>
                     <p>
-                        There are many variations of passages of Lorem Ipsum available
-                        but the majority have suffered alteration in some form.
+                        Here some informations about our developers team, that able and give a solution with your own
+                        business or project.
                     </p>
                 </div>
             </div>
@@ -81,7 +81,7 @@
                             <span class="icon flex-shrink-0">
                                 <i class="lni lni-chevron-down"></i>
                             </span>
-                            <span>How to use UIdeck?</span>
+                            <span>What kind of services we offers to you ?</span>
                         </button>
                         <div id="collapseOne" class="accordion-collapse collapse">
                             <div class="ud-faq-body">
@@ -100,7 +100,7 @@
                             <span class="icon flex-shrink-0">
                                 <i class="lni lni-chevron-down"></i>
                             </span>
-                            <span>How to download icons from Lineicons?</span>
+                            <span>What how to interact/contact with us ?</span>
                         </button>
                         <div id="collapseTwo" class="accordion-collapse collapse">
                             <div class="ud-faq-body">
@@ -119,7 +119,7 @@
                             <span class="icon flex-shrink-0">
                                 <i class="lni lni-chevron-down"></i>
                             </span>
-                            <span>Is GrayGrids part of UIdeck?</span>
+                            <span>What payments do we accept ?</span>
                         </button>
                         <div id="collapseThree" class="accordion-collapse collapse">
                             <div class="ud-faq-body">
@@ -140,7 +140,7 @@
                             <span class="icon flex-shrink-0">
                                 <i class="lni lni-chevron-down"></i>
                             </span>
-                            <span>Can I use this template for commercial project?</span>
+                            <span>How about support ticket?</span>
                         </button>
                         <div id="collapseFour" class="accordion-collapse collapse">
                             <div class="ud-faq-body">

@@ -17,11 +17,10 @@
                     <div class="navbar-collapse">
                         <ul id="nav" class="navbar-nav mx-auto">
                             <li class="nav-item">
-                                <a class="ud-menu-scroll" href="#home">Home</a>
+                                <a class="ud-menu-scroll" href="/">Home</a>
                             </li>
-
                             <li class="nav-item">
-                                <a class="ud-menu-scroll" href="#about">About</a>
+                                <a class="ud-menu-scroll" href="#">About</a>
                             </li>
                             <li class="nav-item">
                                 <a class="ud-menu-scroll" href="#team">Team</a>
@@ -30,7 +29,7 @@
                                 <a class="ud-menu-scroll" href="#faq">FAQ</a>
                             </li>
                             <li class="nav-item">
-                                <a class="ud-menu-scroll" href="#contact">Contact</a>
+                                <a class="ud-menu-scroll" href="#">Contact</a>
                             </li>
                             <li class="nav-item nav-item-has-children">
                                 <a href="javascript:void(0)"> Pages </a>
