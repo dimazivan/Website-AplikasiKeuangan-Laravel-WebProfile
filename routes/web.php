@@ -29,6 +29,20 @@ Route::get('/login', [LoginController::class,'index'])->name('index.login');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/reload-captcha', [CaptchaController::class, 'generate'])->name('captcha.generate');
 
+
+Route::group([
+    'namespace' => 'App\Http\Controllers\Landing',
+], function () {
+    // Route::get('/', function () {
+    //     return view('landing.index');
+    // });
+
+    // Landing
+    Route::resource('/', 'LandingController');
+    Route::resource('/project', 'ProjectController');
+});
+
+
 Route::group([
     'prefix' => 'log',
     'namespace' => 'App\Http\Controllers\Log',
@@ -44,11 +58,6 @@ Route::group([
 Route::group([
     'namespace' => 'App\Http\Controllers\Auth',
 ], function () {
-    // Landing
-    Route::get('/', function () {
-        return view('landing.index');
-    });
-
     // Login
     Route::resource('register', 'RegisterController');
 });
@@ -64,7 +73,7 @@ Route::group([
     Route::resource('reset', 'ResetController');
 });
 
-// Homepage
+// Dashboard
 Route::group([
     'namespace' => 'App\Http\Controllers\Admin',
     'middleware' => ['auth','CekRole:admin,keuangan']

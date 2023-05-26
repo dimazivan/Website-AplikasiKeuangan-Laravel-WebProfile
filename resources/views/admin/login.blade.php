@@ -188,7 +188,7 @@
         <div class="right_menu_item">Menu 4</div>
         <div class="right_menu_item">
             <a href="/" target="_blank">
-                Dashboard
+                Landing Page
             </a>
         </div>
     </div>

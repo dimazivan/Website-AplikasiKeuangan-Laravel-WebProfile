@@ -163,7 +163,6 @@
                                                                         "Your data already updated :)",
                                                                         "success");
                                                                 } else {
-
                                                                     swal("Cancelled",
                                                                         "You cancelled :)",
                                                                         "error");
