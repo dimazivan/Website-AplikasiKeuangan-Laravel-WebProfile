@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Landing;
 
 use App\Http\Controllers\Controller;
+use App\Models\Detail_projects;
+use App\Models\Projects;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -14,7 +16,13 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $data = "a";
+        $data = Projects::with('detail_projects')->get();
+        $data2 = Detail_projects::all();
+
+        // dd(
+        //     $data,
+        //     $data2,
+        // );
 
         return view('landing.pages.project.project', [
             'data' => $data,

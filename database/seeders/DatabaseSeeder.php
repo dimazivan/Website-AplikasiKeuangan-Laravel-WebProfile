@@ -29,6 +29,8 @@ class DatabaseSeeder extends Seeder
             ServiceSeeder::class,
             IndoRegionSeeder::class,
             ChangeLogSeeder::class,
+            ProjectSeeder::class,
+            Detail_projectSeeder::class,
         ]);
     }
 }
