@@ -62,24 +62,30 @@
                     <div class="navbar-btn d-none d-sm-inline-block">
                         <ul id="nav" class="navbar-nav mx-auto">
                             <li class="nav-item nav-item-has-children">
-                                <a href="javascript:void(0)">Welcome,&nbsp;
-                                    {{ $first_name =
-                                    Str::limit(auth()->user()->first_name, 10) }}
+                                <a href="javascript:void(0)" style="text-transform: capitalize;">Welcome,&nbsp;
+                                    <i class="lni lni-user"></i>
+                                    {{
+                                    $first_name = Str::limit(auth()->user()->first_name, 10)
+                                    }}
                                 </a>
                                 <ul class="ud-submenu">
                                     <li class="ud-submenu-item">
-                                        <i class="lni lni-dashboard"></i>
                                         <a href="/dashboard" class="ud-submenu-link" target="_blank">
+                                            <i class="lni lni-dashboard"></i>
                                             Admin
                                         </a>
                                     </li>
                                     <li class="ud-submenu-item">
-                                        <i class="lni lni-code"></i>
-                                        <a href="#" class="ud-submenu-link">404 Page</a>
+                                        <a href="#" class="ud-submenu-link">
+                                            <i class="lni lni-code"></i>
+                                            404 Page
+                                        </a>
                                     </li>
                                     <li class="ud-submenu-item">
-                                        <i class="lni lni-shift-right"></i>
-                                        <a href="/logout" class="ud-submenu-link">Logout</a>
+                                        <a href="/logout" class="ud-submenu-link">
+                                            <i class="lni lni-shift-right"></i>
+                                            Logout
+                                        </a>
                                     </li>
                                 </ul>
                             </li>
@@ -95,6 +101,8 @@
                         </a>
                     </div>
                     @endif
+                    <!-- Localization -->
+
                 </nav>
             </div>
         </div>

@@ -76,7 +76,7 @@
                         </div>
                         <h3 class="ud-blog-title">
                             <a href="{{ $data_project->github }}" target="_blank" style="text-transform:capitalize;">
-                                {{ $data_project->title }}
+                                {{ $title_limit = Str::limit($data_project->title,50) }}
                             </a>
                         </h3>
                         <p class="ud-blog-desc" style="text-align:justify;">

@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="{{ asset('portofolio/assets/css/animate.css')}}" />
     <link rel="stylesheet" href="{{ asset('portofolio/assets/css/lineicons.css')}}" />
     <link rel="stylesheet" href="{{ asset('portofolio/assets/css/ud-styles.css')}}" />
+    <link rel="stylesheet" href="{{ asset('portofolio/assets/css/modal.css')}}" />
     @hasSection('style')
     @yield('style')
     @endif

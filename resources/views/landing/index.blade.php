@@ -3,6 +3,7 @@
 {{ isset($title) ? $title : "Dimz | Portofolio Website"; }}
 @endsection
 @section('content')
+@include('landing.components.modal.modal_index')
 <!-- ====== Hero Start ====== -->
 <section class="ud-hero" id="home">
     <div class="container">

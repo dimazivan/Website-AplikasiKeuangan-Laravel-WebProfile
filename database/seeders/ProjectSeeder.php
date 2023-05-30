@@ -38,11 +38,65 @@ class ProjectSeeder extends Seeder
             'status'=> 'public',
             'type'=> 'fs',
             'feature'=> 'Data Master,Dashboard,API,Eksport,Authentication,Enkripsi,Mail Sender,Dll',
-            'description'=> 'Aplikasi keuangan dan dashboard yang berisi tentang Data Master, API, dan juga hal yang menarik lainnya',
+            'description'=> 'Aplikasi keuangan dan dashboard yang berisi tentang Data Master, API, dan juga hal yang menarik lainnya.',
             'github'=> 'https://github.com/dimazivan/Website-AplikasiKeuangan-Laravel-WebProfile',
             'images'=> 'dashboard.png',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
+
+        DB::table('projects')->insert([
+            'title'=> 'SPK Pemilihan Perumahan Metode AHP',
+            'date'=> '2020-03-01',
+            'status'=> 'public',
+            'type'=> 'fs',
+            'feature'=> 'Data Master,Dashboard,Eksport,SPK Method,Dll',
+            'description'=> 'Sistem pendukung keputusan berbasis website yang menggunakan tampilan bootstrap dan framework laravel, siap membantu anda dalam melakukan pengambilan keputusan.',
+            'github'=> 'https://github.com/dimazivan/Website-SPK-AHP-Laravel',
+            'images'=> 'SPK_AHP.png',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('projects')->insert([
+            'title'=> 'Aplikasi Penjualan dan Pemesanan Produk pada UMKM HawaaMoeslemWear berbasis website.',
+            'date'=> '2021-04-01',
+            'status'=> 'public',
+            'type'=> 'fs',
+            'feature'=> 'Penjualan Produk,Penjualan Custom,Cart,Produksi,Dashboard,Eksport,Authentication,Enkripsi',
+            'description'=> 'Develop single web store for UMKM HawaaMoeslemWear (framework laravel) (2021), Develop and customize web project like feature, module, appearance, template that relate about ecommerce, but several feature like payment gateway, chatting or feedback not include in it and also maintenance testing during development. noted: this is single store webstore.',
+            'github'=> 'https://github.com/dimazivan/Website-HawaaMoeslemWear-Laravel',
+            'images'=> 'Hawaa_Store.png',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('projects')->insert([
+            'title'=> 'Aplikasi Penjualan dan Pemesanan Produk Toko Roti Berbasis Website',
+            'date'=> '2020-01-01',
+            'status'=> 'public',
+            'type'=> 'fs',
+            'feature'=> 'Penjualan Produk,Dashboard,Authentication,Enkripsi',
+            'description'=> 'Aplikasi Jual Beli Perusahaan Toko KUE',
+            'github'=> 'https://github.com/dimazivan/Website-TokoRoti-Native',
+            'images'=> 'tokoroti_native.png',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('projects')->insert([
+            'title'=> 'Aplikasi Penjualan dan Pemesanan Produk Toko Roti Berbasis Website',
+            'date'=> '2020-05-01',
+            'status'=> 'public',
+            'type'=> 'fs',
+            'feature'=> 'Penjualan Produk,Dashboard,Eksport,Authentication,Enkripsi',
+            'description'=> 'Aplikasi Jual Beli Perusahaan Toko KUE.',
+            'github'=> 'https://github.com/dimazivan/Website-TokoRoti-Laravel',
+            'images'=> 'toko_roti.png',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+
     }
 }

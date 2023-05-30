@@ -16,7 +16,10 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $data = Projects::with('detail_projects')->get();
+        $data = Projects::with('detail_projects')
+        ->orderBy('date', 'desc')
+        ->get();
+
         $data2 = Detail_projects::all();
 
         // dd(
