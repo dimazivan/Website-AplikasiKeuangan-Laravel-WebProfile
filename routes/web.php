@@ -11,7 +11,9 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Component\CaptchaController;
 use App\Http\Controllers\Log\Change_LogController;
+use App\Models\Languages;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\App;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,24 +25,29 @@ use RealRashid\SweetAlert\Facades\Alert;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// $lang = "id";
 
 // LOGIN
 Route::get('/login', [LoginController::class,'index'])->name('index.login');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/reload-captcha', [CaptchaController::class, 'generate'])->name('captcha.generate');
 
+foreach (Languages::all() as $data) {
+    Route::group([
+        'prefix' => $data->alias,
+        // 'prefix' => App::getLocale(),
+        // App::setLocale($data->alias),
+        'namespace' => 'App\Http\Controllers\Landing',
+    ], function ($router) {
+        // ], function ($lange) use ($lang) {
 
-Route::group([
-    'namespace' => 'App\Http\Controllers\Landing',
-], function () {
-    // Route::get('/', function () {
-    //     return view('landing.index');
-    // });
+        // App::setLocale(Route::current()->getPrefix());
 
-    // Landing
-    Route::resource('/', 'LandingController');
-    Route::resource('/project', 'ProjectController');
-});
+        // Landing
+        Route::resource('/', 'LandingController');
+        Route::resource('/project', 'ProjectController');
+    });
+}
 
 
 Route::group([

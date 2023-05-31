@@ -17,13 +17,13 @@
                     <div class="navbar-collapse">
                         <ul id="nav" class="navbar-nav mx-auto">
                             <li class="nav-item">
-                                <a class="ud-menu-scroll" href="/">Home</a>
+                                <a class="ud-menu-scroll" href="/">{{__('project.header.nav_home')}}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="ud-menu-scroll" href="#">About</a>
+                                <a class="ud-menu-scroll" href="#">{{__('project.header.nav_about')}}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="ud-menu-scroll" href="#team">Team</a>
+                                <a class="ud-menu-scroll" href="#team">{{__('project.header.nav_team')}}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="ud-menu-scroll" href="#faq">FAQ</a>

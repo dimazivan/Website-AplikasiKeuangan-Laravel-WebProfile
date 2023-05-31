@@ -17,9 +17,8 @@ return[
         "nav_signup" => "Sign Up",
     ],
     "content" => [
-        "title_banner" => "Your Name",
-        "title_data" => "Your Address",
-        "job" => "Your Job",
+        "title_banner" => "Portofolio Project",
+        //
     ],
     "team" => [
         "title_team" => "Developer",
