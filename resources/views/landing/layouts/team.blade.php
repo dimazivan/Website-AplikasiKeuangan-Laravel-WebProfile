@@ -4,11 +4,10 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="ud-section-title mx-auto text-center">
-                    <span>Developer</span>
-                    <h2>Introduce Developer</h2>
+                    <span>{{__('project.team.title_team')}}</span>
+                    <h2>{{__('project.team.subtitle_team')}}</h2>
                     <p>
-                        Here some informations about our developers team, that able and give a solution with your own
-                        business or project.
+                        {{__('project.team.desc_team')}}
                     </p>
                 </div>
             </div>
@@ -30,7 +29,7 @@
                     </div>
                     <div class="ud-team-info">
                         <h5>Dimaz Ivan Perdana</h5>
-                        <h6>Website Developer</h6>
+                        <h6>{{__('project.team.role_team')}}</h6>
                     </div>
                     <ul class="ud-team-socials">
                         <li>

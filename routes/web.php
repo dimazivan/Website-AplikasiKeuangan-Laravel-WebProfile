@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\App;
 |
 */
 // $lang = "id";
+// $prefix = "";
 
 // LOGIN
 Route::get('/login', [LoginController::class,'index'])->name('index.login');
@@ -35,83 +36,100 @@ Route::get('/reload-captcha', [CaptchaController::class, 'generate'])->name('cap
 foreach (Languages::all() as $data) {
     Route::group([
         'prefix' => $data->alias,
-        // 'prefix' => App::getLocale(),
-        // App::setLocale($data->alias),
+        App::setLocale(request()->segment(1)),
         'namespace' => 'App\Http\Controllers\Landing',
     ], function ($router) {
         // ], function ($lange) use ($lang) {
 
-        // App::setLocale(Route::current()->getPrefix());
+        // dd(
+        //     request()->segments(),
+        //     request()->segment(1),
+        // );
 
         // Landing
         Route::resource('/', 'LandingController');
         Route::resource('/project', 'ProjectController');
     });
-}
 
-
-Route::group([
-    'prefix' => 'log',
-    'namespace' => 'App\Http\Controllers\Log',
-], function () {
-    // Route Log Data User
-    Route::resource('change_log', 'Change_LogController');
-});
-
-
-// REGISTER
-// Route::get('/register', [RegisterController::class,'index'])->name('index.register');
-
-Route::group([
-    'namespace' => 'App\Http\Controllers\Auth',
-], function () {
-    // Login
-    Route::resource('register', 'RegisterController');
-});
-
-
-// URL Auth
-Route::group([
-    'prefix' => 'auth',
-    'namespace' => 'App\Http\Controllers\Auth',
-], function () {
-    // Login
-    Route::any('/login/cek', [LoginController::class, 'login'])->name('login');
-    Route::resource('reset', 'ResetController');
-});
-
-// Dashboard
-Route::group([
-    'namespace' => 'App\Http\Controllers\Admin',
-    'middleware' => ['auth','CekRole:admin,keuangan']
-], function () {
-    Route::get('/dashboard', function () {
-        return view('admin.index');
+    Route::group([
+        'prefix' => $data->alias.'/log',
+        'namespace' => 'App\Http\Controllers\Log',
+    ], function () {
+        // Route Log Data User
+        Route::resource('change_log', 'Change_LogController');
     });
-});
 
-// Admin
-// URL ADMIN
-Route::group([
-    'prefix' => 'admin',
-    'namespace' => 'App\Http\Controllers\Admin',
-    'middleware' => ['auth','CekRole:admin']
-], function () {
-    // Route Latihan
-    Route::resource('latihan', 'LatihanController');
 
-    // Route User
-    Route::resource('user', 'UserController');
-    // Cek Data
-    Route::get('/data/cb/id/{id}', [UserController::class,'cekId'])->name('cek.id');
-    Route::post('/data/cb/user/deactive', [UserController::class,'deactiveUser'])->name('deactive.user');
+    // REGISTER
+    // Route::get('/register', [RegisterController::class,'index'])->name('index.register');
 
-    // Route Product
-    Route::resource('product', 'ProductController');
+    Route::group([
+        'prefix' => $data->alias,
+        'namespace' => 'App\Http\Controllers\Auth',
+    ], function () {
+        // Login
+        Route::resource('register', 'RegisterController');
+    });
 
-    // Route Service
-    Route::resource('service', 'ServiceController');
-});
+    // URL Auth
+    Route::group([
+        'prefix' => $data->alias.'/auth',
+        'namespace' => 'App\Http\Controllers\Auth',
+    ], function () {
+        // Login
+        Route::any('/login/cek', [LoginController::class, 'login'])->name('login');
+        Route::resource('reset', 'ResetController');
+    });
+
+    // Dashboard
+    Route::group([
+        'prefix' => $data->alias,
+        'namespace' => 'App\Http\Controllers\Admin',
+        'middleware' => ['auth','CekRole:admin,keuangan']
+    ], function () {
+        Route::get('/dashboard', function () {
+            return view('admin.index');
+        });
+    });
+
+    // Admin
+    // URL ADMIN
+    Route::group([
+        'prefix' => $data->alias.'/admin',
+        'namespace' => 'App\Http\Controllers\Admin',
+        'middleware' => ['auth','CekRole:admin']
+    ], function () {
+        // Route Latihan
+        Route::resource('latihan', 'LatihanController');
+
+        // Route User
+        Route::resource('user', 'UserController');
+        // Cek Data
+        Route::get('/data/cb/id/{id}', [UserController::class,'cekId'])->name('cek.id');
+        Route::post('/data/cb/user/deactive', [UserController::class,'deactiveUser'])->name('deactive.user');
+
+        // Route Product
+        Route::resource('product', 'ProductController');
+
+        // Route Service
+        Route::resource('service', 'ServiceController');
+    });
+
+    // Log Data
+    // URL LOG
+    Route::group([
+        'prefix' => $data->alias.'/log',
+        'namespace' => 'App\Http\Controllers\Log',
+        'middleware' => ['auth','CekRole:admin']
+    ], function () {
+        // Route Log Data User
+        Route::resource('log_user', 'Log_UserController');
+
+        // Route Log Data User
+        Route::resource('log_auth', 'Log_AuthController');
+    });
+
+}
 
 // Admin
 // URL ADMIN
@@ -128,20 +146,6 @@ Route::group([
     Route::get("/data/component/user/", function () {
         return view("admin.components.modal_content.content_modaluser");
     });
-});
-
-// Log Data
-// URL LOG
-Route::group([
-    'prefix' => 'log',
-    'namespace' => 'App\Http\Controllers\Log',
-    'middleware' => ['auth','CekRole:admin']
-], function () {
-    // Route Log Data User
-    Route::resource('log_user', 'Log_UserController');
-
-    // Route Log Data User
-    Route::resource('log_auth', 'Log_AuthController');
 });
 
 // User Keuangan
@@ -161,6 +165,8 @@ Route::group([
     // Api Product
     Route::resource('api', 'ApiController');
 });
+
+
 
 // Route::group([
 //     'prefix' => 'asset','backend','data_file','gate','vendor',

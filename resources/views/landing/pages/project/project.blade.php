@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="ud-banner-content">
-                    <h1>Project Portofolio</h1>
+                    <h1>{{__('project.content.title_banner')}}</h1>
                 </div>
             </div>
         </div>
@@ -31,7 +31,7 @@
         {{ $data->onEachSide(1)->links() }}
         @else
         <li class="page-item disabled">
-            <span class="page-link">Previous</span>
+            <span class="page-link">{{__('project.content.previous')}}</span>
         </li>
         <li class="page-item active">
             <span class="page-link">
@@ -39,7 +39,7 @@
             </span>
         </li>
         <li class="page-item">
-            <a class="page-link disabled" href="#">Next</a>
+            <a class="page-link disabled" href="#">{{__('project.content.next')}}</a>
         </li>
         @endif
     </ul>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Detail_projects;
 use App\Models\Projects;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 class ProjectController extends Controller
 {
@@ -25,6 +26,13 @@ class ProjectController extends Controller
         // dd(
         //     $data,
         //     $data2,
+        //     Route::current(),
+        //     Route::currentRouteName(),
+        //     $host = $_SERVER['SERVER_NAME'],
+        //     url()->current(),
+        //     $part = explode('/', url()->current()),
+        //     request()->segments(),
+        //     request()->segment(1),
         // );
 
         return view('landing.pages.project.project', [

@@ -81,6 +81,13 @@
     @hasSection('components')
     @yield('components')
     @endif
+    <!-- <script>
+        function lang(val) {
+            alert('ahay');
+            console.log(window.location.href);
+            // window.location.href = val;
+        }
+    </script> -->
 </body>
 
 </html>

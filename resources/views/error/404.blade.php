@@ -44,7 +44,9 @@
                 <h2>Oops! Error Code 404</h2>
                 <h2>Page Not Be Found</h2>
                 <p>Sorry but the page you are looking for does not exist.</p>
-                <p>You will redirect to <a href="/">homepage </a>in <span id="counter">10</span> second(s)</p>
+                <p>You will redirect to <a id="direct" href="{{ route('index') }}">homepage </a>in <span
+                        id="counter">10</span>
+                    second(s)</p>
             </div>
         </div>
     </div>
@@ -53,7 +55,8 @@
         function countdown() {
             var i = document.getElementById('counter');
             if (parseInt(i.innerHTML) <= 0) {
-                window.location = "/";
+                window.location = document.getElementById("direct").getAttribute("href");
+                // window.location = "/";
             }
             if (parseInt(i.innerHTML) != 0) {
                 i.innerHTML = parseInt(i.innerHTML) - 1;
