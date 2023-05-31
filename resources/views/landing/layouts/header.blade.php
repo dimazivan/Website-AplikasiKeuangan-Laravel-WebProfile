@@ -118,22 +118,30 @@
         </div>
     </div>
 </header>
-<script>
+<!-- <script>
     function lange(val) {
         // alert('ahay')
+        localStorage.removeItem("lang");
         oldurl = window.location.href;
         console.log(window.location.href);
         console.log(oldurl);
         console.log(val);
-        if (val == "id") {
-            newurl = oldurl.replace("/en/", "/id/");
-        } else if (val == "en") {
-            newurl = oldurl.replace("/id/", "/en/");
+        if (val == "id" || localStorage.getItem("lang") == "id") {
+            localStorage.removeItem("lang");
+            localStorage.setItem("lang", "id");
+            console.log(localStorage.getItem("lang"));
+            newurl = oldurl.replace("/en", "/id");
+        } else if (val == "en" || localStorage.getItem("lang") == "edn") {
+            localStorage.removeItem("lang");
+            localStorage.setItem("lang", "en");
+            console.log(localStorage.getItem("lang"));
+            newurl = oldurl.replace("/id", "/en");
         } else {
+            localStorage.removeItem("lang");
             // newurl = old.replace("/id/", "/en/");
         }
         console.log(newurl)
         window.location.href = newurl;
     }
-</script>
+</script> -->
 <!-- ====== Header End ====== -->

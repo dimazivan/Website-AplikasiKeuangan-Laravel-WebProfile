@@ -59,7 +59,6 @@ foreach (Languages::all() as $data) {
         Route::resource('change_log', 'Change_LogController');
     });
 
-
     // REGISTER
     // Route::get('/register', [RegisterController::class,'index'])->name('index.register');
 

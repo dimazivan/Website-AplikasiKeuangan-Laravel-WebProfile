@@ -10,22 +10,21 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="ud-hero-content wow fadeInUp" data-wow-delay=".2s">
-                    <h1 class="ud-hero-title">
-                        Welcome to my portofolio website
+                    <h1 class="ud-hero-title" style="text-transform: capitalize;">
+                        {{__('landing.content.title_banner')}}
                     </h1>
                     <p class="ud-hero-desc">
-                        As you can see there's many services that we can do for your
-                        business or project as a developer, choose your choice
+                        {{__('landing.content.desc_banner')}}
                     </p>
                     <ul class="ud-hero-buttons">
                         <li>
                             <a href="#contact" rel="nofollow noopener" class="ud-main-btn ud-white-btn">
-                                Contact Now
+                                {{__('landing.content.btn_contactnow')}}
                             </a>
                         </li>
                         <li>
                             <a href="#" rel="nofollow noopener" target="_blank" class="ud-main-btn ud-link-btn">
-                                See Project
+                                {{__('landing.content.btn_seeproject')}}
                                 <i class="lni lni-arrow-right"></i>
                             </a>
                         </li>
@@ -55,18 +54,17 @@
         <div class="ud-about-wrapper wow fadeInUp" data-wow-delay=".2s">
             <div class="ud-about-content-wrapper">
                 <div class="ud-about-content">
-                    <span class="tag">About Us</span>
-                    <h2>Simple but Efficient</h2>
+                    <span class="tag"> {{__('landing.content.about_title')}}</span>
+                    <h2>
+                        {{__('landing.content.about_slogan')}}
+                    </h2>
                     <p>
-                        We have some solutions for your business problem or project requirement and able to solve the
-                        problem
-                        with simple and efficent ways.
+                        {{__('landing.content.first_desc')}}
                     </p>
                     <p>
-                        We give other solution with a good recommendation based on your business problem or project
-                        requirement.
+                        {{__('landing.content.second_desc')}}
                     </p>
-                    <a href="#contact" class="ud-main-btn">Ask Now</a>
+                    <a href="#contact" class="ud-main-btn"> {{__('landing.content.btn_contactnow')}}</a>
                 </div>
             </div>
             <div class="ud-about-image">
