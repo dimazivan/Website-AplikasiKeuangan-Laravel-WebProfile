@@ -16,15 +16,36 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="ud-banner-content">
-                    <h1>Project Portofolio</h1>
+                    <h1>{{__('project.content.title_banner')}}</h1>
                 </div>
             </div>
         </div>
     </div>
 </section>
 <!-- ====== Banner End ====== -->
+<nav aria-label="Page navigation example" style="padding-top: 20px;">
+    <ul class="pagination justify-content-center">
+
+        @if($data->total() >= 9)
+        <!-- Mantab -->
+        {{ $data->onEachSide(1)->links() }}
+        @else
+        <li class="page-item disabled">
+            <span class="page-link">{{__('project.content.previous')}}</span>
+        </li>
+        <li class="page-item active">
+            <span class="page-link">
+                1
+            </span>
+        </li>
+        <li class="page-item">
+            <a class="page-link disabled" href="#">{{__('project.content.next')}}</a>
+        </li>
+        @endif
+    </ul>
+</nav>
 <!-- ====== Blog Start ====== -->
-<section class="ud-blog-grids">
+<section class="ud-blog-grids" style="padding-top: 50px;">
     <div class="container">
         <div class="row">
             @forelse($data as $data_project)

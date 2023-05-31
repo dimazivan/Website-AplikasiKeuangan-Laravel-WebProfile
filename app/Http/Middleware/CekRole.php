@@ -42,6 +42,11 @@ class CekRole
 
         if (in_array($request->user()->role, $roles)) {
             // if (is_numeric($request->user()->role)) {
+
+            dd(
+                $request->all(),
+            );
+
             return $next($request);
         } else {
             // Log

@@ -97,6 +97,20 @@ class ProjectSeeder extends Seeder
             'updated_at' => Carbon::now(),
         ]);
 
+        for ($i=0; $i < 100; $i++) {
+            DB::table('projects')->insert([
+                'title'=> 'Dummy Project'.$i,
+                'date'=> '2018-01-01',
+                'status'=> 'public',
+                'type'=> 'fs',
+                'feature'=> 'Data Dummy ke'.$i,
+                'description'=> 'Aplikasi Dummy. ke'.$i,
+                'github'=> '#',
+                'images'=> 'dummy.png',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]);
 
+        }
     }
 }

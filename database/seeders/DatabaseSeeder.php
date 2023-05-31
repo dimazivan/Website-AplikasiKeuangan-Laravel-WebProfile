@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
             ChangeLogSeeder::class,
             ProjectSeeder::class,
             Detail_projectSeeder::class,
+            LanguagesSeeder::class,
         ]);
     }
 }

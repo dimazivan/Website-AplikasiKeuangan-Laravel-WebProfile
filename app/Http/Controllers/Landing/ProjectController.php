@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Detail_projects;
 use App\Models\Projects;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 class ProjectController extends Controller
 {
@@ -18,13 +19,20 @@ class ProjectController extends Controller
     {
         $data = Projects::with('detail_projects')
         ->orderBy('date', 'desc')
-        ->get();
+        ->paginate(9);
 
         $data2 = Detail_projects::all();
 
         // dd(
         //     $data,
         //     $data2,
+        //     Route::current(),
+        //     Route::currentRouteName(),
+        //     $host = $_SERVER['SERVER_NAME'],
+        //     url()->current(),
+        //     $part = explode('/', url()->current()),
+        //     request()->segments(),
+        //     request()->segment(1),
         // );
 
         return view('landing.pages.project.project', [

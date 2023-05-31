@@ -17,41 +17,43 @@
                     <div class="navbar-collapse">
                         <ul id="nav" class="navbar-nav mx-auto">
                             <li class="nav-item">
-                                <a class="ud-menu-scroll" href="/">Home</a>
+                                <a class="ud-menu-scroll" href="{{ route('index') }}">
+                                    {{__('project.header.nav_home')}}
+                                </a>
                             </li>
                             <li class="nav-item">
-                                <a class="ud-menu-scroll" href="#">About</a>
+                                <a class="ud-menu-scroll" href="#">{{__('project.header.nav_about')}}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="ud-menu-scroll" href="#team">Team</a>
+                                <a class="ud-menu-scroll" href="#team">{{__('project.header.nav_team')}}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="ud-menu-scroll" href="#faq">FAQ</a>
+                                <a class="ud-menu-scroll" href="#faq">{{__('project.header.nav_faq')}}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="ud-menu-scroll" href="#">Contact</a>
+                                <a class="ud-menu-scroll" href="#">{{__('project.header.nav_contact')}}</a>
                             </li>
                             <li class="nav-item nav-item-has-children">
-                                <a href="javascript:void(0)"> Pages </a>
+                                <a href="javascript:void(0)">{{__('project.header.nav_pages')}}</a>
                                 <ul class="ud-submenu">
                                     <li class="ud-submenu-item">
-                                        <a href="/project" class="ud-submenu-link">
-                                            Project Portofolio
+                                        <a href="{{ route('project.index') }}" class="ud-submenu-link">
+                                            {{__('project.header.nav_project')}}
                                         </a>
                                     </li>
                                     <li class="ud-submenu-item">
                                         <a href="#" class="ud-submenu-link">
-                                            About Page
+                                            {{__('project.header.nav_about')}}
                                         </a>
                                     </li>
                                     <li class="ud-submenu-item">
                                         <a href="#" class="ud-submenu-link">
-                                            Pricing Page
+                                            {{__('project.header.nav_pricing')}}
                                         </a>
                                     </li>
                                     <li class="ud-submenu-item">
                                         <a href="#" class="ud-submenu-link">
-                                            Contact Page
+                                            {{__('project.header.nav_contact')}}
                                         </a>
                                     </li>
                                 </ul>
@@ -59,7 +61,7 @@
                         </ul>
                     </div>
                     @if(auth()->user())
-                    <div class="navbar-btn d-none d-sm-inline-block">
+                    <div class="navbar-btn d-none d-sm-inline-block" style="padding-left: -30px;">
                         <ul id="nav" class="navbar-nav mx-auto">
                             <li class="nav-item nav-item-has-children">
                                 <a href="javascript:void(0)" style="text-transform: capitalize;">Welcome,&nbsp;
@@ -70,9 +72,10 @@
                                 </a>
                                 <ul class="ud-submenu">
                                     <li class="ud-submenu-item">
-                                        <a href="/dashboard" class="ud-submenu-link" target="_blank">
+                                        <a href="{{ route('dashboard.index') }}" class="ud-submenu-link"
+                                            target="_blank">
                                             <i class="lni lni-dashboard"></i>
-                                            Admin
+                                            {{__('project.header.nav_admin')}}
                                         </a>
                                     </li>
                                     <li class="ud-submenu-item">
@@ -82,9 +85,9 @@
                                         </a>
                                     </li>
                                     <li class="ud-submenu-item">
-                                        <a href="/logout" class="ud-submenu-link">
+                                        <a href="{{ route('logout') }}" class="ud-submenu-link">
                                             <i class="lni lni-shift-right"></i>
-                                            Logout
+                                            {{__('project.header.nav_logout')}}
                                         </a>
                                     </li>
                                 </ul>
@@ -92,20 +95,53 @@
                         </ul>
                     </div>
                     @else
-                    <div class="navbar-btn d-none d-sm-inline-block">
-                        <a href="/login" class="ud-main-btn ud-login-btn">
-                            Sign In
+                    <div class="navbar-btn d-none d-sm-inline-block" style="padding-left: -30px;">
+                        <a href="{{ route('login') }}" class="ud-main-btn ud-login-btn">
+                            {{__('project.header.nav_signin')}}
                         </a>
-                        <a class="ud-main-btn ud-white-btn" href="/register">
-                            Sign Up
+                        <a class="ud-main-btn ud-white-btn" href="{{ route('register.index') }}">
+                            {{__('project.header.nav_signup')}}
                         </a>
                     </div>
                     @endif
-                    <!-- Localization -->
-
+                    <div class="navbar-btn d-none d-sm-inline-block" style="padding-left: 30px;">
+                        <!-- Localization -->
+                        <a href="#" onclick="lange('id');">
+                            ID
+                        </a>&nbsp;|
+                        <a href="#" onclick="lange('en');">
+                            EN
+                        </a>&nbsp;
+                    </div>
                 </nav>
             </div>
         </div>
     </div>
 </header>
+<!-- <script>
+    function lange(val) {
+        // alert('ahay')
+        localStorage.removeItem("lang");
+        oldurl = window.location.href;
+        console.log(window.location.href);
+        console.log(oldurl);
+        console.log(val);
+        if (val == "id" || localStorage.getItem("lang") == "id") {
+            localStorage.removeItem("lang");
+            localStorage.setItem("lang", "id");
+            console.log(localStorage.getItem("lang"));
+            newurl = oldurl.replace("/en", "/id");
+        } else if (val == "en" || localStorage.getItem("lang") == "edn") {
+            localStorage.removeItem("lang");
+            localStorage.setItem("lang", "en");
+            console.log(localStorage.getItem("lang"));
+            newurl = oldurl.replace("/id", "/en");
+        } else {
+            localStorage.removeItem("lang");
+            // newurl = old.replace("/id/", "/en/");
+        }
+        console.log(newurl)
+        window.location.href = newurl;
+    }
+</script> -->
 <!-- ====== Header End ====== -->
