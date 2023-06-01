@@ -18,42 +18,42 @@
                         <ul id="nav" class="navbar-nav mx-auto">
                             <li class="nav-item">
                                 <a class="ud-menu-scroll" href="{{ route('index') }}">
-                                    {{__('project.header.nav_home')}}
+                                    {{__('layouts_landing.header.nav_home')}}
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="ud-menu-scroll" href="#">{{__('project.header.nav_about')}}</a>
+                                <a class="ud-menu-scroll" href="#">{{__('layouts_landing.header.nav_about')}}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="ud-menu-scroll" href="#team">{{__('project.header.nav_team')}}</a>
+                                <a class="ud-menu-scroll" href="#team">{{__('layouts_landing.header.nav_team')}}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="ud-menu-scroll" href="#faq">{{__('project.header.nav_faq')}}</a>
+                                <a class="ud-menu-scroll" href="#faq">{{__('layouts_landing.header.nav_faq')}}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="ud-menu-scroll" href="#">{{__('project.header.nav_contact')}}</a>
+                                <a class="ud-menu-scroll" href="#">{{__('layouts_landing.header.nav_contact')}}</a>
                             </li>
                             <li class="nav-item nav-item-has-children">
-                                <a href="javascript:void(0)">{{__('project.header.nav_pages')}}</a>
+                                <a href="javascript:void(0)">{{__('layouts_landing.header.nav_pages')}}</a>
                                 <ul class="ud-submenu">
                                     <li class="ud-submenu-item">
                                         <a href="{{ route('project.index') }}" class="ud-submenu-link">
-                                            {{__('project.header.nav_project')}}
+                                            {{__('layouts_landing.header.nav_project')}}
                                         </a>
                                     </li>
                                     <li class="ud-submenu-item">
                                         <a href="#" class="ud-submenu-link">
-                                            {{__('project.header.nav_about')}}
+                                            {{__('layouts_landing.header.nav_about')}}
                                         </a>
                                     </li>
                                     <li class="ud-submenu-item">
                                         <a href="#" class="ud-submenu-link">
-                                            {{__('project.header.nav_pricing')}}
+                                            {{__('layouts_landing.header.nav_pricing')}}
                                         </a>
                                     </li>
                                     <li class="ud-submenu-item">
                                         <a href="#" class="ud-submenu-link">
-                                            {{__('project.header.nav_contact')}}
+                                            {{__('layouts_landing.header.nav_contact')}}
                                         </a>
                                     </li>
                                 </ul>
@@ -75,7 +75,7 @@
                                         <a href="{{ route('dashboard.index') }}" class="ud-submenu-link"
                                             target="_blank">
                                             <i class="lni lni-dashboard"></i>
-                                            {{__('project.header.nav_admin')}}
+                                            {{__('layouts_landing.header.nav_admin')}}
                                         </a>
                                     </li>
                                     <li class="ud-submenu-item">
@@ -87,7 +87,7 @@
                                     <li class="ud-submenu-item">
                                         <a href="{{ route('logout') }}" class="ud-submenu-link">
                                             <i class="lni lni-shift-right"></i>
-                                            {{__('project.header.nav_logout')}}
+                                            {{__('layouts_landing.header.nav_logout')}}
                                         </a>
                                     </li>
                                 </ul>
@@ -97,10 +97,10 @@
                     @else
                     <div class="navbar-btn d-none d-sm-inline-block" style="padding-left: -30px;">
                         <a href="{{ route('login') }}" class="ud-main-btn ud-login-btn">
-                            {{__('project.header.nav_signin')}}
+                            {{__('layouts_landing.header.nav_signin')}}
                         </a>
                         <a class="ud-main-btn ud-white-btn" href="{{ route('register.index') }}">
-                            {{__('project.header.nav_signup')}}
+                            {{__('layouts_landing.header.nav_signup')}}
                         </a>
                     </div>
                     @endif

@@ -179,7 +179,7 @@
     </div>
     <div id="right_menu">
         <div class="right_menu_item">
-            <a href="/register">
+            <a href="{{ route('register.index') }}">
                 Register Page
             </a>
         </div>
@@ -187,7 +187,7 @@
         <div class="right_menu_item">Menu 3</div>
         <div class="right_menu_item">Menu 4</div>
         <div class="right_menu_item">
-            <a href="/" target="_blank">
+            <a href="{{ route('index') }}" target="_blank">
                 Landing Page
             </a>
         </div>

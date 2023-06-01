@@ -42,7 +42,7 @@
                             </span>
                             <input type="checkbox" class="js-switch" id="switch" onchange="darkModeAdm(this)" />
                         </label> -->
-                        <a class="dropdown-item" href="/logout">
+                        <a class="dropdown-item" href="{{ route('logout') }}">
                             <i class="fa fa-sign-out pull-right"></i>
                             Log Out
                         </a>

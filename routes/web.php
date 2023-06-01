@@ -33,6 +33,11 @@ Route::get('/login', [LoginController::class,'index'])->name('index.login');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/reload-captcha', [CaptchaController::class, 'generate'])->name('captcha.generate');
 
+Route::get("/", function () {
+    return redirect('/id');
+});
+
+// Bahasa
 foreach (Languages::all() as $data) {
     Route::group([
         'prefix' => $data->alias,
@@ -140,7 +145,6 @@ Route::group([
     Route::get('/data/cb/username/{username}', [UserController::class,'cekUsername'])->name('cek.username');
     Route::get('/data/cb/email/{email}', [UserController::class,'cekEmail'])->name('cek.email');
 
-
     // Component
     Route::get("/data/component/user/", function () {
         return view("admin.components.modal_content.content_modaluser");
@@ -164,8 +168,6 @@ Route::group([
     // Api Product
     Route::resource('api', 'ApiController');
 });
-
-
 
 // Route::group([
 //     'prefix' => 'asset','backend','data_file','gate','vendor',

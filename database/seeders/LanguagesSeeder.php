@@ -16,6 +16,13 @@ class LanguagesSeeder extends Seeder
      */
     public function run()
     {
+        // DB::table('languages')->insert([
+        //     'name'=> 'default',
+        //     'alias'=> '',
+        //     'created_at' => Carbon::now(),
+        //     'updated_at' => Carbon::now(),
+        // ]);
+
         DB::table('languages')->insert([
             'name'=> 'indonesia',
             'alias'=> 'id',

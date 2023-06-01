@@ -4,10 +4,10 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="ud-section-title mx-auto text-center">
-                    <span>{{__('project.team.title_team')}}</span>
-                    <h2>{{__('project.team.subtitle_team')}}</h2>
+                    <span>{{__('layouts_landing.team.title_team')}}</span>
+                    <h2>{{__('layouts_landing.team.subtitle_team')}}</h2>
                     <p>
-                        {{__('project.team.desc_team')}}
+                        {{__('layouts_landing.team.desc_team')}}
                     </p>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                     </div>
                     <div class="ud-team-info">
                         <h5>Dimaz Ivan Perdana</h5>
-                        <h6>{{__('project.team.role_team')}}</h6>
+                        <h6>{{__('layouts_landing.team.role_team')}}</h6>
                     </div>
                     <ul class="ud-team-socials">
                         <li>
@@ -63,11 +63,10 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="ud-section-title text-center mx-auto">
-                    <span>FAQ</span>
-                    <h2>Any Questions? Answered</h2>
+                    <span>{{__('layouts_landing.faq.title_faq')}}</span>
+                    <h2>{{__('layouts_landing.faq.subtitle_faq')}}</h2>
                     <p>
-                        There are many variations of passages of Lorem Ipsum available
-                        but the majority have suffered alteration in some form.
+                        {{__('layouts_landing.faq.desc_faq')}}
                     </p>
                 </div>
             </div>
@@ -80,15 +79,11 @@
                             <span class="icon flex-shrink-0">
                                 <i class="lni lni-chevron-down"></i>
                             </span>
-                            <span>What kind of services we offers to you ?</span>
+                            <span>{{__('layouts_landing.faq.faq_1')}}</span>
                         </button>
                         <div id="collapseOne" class="accordion-collapse collapse">
                             <div class="ud-faq-body">
-                                Lorem Ipsum is simply dummy text of the printing and
-                                typesetting industry. Lorem Ipsum has been the industry's
-                                standard dummy text ever since the 1500s, when an unknown
-                                printer took a galley of type and scrambled it to make a
-                                type specimen book.
+                                {{__('layouts_landing.faq.ans_1')}}
                             </div>
                         </div>
                     </div>
@@ -99,15 +94,11 @@
                             <span class="icon flex-shrink-0">
                                 <i class="lni lni-chevron-down"></i>
                             </span>
-                            <span>What how to interact/contact with us ?</span>
+                            <span>{{__('layouts_landing.faq.faq_2')}}</span>
                         </button>
                         <div id="collapseTwo" class="accordion-collapse collapse">
                             <div class="ud-faq-body">
-                                Lorem Ipsum is simply dummy text of the printing and
-                                typesetting industry. Lorem Ipsum has been the industry's
-                                standard dummy text ever since the 1500s, when an unknown
-                                printer took a galley of type and scrambled it to make a
-                                type specimen book.
+                                {{__('layouts_landing.faq.ans_2')}}
                             </div>
                         </div>
                     </div>
@@ -118,15 +109,11 @@
                             <span class="icon flex-shrink-0">
                                 <i class="lni lni-chevron-down"></i>
                             </span>
-                            <span>What payments do we accept ?</span>
+                            <span>{{__('layouts_landing.faq.faq_3')}}</span>
                         </button>
                         <div id="collapseThree" class="accordion-collapse collapse">
                             <div class="ud-faq-body">
-                                Lorem Ipsum is simply dummy text of the printing and
-                                typesetting industry. Lorem Ipsum has been the industry's
-                                standard dummy text ever since the 1500s, when an unknown
-                                printer took a galley of type and scrambled it to make a
-                                type specimen book.
+                                {{__('layouts_landing.faq.ans_3')}}
                             </div>
                         </div>
                     </div>
@@ -139,15 +126,11 @@
                             <span class="icon flex-shrink-0">
                                 <i class="lni lni-chevron-down"></i>
                             </span>
-                            <span>How about support ticket?</span>
+                            <span>{{__('layouts_landing.faq.faq_4')}}</span>
                         </button>
                         <div id="collapseFour" class="accordion-collapse collapse">
                             <div class="ud-faq-body">
-                                Lorem Ipsum is simply dummy text of the printing and
-                                typesetting industry. Lorem Ipsum has been the industry's
-                                standard dummy text ever since the 1500s, when an unknown
-                                printer took a galley of type and scrambled it to make a
-                                type specimen book.
+                                {{__('layouts_landing.faq.ans_4')}}
                             </div>
                         </div>
                     </div>
@@ -158,15 +141,11 @@
                             <span class="icon flex-shrink-0">
                                 <i class="lni lni-chevron-down"></i>
                             </span>
-                            <span>Do you have plan releasing Play Pro?</span>
+                            <span>{{__('layouts_landing.faq.faq_5')}}</span>
                         </button>
                         <div id="collapseFive" class="accordion-collapse collapse">
                             <div class="ud-faq-body">
-                                Lorem Ipsum is simply dummy text of the printing and
-                                typesetting industry. Lorem Ipsum has been the industry's
-                                standard dummy text ever since the 1500s, when an unknown
-                                printer took a galley of type and scrambled it to make a
-                                type specimen book.
+                                {{__('layouts_landing.faq.ans_5')}}
                             </div>
                         </div>
                     </div>
@@ -177,15 +156,11 @@
                             <span class="icon flex-shrink-0">
                                 <i class="lni lni-chevron-down"></i>
                             </span>
-                            <span>Where and how to host this template?</span>
+                            <span>{{__('layouts_landing.faq.faq_6')}}</span>
                         </button>
                         <div id="collapseSix" class="accordion-collapse collapse">
                             <div class="ud-faq-body">
-                                Lorem Ipsum is simply dummy text of the printing and
-                                typesetting industry. Lorem Ipsum has been the industry's
-                                standard dummy text ever since the 1500s, when an unknown
-                                printer took a galley of type and scrambled it to make a
-                                type specimen book.
+                                {{__('layouts_landing.faq.ans_6')}}
                             </div>
                         </div>
                     </div>

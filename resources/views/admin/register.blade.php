@@ -82,7 +82,7 @@
                         </div>
                         <div class="checkbox-circle">
                             <label style="margin-left:-23px;">
-                                <a href="/login">Already have an account?</a>
+                                <a href="{{ route('index.login') }}">Already have an account?</a>
                             </label>
                         </div>
                     </div>
