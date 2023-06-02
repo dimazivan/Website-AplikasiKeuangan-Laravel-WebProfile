@@ -63,4 +63,20 @@ return[
                     printer took a galley of type and scrambled it to make a
                     type specimen book.",
     ],
+    "contact" => [
+        "title_contact" => "CONTACT US",
+        "subtitle_contact" => "Let's talk about Ur Business or Project",
+        "location_contact" => "Our Location",
+        "mail_contact" => "How Can We Help?",
+        "title_form" => "Send us a Message",
+        "name_form" => "Full Name",
+        "name_holder" => "Your Full Name",
+        "mail_form" => "Email",
+        "mail_holder" => "Your Email Address",
+        "phone_form" => "Phone Number",
+        "phone_holder" => "Your Phone Number",
+        "message_form" => "Message",
+        "message_holder" => "Type Your Message",
+        "btn_form" => "Send Message",
+    ],
 ];

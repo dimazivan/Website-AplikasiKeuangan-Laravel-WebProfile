@@ -63,4 +63,20 @@ return[
                     printer took a galley of type and scrambled it to make a
                     type specimen book.",
     ],
+    "contact" => [
+        "title_contact" => "KONTAK KAMI",
+        "subtitle_contact" => "Silahkan obrolkan bisnis atau proyek Anda",
+        "location_contact" => "Lokasi Kami",
+        "mail_contact" => "Bagaimana kami dapat membantu Anda?",
+        "title_form" => "Kirimkan pesan kepada kami",
+        "name_form" => "Nama Lengkap",
+        "mail_form" => "Email",
+        "phone_form" => "Nomor Telepon",
+        "message_form" => "Pesan",
+        "btn_form" => "Kirimkan Sekarang",
+        "name_holder" => "Nama Lengkap Anda",
+        "mail_holder" => "Alamat Email Anda",
+        "phone_holder" => "Nomor Telepon Anda",
+        "message_holder" => "Masukkan Pesan Anda",
+    ],
 ];
