@@ -22,19 +22,13 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="ud-menu-scroll" href="#">{{__('layouts_landing.header.nav_about')}}</a>
+                                <a class="ud-menu-scroll" href="#about">{{__('layouts_landing.header.nav_about')}}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="ud-menu-scroll" href="#team">{{__('layouts_landing.header.nav_team')}}</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="ud-menu-scroll" href="#faq">{{__('layouts_landing.header.nav_faq')}}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="ud-menu-scroll" href="#">{{__('layouts_landing.header.nav_contact')}}</a>
-                            </li>
                             <li class="nav-item nav-item-has-children">
-                                <a href="javascript:void(0)">{{__('layouts_landing.header.nav_pages')}}</a>
+                                <a href="javascript:void(0)">{{__('layouts_landing.header.nav_project')}}</a>
                                 <ul class="ud-submenu">
                                     <li class="ud-submenu-item">
                                         <a href="{{ route('project.index') }}" class="ud-submenu-link">
@@ -43,20 +37,23 @@
                                     </li>
                                     <li class="ud-submenu-item">
                                         <a href="#" class="ud-submenu-link">
-                                            {{__('layouts_landing.header.nav_about')}}
-                                        </a>
-                                    </li>
-                                    <li class="ud-submenu-item">
-                                        <a href="#" class="ud-submenu-link">
                                             {{__('layouts_landing.header.nav_pricing')}}
                                         </a>
                                     </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item nav-item-has-children">
+                                <a href="javascript:void(0)">{{__('layouts_landing.header.nav_pages')}}</a>
+                                <ul class="ud-submenu">
                                     <li class="ud-submenu-item">
                                         <a href="#" class="ud-submenu-link">
-                                            {{__('layouts_landing.header.nav_contact')}}
+                                            {{__('layouts_landing.header.nav_about')}}
                                         </a>
                                     </li>
                                 </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="ud-menu-scroll" href="#">{{__('layouts_landing.header.nav_contact')}}</a>
                             </li>
                         </ul>
                     </div>
