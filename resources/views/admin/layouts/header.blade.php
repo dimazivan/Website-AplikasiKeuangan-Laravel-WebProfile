@@ -32,16 +32,6 @@
                             <i class="fa fa-cog pull-right"></i>
                             Setting
                         </a>
-                        <!-- <a class="dropdown-item" href="javascript:darkMode();" style="cursor: default;">
-                            <i class="fa fa-cog pull-right"></i>
-                            Dark Mode
-                        </a> -->
-                        <!-- <label for="switch" class="dropdown-item">
-                            <span style="padding-right: 85px;" disabled>
-                                Dark Mode
-                            </span>
-                            <input type="checkbox" class="js-switch" id="switch" onchange="darkModeAdm(this)" />
-                        </label> -->
                         <a class="dropdown-item" href="{{ route('logout') }}">
                             <i class="fa fa-sign-out pull-right"></i>
                             Log Out
