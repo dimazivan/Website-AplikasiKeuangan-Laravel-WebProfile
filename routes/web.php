@@ -54,6 +54,7 @@ foreach (Languages::all() as $data) {
         // Landing
         Route::resource('/', 'LandingController');
         Route::resource('/project', 'ProjectController');
+        Route::resource('/pricing', 'PricingController');
     });
 
     Route::group([
