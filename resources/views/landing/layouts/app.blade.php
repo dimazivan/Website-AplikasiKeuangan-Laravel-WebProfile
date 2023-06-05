@@ -77,27 +77,32 @@
         oldurl = window.location.href;
         pathurl = window.location.pathname.split("/");
         console.log(window.location.href);
-        console.log(oldurl);
-        console.log(pathurl);
+        // console.log(oldurl);
+        // console.log(pathurl);
         console.log(pathurl[1]);
-        if (localStorage.getItem("lang") != pathurl[1]) {
+        console.log("===========");
+        console.log(localStorage.getItem("lang"));
+        // console.log(sessionStorage.getItem("lang"));
+        if (localStorage.getItem("lang") != pathurl[1] && localStorage.getItem("lang") == "id") {
             localStorage.removeItem("lang");
+            sessionStorage.removeItem("lang");
             localStorage.setItem("lang", "id");
+            sessionStorage.setItem("lang", "id");
             console.log(localStorage.getItem("lang"));
             newurl = oldurl.replace("/" + pathurl[1], "/id");
-            // newurl = oldurl.replace("/en", "/id");
             console.log(newurl)
             window.location.href = newurl;
-        } else if (localStorage.getItem("lang") != pathurl[1]) {
+        } else if (localStorage.getItem("lang") != pathurl[1] && localStorage.getItem("lang") == "en") {
             localStorage.removeItem("lang");
+            sessionStorage.removeItem("lang");
             localStorage.setItem("lang", "en");
+            sessionStorage.setItem("lang", "en");
             console.log(localStorage.getItem("lang"));
             newurl = oldurl.replace("/" + pathurl[1], "/en");
-            // newurl = oldurl.replace("/id", "/en");
             console.log(newurl)
             window.location.href = newurl;
         } else {
-            localStorage.removeItem("lang");
+            // localStorage.removeItem("lang");
             // newurl = old.replace("/id/", "/en/");
         }
     </script>
@@ -111,23 +116,29 @@
     <script>
         function lange(val) {
             // alert('ahay')
-            localStorage.removeItem("lang");
+            // localStorage.removeItem("lang");
             oldurl = window.location.href;
             console.log(window.location.href);
             console.log(oldurl);
             console.log(val);
-            if (val == "id" || localStorage.getItem("lang") == "id") {
+            if (val == "id") {
                 localStorage.removeItem("lang");
+                sessionStorage.removeItem("lang");
                 localStorage.setItem("lang", "id");
+                sessionStorage.setItem("lang", "id");
                 console.log(localStorage.getItem("lang"));
+                console.log(sessionStorage.getItem("lang"));
                 newurl = oldurl.replace("/en", "/id");
-            } else if (val == "en" || localStorage.getItem("lang") == "en") {
+            } else if (val == "en") {
                 localStorage.removeItem("lang");
+                sessionStorage.removeItem("lang");
                 localStorage.setItem("lang", "en");
+                sessionStorage.setItem("lang", "en");
                 console.log(localStorage.getItem("lang"));
+                console.log(sessionStorage.getItem("lang"));
                 newurl = oldurl.replace("/id", "/en");
             } else {
-                localStorage.removeItem("lang");
+                // localStorage.removeItem("lang");
                 // newurl = old.replace("/id/", "/en/");
             }
             console.log(newurl)

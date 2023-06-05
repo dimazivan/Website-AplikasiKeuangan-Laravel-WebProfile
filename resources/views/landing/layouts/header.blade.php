@@ -36,7 +36,7 @@
                                         </a>
                                     </li>
                                     <li class="ud-submenu-item">
-                                        <a href="#" class="ud-submenu-link">
+                                        <a href="{{ route('pricing.index') }}" class="ud-submenu-link">
                                             {{__('layouts_landing.header.nav_pricing')}}
                                         </a>
                                     </li>
@@ -53,7 +53,8 @@
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="ud-menu-scroll" href="#">{{__('layouts_landing.header.nav_contact')}}</a>
+                                <a class="ud-menu-scroll"
+                                    href="#contact">{{__('layouts_landing.header.nav_contact')}}</a>
                             </li>
                         </ul>
                     </div>
@@ -93,7 +94,7 @@
                     </div>
                     @else
                     <div class="navbar-btn d-none d-sm-inline-block" style="padding-left: -30px;">
-                        <a href="{{ route('login') }}" class="ud-main-btn ud-login-btn">
+                        <a href="{{ route('index.login') }}" class="ud-main-btn ud-login-btn">
                             {{__('layouts_landing.header.nav_signin')}}
                         </a>
                         <a class="ud-main-btn ud-white-btn" href="{{ route('register.index') }}">

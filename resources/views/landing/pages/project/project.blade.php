@@ -25,7 +25,6 @@
 <!-- ====== Banner End ====== -->
 <nav aria-label="Page navigation example" style="padding-top: 20px;">
     <ul class="pagination justify-content-center">
-
         @if($data->total() >= 9)
         <!-- Mantab -->
         {{ $data->onEachSide(1)->links() }}
@@ -52,13 +51,35 @@
             <div class="col-lg-4 col-md-6">
                 <div class="ud-single-blog">
                     <div class="ud-blog-image">
-                        <a href="#">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#picModal{{ $data_project->id }}">
                             <img src="{{ url('storage/data/image/project/'.$data_project->images) }}"
                                 alt="{{ $data_project->images }}"
                                 style="width:416px;height:300px;object-fit:cover;object-position:center" />
                         </a>
                         <!-- Modal -->
-
+                        <div class="modal fade" id="picModal{{ $data_project->id }}" tabindex="-1"
+                            aria-labelledby="picModalLabel{{ $data_project->id }}" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="picModalLabel{{ $data_project->id }}">
+                                            Modal title
+                                            {{ $data_project->id }}
+                                        </h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        ...
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="ud-blog-content">
                         <span class="ud-blog-date">{{
