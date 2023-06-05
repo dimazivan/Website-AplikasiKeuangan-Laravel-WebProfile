@@ -54,6 +54,10 @@
                                 GUIDE BOOK
                                 <i class="lni lni-checkmark-circle"></i>
                             </li>
+                            <li style="text-transform: uppercase;">
+                                Full Support 24/7
+                                <i class="lni lni-checkmark-circle"></i>
+                            </li>
                             <li style="color: black;">3 Months support (max)</li>
                         </ul>
                     </div>
@@ -66,7 +70,7 @@
             </div>
             <div class="col-lg-4 col-md-6 col-sm-10">
                 <div class="ud-single-pricing active wow fadeInUp" data-wow-delay=".1s">
-                    <span class="ud-popular-tag">FAVORITE</span>
+                    <span class="ud-popular-tag">RECOMMENDED</span>
                     <div class="ud-pricing-header">
                         <h3 style="text-transform: uppercase;">
                             BUSINESS PROJECT
@@ -99,6 +103,10 @@
                             </li>
                             <li style="text-transform: uppercase;">
                                 GUIDE & DOCUMENTATIONS BOOKS
+                                <i class="lni lni-checkmark-circle"></i>
+                            </li>
+                            <li style="text-transform: uppercase;">
+                                Full Support 24/7
                                 <i class="lni lni-checkmark-circle"></i>
                             </li>
                             <li style="color: black;">6 Months support</li>
@@ -157,6 +165,10 @@
                                 GUIDE & DOCUMENTATIONS BOOKS
                                 <i class="lni lni-checkmark-circle"></i>
                             </li>
+                            <li style="text-transform: uppercase;">
+                                Full Support 24/7
+                                <i class="lni lni-checkmark-circle"></i>
+                            </li>
                             <li style="color: black;">24 Months support</li>
                         </ul>
                     </div>
@@ -202,6 +214,10 @@
                                 GUIDE BOOK
                                 <i class="lni lni-checkmark-circle"></i>
                             </li>
+                            <li style="text-transform: uppercase;">
+                                Full Support 24/7
+                                <i class="lni lni-checkmark-circle"></i>
+                            </li>
                             <li style="color: black;">4 Months support*</li>
                         </ul>
                     </div>
@@ -214,7 +230,7 @@
             </div>
             <div class="col-lg-4 col-md-6 col-sm-10">
                 <div class="ud-single-pricing active wow fadeInUp" data-wow-delay=".1s">
-                    <span class="ud-popular-tag">FAVORITE</span>
+                    <span class="ud-popular-tag">RECOMMENDED</span>
                     <div class="ud-pricing-header">
                         <h3 style="text-transform: uppercase;">
                             BUSINESS LOCAL PROJECT
@@ -251,6 +267,10 @@
                             </li>
                             <li style="text-transform: uppercase;">
                                 GUIDE & DOCUMENTATIONS BOOKS
+                                <i class="lni lni-checkmark-circle"></i>
+                            </li>
+                            <li style="text-transform: uppercase;">
+                                Full Support 24/7
                                 <i class="lni lni-checkmark-circle"></i>
                             </li>
                             <li style="color: black;">6 Months support</li>
@@ -307,6 +327,10 @@
                             </li>
                             <li style="text-transform: uppercase;">
                                 GUIDE & DOCUMENTATIONS BOOKS
+                                <i class="lni lni-checkmark-circle"></i>
+                            </li>
+                            <li style="text-transform: uppercase;">
+                                Full Support 24/7
                                 <i class="lni lni-checkmark-circle"></i>
                             </li>
                             <li style="color: black;">24 Months support</li>
