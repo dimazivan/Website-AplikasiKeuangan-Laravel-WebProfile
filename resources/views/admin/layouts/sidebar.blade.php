@@ -1,7 +1,7 @@
 <div class="col-md-3 left_col" id="bgsidebar1">
     <div class="left_col scroll-view" id="bgsidebar2">
         <div class="navbar nav_title" style="border: 0;" id="bgsidebar3">
-            <a href="{{ route('admin.index') }}" class="site_title"><i class="fa fa-database"></i>
+            <a href="{{ route('dashboard.index') }}" class="site_title"><i class="fa fa-database"></i>
                 <span>
                     Dashboard
                 </span>
@@ -37,7 +37,7 @@
                 <ul class="nav side-menu">
                     <li><a><i class="fa fa-home"></i>Home<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="{{ route('admin.index') }}">Dashboard</a></li>
+                            <li><a href="{{ route('dashboard.index') }}">Dashboard</a></li>
                             <li><a href="{{ route('index') }}">Landing Page</a></li>
                         </ul>
                     </li>

@@ -20,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
         //     URL::forceScheme(scheme:'https');
         // // URL::forceScheme(scheme:'http');
         // } else {
-        //     URL::forceScheme(scheme:'http');
+        // URL::forceScheme(scheme:'http');
         // }
     }
 

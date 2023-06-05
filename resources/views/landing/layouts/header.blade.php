@@ -94,7 +94,7 @@
                     </div>
                     @else
                     <div class="navbar-btn d-none d-sm-inline-block" style="padding-left: -30px;">
-                        <a href="{{ route('login') }}" class="ud-main-btn ud-login-btn">
+                        <a href="{{ route('index.login') }}" class="ud-main-btn ud-login-btn">
                             {{__('layouts_landing.header.nav_signin')}}
                         </a>
                         <a class="ud-main-btn ud-white-btn" href="{{ route('register.index') }}">
