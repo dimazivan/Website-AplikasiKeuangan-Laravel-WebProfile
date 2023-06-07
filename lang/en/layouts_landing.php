@@ -4,6 +4,7 @@ return[
     "title" => "Dimz | Portofolio Website",
     "header" => [
         "nav_home" => "Home",
+        "nav_information" => "Information",
         "nav_about" => "About",
         "nav_team" => "Team",
         "nav_faq" => "FAQ",
@@ -78,5 +79,15 @@ return[
         "message_form" => "Message",
         "message_holder" => "Type Your Message",
         "btn_form" => "Send Message",
+    ],
+    "footer" => [
+        "footer_github" => "Github",
+        "footer_linkedin" => "LinkedIn",
+        "footer_linktree" => "LinkTree",
+        "footer_termandsupport" => "Term and Support",
+        "footer_privacy" => "Privacy Policy",
+        "footer_term" => "Term of Service",
+        "footer_refund" => "Refund Policy",
+        "footer_comingsoon" => "Coming Soon",
     ],
 ];

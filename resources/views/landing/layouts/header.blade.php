@@ -43,7 +43,9 @@
                                 </ul>
                             </li>
                             <li class="nav-item nav-item-has-children">
-                                <a href="javascript:void(0)">{{__('layouts_landing.header.nav_pages')}}</a>
+                                <a href="javascript:void(0)">
+                                    {{__('layouts_landing.header.nav_pages')}}
+                                </a>
                                 <ul class="ud-submenu">
                                     <li class="ud-submenu-item">
                                         <a href="#" class="ud-submenu-link">
@@ -53,8 +55,9 @@
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="ud-menu-scroll"
-                                    href="#contact">{{__('layouts_landing.header.nav_contact')}}</a>
+                                <a class="ud-menu-scroll" href="#contact">
+                                    {{__('layouts_landing.header.nav_contact')}}
+                                </a>
                             </li>
                         </ul>
                     </div>
