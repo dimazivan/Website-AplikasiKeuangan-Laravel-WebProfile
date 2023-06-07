@@ -4,6 +4,7 @@ return[
     "title" => "Dimz | Portofolio Website",
     "header" => [
         "nav_home" => "Home",
+        "nav_information" => "Informasi",
         "nav_about" => "Tentang",
         "nav_team" => "Tim",
         "nav_faq" => "FAQ",
@@ -78,5 +79,15 @@ return[
         "mail_holder" => "Alamat Email Anda",
         "phone_holder" => "Nomor Telepon Anda",
         "message_holder" => "Masukkan Pesan Anda",
+    ],
+    "footer" => [
+        "footer_github" => "Github",
+        "footer_linkedin" => "LinkedIn",
+        "footer_linktree" => "LinkTree",
+        "footer_termandsupport" => "Garansi dan Dukungan",
+        "footer_privacy" => "Kebijakan Pribadi",
+        "footer_term" => "Jangka Waktu Layanan",
+        "footer_refund" => "Kebijakan Pengembalian",
+        "footer_comingsoon" => "Coming Soon",
     ],
 ];
