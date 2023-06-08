@@ -24,10 +24,11 @@
 </section>
 <!-- ====== Banner End ====== -->
 <nav aria-label="Page navigation example" style="padding-top: 20px;">
+    <!-- <nav class="col-md-12 col-md-6" aria-label="Page navigation example" style="padding-top: 20px;"> -->
     <ul class="pagination justify-content-center">
         @if($data->total() >= 9)
         <!-- Mantab -->
-        {{ $data->onEachSide(1)->links() }}
+        {{ $data->onEachSide(0)->links() }}
         @else
         <li class="page-item disabled">
             <span class="page-link">{{__('project.content.previous')}}</span>
@@ -48,7 +49,7 @@
     <div class="container">
         <div class="row">
             @forelse($data as $data_project)
-            <div class="col-lg-4 col-md-6">
+            <div class="col-lg-4  ">
                 <div class="ud-single-blog">
                     <div class="ud-blog-image">
                         <a href="#" data-bs-toggle="modal" data-bs-target="#picModal{{ $data_project->id }}">

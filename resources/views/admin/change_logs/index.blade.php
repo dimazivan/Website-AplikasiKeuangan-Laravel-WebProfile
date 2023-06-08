@@ -51,6 +51,16 @@
                                 style="text-transform:uppercase;margin-left: 10px;">
                                 {{ $data_logs->version }}
                             </small>
+                            <small class="d-inline-flex px-2 py-1 fw-semibold text-secondary bg-secondary bg-opacity-10 
+                                border border-secondary border-opacity-10 rounded-2"
+                                style="text-transform:uppercase;margin-left: 10px;">
+                                {{
+                                Carbon\Carbon::parse($data_logs->created_at)
+                                ->locale('id')
+                                ->settings(['formatFunction' => 'translatedFormat'])
+                                ->format('l, j F Y');
+                                }}
+                            </small>
                         </button>
                     </h2>
                     <div id="flush-collapse{{ $data_logs->id }}" class="accordion-collapse collapse"
@@ -75,6 +85,16 @@
                                 border border-secondary border-opacity-10 rounded-2"
                                 style="text-transform:uppercase;margin-left: 10px;">
                                 {{ $data_logs->version }}
+                            </small>
+                            <small class="d-inline-flex px-2 py-1 fw-semibold text-secondary bg-secondary bg-opacity-10 
+                                border border-secondary border-opacity-10 rounded-2"
+                                style="text-transform:uppercase;margin-left: 10px;">
+                                {{
+                                Carbon\Carbon::parse($data_logs->created_at)
+                                ->locale('id')
+                                ->settings(['formatFunction' => 'translatedFormat'])
+                                ->format('l, j F Y');
+                                }}
                             </small>
                         </button>
                     </h2>
@@ -101,6 +121,16 @@
                                 style="text-transform:uppercase;margin-left: 10px;">
                                 {{ $data_logs->version }}
                             </small>
+                            <small class="d-inline-flex px-2 py-1 fw-semibold text-secondary bg-secondary bg-opacity-10 
+                                border border-secondary border-opacity-10 rounded-2"
+                                style="text-transform:uppercase;margin-left: 10px;">
+                                {{
+                                Carbon\Carbon::parse($data_logs->created_at)
+                                ->locale('id')
+                                ->settings(['formatFunction' => 'translatedFormat'])
+                                ->format('l, j F Y');
+                                }}
+                            </small>
                         </button>
                     </h2>
                     <div id="flush-collapse{{ $data_logs->id }}" class="accordion-collapse collapse"
@@ -125,6 +155,16 @@
                                 border border-secondary border-opacity-10 rounded-2"
                                 style="text-transform:uppercase;margin-left: 10px;">
                                 {{ $data_logs->version }}
+                            </small>
+                            <small class="d-inline-flex px-2 py-1 fw-semibold text-secondary bg-secondary bg-opacity-10 
+                                border border-secondary border-opacity-10 rounded-2"
+                                style="text-transform:uppercase;margin-left: 10px;">
+                                {{
+                                Carbon\Carbon::parse($data_logs->created_at)
+                                ->locale('id')
+                                ->settings(['formatFunction' => 'translatedFormat'])
+                                ->format('l, j F Y');
+                                }}
                             </small>
                         </button>
                     </h2>

@@ -15,7 +15,8 @@ class Change_LogController extends Controller
      */
     public function index()
     {
-        $data = Change_logs::all();
+        $data = Change_logs::orderBy('created_at', 'desc')
+        ->get();
 
         // dd(
         //     $data,

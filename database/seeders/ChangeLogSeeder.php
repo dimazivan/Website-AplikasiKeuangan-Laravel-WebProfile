@@ -16,48 +16,9 @@ class ChangeLogSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('change_logs')->insert([
-            'title' => "test change log beta",
-            'users_id' => "1",
-            'type' => "update",
-            'description' => "Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.",
-            'version' => "Beta 0.0.0.1",
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ]);
-
-
-        DB::table('change_logs')->insert([
-            'title' => "test change log beta",
-            'users_id' => "1",
-            'type' => "error",
-            'description' => "Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.",
-            'version' => "Beta 0.0.0.2",
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ]);
-
-
-        DB::table('change_logs')->insert([
-            'title' => "test change log beta",
-            'users_id' => "1",
-            'type' => "warning",
-            'description' => "Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.",
-            'version' => "Beta 0.0.0.3",
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ]);
-
-
-        DB::table('change_logs')->insert([
-            'title' => "test change log beta",
-            'users_id' => "1",
-            'type' => "adjust",
-            'description' => "Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.",
-            'version' => "Beta 0.0.0.4",
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ]);
-
+        $this->call(ChangeLogAdjustSeeder::class);
+        $this->call(ChangeLogErrorSeeder::class);
+        $this->call(ChangeLogWarningSeeder::class);
+        $this->call(ChangeLogUpdateSeeder::class);
     }
 }
