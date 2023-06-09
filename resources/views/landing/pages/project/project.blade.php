@@ -60,18 +60,19 @@
                         <!-- Modal -->
                         <div class="modal fade" id="picModal{{ $data_project->id }}" tabindex="-1"
                             aria-labelledby="picModalLabel{{ $data_project->id }}" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-dialog modal-xl modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h1 class="modal-title fs-5" id="picModalLabel{{ $data_project->id }}">
-                                            Modal title
-                                            {{ $data_project->id }}
+                                            {{ $title_limit = Str::limit($data_project->title,100) }}
                                         </h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        ...
+                                        <img src="{{ url('storage/data/image/project/'.$data_project->images) }}"
+                                            alt="{{ $data_project->images }}"
+                                            style="min-width: 100%;object-fit:cover;object-position:center;transform: none;">
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"

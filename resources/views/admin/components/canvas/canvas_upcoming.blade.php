@@ -7,4 +7,7 @@
     <div class="offcanvas-body">
         <p>Try scrolling the rest of the page to see this option in action.</p>
     </div>
+    <a class="btn btn-primary" href="{{ route('index') }}" target="_blank">
+        Back To Homepage
+    </a>
 </div>

@@ -33,7 +33,7 @@ class ChangeLogUpdateSeeder extends Seeder
             'type' => "update",
             'description' => "update dark mode",
             'version' => "v.0.0.0.5",
-            'created_at' => "2022-03-28",
+            'created_at' => "2023-03-28",
             'updated_at' => Carbon::now(),
         ]);
 
@@ -43,7 +43,7 @@ class ChangeLogUpdateSeeder extends Seeder
             'type' => "update",
             'description' => "update dark mode rev",
             'version' => "v.0.0.0.6",
-            'created_at' => "2022-03-31",
+            'created_at' => "2023-03-31",
             'updated_at' => Carbon::now(),
         ]);
 
@@ -63,7 +63,7 @@ class ChangeLogUpdateSeeder extends Seeder
             'type' => "update",
             'description' => "update new login",
             'version' => "v.0.0.0.3",
-            'created_at' => "2022-03-15",
+            'created_at' => "2023-03-15",
             'updated_at' => Carbon::now(),
         ]);
 
@@ -73,7 +73,7 @@ class ChangeLogUpdateSeeder extends Seeder
             'type' => "update",
             'description' => "update new reset page",
             'version' => "v.0.0.0.4",
-            'created_at' => "2022-03-16",
+            'created_at' => "2023-03-16",
             'updated_at' => Carbon::now(),
         ]);
 
@@ -83,7 +83,7 @@ class ChangeLogUpdateSeeder extends Seeder
             'type' => "update",
             'description' => "add captcha login",
             'version' => "v.0.0.0.4",
-            'created_at' => "2022-03-17",
+            'created_at' => "2023-03-17",
             'updated_at' => Carbon::now(),
         ]);
 

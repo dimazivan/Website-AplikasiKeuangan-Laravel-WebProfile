@@ -16,7 +16,7 @@ class Change_LogController extends Controller
     public function index()
     {
         $data = Change_logs::orderBy('created_at', 'desc')
-        ->get();
+        ->paginate(9);
 
         // dd(
         //     $data,

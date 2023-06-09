@@ -205,6 +205,28 @@
             </div>
         </div>
     </div>
+    <br>
+    <nav aria-label="Page navigation example" style="padding-top: 20px;">
+        <!-- <nav class="col-md-12 col-md-6" aria-label="Page navigation example" style="padding-top: 20px;"> -->
+        <ul class="pagination justify-content-center">
+            @if($data->total() >= 9)
+            <!-- Mantab -->
+            {{ $data->onEachSide(0)->links() }}
+            @else
+            <li class="page-item disabled">
+                <span class="page-link">{{__('project.content.previous')}}</span>
+            </li>
+            <li class="page-item active">
+                <span class="page-link">
+                    1
+                </span>
+            </li>
+            <li class="page-item">
+                <a class="page-link disabled" href="#">{{__('project.content.next')}}</a>
+            </li>
+            @endif
+        </ul>
+    </nav>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
