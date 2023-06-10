@@ -87,5 +87,36 @@ class ChangeLogUpdateSeeder extends Seeder
             'updated_at' => Carbon::now(),
         ]);
 
+        DB::table('change_logs')->insert([
+            'title' => "add API End Point",
+            'users_id' => "1",
+            'type' => "update",
+            'description' => "add API Laravel",
+            'version' => "v.0.0.0.7",
+            'created_at' => "2023-04-26",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "add API End Point",
+            'users_id' => "1",
+            'type' => "update",
+            'description' => "add API Laravel ft VUE js",
+            'version' => "v.0.0.0.8",
+            'created_at' => "2023-04-29",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "Change Auth API with sanctum",
+            'users_id' => "1",
+            'type' => "update",
+            'description' => "add API Laravel ft VUE js",
+            'version' => "v.0.0.0.9",
+            'created_at' => "2023-05-21",
+            'updated_at' => Carbon::now(),
+        ]);
+
+
     }
 }

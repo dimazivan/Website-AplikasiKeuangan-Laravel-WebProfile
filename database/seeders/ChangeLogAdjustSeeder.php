@@ -217,5 +217,336 @@ class ChangeLogAdjustSeeder extends Seeder
             'updated_at' => Carbon::now(),
         ]);
 
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.0.0.0.6",
+            'created_at' => "2023-04-06",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.0.0.0.6",
+            'created_at' => "2023-04-07",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.0.0.0.6",
+            'created_at' => "2023-04-08",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.0.0.0.6",
+            'created_at' => "2023-04-09",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.0.0.0.6",
+            'created_at' => "2023-04-10",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.0.0.0.6",
+            'created_at' => "2023-04-11",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.0.0.0.6",
+            'created_at' => "2023-04-12",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.0.0.0.6",
+            'created_at' => "2023-04-13",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.0.0.0.6",
+            'created_at' => "2023-04-14",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.0.0.0.6",
+            'created_at' => "2023-04-15",
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.0.0.0.6",
+            'created_at' => "2023-04-16",
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.0.0.0.6",
+            'created_at' => "2023-04-17",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.0.0.0.6",
+            'created_at' => "2023-04-18",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.0.0.0.6",
+            'created_at' => "2023-04-19",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.0.0.0.6",
+            'created_at' => "2023-04-20",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "fixing validating rules",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "fixing validating rules",
+            'version' => "v.0.0.0.7",
+            'created_at' => "2023-04-27",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.0.0.0.8",
+            'created_at' => "2023-04-28",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.0.0.0.8",
+            'created_at' => "2023-04-29",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.0.0.0.8",
+            'created_at' => "2023-04-30",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.0.0.0.8",
+            'created_at' => "2023-05-01",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.0.0.0.8",
+            'created_at' => "2023-04-02",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.0.0.0.8",
+            'created_at' => "2023-05-03",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.0.0.0.8",
+            'created_at' => "2023-05-04",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.0.0.0.8",
+            'created_at' => "2023-05-05",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.0.0.0.8",
+            'created_at' => "2023-05-06",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.0.0.0.8",
+            'created_at' => "2023-05-07",
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.0.0.0.8",
+            'created_at' => "2023-05-08",
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.0.0.0.8",
+            'created_at' => "2023-05-10",
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.0.0.0.8",
+            'created_at' => "2023-05-13",
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.0.0.0.8",
+            'created_at' => "2023-05-15",
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.0.0.0.8",
+            'created_at' => "2023-05-18",
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.0.0.0.8",
+            'created_at' => "2023-05-19",
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.0.0.0.8",
+            'created_at' => "2023-05-20",
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.0.0.0.9",
+            'created_at' => "2023-05-22",
+            'updated_at' => Carbon::now(),
+        ]);
+
+
     }
 }
