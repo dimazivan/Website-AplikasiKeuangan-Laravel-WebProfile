@@ -26,5 +26,26 @@ class ChangeLogErrorSeeder extends Seeder
             'created_at' => "2023-04-13",
             'updated_at' => Carbon::now(),
         ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "error some new sub",
+            'users_id' => "1",
+            'type' => "error",
+            'description' => "error some new sub",
+            'version' => "v.1.0.0.2",
+            'created_at' => "2023-06-04",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "error on some localization",
+            'users_id' => "1",
+            'type' => "error",
+            'description' => "error on some localization",
+            'version' => "v.1.1.0.3",
+            'created_at' => "2023-06-12",
+            'updated_at' => Carbon::now(),
+        ]);
+
     }
 }

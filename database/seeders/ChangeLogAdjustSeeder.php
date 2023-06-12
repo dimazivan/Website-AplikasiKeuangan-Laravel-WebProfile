@@ -474,6 +474,7 @@ class ChangeLogAdjustSeeder extends Seeder
             'created_at' => "2023-05-07",
             'updated_at' => Carbon::now(),
         ]);
+
         DB::table('change_logs')->insert([
             'title' => "commit",
             'users_id' => "1",
@@ -483,6 +484,7 @@ class ChangeLogAdjustSeeder extends Seeder
             'created_at' => "2023-05-08",
             'updated_at' => Carbon::now(),
         ]);
+
         DB::table('change_logs')->insert([
             'title' => "commit",
             'users_id' => "1",
@@ -492,6 +494,7 @@ class ChangeLogAdjustSeeder extends Seeder
             'created_at' => "2023-05-10",
             'updated_at' => Carbon::now(),
         ]);
+
         DB::table('change_logs')->insert([
             'title' => "commit",
             'users_id' => "1",
@@ -501,6 +504,7 @@ class ChangeLogAdjustSeeder extends Seeder
             'created_at' => "2023-05-13",
             'updated_at' => Carbon::now(),
         ]);
+
         DB::table('change_logs')->insert([
             'title' => "commit",
             'users_id' => "1",
@@ -510,6 +514,7 @@ class ChangeLogAdjustSeeder extends Seeder
             'created_at' => "2023-05-15",
             'updated_at' => Carbon::now(),
         ]);
+
         DB::table('change_logs')->insert([
             'title' => "commit",
             'users_id' => "1",
@@ -519,6 +524,7 @@ class ChangeLogAdjustSeeder extends Seeder
             'created_at' => "2023-05-18",
             'updated_at' => Carbon::now(),
         ]);
+
         DB::table('change_logs')->insert([
             'title' => "commit",
             'users_id' => "1",
@@ -528,6 +534,7 @@ class ChangeLogAdjustSeeder extends Seeder
             'created_at' => "2023-05-19",
             'updated_at' => Carbon::now(),
         ]);
+
         DB::table('change_logs')->insert([
             'title' => "commit",
             'users_id' => "1",
@@ -537,6 +544,7 @@ class ChangeLogAdjustSeeder extends Seeder
             'created_at' => "2023-05-20",
             'updated_at' => Carbon::now(),
         ]);
+
         DB::table('change_logs')->insert([
             'title' => "commit",
             'users_id' => "1",
@@ -547,6 +555,124 @@ class ChangeLogAdjustSeeder extends Seeder
             'updated_at' => Carbon::now(),
         ]);
 
+        DB::table('change_logs')->insert([
+            'title' => "Add new commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "add commit",
+            'version' => "v.0.0.0.10",
+            'created_at' => "2023-05-26",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.1.0.0.1",
+            'created_at' => "2023-05-28",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.1.0.0.1",
+            'created_at' => "2023-05-29",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.1.0.0.1",
+            'created_at' => "2023-05-30",
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit",
+            'version' => "v.1.0.0.1",
+            'created_at' => "2023-05-31",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "add new sub",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "add new sub",
+            'version' => "v.1.0.0.2",
+            'created_at' => "2023-06-01",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "add new sub",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "add new sub",
+            'version' => "v.1.0.0.2",
+            'created_at' => "2023-06-02",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "add new sub",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "add new sub",
+            'version' => "v.1.0.0.2",
+            'created_at' => "2023-06-03",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "add new sub",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "add new sub",
+            'version' => "v.1.0.0.2",
+            'created_at' => "2023-06-04",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "add new sub",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "add new sub",
+            'version' => "v.1.0.0.2",
+            'created_at' => "2023-06-05",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "add new sub",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "add new sub",
+            'version' => "v.1.0.0.2",
+            'created_at' => "2023-06-06",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit on some localization",
+            'version' => "v.1.1.0.4",
+            'created_at' => "2023-06-14",
+            'updated_at' => Carbon::now(),
+        ]);
 
     }
 }

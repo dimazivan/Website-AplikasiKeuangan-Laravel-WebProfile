@@ -47,5 +47,105 @@ class ChangeLogWarningSeeder extends Seeder
             'updated_at' => Carbon::now(),
         ]);
 
+        DB::table('change_logs')->insert([
+            'title' => "add merge localization",
+            'users_id' => "1",
+            'type' => "warning",
+            'description' => "add merge localization",
+            'version' => "v.1.0.0.3",
+            'created_at' => "2023-06-08",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "add merge route",
+            'users_id' => "1",
+            'type' => "warning",
+            'description' => "add merge route",
+            'version' => "v.1.0.0.3",
+            'created_at' => "2023-06-09",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "add merge pricing page",
+            'users_id' => "1",
+            'type' => "warning",
+            'description' => "add merge pricing page",
+            'version' => "v.1.0.0.3",
+            'created_at' => "2023-06-10",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "add merge all branch",
+            'users_id' => "1",
+            'type' => "warning",
+            'description' => "add merge all branch",
+            'version' => "v.1.1.0.3",
+            'created_at' => "2023-06-11",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "add merge all branch",
+            'users_id' => "1",
+            'type' => "warning",
+            'description' => "add merge all branch",
+            'version' => "v.1.2.0.4",
+            'created_at' => "2023-06-15",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "add merge all branch",
+            'users_id' => "1",
+            'type' => "warning",
+            'description' => "add merge all branch",
+            'version' => "v.1.2.0.4",
+            'created_at' => "2023-06-16",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "add merge all branch",
+            'users_id' => "1",
+            'type' => "warning",
+            'description' => "add merge all branch",
+            'version' => "v.1.2.0.4",
+            'created_at' => "2023-06-17",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "add merge all branch",
+            'users_id' => "1",
+            'type' => "warning",
+            'description' => "add merge all branch",
+            'version' => "v.1.2.0.4",
+            'created_at' => "2023-06-18",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "add merge all branch",
+            'users_id' => "1",
+            'type' => "warning",
+            'description' => "add merge all branch",
+            'version' => "v.1.2.0.4",
+            'created_at' => "2023-06-19",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "add merge all branch",
+            'users_id' => "1",
+            'type' => "warning",
+            'description' => "add merge all branch",
+            'version' => "v.1.2.0.4",
+            'created_at' => "2023-06-20",
+            'updated_at' => Carbon::now(),
+        ]);
+
     }
 }
