@@ -147,5 +147,26 @@ class ChangeLogWarningSeeder extends Seeder
             'updated_at' => Carbon::now(),
         ]);
 
+        DB::table('change_logs')->insert([
+            'title' => "add merge all branch",
+            'users_id' => "1",
+            'type' => "warning",
+            'description' => "add merge all branch",
+            'version' => "v.1.2.0.4",
+            'created_at' => "2023-06-21",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "add merge all branch",
+            'users_id' => "1",
+            'type' => "warning",
+            'description' => "add merge all branch",
+            'version' => "v.1.2.0.4",
+            'created_at' => "2023-06-22",
+            'updated_at' => Carbon::now(),
+        ]);
+
+
     }
 }
