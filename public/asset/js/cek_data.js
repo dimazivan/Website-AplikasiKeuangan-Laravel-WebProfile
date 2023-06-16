@@ -4,6 +4,7 @@ var CekData = function () {
         init: function () {
             // Cek email
             // var BASE_URL = 'http://localhost:8000';
+            $("ul").css("visibility","hidden");
             $('#email').on('keyup', function () {
                 // alert('ahay');
                 $("ul").css("visibility","hidden");

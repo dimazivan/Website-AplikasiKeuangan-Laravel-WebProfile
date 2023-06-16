@@ -51,6 +51,16 @@
                                 style="text-transform:uppercase;margin-left: 10px;">
                                 {{ $data_logs->version }}
                             </small>
+                            <small class="d-inline-flex px-2 py-1 fw-semibold text-secondary bg-secondary bg-opacity-10 
+                                border border-secondary border-opacity-10 rounded-2"
+                                style="text-transform:uppercase;margin-left: 10px;">
+                                {{
+                                Carbon\Carbon::parse($data_logs->created_at)
+                                ->locale('id')
+                                ->settings(['formatFunction' => 'translatedFormat'])
+                                ->format('l, j F Y');
+                                }}
+                            </small>
                         </button>
                     </h2>
                     <div id="flush-collapse{{ $data_logs->id }}" class="accordion-collapse collapse"
@@ -75,6 +85,16 @@
                                 border border-secondary border-opacity-10 rounded-2"
                                 style="text-transform:uppercase;margin-left: 10px;">
                                 {{ $data_logs->version }}
+                            </small>
+                            <small class="d-inline-flex px-2 py-1 fw-semibold text-secondary bg-secondary bg-opacity-10 
+                                border border-secondary border-opacity-10 rounded-2"
+                                style="text-transform:uppercase;margin-left: 10px;">
+                                {{
+                                Carbon\Carbon::parse($data_logs->created_at)
+                                ->locale('id')
+                                ->settings(['formatFunction' => 'translatedFormat'])
+                                ->format('l, j F Y');
+                                }}
                             </small>
                         </button>
                     </h2>
@@ -101,6 +121,16 @@
                                 style="text-transform:uppercase;margin-left: 10px;">
                                 {{ $data_logs->version }}
                             </small>
+                            <small class="d-inline-flex px-2 py-1 fw-semibold text-secondary bg-secondary bg-opacity-10 
+                                border border-secondary border-opacity-10 rounded-2"
+                                style="text-transform:uppercase;margin-left: 10px;">
+                                {{
+                                Carbon\Carbon::parse($data_logs->created_at)
+                                ->locale('id')
+                                ->settings(['formatFunction' => 'translatedFormat'])
+                                ->format('l, j F Y');
+                                }}
+                            </small>
                         </button>
                     </h2>
                     <div id="flush-collapse{{ $data_logs->id }}" class="accordion-collapse collapse"
@@ -125,6 +155,16 @@
                                 border border-secondary border-opacity-10 rounded-2"
                                 style="text-transform:uppercase;margin-left: 10px;">
                                 {{ $data_logs->version }}
+                            </small>
+                            <small class="d-inline-flex px-2 py-1 fw-semibold text-secondary bg-secondary bg-opacity-10 
+                                border border-secondary border-opacity-10 rounded-2"
+                                style="text-transform:uppercase;margin-left: 10px;">
+                                {{
+                                Carbon\Carbon::parse($data_logs->created_at)
+                                ->locale('id')
+                                ->settings(['formatFunction' => 'translatedFormat'])
+                                ->format('l, j F Y');
+                                }}
                             </small>
                         </button>
                     </h2>
@@ -165,6 +205,28 @@
             </div>
         </div>
     </div>
+    <br>
+    <nav aria-label="Page navigation example" style="padding-top: 20px;">
+        <!-- <nav class="col-md-12 col-md-6" aria-label="Page navigation example" style="padding-top: 20px;"> -->
+        <ul class="pagination justify-content-center">
+            @if($data->total() >= 9)
+            <!-- Mantab -->
+            {{ $data->onEachSide(0)->links() }}
+            @else
+            <li class="page-item disabled">
+                <span class="page-link">{{__('project.content.previous')}}</span>
+            </li>
+            <li class="page-item active">
+                <span class="page-link">
+                    1
+                </span>
+            </li>
+            <li class="page-item">
+                <a class="page-link disabled" href="#">{{__('project.content.next')}}</a>
+            </li>
+            @endif
+        </ul>
+    </nav>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">

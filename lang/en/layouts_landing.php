@@ -6,6 +6,7 @@ return[
         "nav_home" => "Home",
         "nav_information" => "Information",
         "nav_about" => "About",
+        "nav_changelog" => "Change Log",
         "nav_team" => "Team",
         "nav_faq" => "FAQ",
         "nav_contact" => "Contact",

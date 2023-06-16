@@ -25,7 +25,8 @@ class LoginController extends Controller
     public function index()
     {
         $title = "Login Page";
-        $data = Change_logs::paginate(4);
+        $data = Change_logs::orderBy('created_at', 'desc')
+        ->paginate(5);
 
         //whether ip is from share internet
         if (!empty($_SERVER['HTTP_CLIENT_IP'])) {

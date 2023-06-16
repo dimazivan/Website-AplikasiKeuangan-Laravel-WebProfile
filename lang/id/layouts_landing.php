@@ -9,6 +9,7 @@ return[
         "nav_team" => "Tim",
         "nav_faq" => "FAQ",
         "nav_contact" => "Kontak",
+        "nav_changelog" => "Riwayat Perubahan",
         "nav_pages" => "Halaman",
         "nav_project" => "Project Portofolio",
         "nav_pricing" => "Harga",
