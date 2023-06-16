@@ -24,10 +24,11 @@
 </section>
 <!-- ====== Banner End ====== -->
 <nav aria-label="Page navigation example" style="padding-top: 20px;">
+    <!-- <nav class="col-md-12 col-md-6" aria-label="Page navigation example" style="padding-top: 20px;"> -->
     <ul class="pagination justify-content-center">
         @if($data->total() >= 9)
         <!-- Mantab -->
-        {{ $data->onEachSide(1)->links() }}
+        {{ $data->onEachSide(0)->links() }}
         @else
         <li class="page-item disabled">
             <span class="page-link">{{__('project.content.previous')}}</span>
@@ -48,7 +49,7 @@
     <div class="container">
         <div class="row">
             @forelse($data as $data_project)
-            <div class="col-lg-4 col-md-6">
+            <div class="col-lg-4  ">
                 <div class="ud-single-blog">
                     <div class="ud-blog-image">
                         <a href="#" data-bs-toggle="modal" data-bs-target="#picModal{{ $data_project->id }}">
@@ -59,18 +60,19 @@
                         <!-- Modal -->
                         <div class="modal fade" id="picModal{{ $data_project->id }}" tabindex="-1"
                             aria-labelledby="picModalLabel{{ $data_project->id }}" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-dialog modal-xl modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h1 class="modal-title fs-5" id="picModalLabel{{ $data_project->id }}">
-                                            Modal title
-                                            {{ $data_project->id }}
+                                            {{ $title_limit = Str::limit($data_project->title,100) }}
                                         </h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        ...
+                                        <img src="{{ url('storage/data/image/project/'.$data_project->images) }}"
+                                            alt="{{ $data_project->images }}"
+                                            style="min-width: 100%;object-fit:cover;object-position:center;transform: none;">
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"

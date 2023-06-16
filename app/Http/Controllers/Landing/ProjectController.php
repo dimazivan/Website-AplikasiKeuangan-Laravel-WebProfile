@@ -20,6 +20,7 @@ class ProjectController extends Controller
         $data = Projects::with('detail_projects')
         ->orderBy('date', 'desc')
         ->paginate(9);
+        // ->onEachSide(6);
 
         $data2 = Detail_projects::all();
 

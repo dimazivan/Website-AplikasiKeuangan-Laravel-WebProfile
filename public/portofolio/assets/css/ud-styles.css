@@ -15,6 +15,7 @@
   --font: "Inter", sans-serif;
   --body-color: #637381;
   --heading-color: #212b36;
+  /* --heading-color: white; */
   /* --primary-color: #3056d3; */
   /* --primary-color: #4287f5; */
   --primary-color: #2d4d80;
@@ -490,10 +491,12 @@ p {
 }
 
 .sticky .navbar-btn .ud-main-btn.ud-login-btn {
+  /* color: white; */
   color: var(--heading-color);
 }
 
 .sticky .navbar-btn .ud-main-btn.ud-login-btn:hover {
+  /* color: white; */
   color: var(--primary-color);
   opacity: 1;
 }

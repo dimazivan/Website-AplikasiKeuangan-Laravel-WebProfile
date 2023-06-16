@@ -120,6 +120,7 @@
       @media #{$md, $xs} {
         display: block;
         padding: 8px 0;
+        // color: white;
         color: var(--heading-color);
       }
 

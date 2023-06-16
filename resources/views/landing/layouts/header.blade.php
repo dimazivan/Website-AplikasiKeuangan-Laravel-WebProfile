@@ -43,48 +43,58 @@
                                 </ul>
                             </li>
                             <li class="nav-item nav-item-has-children">
-                                <a href="javascript:void(0)">{{__('layouts_landing.header.nav_pages')}}</a>
+                                <a href="javascript:void(0)">
+                                    {{__('layouts_landing.header.nav_pages')}}
+                                </a>
                                 <ul class="ud-submenu">
                                     <li class="ud-submenu-item">
                                         <a href="#" class="ud-submenu-link">
                                             {{__('layouts_landing.header.nav_about')}}
                                         </a>
                                     </li>
+                                    <li class="ud-submenu-item">
+                                        <a href="{{ route('change_log.index') }}" class="ud-submenu-link"
+                                            target="_blank">
+                                            {{__('layouts_landing.header.nav_changelog')}}
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="ud-menu-scroll"
-                                    href="#contact">{{__('layouts_landing.header.nav_contact')}}</a>
+                                <a class="ud-menu-scroll" href="#contact">
+                                    {{__('layouts_landing.header.nav_contact')}}
+                                </a>
                             </li>
                         </ul>
                     </div>
                     @if(auth()->user())
-                    <div class="navbar-btn d-none d-sm-inline-block" style="padding-left: -30px;">
+                    <div class="navbar navbar-expand-lg">
+                        <!-- <div class="navbar-btn d-none d-sm-inline-block" style="padding-left: -30px;"> -->
                         <ul id="nav" class="navbar-nav mx-auto">
                             <li class="nav-item nav-item-has-children">
                                 <a href="javascript:void(0)" style="text-transform: capitalize;">Welcome,&nbsp;
-                                    <i class="lni lni-user"></i>
+                                    <i class="lni lni-user" style="padding-right: 10px;"></i>
                                     {{
                                     $first_name = Str::limit(auth()->user()->first_name, 10)
                                     }}
                                 </a>
                                 <ul class="ud-submenu">
                                     <li class="ud-submenu-item">
-                                        <a href="{{ route('dashboard.index') }}" class="ud-submenu-link"
-                                            target="_blank">
-                                            <i class="lni lni-dashboard"></i>
+                                        <a href="{{ route('dashboard.index') }}" class="ud-submenu-link" target="_blank"
+                                            style="color:#212b36;">
+                                            <i class="lni lni-dashboard" style="padding-right: 10px;"></i>
                                             {{__('layouts_landing.header.nav_admin')}}
                                         </a>
                                     </li>
                                     <li class="ud-submenu-item">
-                                        <a href="#" class="ud-submenu-link">
-                                            <i class="lni lni-code"></i>
+                                        <a href="#" class="ud-submenu-link" style="color:#212b36;">
+                                            <i class="lni lni-code" style="padding-right: 10px;"></i>
                                             404 Page
                                         </a>
                                     </li>
                                     <li class="ud-submenu-item">
-                                        <a href="{{ route('logout') }}" class="ud-submenu-link">
-                                            <i class="lni lni-shift-right"></i>
+                                        <a href="{{ route('logout') }}" class="ud-submenu-link" style="color:#212b36;">
+                                            <i class="lni lni-shift-right" style="padding-right: 10px;"></i>
                                             {{__('layouts_landing.header.nav_logout')}}
                                         </a>
                                     </li>
@@ -93,21 +103,22 @@
                         </ul>
                     </div>
                     @else
-                    <div class="navbar-btn d-none d-sm-inline-block" style="padding-left: -30px;">
-                        <a href="{{ route('index.login') }}" class="ud-main-btn ud-login-btn">
+                    <div class="navbar navbar-expand-lg" style="padding-left: -30px;">
+                        <a href="{{ route('index.login') }}" class="ud-login-btn ud-main-btn" style="padding: 10px;">
                             {{__('layouts_landing.header.nav_signin')}}
                         </a>
-                        <a class="ud-main-btn ud-white-btn" href="{{ route('register.index') }}">
+                        <div class="div" style="padding-right: 10px;"></div>
+                        <a class="ud-main-btn ud-white-btn" href="{{ route('register.index') }}" style="padding: 10px;">
                             {{__('layouts_landing.header.nav_signup')}}
                         </a>
                     </div>
                     @endif
-                    <div class="navbar-btn d-none d-sm-inline-block" style="padding-left: 30px;">
+                    <div class="navbar navbar-expand-lg" style="padding-left: 20px;">
                         <!-- Localization -->
-                        <a href="#" onclick="lange('id');">
+                        <a href="javascript:void(0)" onclick="lange('id');">
                             ID
                         </a>&nbsp;|
-                        <a href="#" onclick="lange('en');">
+                        <a href="javascript:void(0)" onclick="lange('en');">
                             EN
                         </a>&nbsp;
                     </div>
