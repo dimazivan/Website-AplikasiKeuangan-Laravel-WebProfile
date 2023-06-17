@@ -47,5 +47,15 @@ class ChangeLogErrorSeeder extends Seeder
             'updated_at' => Carbon::now(),
         ]);
 
+        DB::table('change_logs')->insert([
+            'title' => "error on some change services",
+            'users_id' => "1",
+            'type' => "error",
+            'description' => "error on some change services wait for next update",
+            'version' => "v.1.1.0.7",
+            'created_at' => "2023-06-17",
+            'updated_at' => Carbon::now(),
+        ]);
+
     }
 }
