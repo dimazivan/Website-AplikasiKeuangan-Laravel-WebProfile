@@ -105,10 +105,23 @@
                     </li>
                 </ul>
             </div>
+            <div class="menu_section">
+                <h3>Other Menu</h3>
+                <ul class="nav side-menu">
+                    <li><a><i class="fa fa-gear"></i>Change Log<span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="{{ route('change_log.index') }}" target="_blank">Change Log</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
         <!-- /sidebar menu -->
 
         <!-- /menu footer buttons -->
+        <!-- <div class="sidebar-footer hidden-small" style="margin-bottom:40px;">
+            <span id="time">#</span>
+        </div> -->
         <div class="sidebar-footer hidden-small" id="bgsidebar4">
             <a data-toggle="tooltip" data-placement="top" title="Settings">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
