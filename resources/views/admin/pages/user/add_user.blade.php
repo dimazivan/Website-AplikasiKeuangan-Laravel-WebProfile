@@ -124,10 +124,11 @@
                             <div class="col-md-6 col-sm-6">
                                 <select class="form-control" id="cbrole" name="cbrole" required
                                     oninvalid="this.setCustomValidity('Silahkan pilih salah satu role tersedia')"
-                                    oninput="this.setCustomValidity('')">
+                                    oninput="this.setCustomValidity('')" style="text-transform:uppercase;">
                                     <option value="" selected disabled>Pilih Role User</option>
                                     @forelse($roles as $role)
-                                    <option value="{{ $role->id }}" style="text-transform:uppercase;">{{ $role->name }}
+                                    <option value="{{ $role->id }}">
+                                        {{ $role->name }}
                                     </option>
                                     @empty
                                     <option value="#">Data Role Kosong</option>
@@ -155,7 +156,7 @@
                             <div class="col-md-6 col-sm-6">
                                 <select class="form-control" id="cbcountry" name="cbcountry" required
                                     oninvalid="this.setCustomValidity('Silahkan pilih Negara Anda')"
-                                    oninput="this.setCustomValidity('')">
+                                    oninput="this.setCustomValidity('')" style="text-transform:uppercase;">
                                     <option value="" selected disabled>Pilih Negara</option>
                                     <option value="1">Indonesia</option>
                                 </select>
@@ -167,7 +168,7 @@
                             <div class="col-md-6 col-sm-6">
                                 <select class="form-control" id="cbprovince" name="cbprovince" required
                                     oninvalid="this.setCustomValidity('Silahkan pilih provinsi Anda')"
-                                    oninput="this.setCustomValidity('')">
+                                    oninput="this.setCustomValidity('')" style="text-transform:uppercase;">
                                     <option value="" selected disabled>Pilih Provinsi</option>
                                     <!-- <option value="#">Provinsi</option> -->
                                     @forelse($province as $provinces => $values)
@@ -184,7 +185,7 @@
                             <div class="col-md-6 col-sm-6">
                                 <select class="form-control" id="cbcity" name="cbcity" required
                                     oninvalid="this.setCustomValidity('Silahkan pilih kota Anda')"
-                                    oninput="this.setCustomValidity('')">
+                                    oninput="this.setCustomValidity('')" style="text-transform:uppercase;">
                                     <option value="" selected disabled>Pilih Kota</option>
                                     <option value="#">Kota</option>
                                 </select>
@@ -196,7 +197,7 @@
                             <div class="col-md-6 col-sm-6">
                                 <select class="form-control" id="cbdistrict" name="cbdistrict" required
                                     oninvalid="this.setCustomValidity('Silahkan pilih kecamatan Anda')"
-                                    oninput="this.setCustomValidity('')">
+                                    oninput="this.setCustomValidity('')" style="text-transform:uppercase;">
                                     <option value="" selected disabled>Pilih Kecamatan</option>
                                     <option value="#">Kecamatan</option>
                                 </select>
@@ -208,7 +209,7 @@
                             <div class="col-md-6 col-sm-6">
                                 <select class="form-control" id="cbward" name="cbward" required
                                     oninvalid="this.setCustomValidity('Silahkan pilih kelurahan Anda')"
-                                    oninput="this.setCustomValidity('')">
+                                    oninput="this.setCustomValidity('')" style="text-transform:uppercase;">
                                     <option value="" selected disabled>Pilih Kelurahan</option>
                                     <option value="#">Kelurahan</option>
                                 </select>

@@ -187,5 +187,15 @@ class ChangeLogUpdateSeeder extends Seeder
             'updated_at' => Carbon::now(),
         ]);
 
+        DB::table('change_logs')->insert([
+            'title' => "add services",
+            'users_id' => "1",
+            'type' => "update",
+            'description' => "add user services",
+            'version' => "v.1.1.0.8",
+            'created_at' => "2023-06-21",
+            'updated_at' => Carbon::now(),
+        ]);
+
     }
 }
