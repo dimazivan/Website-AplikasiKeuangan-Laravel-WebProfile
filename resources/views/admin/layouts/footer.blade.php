@@ -1,5 +1,7 @@
 <footer id="footer">
     <div class="pull-right">
+        <span id="time">Loading time...</span>
+        <span style="padding-left: 20px;">||</span>
         <span disabled>
             Dark Mode
         </span>

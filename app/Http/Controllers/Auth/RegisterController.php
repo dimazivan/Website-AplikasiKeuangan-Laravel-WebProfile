@@ -33,17 +33,15 @@ class RegisterController extends Controller
     {
         $title = "Register Page";
         $roles = Roles::all();
-        $province = Province::orderBy('name', 'asc')
-        ->pluck('name', 'id');
-
+        $province = Province::orderBy("name", "asc")->pluck("name", "id");
 
         return view(
-            'admin.register',
+            "admin.register",
             [
-            'title' => $title,
-            'roles' => $roles,
-        ],
-            compact('province')
+                "title" => $title,
+                "roles" => $roles,
+            ],
+            compact("province")
         );
     }
 
@@ -80,12 +78,12 @@ class RegisterController extends Controller
         if (!$validator) {
             // Log user error validation
             Log_users::create([
-                'users_id' => '0',
-                'role' => 'register',
-                'activity' => 'insert Data',
-                'description' => 'error validation',
-                'status' => 'failed',
-                'mac_address' => '',
+                "users_id" => "0",
+                "role" => "register",
+                "activity" => "insert Data",
+                "description" => "error validation",
+                "status" => "failed",
+                "mac_address" => "",
             ]);
 
             return back()->withErrors($validator->errors());
@@ -93,10 +91,14 @@ class RegisterController extends Controller
 
         try {
             $this->registerService->storeRegister($request);
-            return redirect()->route("index.login")->with("info", "Data Users has been saved");
+            return redirect()
+                ->route("index.login")
+                ->with("info", "Data Users has been saved");
         } catch (\Exception $e) {
             //throw $e
-            return redirect()->route("index.login")->with("error", $e->getMessage());
+            return redirect()
+                ->route("index.login")
+                ->with("error", $e->getMessage());
             // return $this->exceptionError($e->getMessage());
         }
     }

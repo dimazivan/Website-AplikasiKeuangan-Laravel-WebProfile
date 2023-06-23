@@ -35,7 +35,9 @@
                                 aria-expanded="false"><i class="fa fa-wrench"></i></a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" href="{{ route('user.create') }}">Tambah Data</a>
-                                <a class="dropdown-item" href="{{ route('log_user.index') }}">Cek Log User</a>
+                                <a class="dropdown-item" href="{{ route('log_user.index') }}" target="_blank">
+                                    Cek Log User
+                                </a>
                             </div>
                         </li>
                     </ul>

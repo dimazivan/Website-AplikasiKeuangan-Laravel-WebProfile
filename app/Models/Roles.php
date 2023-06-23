@@ -14,6 +14,11 @@ class Roles extends Model
         'name',
     ];
 
+    public function scopeRoleAdmin($query)
+    {
+        return $query->select('id')->where('name', 'admin');
+    }
+
     public function users()
     {
         return $this->hasMany('App\Models\User');
