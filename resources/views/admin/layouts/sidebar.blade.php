@@ -53,7 +53,7 @@
                     </li>
                 </ul>
             </div>
-            @if(auth()->user()->role == "admin")
+            @if(auth()->user()->isAdmin() || auth()->user()->isSuper())
             <div class="menu_section">
                 <h3>Data Log (Admin)</h3>
                 <ul class="nav side-menu">

@@ -184,12 +184,16 @@
                                                     <span class="caret"></span>
                                                 </a>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a href="#" target="_blank" class="dropdown-item">
+                                                        <i class="fa fa-eye"></i>&nbsp;
+                                                        View Data
+                                                    </a>
+                                                    @if(auth()->user()->isAdmin() || auth()->user()->isSuper())
                                                     <a href="{{ route('user.edit',[Crypt::encrypt($data_user->id)]) }}"
                                                         target="_blank" class="dropdown-item">
                                                         <i class="fa fa-pencil"></i>&nbsp;
                                                         Edit Data
                                                     </a>
-                                                    @if(auth()->user()->role == "admin")
                                                     <form
                                                         action="{{route('user.destroy', [Crypt::encrypt($data_user->id)])}}"
                                                         method="post" id="formdel{{Crypt::encrypt($data_user->id)}}">

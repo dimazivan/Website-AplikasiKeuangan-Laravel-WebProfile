@@ -92,7 +92,7 @@ foreach (Languages::all() as $data) {
 Route::group([
     // 'prefix' => $data->alias,
     'namespace' => 'App\Http\Controllers\Admin',
-    'middleware' => ['auth','CekRole:admin,keuangan']
+    'middleware' => ['auth','CekRole:super,admin,keuangan']
 ], function () {
     Route::get('/dashboard', function () {
         return view('admin.index');
@@ -105,7 +105,7 @@ Route::group([
     'prefix' => '/admin',
     // 'prefix' => $data->alias.'/admin',
     'namespace' => 'App\Http\Controllers\Admin',
-    'middleware' => ['auth','CekRole:admin']
+    'middleware' => ['auth','CekRole:super,admin']
 ], function () {
     // Route Latihan
     Route::resource('latihan', 'LatihanController');
@@ -129,7 +129,7 @@ Route::group([
     'prefix' => '/log',
     // 'prefix' => $data->alias.'/log',
     'namespace' => 'App\Http\Controllers\Log',
-    'middleware' => ['auth','CekRole:admin']
+    'middleware' => ['auth','CekRole:super,admin']
 ], function () {
     // Route Log Data User
     Route::resource('log_user', 'Log_UserController');
@@ -158,7 +158,7 @@ Route::group([
 Route::group([
     'prefix' => 'data_api',
     'namespace' => 'App\Http\Controllers\Api',
-    'middleware' => ['auth','CekRole:admin,keuangan']
+    'middleware' => ['auth','CekRole:super,admin,keuangan']
 ], function () {
     // Route::get('/api_wilayah/kota/{$id}', [Api_WilayahController::class, 'ambilKota'])->name('ambil.kota');
     // Route::get('/api_wilayah/kelurahan/{$id}', [Api_WilayahController::class, 'ambilKelurahan'])->name('ambil.kelurahan');
