@@ -102,7 +102,7 @@ Route::group([
 // Admin
 // URL ADMIN
 Route::group([
-    'prefix' => '/admin',
+    'prefix' => 'admin',
     // 'prefix' => $data->alias.'/admin',
     'namespace' => 'App\Http\Controllers\Admin',
     'middleware' => ['auth','CekRole:super,admin']
@@ -112,9 +112,6 @@ Route::group([
 
     // Route User
     Route::resource('user', 'UserController');
-    // Cek Data
-    Route::get('/data/cb/id/{id}', [UserController::class,'cekId'])->name('cek.id');
-    Route::post('/data/cb/user/deactive', [UserController::class,'deactiveUser'])->name('deactive.user');
 
     // Route Product
     Route::resource('product', 'ProductController');
@@ -123,19 +120,16 @@ Route::group([
     Route::resource('service', 'ServiceController');
 });
 
-// Log Data
-// URL LOG
+// NON LANG ADMIN
 Route::group([
-    'prefix' => '/log',
-    // 'prefix' => $data->alias.'/log',
-    'namespace' => 'App\Http\Controllers\Log',
+    'prefix' => 'admin',
+    'namespace' => 'App\Http\Controllers\Admin',
     'middleware' => ['auth','CekRole:super,admin']
 ], function () {
-    // Route Log Data User
-    Route::resource('log_user', 'Log_UserController');
-
-    // Route Log Data User
-    Route::resource('log_auth', 'Log_AuthController');
+    // Cek Data
+    Route::get('/data/cb/id/{id}', [UserController::class,'cekId'])->name('cek.id');
+    Route::post('/data/cb/user/deactive', [UserController::class,'deactiveUser'])->name('deactive.user');
+    Route::post('/data/cb/user/active', [UserController::class,'activeUser'])->name('active.user');
 });
 
 // URL ADMIN
@@ -152,6 +146,32 @@ Route::group([
         return view("admin.components.modal_content.content_modaluser");
     });
 });
+
+// Log Data
+// URL LOG
+Route::group([
+    'prefix' => 'log',
+    // 'prefix' => $data->alias.'/log',
+    'namespace' => 'App\Http\Controllers\Log',
+    'middleware' => ['auth','CekRole:super,admin']
+], function () {
+    // Route Log Data User
+    Route::resource('log_user', 'Log_UserController');
+
+    // Route Log Data User
+    Route::resource('log_auth', 'Log_AuthController');
+});
+
+// Cek Log User
+
+Route::group([
+    'prefix' => 'log',
+    'namespace' => 'App\Http\Controllers\Log',
+    'middleware' => ['auth','CekRole:super,admin']
+], function () {
+    Route::get('/data/user/format/json/', [Log_UserController::class,'jsonLog'])->name('cek.logUser');
+});
+
 
 // User Keuangan
 // URL API

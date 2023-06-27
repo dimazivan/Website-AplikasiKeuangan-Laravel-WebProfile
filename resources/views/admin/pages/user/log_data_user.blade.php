@@ -27,7 +27,9 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i
                                     class="fa fa-wrench"></i></a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <!-- <a class="dropdown-item" href="#">Tambah Data</a> -->
+                                <a class="dropdown-item" href="{{ route('cek.logUser') }}" target="_blank">
+                                    Log JSON
+                                </a>
                             </div>
                         </li>
                     </ul>

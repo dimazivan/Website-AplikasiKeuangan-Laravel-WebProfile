@@ -202,23 +202,23 @@ class UserService
         if((auth()->user()->isAdmin() || auth()->user()->isSuper())) {
             // Update
             $resultData = DB::table("users")
-                        ->where("id", $newid)
-                        ->update([
-                            "first_name" => $request->first_name,
-                            "last_name" => $request->last_name,
-                            "password" => bcrypt($request->password),
-                            "roles_id" => $cek_role[0]->id,
-                            "role" => $cek_role[0]->name,
-                            "country" => $request->cbcountry,
-                            "province" => $request->cbprovince,
-                            "city" => $request->cbcity,
-                            "district" => $request->cbdistrict,
-                            "ward" => $request->cbward,
-                            "phone" => $request->phone,
-                            "address" => $request->address,
-                            "detail_address" => $request->desc,
-                            "file_foto" => $nama_file,
-                        ]);
+            ->where("id", $newid)
+            ->update([
+                "first_name" => $request->first_name,
+                "last_name" => $request->last_name,
+                "password" => bcrypt($request->password),
+                "roles_id" => $cek_role[0]->id,
+                "role" => $cek_role[0]->name,
+                "country" => $request->cbcountry,
+                "province" => $request->cbprovince,
+                "city" => $request->cbcity,
+                "district" => $request->cbdistrict,
+                "ward" => $request->cbward,
+                "phone" => $request->phone,
+                "address" => $request->address,
+                "detail_address" => $request->desc,
+                "file_foto" => $nama_file,
+            ]);
 
             Log_users::create([
                 "users_id" => auth()->user()->id,
@@ -285,22 +285,57 @@ class UserService
         $decrypted = decrypt($request->cbckuserid);
         $newid = Crypt::decrypt($request->cbckuserid);
 
-        dd(
-            $request->all(),
-            $decrypted,
-            $newid,
-        );
+        // dd(
+        //     $request->all(),
+        //     $decrypted,
+        //     $newid,
+        // );
 
-        // Log_users::create([
-        //     "users_id" => auth()->user()->id,
-        //     "role" => auth()->user()->role,
-        //     "activity" => "delete data",
-        //     "description" => "data deleted",
-        //     "status" => "success",
-        //     "mac_address" => "",
-        // ]);
+        $resultData = DB::table("users")
+        ->where("id", $newid)
+        ->update([
+            "status" => 2,
+        ]);
 
-        // throw new Exception('Data User tidak dapat ditemukan');
+        Log_users::create([
+            "users_id" => auth()->user()->id,
+            "role" => auth()->user()->role,
+            "activity" => "change status",
+            "description" => "data deactivated",
+            "status" => "success",
+            "mac_address" => "",
+        ]);
+
+        sleep(1);
+
+        return $resultData;
+    }
+
+    public function activeUser($request)
+    {
+        $decrypted = decrypt($request->cbckuserid);
+        $newid = Crypt::decrypt($request->cbckuserid);
+
+        // dd(
+        //     $request->all(),
+        //     $decrypted,
+        //     $newid,
+        // );
+
+        $resultData = DB::table("users")
+        ->where("id", $newid)
+        ->update([
+            "status" => 1,
+        ]);
+
+        Log_users::create([
+            "users_id" => auth()->user()->id,
+            "role" => auth()->user()->role,
+            "activity" => "change status",
+            "description" => "data activated",
+            "status" => "success",
+            "mac_address" => "",
+        ]);
 
         sleep(1);
 

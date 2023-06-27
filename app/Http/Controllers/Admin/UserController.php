@@ -120,25 +120,50 @@ class UserController extends Controller
 
     public function deactiveUser(Request $request)
     {
-
         // dd(
         //     $request->all(),
         //     $request->cbckuserid,
-        //     !$request->cbckuserid,
-        //     decrypt($request->cbckuserid),
+        //     // !$request->cbckuserid,
+        //     // decrypt($request->cbckuserid),
         // );
 
         if (!$request->cbckuserid) {
             return redirect()
                 ->route("user.index")
-                ->with("info", "Data User Not Found");
+                ->with("info", "ID Data User Not Found");
         }
 
         try {
             $this->userService->deactiveUser($request);
             return redirect()
                 ->route("user.index")
-                ->with("info", "Data User has been deactived");
+                ->with("info", "Data User has been deactivated");
+        } catch (\Exception $e) {
+            //throw $e
+            return back()->with("info", $e->getMessage());
+        }
+    }
+
+    public function activeUser(Request $request)
+    {
+        // dd(
+        //     $request->all(),
+        //     $request->cbckuserid,
+        //     // !$request->cbckuserid,
+        //     // decrypt($request->cbckuserid),
+        // );
+
+        if (!$request->cbckuserid) {
+            return redirect()
+                ->route("user.index")
+                ->with("info", "ID Data User Not Found");
+        }
+
+        try {
+            $this->userService->activeUser($request);
+            return redirect()
+                ->route("user.index")
+                ->with("info", "Data User has been activated");
         } catch (\Exception $e) {
             //throw $e
             return back()->with("info", $e->getMessage());

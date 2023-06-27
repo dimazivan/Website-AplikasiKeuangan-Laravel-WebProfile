@@ -97,7 +97,9 @@
                                                 {{ Crypt::encrypt($data_user->id) }}
                                             </td>
                                             <td class="a-center ">
-                                                <input type="checkbox" class="flat" name="table_records" id="cbnouser"
+                                                <input type="checkbox" class="flat" name="table_records"
+                                                    id="cbnousernon" value="{{ Crypt::encrypt($data_user->id) }}">
+                                                <input type="hidden" class="flat" name="table_records" id="cbnouser"
                                                     value="{{ Crypt::encrypt($data_user->id) }}">
                                             </td>
                                             <td>
@@ -116,38 +118,58 @@
                                                     <label>
                                                         @if($data_user->status == 1)
                                                         <form action="{{ route('deactive.user') }}" method="post"
-                                                            id="formcbckuser{{Crypt::encrypt($data_user->id)}}">
+                                                            id="formcbckdeacuser{{Crypt::encrypt($data_user->id)}}">
                                                             @csrf
                                                             @method('post')
+                                                            <input type="hidden" class="btn btn-primary"
+                                                                name="cbckuserid"
+                                                                value="{{ Crypt::encrypt($data_user->id) }}">
                                                             <input type="checkbox" class="js-switch"
                                                                 id="cbckuser{{ Crypt::encrypt($data_user->id) }}"
-                                                                name="cbckuserid"
-                                                                value="{{ Crypt::encrypt($data_user->id) }}" checked
+                                                                name="cbckuseridnon" checked
+                                                                value="{{ Crypt::encrypt($data_user->id) }}"
                                                                 onclick="deactiveUser();">
                                                         </form>
                                                         @elseif($data_user->status == 2)
-                                                        <input type="checkbox" class="js-switch"
-                                                            id="cbckuser{{ Crypt::encrypt($data_user->id) }}"
-                                                            name="cbckuserid"
-                                                            value="{{ Crypt::encrypt($data_user->id) }}"
-                                                            onclick="activeUser()">
+                                                        <form action="{{ route('active.user') }}" method="post"
+                                                            id="formcbckacuser{{Crypt::encrypt($data_user->id)}}">
+                                                            @csrf
+                                                            @method('post')
+                                                            <input type="hidden" class="btn btn-primary"
+                                                                name="cbckuserid"
+                                                                value="{{ Crypt::encrypt($data_user->id) }}">
+                                                            <input type="checkbox" class="js-switch"
+                                                                id="cbckuser{{ Crypt::encrypt($data_user->id) }}"
+                                                                name="cbckuseridnon"
+                                                                value="{{ Crypt::encrypt($data_user->id) }}"
+                                                                onclick="activeUser();">
+                                                        </form>
                                                         @else
-                                                        <input type="checkbox" class="js-switch"
-                                                            id="cbckuser{{ Crypt::encrypt($data_user->id) }}"
-                                                            name="cbckuserid"
-                                                            value="{{ Crypt::encrypt($data_user->id) }}"
-                                                            onclick="activeUser()">
+                                                        <form action="{{ route('active.user') }}" method="post"
+                                                            id="formcbckacuser{{Crypt::encrypt($data_user->id)}}">
+                                                            @csrf
+                                                            @method('post')
+                                                            <input type="hidden" class="btn btn-primary"
+                                                                name="cbckuserid"
+                                                                value="{{ Crypt::encrypt($data_user->id) }}">
+                                                            <input type="checkbox" class="js-switch"
+                                                                id="cbckuser{{ Crypt::encrypt($data_user->id) }}"
+                                                                name="cbckuseridnon"
+                                                                value="{{ Crypt::encrypt($data_user->id) }}"
+                                                                onclick="activeUser();">
+                                                        </form>
                                                         @endif
                                                     </label>
                                                 </div>
                                                 <script>
                                                     function deactiveUser() {
-                                                        var formcbckuser = event.target.form;
+                                                        // alert('ahay');
+                                                        var formcbckdeacuser = event.target.form;
                                                         // event.preventDefault(); // prevent form submit
                                                         // var formcbckuser = event.target.form; // storing the form
                                                         // console.log(formcbckuser);
                                                         swal({
-                                                                title: "Are you sure to deactive this user?",
+                                                                title: "Are you sure to deactivated this user?",
                                                                 text: "You can turn it back active later",
                                                                 type: "warning",
                                                                 showCancelButton: true,
@@ -159,8 +181,8 @@
                                                             },
                                                             function(isConfirm) {
                                                                 if (isConfirm) {
-                                                                    console.log(formcbckuser);
-                                                                    formcbckuser.submit();
+                                                                    console.log(formcbckdeacuser);
+                                                                    formcbckdeacuser.submit();
                                                                     swal("Success",
                                                                         "Your data already updated :)",
                                                                         "success");
@@ -173,7 +195,31 @@
                                                     }
 
                                                     function activeUser() {
-                                                        // 
+                                                        var formcbckacuser = event.target.form;
+                                                        swal({
+                                                                title: "Are you sure to activated this user?",
+                                                                text: "You can turn it back deactive later",
+                                                                type: "warning",
+                                                                showCancelButton: true,
+                                                                confirmButtonColor: "#DD6B55",
+                                                                confirmButtonText: "Yes, active it!",
+                                                                cancelButtonText: "No, cancel it!",
+                                                                closeOnConfirm: false,
+                                                                closeOnCancel: false
+                                                            },
+                                                            function(isConfirm) {
+                                                                if (isConfirm) {
+                                                                    console.log(formcbckacuser);
+                                                                    formcbckacuser.submit();
+                                                                    swal("Success",
+                                                                        "Your data already updated :)",
+                                                                        "success");
+                                                                } else {
+                                                                    swal("Cancelled",
+                                                                        "You cancelled :)",
+                                                                        "error");
+                                                                }
+                                                            });
                                                     }
                                                 </script>
                                             </td>
