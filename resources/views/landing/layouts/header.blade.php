@@ -22,7 +22,9 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="ud-menu-scroll" href="#about">{{__('layouts_landing.header.nav_about')}}</a>
+                                <a class="ud-menu-scroll" href="{{ route('index') }}#about">
+                                    {{__('layouts_landing.header.nav_about')}}
+                                </a>
                             </li>
                             <li class="nav-item">
                                 <a class="ud-menu-scroll" href="#team">{{__('layouts_landing.header.nav_team')}}</a>
@@ -79,6 +81,7 @@
                                     }}
                                 </a>
                                 <ul class="ud-submenu">
+                                    @if(auth()->user()->isAdmin() || auth()->user()->isSuper())
                                     <li class="ud-submenu-item">
                                         <a href="{{ route('dashboard.index') }}" class="ud-submenu-link" target="_blank"
                                             style="color:#212b36;">
@@ -92,6 +95,7 @@
                                             404 Page
                                         </a>
                                     </li>
+                                    @endif
                                     <li class="ud-submenu-item">
                                         <a href="{{ route('logout') }}" class="ud-submenu-link" style="color:#212b36;">
                                             <i class="lni lni-shift-right" style="padding-right: 10px;"></i>

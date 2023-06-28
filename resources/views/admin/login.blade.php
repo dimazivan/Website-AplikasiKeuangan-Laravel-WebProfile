@@ -85,6 +85,17 @@
 <body>
     @include('sweetalert::alert')
     @include('admin.components.preload.submitloading')
+    @if(\Session::has('toast'))
+    <div class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive"
+        aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                {{ \Session::get('toast') }}
+            </div>
+            <button type="button" class="btn-close" aria-label="Close"></button>
+        </div>
+    </div>
+    @endif
     <div class="limiter">
         <div class="container-login100" id="bg">
             <div class="wrap-login100" id="bgform">
@@ -96,8 +107,7 @@
                     @csrf
                     @if(\Session::has('info'))
                     <div class="alert alert-info alert-dismissible" role="alert" data-timeout="2000">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                                aria-hidden="true">x</span>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
                         </button>
                         <strong>{{ \Session::get('info') }}</strong>
                     </div>
@@ -105,8 +115,7 @@
                     @if(($errors->any()) != null)
                     @foreach ($errors->all() as $error)
                     <div class="alert alert-danger alert-dismissible " role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                                aria-hidden="true">x</span>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
                         </button>
                         {{ $error }}
                     </div>
