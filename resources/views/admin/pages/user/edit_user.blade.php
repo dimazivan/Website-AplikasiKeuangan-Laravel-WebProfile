@@ -42,8 +42,9 @@
                         @if(($errors->any()) != null)
                         @foreach ($errors->all() as $error)
                         <div class="alert alert-danger alert-dismissible " role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                                    aria-hidden="true">x</span>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                                style="margin-top: -4px;">
+                                <i class="fa fa-times"></i>
                             </button>
                             {{ $error }}
                         </div>
@@ -51,8 +52,9 @@
                         @endif
                         @if(\Session::has('info'))
                         <div class="alert alert-info alert-dismissible" role="alert" data-timeout="2000">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                                    aria-hidden="true">x</span>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                                style="margin-top: -4px;">
+                                <i class="fa fa-times"></i>
                             </button>
                             <strong>{{ \Session::get('info') }}</strong>
                         </div>

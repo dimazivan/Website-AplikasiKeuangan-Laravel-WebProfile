@@ -398,6 +398,7 @@ $bg = asset('asset/icon/logogif.gif');
             }
         }
     </script>
+    <!-- FullScreen -->
     <script>
         function go_full_screen() {
             var elem = document.documentElement;
@@ -412,6 +413,7 @@ $bg = asset('asset/icon/logogif.gif');
             }
         }
     </script>
+    <!-- Clock -->
     <script>
         var timestamp = '<?=time();?>';
 
