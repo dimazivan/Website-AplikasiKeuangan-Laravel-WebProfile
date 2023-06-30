@@ -23,7 +23,8 @@ class Log_AuthController extends Controller
     public function index()
     {
         $title = "Halaman Log Data Auth";
-        $data = Log_auth::all();
+        $data = Log_auth::orderBy('updated_at', 'desc')
+        ->get();
 
         if (auth()->user()->isAdmin() || auth()->user()->isSuper()) {
             return view('admin.pages.auth.log_auth', [

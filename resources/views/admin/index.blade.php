@@ -3,7 +3,6 @@
 {{ isset($title) ? $title : "Dashboard"; }}
 @endsection
 @section('content')
-<!-- top tiles -->
 <div class="row" style="display: inline-block;">
     <div class="tile_count">
         <div class="col-md-2 col-sm-4  tile_stats_count">
@@ -62,13 +61,12 @@
         </div>
     </div>
 </div>
-<!-- /top tiles -->
 <div class="row">
     <div class="col-md-12 col-sm-12 ">
         <div class="dashboard_graph">
             <div class="row x_title">
                 <div class="col-md-6">
-                    <h3>Network Activities <small>Graph title sub-title</small></h3>
+                    <h3>Log Login <small>Subtitle</small></h3>
                 </div>
                 <div class="col-md-6">
                     <div id="reportrange" class="pull-right"
@@ -78,58 +76,57 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-9 col-sm-9 ">
-                <div id="chart_plot_01" class="demo-placeholder"></div>
+            <div class="col-md-7 col-sm-7">
+                <div id="chart_login">
+
+                </div>
             </div>
-            <div class="col-md-3 col-sm-3  bg-white">
+            <div class="col-md-5 col-sm-5 bg-white">
                 <div class="x_title">
-                    <h2>Top Campaign Performance</h2>
+                    <h2>Table Log Auth</h2>
                     <div class="clearfix"></div>
                 </div>
-
                 <div class="col-md-12 col-sm-12 ">
-                    <div>
-                        <p>Facebook Campaign</p>
-                        <div class="">
-                            <div class="progress progress_sm" style="width: 76%;">
-                                <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="80">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <p>Twitter Campaign</p>
-                        <div class="">
-                            <div class="progress progress_sm" style="width: 76%;">
-                                <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <table id="" class="table table-hover table-striped table-bordered dt-responsive nowrap bulk_action"
+                        cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Time</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabel_user">
+                            @forelse($data_logauth as $data_logauth)
+                            <tr>
+                                <td style="text-transform:uppercase;">{{ $data_logauth->activity }}</td>
+                                <td style="text-transform:uppercase;">
+                                    @if($data_logauth->status == "success")
+                                    <span class="badge badge-success">{{ $data_logauth->status }}</span>
+                                    @elseif($data_logauth->status == "failed")
+                                    <span class="badge badge-danger">{{ $data_logauth->status }}</span>
+                                    @else
+                                    <span class="badge badge-warning">{{ $data_logauth->status }}</span>
+                                    @endif
+                                </td>
+                                <td>{{ $data_logauth->updated_at }}&nbsp;||
+                                    {{
+                                    $data_logauth->updated_at->diffForHumans([
+                                    'parts' => 3,
+                                    'join' => true,
+                                    ])
+                                    }}
+                                </td>
+                            </tr>
+                            @empty
+                            <tr>
+                                <td colspan="3">Data Log Auth Kosong</td>
+                            </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
                 </div>
-                <div class="col-md-12 col-sm-12 ">
-                    <div>
-                        <p>Conventional Media</p>
-                        <div class="">
-                            <div class="progress progress_sm" style="width: 76%;">
-                                <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="40">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <p>Bill boards</p>
-                        <div class="">
-                            <div class="progress progress_sm" style="width: 76%;">
-                                <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
-
             <div class="clearfix"></div>
         </div>
     </div>
@@ -745,4 +742,52 @@
         </div>
     </div>
 </div>
+@endsection
+@section('script')
+<script>
+    Highcharts.chart('chart_login', {
+        title: {
+            text: 'Log Login , 12/06/2023 - 13/06/2023'
+        },
+
+        subtitle: {
+            text: 'Data: <a href="{{ route("log_auth.index") }}" target="_blank">Log Auth</a>'
+        },
+
+        yAxis: {
+            title: {
+                text: 'Total login'
+            }
+        },
+
+        xAxis: {
+            title: {
+                text: 'Date'
+            },
+            category: [20, 25, 30, 35, 40, 45, 50, 55, 60],
+            accessibility: {
+                rangeDescription: 'Range: 20 to 60'
+            }
+        },
+
+        legend: {
+            enabled: false
+        },
+
+        plotOptions: {
+            series: {
+                marker: {
+                    enabled: false
+                },
+                pointStart: 20,
+                pointInterval: 5
+            }
+        },
+
+        series: [{
+            name: 'Income Distribution and Intentional Homicide Rates,',
+            data: [16.56, 18.9, 21.24, 23.58, 25.92, 28.26, 30.6, 32.94, 35.28]
+        }]
+    });
+</script>
 @endsection

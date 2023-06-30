@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Log_auth;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -23,6 +24,8 @@ class DashboardController extends Controller
         $jml_userdeac = User::DeactiveUser()->count();
         $categoryProduct = Product::Category();
         $jml_product = Product::allItem()->count();
+        $data_logauth = Log_auth::orderBy('updated_at', 'desc')
+        ->paginate(8);
 
         return view("admin.index", [
             "title" => $title,
@@ -32,6 +35,7 @@ class DashboardController extends Controller
             "jml_userdeac" => $jml_userdeac,
             "categoryProduct" => $categoryProduct,
             "jml_product" => $jml_product,
+            "data_logauth" => $data_logauth,
         ]);
 
     }
