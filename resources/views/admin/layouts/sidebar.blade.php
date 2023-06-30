@@ -38,7 +38,7 @@
                     <li><a><i class="fa fa-home"></i>Home<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="{{ route('dashboard.index') }}">Dashboard</a></li>
-                            <li><a href="{{ route('index') }}">Landing Page</a></li>
+                            <li><a href="{{ route('index') }}" target="_blank">Landing Page</a></li>
                         </ul>
                     </li>
                 </ul>

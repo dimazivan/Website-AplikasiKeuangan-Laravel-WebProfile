@@ -26,12 +26,12 @@ class Product extends Model
 
     public function scopeallItem($query)
     {
-        return $query->where('fvoid', 0);
+        return $query->where('fvoid', 1);
     }
 
     public function scopeCategory($query)
     {
-        return $query->select('category')->groupBy('category');
+        return $query->select('category')->distinct()->count('category');
     }
 
     public function scopeBrand($query)

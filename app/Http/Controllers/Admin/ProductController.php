@@ -24,7 +24,7 @@ class ProductController extends Controller
         $data = Product::all();
         $jml_product = Product::allItem()->count();
         $jml_product_all = Product::all()->count();
-        $categoryProduct = Product::Category()->count();
+        $categoryProduct = Product::Category();
 
         // dd(
         //     $title,

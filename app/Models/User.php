@@ -87,6 +87,16 @@ class User extends Authenticatable
         return false;
     }
 
+    public function scopeActiveUser($query)
+    {
+        return $query->where('status', 1);
+    }
+
+    public function scopeDeactiveUser($query)
+    {
+        return $query->where('status', 2);
+    }
+
     // public function scoperole($query, $type)
     // {
     //     return $query->selectrole($type);

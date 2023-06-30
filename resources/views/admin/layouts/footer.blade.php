@@ -1,5 +1,7 @@
 <footer id="footer">
     <div class="pull-right">
+        <span id="loadtime">This site load&nbsp;{{ (microtime(true) - LARAVEL_START) }}&nbsp;seconds to render</span>
+        <span style="padding-left: 20px;">||</span>
         <span id="time">Loading time...</span>
         <span style="padding-left: 20px;">||</span>
         <span disabled>

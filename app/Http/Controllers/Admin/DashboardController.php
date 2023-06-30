@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -17,10 +18,20 @@ class DashboardController extends Controller
     {
         $title = "Halaman Dashboard";
         $jml_role = User::Role()->count();
+        $jml_user = User::all()->count();
+        $jml_userac = User::ActiveUser()->count();
+        $jml_userdeac = User::DeactiveUser()->count();
+        $categoryProduct = Product::Category();
+        $jml_product = Product::allItem()->count();
 
         return view("admin.index", [
             "title" => $title,
             "jml_role" => $jml_role,
+            "jml_user" => $jml_user,
+            "jml_userac" => $jml_userac,
+            "jml_userdeac" => $jml_userdeac,
+            "categoryProduct" => $categoryProduct,
+            "jml_product" => $jml_product,
         ]);
 
     }
