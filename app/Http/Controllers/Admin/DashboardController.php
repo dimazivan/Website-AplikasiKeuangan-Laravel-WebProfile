@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Log_auth;
 use App\Models\Product;
 use App\Models\User;
+use Carbon\Carbon;
+use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -26,6 +29,44 @@ class DashboardController extends Controller
         $jml_product = Product::allItem()->count();
         $data_logauth = Log_auth::orderBy('updated_at', 'desc')
         ->paginate(8);
+        // $jml_log = Log_auth::whereYear('created_at', Carbon::now()->year)
+        // ->whereMonth('created_at', Carbon::now()->month)
+        // ->get();
+
+        $jml_log = DB::table('log_auths')
+        ->select(
+            DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d') as date"),
+            DB::raw("SUM(status= 'success') as success"),
+            DB::raw("SUM(status= 'failed') as failed"),
+        )
+        ->whereYear('created_at', Carbon::now()->year)
+        ->whereMonth('created_at', Carbon::now()->month)
+        // ->whereDate('created_at', '<=', Carbon::now()->startOfMonth())
+        // ->whereDate('created_at', '>=', Carbon::now()->endOfMonth())
+        ->groupBy(DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d')"))
+        ->get();
+
+        // $currentMonth = Carbon::now()->month;
+        // $currentYear = Carbon::now()->year;
+
+        // $startDate = Carbon::create($currentYear, $currentMonth, 1);
+        // $endDate = $startDate->copy()->endOfMonth();
+
+        // $period = CarbonPeriod::create($startDate, $endDate);
+
+        // $datesArray = [];
+
+        // foreach ($period as $date) {
+        //     $datesArray[] = $date->toArray();
+        // }
+
+        // dd(
+        //     $jml_log,
+        //     Carbon::now()->startOfMonth(),
+        //     Carbon::now()->endOfMonth(),
+        //     $datesArray,
+        //     $datesArray[0]['day'],
+        // );
 
         return view("admin.index", [
             "title" => $title,
@@ -35,6 +76,7 @@ class DashboardController extends Controller
             "jml_userdeac" => $jml_userdeac,
             "categoryProduct" => $categoryProduct,
             "jml_product" => $jml_product,
+            "data_logauth" => $data_logauth,
             "data_logauth" => $data_logauth,
         ]);
 
