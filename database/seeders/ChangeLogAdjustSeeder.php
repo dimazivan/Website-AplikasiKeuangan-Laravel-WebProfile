@@ -684,6 +684,15 @@ class ChangeLogAdjustSeeder extends Seeder
             'updated_at' => Carbon::now(),
         ]);
 
+        DB::table('change_logs')->insert([
+            'title' => "commit",
+            'users_id' => "1",
+            'type' => "adjust",
+            'description' => "commit on some localization",
+            'version' => "v.1.1.0.9",
+            'created_at' => "2023-07-06",
+            'updated_at' => Carbon::now(),
+        ]);
 
     }
 }
