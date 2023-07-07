@@ -29,12 +29,14 @@ class DashboardController extends Controller
         $jml_product = Product::allItem()->count();
         $data_logauth = Log_auth::orderBy('updated_at', 'desc')
         ->paginate(8);
+
         // $jml_log = Log_auth::whereYear('created_at', Carbon::now()->year)
         // ->whereMonth('created_at', Carbon::now()->month)
         // ->get();
 
         $jml_log = DB::table('log_auths')
         ->select(
+            // DB::raw("DATE_FORMAT(updated_at, '%d') as tanggal"),
             DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d') as date"),
             DB::raw("SUM(status= 'success') as success"),
             DB::raw("SUM(status= 'failed') as failed"),
@@ -46,26 +48,31 @@ class DashboardController extends Controller
         ->groupBy(DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d')"))
         ->get();
 
-        // $currentMonth = Carbon::now()->month;
-        // $currentYear = Carbon::now()->year;
+        $jml_logall = DB::table('log_auths')
+        ->whereYear('created_at', Carbon::now()->year)
+        ->whereMonth('created_at', Carbon::now()->month)
+        ->count();
 
-        // $startDate = Carbon::create($currentYear, $currentMonth, 1);
-        // $endDate = $startDate->copy()->endOfMonth();
+        $jml_tgl = Carbon::now()->month()->daysInMonth;
 
-        // $period = CarbonPeriod::create($startDate, $endDate);
-
-        // $datesArray = [];
-
-        // foreach ($period as $date) {
-        //     $datesArray[] = $date->toArray();
-        // }
+        foreach ($jml_log as $data) {
+            $logauth_success[] = $data->success;
+            $logauth_failed[] = $data->failed;
+            $logauth_date[] = date("d", strtotime($data->date));
+        }
 
         // dd(
         //     $jml_log,
+        //     $jml_log[0]->success,
+        //     $jml_log[0]->failed,
+        //     $jml_log[0]->date,
+        //     date("d", strtotime($jml_log[0]->date)),
+        //     $logauth_success,
+        //     $logauth_failed,
+        //     $jml_logall,
         //     Carbon::now()->startOfMonth(),
         //     Carbon::now()->endOfMonth(),
-        //     $datesArray,
-        //     $datesArray[0]['day'],
+        //     Carbon::now()->month()->daysInMonth,
         // );
 
         return view("admin.index", [
@@ -77,7 +84,10 @@ class DashboardController extends Controller
             "categoryProduct" => $categoryProduct,
             "jml_product" => $jml_product,
             "data_logauth" => $data_logauth,
-            "data_logauth" => $data_logauth,
+            "logauth_success" => $logauth_success,
+            "logauth_failed" => $logauth_failed,
+            "logauth_date" => $logauth_date,
+            "jml_logall" => $jml_logall,
         ]);
 
     }

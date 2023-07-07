@@ -745,29 +745,53 @@
 @endsection
 @section('script')
 <script>
+    var logauth_success =
+        <?php
+               echo json_encode(array_column($logauth_success, null), JSON_NUMERIC_CHECK);
+        ?>
+    ;
+    console.log(logauth_success);
+
+    var logauth_failed =
+        <?php
+               echo json_encode(array_column($logauth_failed, null), JSON_NUMERIC_CHECK);
+        ?>
+    ;
+    console.log(logauth_failed);
+
+    var logauth_date =
+        <?php
+               echo json_encode(array_column($logauth_date, null), JSON_NUMERIC_CHECK);
+        ?>
+    ;
+    console.log(logauth_date);
+    // console.log(logauth_date[0]);
+
     Highcharts.chart('chart_login', {
         title: {
-            text: 'Log Login , 12/06/2023 - 13/06/2023'
+            text: 'Log Login , {{ Carbon\Carbon::now()->month }}/{{ Carbon\Carbon::now()->year }}'
         },
 
         subtitle: {
-            text: 'Data: <a href="{{ route("log_auth.index") }}" target="_blank">Log Auth</a>'
+            text: 'Data: <a href="{{ route("log_auth.index") }}" target="_blank">Log Auth</a> (all) : {{ $jml_logall }} total'
         },
 
         yAxis: {
+            allowDecimals: false,
             title: {
-                text: 'Total login'
-            }
+                text: 'Total login (all)'
+            },
         },
 
         xAxis: {
+            allowDecimals: false,
             title: {
-                text: 'Date'
+                text: 'Date',
             },
-            category: [20, 25, 30, 35, 40, 45, 50, 55, 60],
-            accessibility: {
-                rangeDescription: 'Range: 20 to 60'
-            }
+            categories: logauth_date,
+            // accessibility: {
+            //     // rangeDescription: 'Range: 1 to 30'
+            // }
         },
 
         legend: {
@@ -777,16 +801,20 @@
         plotOptions: {
             series: {
                 marker: {
-                    enabled: false
+                    enabled: true
                 },
-                pointStart: 20,
-                pointInterval: 5
+                // pointStart: logauth_date[0],
+                // pointStart: 1,
+                // pointInterval: 1,
             }
         },
 
         series: [{
-            name: 'Income Distribution and Intentional Homicide Rates,',
-            data: [16.56, 18.9, 21.24, 23.58, 25.92, 28.26, 30.6, 32.94, 35.28]
+            name: 'Total login numbers (success),',
+            data: logauth_success
+        }, {
+            name: 'Total login numbers (failed),',
+            data: logauth_failed
         }]
     });
 </script>
