@@ -30,10 +30,6 @@ class DashboardController extends Controller
         $data_logauth = Log_auth::orderBy('updated_at', 'desc')
         ->paginate(8);
 
-        // $jml_log = Log_auth::whereYear('created_at', Carbon::now()->year)
-        // ->whereMonth('created_at', Carbon::now()->month)
-        // ->get();
-
         $jml_log = DB::table('log_auths')
         ->select(
             // DB::raw("DATE_FORMAT(updated_at, '%d') as tanggal"),

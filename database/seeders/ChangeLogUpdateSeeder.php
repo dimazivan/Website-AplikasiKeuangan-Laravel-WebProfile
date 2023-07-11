@@ -17,16 +17,6 @@ class ChangeLogUpdateSeeder extends Seeder
     public function run()
     {
         // Update
-        // DB::table('change_logs')->insert([
-        //     'title' => "test change log beta",
-        //     'users_id' => "1",
-        //     'type' => "update",
-        //     'description' => "Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.",
-        //     'version' => "Beta 0.0.0.1",
-        //     'created_at' => Carbon::now(),
-        //     'updated_at' => Carbon::now(),
-        // ]);
-
         DB::table('change_logs')->insert([
             'title' => "update dark mode",
             'users_id' => "1",
@@ -206,6 +196,17 @@ class ChangeLogUpdateSeeder extends Seeder
             'created_at' => "2023-07-03",
             'updated_at' => Carbon::now(),
         ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "add dashboard",
+            'users_id' => "1",
+            'type' => "update",
+            'description' => "add log graph dashboard",
+            'version' => "v.1.1.1.1",
+            'created_at' => "2023-07-11",
+            'updated_at' => Carbon::now(),
+        ]);
+
 
     }
 }

@@ -810,6 +810,7 @@
         },
 
         series: [{
+            // name: ['Total login numbers (success),'],
             name: 'Total login numbers (success),',
             data: logauth_success
         }, {
