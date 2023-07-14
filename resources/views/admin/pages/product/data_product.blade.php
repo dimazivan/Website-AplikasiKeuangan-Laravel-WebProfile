@@ -39,7 +39,10 @@
     <div class="page-title">
         <div class="title_left">
             <p>
-                <a href="/">Home</a>&nbsp;<small><i class="fa fa-long-arrow-right"></small></i>
+                <a href="/">Home</a>&nbsp;
+                <small>
+                    <i class="fa fa-long-arrow-right"></i>
+                </small>
                 <a href="#">Product</a>&nbsp;
             </p>
         </div>

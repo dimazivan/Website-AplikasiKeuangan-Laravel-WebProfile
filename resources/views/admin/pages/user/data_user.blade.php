@@ -1,8 +1,8 @@
 @extends('admin.layouts.app')
 @section('title')
-{{ isset($title) ? $title : "Halaman Data User"; }}
+{{ isset($title) ? $title : __('data_user.header.title'); }}
 @endsection
-@if(auth()->user()->role == 'admin')
+@if(auth()->user()->isAdmin() || auth()->user()->isSuper())
 @section('style')
 <style>
     tr {
@@ -16,8 +16,11 @@
     <div class="page-title">
         <div class="title_left">
             <p>
-                <a href="/" id="word1">Home</a>&nbsp;<small><i class="fa fa-long-arrow-right"></small></i>
-                <a href="#" id="word2">Data User</a>&nbsp;
+                <a href="/" id="word1">{{__('data_user.header.nav_home')}}</a>&nbsp;
+                <small>
+                    <i class="fa fa-long-arrow-right"> </i>
+                </small>
+                <a href="#" id="word2">{{__('data_user.header.nav_title')}}</a>&nbsp;
             </p>
         </div>
     </div>
@@ -26,17 +29,21 @@
         <div class="col-md-12 col-sm-12 ">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Data User</h2>
+                    <h2>{{__('data_user.header.nav_title')}}</h2>
                     <ul class="nav navbar-right panel_toolbox">
-                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        <li>
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                 aria-expanded="false"><i class="fa fa-wrench"></i></a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="{{ route('user.create') }}">Tambah Data</a>
+                                <a class="dropdown-item"
+                                    href="{{ route('user.create') }}">{{__('data_user.content.btn_adddata')}}</a>
                                 <a class="dropdown-item" href="{{ route('log_user.index') }}" target="_blank">
-                                    Cek Log User
+                                    {{__('data_user.content.btn_logdata')}}
                                 </a>
                             </div>
                         </li>
@@ -48,7 +55,7 @@
                         <div class="col-sm-12">
                             <div class="card-box table-responsive">
                                 <p class="text-muted font-13 m-b-30">
-                                    Data user digunakan untuk pengguna melakukan proses login pada aplikasi.
+                                    {{__('data_user.header.desc_title')}}
                                 </p>
                                 <!-- <button class="btn btn-primary" data-toggle="modal"
                                     data-target=".modaladduser" disabled>
@@ -56,11 +63,11 @@
                                 </button> -->
                                 <a class="btn btn-app" data-toggle="modal" data-target=".modalscandata">
                                     <i class="fa fa-search"></i>
-                                    Scan QR
+                                    {{__('data_user.content.btn_scanqr')}}
                                 </a>
                                 <a class="btn btn-app">
                                     <i class="fa fa-trash"></i>
-                                    Delete Data
+                                    {{__('data_user.content.btn_deletedata')}}
                                 </a>
                                 <br>
                                 @if(\Session::has('info'))
@@ -85,12 +92,24 @@
                                             <th width="20px;">
                                                 <input type="checkbox" id="check-all" class="flat">
                                             </th>
-                                            <th width="30px;">QR Code</th>
-                                            <th>Nama User</th>
-                                            <th>Username</th>
-                                            <th>Role</th>
-                                            <th width="20px">Status (Aktif)</th>
-                                            <th>Aksi</th>
+                                            <th width="30px;">
+                                                {{__('data_user.table.title_col1')}}
+                                            </th>
+                                            <th>
+                                                {{__('data_user.table.title_col2')}}
+                                            </th>
+                                            <th>
+                                                {{__('data_user.table.title_col3')}}
+                                            </th>
+                                            <th>
+                                                {{__('data_user.table.title_col4')}}
+                                            </th>
+                                            <th width="20px">
+                                                {{__('data_user.table.title_col5')}}
+                                            </th>
+                                            <th>
+                                                {{__('data_user.table.title_col6')}}
+                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody id="tabel_user">
@@ -335,7 +354,7 @@
         });
     });
 </script> -->
-@if(auth()->user()->role == 'admin')
+@if(auth()->user()->isAdmin() || auth()->user()->isSuper())
 <!-- <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script> -->
 <script src="{{ asset('asset/js/click_datatableuser.js') }}"></script>
 <!-- <script type="text/javascript" src="{{ asset('asset/js/instascan.min.js') }}"></script> -->

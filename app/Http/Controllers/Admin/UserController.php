@@ -39,7 +39,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $title = "Halaman Data User";
+        // $title = "Halaman Data User";
         $data_user = User::all();
         $jml_role = User::Role()->count();
 
@@ -66,7 +66,7 @@ class UserController extends Controller
         // );
 
         return view("admin.pages.user.data_user", [
-            "title" => $title,
+            // "title" => $title,
             "data_user" => $data_user,
         ]);
     }
