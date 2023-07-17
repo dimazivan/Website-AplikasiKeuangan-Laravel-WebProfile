@@ -17,6 +17,7 @@ return[
         "btn_view" => "Lihat Data",
         "btn_edit" => "Ubah Data",
         "btn_delete" => "Hapus Data",
+        "txt_empty" => "Tidak Ditemukan Data User",
         "previous" => "Sebelumnya",
         "next" => "Selanjutnya",
         //

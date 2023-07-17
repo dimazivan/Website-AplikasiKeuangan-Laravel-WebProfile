@@ -151,6 +151,30 @@
                                                                 name="cbckuseridnon" checked
                                                                 value="{{ Crypt::encrypt($data_user->id) }}"
                                                                 onclick="deactiveUser();">
+                                                            <span id="txttitle1" hidden>
+                                                                {{__('data_user.script.title1')}}
+                                                            </span>
+                                                            <span id="text1" hidden>
+                                                                {{__('data_user.script.text1')}}
+                                                            </span>
+                                                            <span id="btn_yes1" hidden>
+                                                                {{__('data_user.script.btn_yes1')}}
+                                                            </span>
+                                                            <span id="btn_no1" hidden>
+                                                                {{__('data_user.script.btn_no1')}}
+                                                            </span>
+                                                            <span id="text_titlesuccess1" hidden>
+                                                                {{__('data_user.script.text_titlesuccess1')}}
+                                                            </span>
+                                                            <span id="text_titlecancel1" hidden>
+                                                                {{__('data_user.script.text_titlecancel1')}}
+                                                            </span>
+                                                            <span id="text_success1" hidden>
+                                                                {{__('data_user.script.text_success1')}}
+                                                            </span>
+                                                            <span id="text_cancel1" hidden>
+                                                                {{__('data_user.script.text_cancel1')}}
+                                                            </span>
                                                         </form>
                                                         @elseif($data_user->status == 2)
                                                         <form action="{{ route('active.user') }}" method="post"
@@ -165,6 +189,30 @@
                                                                 name="cbckuseridnon"
                                                                 value="{{ Crypt::encrypt($data_user->id) }}"
                                                                 onclick="activeUser();">
+                                                            <span id="txttitle2" hidden>
+                                                                {{__('data_user.script.title2')}}
+                                                            </span>
+                                                            <span id="text2" hidden>
+                                                                {{__('data_user.script.text2')}}
+                                                            </span>
+                                                            <span id="btn_yes2" hidden>
+                                                                {{__('data_user.script.btn_yes2')}}
+                                                            </span>
+                                                            <span id="btn_no1" hidden>
+                                                                {{__('data_user.script.btn_no1')}}
+                                                            </span>
+                                                            <span id="text_titlesuccess1" hidden>
+                                                                {{__('data_user.script.text_titlesuccess1')}}
+                                                            </span>
+                                                            <span id="text_titlecancel1" hidden>
+                                                                {{__('data_user.script.text_titlecancel1')}}
+                                                            </span>
+                                                            <span id="text_success1" hidden>
+                                                                {{__('data_user.script.text_success1')}}
+                                                            </span>
+                                                            <span id="text_cancel1" hidden>
+                                                                {{__('data_user.script.text_cancel1')}}
+                                                            </span>
                                                         </form>
                                                         @else
                                                         <form action="{{ route('active.user') }}" method="post"
@@ -179,25 +227,62 @@
                                                                 name="cbckuseridnon"
                                                                 value="{{ Crypt::encrypt($data_user->id) }}"
                                                                 onclick="activeUser();">
+                                                            <span id="txttitle2" hidden>
+                                                                {{__('data_user.script.title2')}}
+                                                            </span>
+                                                            <span id="text2" hidden>
+                                                                {{__('data_user.script.text2')}}
+                                                            </span>
+                                                            <span id="btn_yes2" hidden>
+                                                                {{__('data_user.script.btn_yes2')}}
+                                                            </span>
+                                                            <span id="btn_no1" hidden>
+                                                                {{__('data_user.script.btn_no1')}}
+                                                            </span>
+                                                            <span id="text_titlesuccess1" hidden>
+                                                                {{__('data_user.script.text_titlesuccess1')}}
+                                                            </span>
+                                                            <span id="text_titlecancel1" hidden>
+                                                                {{__('data_user.script.text_titlecancel1')}}
+                                                            </span>
+                                                            <span id="text_success1" hidden>
+                                                                {{__('data_user.script.text_success1')}}
+                                                            </span>
+                                                            <span id="text_cancel1" hidden>
+                                                                {{__('data_user.script.text_cancel1')}}
+                                                            </span>
                                                         </form>
                                                         @endif
                                                     </label>
                                                 </div>
                                                 <script>
                                                     function deactiveUser() {
+                                                        var txttitle1 = document.getElementById("txttitle1").innerText;
+                                                        var text1 = document.getElementById("text1").innerText;
+                                                        var btn_yes1 = document.getElementById("btn_yes1").innerText;
+                                                        var btn_no1 = document.getElementById("btn_no1").innerText;
+                                                        var text_titlesuccess1 = document.getElementById(
+                                                            "text_titlesuccess1").innerText;
+                                                        var text_titlecancel1 = document.getElementById(
+                                                            "text_titlecancel1").innerText;
+                                                        var text_success1 = document.getElementById("text_success1")
+                                                            .innerText;
+                                                        var text_cancel1 = document.getElementById("text_cancel1")
+                                                            .innerText;
+                                                        // console.log(txttitle1);
                                                         // alert('ahay');
                                                         var formcbckdeacuser = event.target.form;
                                                         // event.preventDefault(); // prevent form submit
                                                         // var formcbckuser = event.target.form; // storing the form
                                                         // console.log(formcbckuser);
                                                         swal({
-                                                                title: "Are you sure to deactivated this user?",
-                                                                text: "You can turn it back active later",
+                                                                title: txttitle1,
+                                                                text: text1,
                                                                 type: "warning",
                                                                 showCancelButton: true,
                                                                 confirmButtonColor: "#DD6B55",
-                                                                confirmButtonText: "Yes, deactive it!",
-                                                                cancelButtonText: "No, cancel it!",
+                                                                confirmButtonText: btn_yes1,
+                                                                cancelButtonText: btn_no1,
                                                                 closeOnConfirm: false,
                                                                 closeOnCancel: false
                                                             },
@@ -205,27 +290,39 @@
                                                                 if (isConfirm) {
                                                                     console.log(formcbckdeacuser);
                                                                     formcbckdeacuser.submit();
-                                                                    swal("Success",
-                                                                        "Your data already updated :)",
+                                                                    swal(text_titlesuccess1,
+                                                                        text_success1,
                                                                         "success");
                                                                 } else {
-                                                                    swal("Cancelled",
-                                                                        "You cancelled :)",
+                                                                    swal(text_titlecancel1,
+                                                                        text_cancel1,
                                                                         "error");
                                                                 }
                                                             });
                                                     }
 
                                                     function activeUser() {
+                                                        var txttitle2 = document.getElementById("txttitle2").innerText;
+                                                        var text2 = document.getElementById("text2").innerText;
+                                                        var btn_yes2 = document.getElementById("btn_yes2").innerText;
+                                                        var btn_no1 = document.getElementById("btn_no1").innerText;
+                                                        var text_titlesuccess1 = document.getElementById(
+                                                            "text_titlesuccess1").innerText;
+                                                        var text_titlecancel1 = document.getElementById(
+                                                            "text_titlecancel1").innerText;
+                                                        var text_success1 = document.getElementById("text_success1")
+                                                            .innerText;
+                                                        var text_cancel1 = document.getElementById("text_cancel1")
+                                                            .innerText;
                                                         var formcbckacuser = event.target.form;
                                                         swal({
-                                                                title: "Are you sure to activated this user?",
-                                                                text: "You can turn it back deactive later",
+                                                                title: txttitle2,
+                                                                text: text2,
                                                                 type: "warning",
                                                                 showCancelButton: true,
                                                                 confirmButtonColor: "#DD6B55",
-                                                                confirmButtonText: "Yes, active it!",
-                                                                cancelButtonText: "No, cancel it!",
+                                                                confirmButtonText: btn_yes2,
+                                                                cancelButtonText: btn_no1,
                                                                 closeOnConfirm: false,
                                                                 closeOnCancel: false
                                                             },
@@ -233,12 +330,12 @@
                                                                 if (isConfirm) {
                                                                     console.log(formcbckacuser);
                                                                     formcbckacuser.submit();
-                                                                    swal("Success",
-                                                                        "Your data already updated :)",
+                                                                    swal(text_titlesuccess1,
+                                                                        text_success1,
                                                                         "success");
                                                                 } else {
-                                                                    swal("Cancelled",
-                                                                        "You cancelled :)",
+                                                                    swal(text_titlecancel1,
+                                                                        text_cancel1,
                                                                         "error");
                                                                 }
                                                             });
@@ -311,7 +408,9 @@
                                         </tr>
                                         @empty
                                         <tr>
-                                            <td colspan="7">Data User Kosong</td>
+                                            <td colspan="7">
+                                                {{__('data_user.table.txt_empty')}}
+                                            </td>
                                         </tr>
                                         @endforelse
                                     </tbody>

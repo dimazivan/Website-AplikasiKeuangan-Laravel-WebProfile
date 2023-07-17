@@ -17,6 +17,7 @@ return[
         "btn_view" => "View Data",
         "btn_edit" => "Edit Data",
         "btn_delete" => "Delete Data",
+        "txt_empty" => "No Data User Found",
         "previous" => "Previous",
         "next" => "Next",
         //
