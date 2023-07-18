@@ -39,7 +39,10 @@
     <div class="page-title">
         <div class="title_left">
             <p>
-                <a href="/">Home</a>&nbsp;<small><i class="fa fa-long-arrow-right"></small></i>
+                <a href="/">Home</a>&nbsp;
+                <small>
+                    <i class="fa fa-long-arrow-right"></i>
+                </small>
                 <a href="#">Product</a>&nbsp;
             </p>
         </div>
@@ -146,7 +149,8 @@
                                                 @foreach ($errors->all() as $error)
                                                 <div class="alert alert-danger alert-dismissible " role="alert">
                                                     <button type="button" class="close" data-dismiss="alert"
-                                                        aria-label="Close"><span aria-hidden="true">x</span>
+                                                        aria-label="Close" style="margin-top: -4px;">
+                                                        <i class="fa fa-times"></i>
                                                     </button>
                                                     {{ $error }}
                                                 </div>
@@ -156,7 +160,8 @@
                                                 <div class="alert alert-info alert-dismissible" role="alert"
                                                     data-timeout="2000">
                                                     <button type="button" class="close" data-dismiss="alert"
-                                                        aria-label="Close"><span aria-hidden="true">x</span>
+                                                        aria-label="Close" style="margin-top: -4px;">
+                                                        <i class="fa fa-times"></i>
                                                     </button>
                                                     <strong>{{ \Session::get('info') }}</strong>
                                                 </div>

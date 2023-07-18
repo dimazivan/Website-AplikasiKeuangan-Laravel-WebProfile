@@ -3,53 +3,70 @@
 {{ isset($title) ? $title : "Dashboard"; }}
 @endsection
 @section('content')
-<!-- top tiles -->
 <div class="row" style="display: inline-block;">
     <div class="tile_count">
         <div class="col-md-2 col-sm-4  tile_stats_count">
-            <span class="count_top"><i class="fa fa-user"></i> Total Users</span>
-            <div class="count">2500</div>
-            <span class="count_bottom"><i class="green">4% </i> From last Week</span>
+            <span class="count_top">
+                <i class="fa fa-users"></i>
+                Type Role
+            </span>
+            <div class="count">
+                {{ str_pad($jml_role, 4, '0', STR_PAD_LEFT); }}
+            </div>
         </div>
         <div class="col-md-2 col-sm-4  tile_stats_count">
-            <span class="count_top"><i class="fa fa-clock-o"></i> Average Time</span>
-            <div class="count">123.50</div>
-            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last
-                Week</span>
+            <span class="count_top">
+                <i class="fa fa-user"></i>
+                Total Users
+            </span>
+            <div class="count">
+                {{ str_pad($jml_user, 4, '0', STR_PAD_LEFT); }}
+            </div>
         </div>
         <div class="col-md-2 col-sm-4  tile_stats_count">
-            <span class="count_top"><i class="fa fa-user"></i> Total Males</span>
-            <div class="count green">2,500</div>
-            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last
-                Week</span>
+            <span class="count_top">
+                <i class="fa fa-user"></i>
+                Active Users
+            </span>
+            <div class="count">
+                {{ str_pad($jml_userac, 4, '0', STR_PAD_LEFT); }}
+            </div>
         </div>
         <div class="col-md-2 col-sm-4  tile_stats_count">
-            <span class="count_top"><i class="fa fa-user"></i> Total Females</span>
-            <div class="count">4,567</div>
-            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last
-                Week</span>
+            <span class="count_top">
+                <i class="fa fa-user"></i>
+                Non Active Users
+            </span>
+            <div class="count">
+                {{ str_pad($jml_userdeac, 4, '0', STR_PAD_LEFT); }}
+            </div>
         </div>
         <div class="col-md-2 col-sm-4  tile_stats_count">
-            <span class="count_top"><i class="fa fa-user"></i> Total Collections</span>
-            <div class="count">2,315</div>
-            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last
-                Week</span>
+            <span class="count_top">
+                <i class="fa fa-user"></i>
+                Type Of Items
+            </span>
+            <div class="count">
+                {{ str_pad($categoryProduct, 4, '0', STR_PAD_LEFT); }}
+            </div>
         </div>
         <div class="col-md-2 col-sm-4  tile_stats_count">
-            <span class="count_top"><i class="fa fa-user"></i> Total Connections</span>
-            <div class="count">7,325</div>
-            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last
-                Week</span>
+            <span class="count_top">
+                <i class="fa fa-user"></i>
+                Non Void Items
+            </span>
+            <div class="count">
+                {{ str_pad($jml_product, 4, '0', STR_PAD_LEFT); }}
+            </div>
         </div>
     </div>
 </div>
-<!-- /top tiles -->
 <div class="row">
     <div class="col-md-12 col-sm-12 ">
         <div class="dashboard_graph">
             <div class="row x_title">
                 <div class="col-md-6">
-                    <h3>Network Activities <small>Graph title sub-title</small></h3>
+                    <h3>Log Login <small>Subtitle</small></h3>
                 </div>
                 <div class="col-md-6">
                     <div id="reportrange" class="pull-right"
@@ -59,58 +76,57 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-9 col-sm-9 ">
-                <div id="chart_plot_01" class="demo-placeholder"></div>
+            <div class="col-md-7 col-sm-7">
+                <div id="chart_login">
+
+                </div>
             </div>
-            <div class="col-md-3 col-sm-3  bg-white">
+            <div class="col-md-5 col-sm-5 bg-white">
                 <div class="x_title">
-                    <h2>Top Campaign Performance</h2>
+                    <h2>Table Log Auth</h2>
                     <div class="clearfix"></div>
                 </div>
-
                 <div class="col-md-12 col-sm-12 ">
-                    <div>
-                        <p>Facebook Campaign</p>
-                        <div class="">
-                            <div class="progress progress_sm" style="width: 76%;">
-                                <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="80">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <p>Twitter Campaign</p>
-                        <div class="">
-                            <div class="progress progress_sm" style="width: 76%;">
-                                <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <table id="" class="table table-hover table-striped table-bordered dt-responsive nowrap bulk_action"
+                        cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Time</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabel_user">
+                            @forelse($data_logauth as $data_logauth)
+                            <tr>
+                                <td style="text-transform:uppercase;">{{ $data_logauth->activity }}</td>
+                                <td style="text-transform:uppercase;">
+                                    @if($data_logauth->status == "success")
+                                    <span class="badge badge-success">{{ $data_logauth->status }}</span>
+                                    @elseif($data_logauth->status == "failed")
+                                    <span class="badge badge-danger">{{ $data_logauth->status }}</span>
+                                    @else
+                                    <span class="badge badge-warning">{{ $data_logauth->status }}</span>
+                                    @endif
+                                </td>
+                                <td>{{ $data_logauth->updated_at }}&nbsp;||
+                                    {{
+                                    $data_logauth->updated_at->diffForHumans([
+                                    'parts' => 3,
+                                    'join' => true,
+                                    ])
+                                    }}
+                                </td>
+                            </tr>
+                            @empty
+                            <tr>
+                                <td colspan="3">Data Log Auth Kosong</td>
+                            </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
                 </div>
-                <div class="col-md-12 col-sm-12 ">
-                    <div>
-                        <p>Conventional Media</p>
-                        <div class="">
-                            <div class="progress progress_sm" style="width: 76%;">
-                                <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="40">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <p>Bill boards</p>
-                        <div class="">
-                            <div class="progress progress_sm" style="width: 76%;">
-                                <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
-
             <div class="clearfix"></div>
         </div>
     </div>
@@ -726,4 +742,81 @@
         </div>
     </div>
 </div>
+@endsection
+@section('script')
+<script>
+    var logauth_success =
+        <?php
+               echo json_encode(array_column($logauth_success, null), JSON_NUMERIC_CHECK);
+        ?>
+    ;
+    console.log(logauth_success);
+
+    var logauth_failed =
+        <?php
+               echo json_encode(array_column($logauth_failed, null), JSON_NUMERIC_CHECK);
+        ?>
+    ;
+    console.log(logauth_failed);
+
+    var logauth_date =
+        <?php
+               echo json_encode(array_column($logauth_date, null), JSON_NUMERIC_CHECK);
+        ?>
+    ;
+    console.log(logauth_date);
+    // console.log(logauth_date[0]);
+
+    Highcharts.chart('chart_login', {
+        title: {
+            text: 'Log Login , {{ Carbon\Carbon::now()->month }}/{{ Carbon\Carbon::now()->year }}'
+        },
+
+        subtitle: {
+            text: 'Data: <a href="{{ route("log_auth.index") }}" target="_blank">Log Auth</a> (all) : {{ $jml_logall }} total'
+        },
+
+        yAxis: {
+            allowDecimals: false,
+            title: {
+                text: 'Total login (all)'
+            },
+        },
+
+        xAxis: {
+            allowDecimals: false,
+            title: {
+                text: 'Date',
+            },
+            categories: logauth_date,
+            // accessibility: {
+            //     // rangeDescription: 'Range: 1 to 30'
+            // }
+        },
+
+        legend: {
+            enabled: false
+        },
+
+        plotOptions: {
+            series: {
+                marker: {
+                    enabled: true
+                },
+                // pointStart: logauth_date[0],
+                // pointStart: 1,
+                // pointInterval: 1,
+            }
+        },
+
+        series: [{
+            // name: ['Total login numbers (success),'],
+            name: 'Total login numbers (success),',
+            data: logauth_success
+        }, {
+            name: 'Total login numbers (failed),',
+            data: logauth_failed
+        }]
+    });
+</script>
 @endsection

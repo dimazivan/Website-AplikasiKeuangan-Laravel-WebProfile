@@ -39,7 +39,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $title = "Halaman Data User";
+        // $title = "Halaman Data User";
         $data_user = User::all();
         $jml_role = User::Role()->count();
 
@@ -66,7 +66,7 @@ class UserController extends Controller
         // );
 
         return view("admin.pages.user.data_user", [
-            "title" => $title,
+            // "title" => $title,
             "data_user" => $data_user,
         ]);
     }
@@ -120,20 +120,55 @@ class UserController extends Controller
 
     public function deactiveUser(Request $request)
     {
-        if (!empty($request->cbckuserid)) {
-            try {
-                $decrypted = decrypt($request->cbckuserid);
-                // Log
-            } catch (DecryptException $e) {
-                return view("error.e_throw", [
-                    "e" => ["Invalid Data"],
-                ]);
-            }
+        // dd(
+        //     $request->all(),
+        //     $request->cbckuserid,
+        //     // !$request->cbckuserid,
+        //     // decrypt($request->cbckuserid),
+        // );
 
-            dd($request->all(), $decrypted);
-        } else {
-            return view("error.404");
+        if (!$request->cbckuserid) {
+            return redirect()
+                ->route("user.index")
+                ->with("info", "ID Data User Not Found");
         }
+
+        try {
+            $this->userService->deactiveUser($request);
+            return redirect()
+                ->route("user.index")
+                ->with("info", "Data User has been deactivated");
+        } catch (\Exception $e) {
+            //throw $e
+            return back()->with("info", $e->getMessage());
+        }
+    }
+
+    public function activeUser(Request $request)
+    {
+        // dd(
+        //     $request->all(),
+        //     $request->cbckuserid,
+        //     // !$request->cbckuserid,
+        //     // decrypt($request->cbckuserid),
+        // );
+
+        if (!$request->cbckuserid) {
+            return redirect()
+                ->route("user.index")
+                ->with("info", "ID Data User Not Found");
+        }
+
+        try {
+            $this->userService->activeUser($request);
+            return redirect()
+                ->route("user.index")
+                ->with("info", "Data User has been activated");
+        } catch (\Exception $e) {
+            //throw $e
+            return back()->with("info", $e->getMessage());
+        }
+
     }
 
     /**
@@ -312,15 +347,6 @@ class UserController extends Controller
      */
     public function update(UserStoreRequest $request, $id)
     {
-        try {
-            $decrypted = decrypt($request->id_user);
-            // Log
-        } catch (DecryptException $e) {
-            return view("error.e_throw", [
-                "e" => ["Invalid Data"],
-            ]);
-        }
-
         $newid = decrypt($id);
 
         $validator = $request->validated();
@@ -328,9 +354,9 @@ class UserController extends Controller
         // dd(
         //     $request->all(),
         //     $id,
-        //     strlen($id),
         //     decrypt($id),
         //     decrypt($request->id_user),
+        //     // strlen($id),
         // );
 
         if (!$validator) {
@@ -346,142 +372,18 @@ class UserController extends Controller
             return back()->withErrors($validator->errors());
         }
 
-        $cek_role = Roles::where("id", $request->cbrole)->get();
-
-        if ($request->hasFile("file_foto")) {
-            if (filesize($request->file_foto) > 1000 * 10000) {
-                Log_users::create([
-                    "users_id" => auth()->user()->id,
-                    "role" => auth()->user()->role,
-                    "activity" => "update data",
-                    "description" => "error validation file size",
-                    "status" => "failed",
-                    "mac_address" => "",
-                ]);
-
-                return back()->with(
-                    "info",
-                    "File foto anda melebihi batas maksimal ukuran upload"
-                );
-            }
-
-            if (
-                $request->file_foto->getClientOriginalExtension() == "jpg" ||
-                $request->file_foto->getClientOriginalExtension() == "jpeg" ||
-                $request->file_foto->getClientOriginalExtension() == "png" ||
-                $request->file_foto->getClientOriginalExtension() == "gif"
-            ) {
-                if ($request->hasFile("file_foto")) {
-                    $oldfile = User::CekFileFoto($newid)->get();
-                    // dd(
-                    //     $oldfile[0]->file_foto,
-                    //     $oldfile[0],
-                    //     empty($oldfile[0]->file_foto),
-                    //     '/storage/data/image/user/'.$oldfile[0]->file_foto,
-                    //     Storage::exists('data/image/user/1680859411_DSC_1675 4x6.jpg'),
-                    //     Storage::exists('data/image/user/'.$oldfile[0]->file_foto),
-                    //     !Storage::exists('data/image/user/'.$oldfile[0]->file_foto),
-                    // );
-
-                    if (!empty($oldfile[0]->file_foto)) {
-                        if (
-                            Storage::exists(
-                                "data/image/user/" . $oldfile[0]->file_foto
-                            )
-                        ) {
-                            Storage::delete(
-                                "data/image/user/" . $oldfile[0]->file_foto
-                            );
-                        }
-                    }
-
-                    $file = $request->file("file_foto");
-                    $nama_file = time() . "_" . $file->getClientOriginalName();
-                    $file->storeAs("/data/image/user/", $nama_file);
-                } else {
-                    $nama_file = "";
-                }
-
-                // Update
-                DB::table("users")
-                    ->where("id", $newid)
-                    ->update([
-                        "first_name" => $request->first_name,
-                        "last_name" => $request->last_name,
-                        "password" => bcrypt($request->password),
-                        "roles_id" => $cek_role[0]->id,
-                        "role" => $cek_role[0]->name,
-                        "country" => $request->cbcountry,
-                        "province" => $request->cbprovince,
-                        "city" => $request->cbcity,
-                        "district" => $request->cbdistrict,
-                        "ward" => $request->cbward,
-                        "phone" => $request->phone,
-                        "address" => $request->address,
-                        "detail_address" => $request->desc,
-                        "file_foto" => $nama_file,
-                    ]);
-
-                Log_users::create([
-                    "users_id" => auth()->user()->id,
-                    "role" => auth()->user()->role,
-                    "activity" => "update data",
-                    "description" => "data updated",
-                    "status" => "success",
-                    "mac_address" => "",
-                ]);
-
-                return redirect()
-                    ->route("user.index")
-                    ->with("info", "Data Users has been updated");
-            } else {
-                Log_users::create([
-                    "users_id" => auth()->user()->id,
-                    "role" => auth()->user()->role,
-                    "activity" => "update data",
-                    "description" => "error validation file format",
-                    "status" => "failed",
-                    "mac_address" => "",
-                ]);
-
-                return back()->with(
-                    "info",
-                    "Pastikan format file foto anda bertipe gambar"
-                );
-            }
-        } else {
-            $newid = decrypt($id);
-            // Update
-            DB::table("users")
-                ->where("id", $newid)
-                ->update([
-                    "first_name" => $request->first_name,
-                    "last_name" => $request->last_name,
-                    "password" => bcrypt($request->password),
-                    "roles_id" => $cek_role[0]->id,
-                    "role" => $cek_role[0]->name,
-                    "country" => $request->cbcountry,
-                    "province" => $request->cbprovince,
-                    "city" => $request->cbcity,
-                    "district" => $request->cbdistrict,
-                    "ward" => $request->cbward,
-                    "phone" => $request->phone,
-                    "address" => $request->address,
-                    "detail_address" => $request->desc,
-                ]);
-
-            Log_users::create([
-                "users_id" => auth()->user()->id,
-                "role" => auth()->user()->role,
-                "activity" => "update data",
-                "description" => "data updated",
-                "status" => "success",
-                "mac_address" => "",
-            ]);
-
+        try {
+            $this->userService->updateUser($request, $id);
+            // $this->userService->updateUser($request, $newid);
             return redirect()
                 ->route("user.index")
                 ->with("info", "Data Users has been updated");
+        } catch (\Exception $e) {
+            //throw $e
+            // dd(
+            //     $e,
+            // );
+            return back()->with("info", $e->getMessage());
         }
     }
 
@@ -498,47 +400,18 @@ class UserController extends Controller
         //     Crypt::decrypt($id),
         // );
 
-        if (isset($id)) {
-            try {
-                $decrypted = decrypt($id);
-                // Log
-            } catch (DecryptException $e) {
-                return view("error.e_throw", [
-                    "e" => ["Invalid Data"],
-                ]);
-            }
-
-            $newid = Crypt::decrypt($id);
-
-            $delete = User::findOrFail($newid)->where("id", "=", $newid);
-            $delete->delete();
-
-            $oldfile = User::CekFileFoto($newid)->get();
-
-            if (!empty($oldfile[0]->file_foto)) {
-                if (
-                    Storage::exists("data/image/user/" . $oldfile[0]->file_foto)
-                ) {
-                    Storage::delete(
-                        "data/image/user/" . $oldfile[0]->file_foto
-                    );
-                }
-            }
-
-            Log_users::create([
-                "users_id" => auth()->user()->id,
-                "role" => auth()->user()->role,
-                "activity" => "delete data",
-                "description" => "data deleted",
-                "status" => "success",
-                "mac_address" => "",
-            ]);
+        try {
+            $this->userService->deleteUser($id);
+            return redirect()
+                ->route("user.index")
+                ->with("info", "Data Users has been deleted");
+        } catch (\Exception $e) {
+            //throw $e
+            // dd(
+            //     $e,
+            // );
+            return back()->with("info", $e->getMessage());
         }
 
-        sleep(3);
-
-        return redirect()
-            ->route("user.index")
-            ->with("info", "Data Users has been deleted");
     }
 }

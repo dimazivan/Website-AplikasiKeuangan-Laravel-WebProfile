@@ -84,8 +84,6 @@ Route::group([
 });
 
 Route::get('/data/cb/brand/product', function () {
-    // return Response::json(Product::Brand()->get());
-
     return response()->json([
         'success' => true,
         'message' => 'List Data Brand Product',
@@ -94,12 +92,9 @@ Route::get('/data/cb/brand/product', function () {
 });
 
 Route::get('/data/cb/category/product', function () {
-    // return Response::json(Product::Brand()->get());
-
     return response()->json([
         'success' => true,
         'message' => 'List Data Category Product',
         'data'    => Product::Category()->get()
     ], 200);
-
 });
