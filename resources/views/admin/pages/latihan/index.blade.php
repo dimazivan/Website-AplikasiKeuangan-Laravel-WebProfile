@@ -7,7 +7,10 @@
     <div class="page-title">
         <div class="title_left">
             <p>
-                <a href="/" id="word1">Home</a>&nbsp;<small><i class="fa fa-long-arrow-right"></small></i>
+                <a href="/" id="word1">Home</a>&nbsp;
+                <small>
+                    <i class="fa fa-long-arrow-right"></i>
+                </small>
                 <a href="#" id="word2">Latihan</a>&nbsp;
             </p>
         </div>
@@ -40,8 +43,9 @@
                                 </p>
                                 @if(\Session::has('info'))
                                 <div class="alert alert-info alert-dismissible" role="alert" data-timeout="2000">
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                                            aria-hidden="true">x</span>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                                        style="margin-top: -4px;">
+                                        <i class="fa fa-times"></i>
                                     </button>
                                     <strong>{{ \Session::get('info') }}</strong>
                                 </div>

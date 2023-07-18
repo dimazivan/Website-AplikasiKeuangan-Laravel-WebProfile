@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Roles;
 
 class User extends Authenticatable
 {
@@ -60,6 +61,41 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function isAdmin()
+    {
+        //cek role
+        $cekRole = Roles::where('name', 'admin')
+        ->get();
+
+        if($cekRole[0]->id == $this->roles_id) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function isSuper()
+    {
+        //cek role
+        $cekRole = Roles::where('name', 'super')
+        ->get();
+
+        if($cekRole[0]->id == $this->roles_id) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function scopeActiveUser($query)
+    {
+        return $query->where('status', 1);
+    }
+
+    public function scopeDeactiveUser($query)
+    {
+        return $query->where('status', 2);
+    }
 
     // public function scoperole($query, $type)
     // {

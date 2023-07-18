@@ -45,9 +45,8 @@
 
 <body>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-    @include('admin.components.preload.preload')
-
     @include('sweetalert::alert')
+    @include('admin.components.preload.preload')
 
     @include('landing.layouts.header')
 
@@ -67,6 +66,8 @@
     <script src="{{ asset('portofolio/assets/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{ asset('portofolio/assets/js/wow.min.js')}}"></script>
     <script src="{{ asset('portofolio/assets/js/main.js')}}"></script>
+    <script src="https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js"></script>
+    <!-- Preloader + Lang -->
     <script>
         var loader = document.getElementById('preloader');
 
@@ -113,6 +114,7 @@
     @hasSection('components')
     @yield('components')
     @endif
+    <!-- Lang -->
     <script>
         function lange(val) {
             // alert('ahay')

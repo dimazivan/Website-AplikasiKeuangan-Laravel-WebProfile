@@ -8,7 +8,10 @@
     <div class="page-title">
         <div class="title_left">
             <p>
-                <a href="/" id="word1">Home</a>&nbsp;<small><i class="fa fa-long-arrow-right"></small></i>
+                <a href="/" id="word1">Home</a>&nbsp;
+                <small>
+                    <i class="fa fa-long-arrow-right"></i>
+                </small>
                 <a href="#" id="word2">Profile User</a>&nbsp;
             </p>
         </div>

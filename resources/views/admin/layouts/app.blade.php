@@ -78,6 +78,10 @@ $bg = asset('asset/icon/logogif.gif');
     <script src="{{ asset('backend/vendors/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     @hasSection('style')
     @yield('style')
     @endif
@@ -150,10 +154,6 @@ $bg = asset('asset/icon/logogif.gif');
     <script src="{{ asset('backend/vendors/fastclick/lib/fastclick.js') }}"></script>
     <!-- NProgress -->
     <!-- <script src="{{ asset('backend/vendors/nprogress/nprogress.js') }}"></script> -->
-    <!-- Chart.js -->
-    <script src="{{ asset('backend/vendors/Chart.js/dist/Chart.min.js') }}"></script>
-    <!-- gauge.js -->
-    <script src="{{ asset('backend/vendors/gauge.js/dist/gauge.min.js') }}"></script>
     <!-- bootstrap-progressbar -->
     <script src="{{ asset('backend/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js') }}"></script>
     <!-- iCheck -->
@@ -190,12 +190,6 @@ $bg = asset('asset/icon/logogif.gif');
     <script src="{{ asset('backend/vendors/autosize/dist/autosize.min.js') }}"></script>
     <!-- jQuery autocomplete -->
     <script src="{{ asset('backend/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js') }}"></script>
-    <!-- starrr -->
-    <!-- <script src="{{ asset('backend/vendors/starrr/dist/starrr.js') }}"></script> -->
-    <!-- PNotify -->
-    <!-- <script src="{{ asset('backend/vendors/pnotify/dist/pnotify.js') }}"></script>
-    <script src="{{ asset('backend/vendors/pnotify/dist/pnotify.buttons.js') }}"></script>
-    <script src="{{ asset('backend/vendors/pnotify/dist/pnotify.nonblock.js') }}"></script> -->
     <!-- Custom Theme Scripts -->
     <script src="{{ asset('backend/build/js/custom.min.js') }}"></script>
     <!-- additional script -->
@@ -300,6 +294,10 @@ $bg = asset('asset/icon/logogif.gif');
     </script>
     @endif -->
     <script>
+        // 
+    </script>
+    <!-- Preloader + Dark Mode -->
+    <script>
         var loader = document.getElementById('preloader');
 
         window.addEventListener("load", function() {
@@ -337,6 +335,38 @@ $bg = asset('asset/icon/logogif.gif');
             document.getElementById("switch").checked = false;
         } else {
             // 
+        }
+
+        oldurl = window.location.href;
+        pathurl = window.location.pathname.split("/");
+        console.log(window.location.href);
+        // console.log(oldurl);
+        // console.log(pathurl);
+        console.log(pathurl[1]);
+        console.log("===========");
+        console.log(localStorage.getItem("lang"));
+        // console.log(sessionStorage.getItem("lang"));
+        if (localStorage.getItem("lang") != pathurl[1] && localStorage.getItem("lang") == "id") {
+            localStorage.removeItem("lang");
+            sessionStorage.removeItem("lang");
+            localStorage.setItem("lang", "id");
+            sessionStorage.setItem("lang", "id");
+            console.log(localStorage.getItem("lang"));
+            newurl = oldurl.replace("/" + pathurl[1], "/id");
+            console.log(newurl)
+            window.location.href = newurl;
+        } else if (localStorage.getItem("lang") != pathurl[1] && localStorage.getItem("lang") == "en") {
+            localStorage.removeItem("lang");
+            sessionStorage.removeItem("lang");
+            localStorage.setItem("lang", "en");
+            sessionStorage.setItem("lang", "en");
+            console.log(localStorage.getItem("lang"));
+            newurl = oldurl.replace("/" + pathurl[1], "/en");
+            console.log(newurl)
+            window.location.href = newurl;
+        } else {
+            // localStorage.removeItem("lang");
+            // newurl = old.replace("/id/", "/en/");
         }
     </script>
     <script>
@@ -398,6 +428,7 @@ $bg = asset('asset/icon/logogif.gif');
             }
         }
     </script>
+    <!-- FullScreen -->
     <script>
         function go_full_screen() {
             var elem = document.documentElement;
@@ -412,6 +443,7 @@ $bg = asset('asset/icon/logogif.gif');
             }
         }
     </script>
+    <!-- Clock -->
     <script>
         var timestamp = '<?=time();?>';
 
@@ -422,6 +454,39 @@ $bg = asset('asset/icon/logogif.gif');
         $(function() {
             setInterval(updateTime, 1000);
         });
+    </script>
+    <!-- Lang -->
+    <script>
+        function lange(val) {
+            // alert('ahay')
+            // localStorage.removeItem("lang");
+            oldurl = window.location.href;
+            console.log(window.location.href);
+            console.log(oldurl);
+            console.log(val);
+            if (val == "id") {
+                localStorage.removeItem("lang");
+                sessionStorage.removeItem("lang");
+                localStorage.setItem("lang", "id");
+                sessionStorage.setItem("lang", "id");
+                console.log(localStorage.getItem("lang"));
+                console.log(sessionStorage.getItem("lang"));
+                newurl = oldurl.replace("/en", "/id");
+            } else if (val == "en") {
+                localStorage.removeItem("lang");
+                sessionStorage.removeItem("lang");
+                localStorage.setItem("lang", "en");
+                sessionStorage.setItem("lang", "en");
+                console.log(localStorage.getItem("lang"));
+                console.log(sessionStorage.getItem("lang"));
+                newurl = oldurl.replace("/id", "/en");
+            } else {
+                // localStorage.removeItem("lang");
+                // newurl = old.replace("/id/", "/en/");
+            }
+            console.log(newurl)
+            window.location.href = newurl;
+        }
     </script>
 </body>
 

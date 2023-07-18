@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Crypt;
 use App\Models\User;
 use App\Models\Log_users;
 use Carbon\Carbon;
+use File;
 use Redirect;
 
 class Log_UserController extends Controller
@@ -32,18 +33,47 @@ class Log_UserController extends Controller
         ->join('users', 'users.id', '=', 'log_users.users_id')
         ->get();
 
-        if (auth()->user()->role != 'admin') {
-            return back()->with("info", "User didnt have authorization");
-        }
-
         // dd(
         //     $data,
+        //     $data[0],
         // );
 
-        return view('admin.pages.user.log_data_user', [
-            'title' => $title,
-            'data' => $data,
-        ]);
+        if (auth()->user()->isAdmin() || auth()->user()->isSuper()) {
+            return view('admin.pages.user.log_data_user', [
+                'title' => $title,
+                'data' => $data,
+            ]);
+        } else {
+            return back()->with("info", "User didnt have authorization");
+        }
+    }
+
+    public function jsonLog()
+    {
+        $data = Log_users::select(
+            'log_users.*',
+            'users.first_name as nama_depan',
+            'users.last_name as nama_belakang',
+            'users.username',
+        )
+        ->join('users', 'users.id', '=', 'log_users.users_id')
+        ->get();
+
+        $data_json = json_encode($data);
+
+        // if(auth()->user()->isAdmin() || auth()->user()->isSuper()) {
+        //     $fileName = 'log-user'.'&'.Carbon::now()->toString().'json';
+        //     $fileStorePath = public_path('/upload/json/'.$fileName);
+        //     File::put($fileStorePath, $data_json);
+        //     return response()->download($fileStorePath);
+        // }
+
+        //make response JSON
+        return response()->json([
+            'success' => true,
+            'message' => 'Data Log User',
+            'data'    => $data
+        ], 200);
     }
 
     /**

@@ -159,7 +159,7 @@
     <div class="ud-footer-bottom">
         <div class="container">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-7">
                     <ul class="ud-footer-bottom-left">
                         <li>
                             <a href="javascript:void(0)">
@@ -179,6 +179,9 @@
                     </ul>
                 </div>
                 <div class="col-md-4">
+                    <!-- <p class="ud-footer-bottom-right">
+                        This site load&nbsp;{{ (microtime(true) - LARAVEL_START) }}&nbsp;seconds to render
+                    </p> -->
                     <p class="ud-footer-bottom-right">
                         Designed and Developed With ❤ by
                         <a href="https://github.com/dimazivan" target="_blank" rel="nofollow">Dimaz Ivan Perdana</a>

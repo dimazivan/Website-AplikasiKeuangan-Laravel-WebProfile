@@ -85,57 +85,68 @@ foreach (Languages::all() as $data) {
         Route::any('/login/cek', [LoginController::class, 'login'])->name('login');
         Route::resource('reset', 'ResetController');
     });
+
+    // Admin
+    // Dashboard
+    Route::group([
+        'prefix' => $data->alias,
+        'namespace' => 'App\Http\Controllers\Admin',
+        'middleware' => ['auth','CekRole:super,admin,keuangan']
+    ], function () {
+        // Route::get('/dashboard', function () {
+        //     return view('admin.index');
+        // })->name('dashboard.index');
+
+        Route::resource('dashboard', 'DashboardController');
+    });
+
+    // Admin
+    // URL ADMIN
+    Route::group([
+        // 'prefix' => 'admin',
+        'prefix' => $data->alias.'/admin',
+        'namespace' => 'App\Http\Controllers\Admin',
+        'middleware' => ['auth','CekRole:super,admin']
+    ], function () {
+        // Route Latihan
+        Route::resource('latihan', 'LatihanController');
+
+        // Route User
+        Route::resource('user', 'UserController');
+
+        // Route Product
+        Route::resource('product', 'ProductController');
+
+        // Route Service
+        Route::resource('service', 'ServiceController');
+    });
+
+    // Log Data
+    // URL LOG
+    Route::group([
+        // 'prefix' => 'log',
+        'prefix' => $data->alias.'/log',
+        'namespace' => 'App\Http\Controllers\Log',
+        'middleware' => ['auth','CekRole:super,admin']
+    ], function () {
+        // Route Log Data User
+        Route::resource('log_user', 'Log_UserController');
+
+        // Route Log Data User
+        Route::resource('log_auth', 'Log_AuthController');
+    });
 }
 
-// Admin
-// Dashboard
+// NON LANG ADMIN
 Route::group([
-    // 'prefix' => $data->alias,
+    'prefix' => 'admin',
     'namespace' => 'App\Http\Controllers\Admin',
-    'middleware' => ['auth','CekRole:admin,keuangan']
+    'middleware' => ['auth','CekRole:super,admin']
 ], function () {
-    Route::get('/dashboard', function () {
-        return view('admin.index');
-    })->name('dashboard.index');
-});
-
-// Admin
-// URL ADMIN
-Route::group([
-    'prefix' => '/admin',
-    // 'prefix' => $data->alias.'/admin',
-    'namespace' => 'App\Http\Controllers\Admin',
-    'middleware' => ['auth','CekRole:admin']
-], function () {
-    // Route Latihan
-    Route::resource('latihan', 'LatihanController');
-
-    // Route User
-    Route::resource('user', 'UserController');
     // Cek Data
     Route::get('/data/cb/id/{id}', [UserController::class,'cekId'])->name('cek.id');
     Route::post('/data/cb/user/deactive', [UserController::class,'deactiveUser'])->name('deactive.user');
-
-    // Route Product
-    Route::resource('product', 'ProductController');
-
-    // Route Service
-    Route::resource('service', 'ServiceController');
-});
-
-// Log Data
-// URL LOG
-Route::group([
-    'prefix' => '/log',
-    // 'prefix' => $data->alias.'/log',
-    'namespace' => 'App\Http\Controllers\Log',
-    'middleware' => ['auth','CekRole:admin']
-], function () {
-    // Route Log Data User
-    Route::resource('log_user', 'Log_UserController');
-
-    // Route Log Data User
-    Route::resource('log_auth', 'Log_AuthController');
+    Route::post('/data/cb/user/active', [UserController::class,'activeUser'])->name('active.user');
 });
 
 // URL ADMIN
@@ -153,12 +164,24 @@ Route::group([
     });
 });
 
+
+
+// Cek Log User
+Route::group([
+    'prefix' => 'log',
+    'namespace' => 'App\Http\Controllers\Log',
+    'middleware' => ['auth','CekRole:super,admin']
+], function () {
+    Route::get('/data/user/format/json/', [Log_UserController::class,'jsonLog'])->name('cek.logUser');
+});
+
+
 // User Keuangan
 // URL API
 Route::group([
     'prefix' => 'data_api',
     'namespace' => 'App\Http\Controllers\Api',
-    'middleware' => ['auth','CekRole:admin,keuangan']
+    'middleware' => ['auth','CekRole:super,admin,keuangan']
 ], function () {
     // Route::get('/api_wilayah/kota/{$id}', [Api_WilayahController::class, 'ambilKota'])->name('ambil.kota');
     // Route::get('/api_wilayah/kelurahan/{$id}', [Api_WilayahController::class, 'ambilKelurahan'])->name('ambil.kelurahan');

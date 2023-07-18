@@ -7,9 +7,14 @@
     <div class="page-title">
         <div class="title_left" id="word">
             <p>
-                <a href="/" id="word1">Home</a>&nbsp;<small><i class="fa fa-long-arrow-right"></small></i>
-                <a href="{{ route('user.index') }}" id="word2">Data User</a>&nbsp;<small><i
-                        class="fa fa-long-arrow-right"></small></i>
+                <a href="/" id="word1">Home</a>&nbsp;
+                <small>
+                    <i class="fa fa-long-arrow-right"></i>
+                </small>
+                <a href="{{ route('user.index') }}" id="word2">Data User</a>&nbsp;
+                <small>
+                    <i class="fa fa-long-arrow-right"></i>
+                </small>
                 <a href="#" id="word3">Log Data User</a>&nbsp;
             </p>
         </div>
@@ -27,7 +32,9 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i
                                     class="fa fa-wrench"></i></a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <!-- <a class="dropdown-item" href="#">Tambah Data</a> -->
+                                <a class="dropdown-item" href="{{ route('cek.logUser') }}" target="_blank">
+                                    Log JSON
+                                </a>
                             </div>
                         </li>
                     </ul>
@@ -42,8 +49,9 @@
                                 </p>
                                 @if(\Session::has('info'))
                                 <div class="alert alert-info alert-dismissible" role="alert" data-timeout="2000">
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                                            aria-hidden="true">x</span>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                                        style="margin-top: -4px;">
+                                        <i class="fa fa-times"></i>
                                     </button>
                                     <strong>{{ \Session::get('info') }}</strong>
                                 </div>
