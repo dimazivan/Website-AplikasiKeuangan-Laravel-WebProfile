@@ -294,6 +294,10 @@ $bg = asset('asset/icon/logogif.gif');
     </script>
     @endif -->
     <script>
+        // 
+    </script>
+    <!-- Preloader + Dark Mode -->
+    <script>
         var loader = document.getElementById('preloader');
 
         window.addEventListener("load", function() {
@@ -331,6 +335,38 @@ $bg = asset('asset/icon/logogif.gif');
             document.getElementById("switch").checked = false;
         } else {
             // 
+        }
+
+        oldurl = window.location.href;
+        pathurl = window.location.pathname.split("/");
+        console.log(window.location.href);
+        // console.log(oldurl);
+        // console.log(pathurl);
+        console.log(pathurl[1]);
+        console.log("===========");
+        console.log(localStorage.getItem("lang"));
+        // console.log(sessionStorage.getItem("lang"));
+        if (localStorage.getItem("lang") != pathurl[1] && localStorage.getItem("lang") == "id") {
+            localStorage.removeItem("lang");
+            sessionStorage.removeItem("lang");
+            localStorage.setItem("lang", "id");
+            sessionStorage.setItem("lang", "id");
+            console.log(localStorage.getItem("lang"));
+            newurl = oldurl.replace("/" + pathurl[1], "/id");
+            console.log(newurl)
+            window.location.href = newurl;
+        } else if (localStorage.getItem("lang") != pathurl[1] && localStorage.getItem("lang") == "en") {
+            localStorage.removeItem("lang");
+            sessionStorage.removeItem("lang");
+            localStorage.setItem("lang", "en");
+            sessionStorage.setItem("lang", "en");
+            console.log(localStorage.getItem("lang"));
+            newurl = oldurl.replace("/" + pathurl[1], "/en");
+            console.log(newurl)
+            window.location.href = newurl;
+        } else {
+            // localStorage.removeItem("lang");
+            // newurl = old.replace("/id/", "/en/");
         }
     </script>
     <script>
@@ -418,6 +454,39 @@ $bg = asset('asset/icon/logogif.gif');
         $(function() {
             setInterval(updateTime, 1000);
         });
+    </script>
+    <!-- Lang -->
+    <script>
+        function lange(val) {
+            // alert('ahay')
+            // localStorage.removeItem("lang");
+            oldurl = window.location.href;
+            console.log(window.location.href);
+            console.log(oldurl);
+            console.log(val);
+            if (val == "id") {
+                localStorage.removeItem("lang");
+                sessionStorage.removeItem("lang");
+                localStorage.setItem("lang", "id");
+                sessionStorage.setItem("lang", "id");
+                console.log(localStorage.getItem("lang"));
+                console.log(sessionStorage.getItem("lang"));
+                newurl = oldurl.replace("/en", "/id");
+            } else if (val == "en") {
+                localStorage.removeItem("lang");
+                sessionStorage.removeItem("lang");
+                localStorage.setItem("lang", "en");
+                sessionStorage.setItem("lang", "en");
+                console.log(localStorage.getItem("lang"));
+                console.log(sessionStorage.getItem("lang"));
+                newurl = oldurl.replace("/id", "/en");
+            } else {
+                // localStorage.removeItem("lang");
+                // newurl = old.replace("/id/", "/en/");
+            }
+            console.log(newurl)
+            window.location.href = newurl;
+        }
     </script>
 </body>
 

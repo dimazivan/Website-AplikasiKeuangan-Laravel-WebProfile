@@ -1,6 +1,20 @@
 <footer id="footer">
     <div class="pull-right">
-        <span id="loadtime">This site load&nbsp;{{ (microtime(true) - LARAVEL_START) }}&nbsp;seconds to render</span>
+        <span>
+            <!-- Localization -->
+            <a href="javascript:void(0)" onclick="lange('id');">
+                ID
+            </a>&nbsp;|
+            <a href="javascript:void(0)" onclick="lange('en');">
+                EN
+            </a>&nbsp;
+        </span>
+        <span style="padding-left: 20px;">||</span>
+        <span id="loadtime">This site load&nbsp;
+            {{
+            number_format((float)(microtime(true) - LARAVEL_START), 2, '.', '');
+            }}
+            &nbsp;seconds to render</span>
         <span style="padding-left: 20px;">||</span>
         <span id="time">Loading time...</span>
         <span style="padding-left: 20px;">||</span>

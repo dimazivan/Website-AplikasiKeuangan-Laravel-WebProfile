@@ -345,19 +345,19 @@
                                             <td style="width:5%;">
                                                 <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown"
                                                     aria-haspopup="true" role="button" aria-expanded="false">
-                                                    Aksi
+                                                    {{__('data_user.table.title_col6')}}
                                                     <span class="caret"></span>
                                                 </a>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                     <a href="#" target="_blank" class="dropdown-item">
                                                         <i class="fa fa-eye"></i>&nbsp;
-                                                        View Data
+                                                        {{__('data_user.table.btn_view')}}
                                                     </a>
                                                     @if(auth()->user()->isAdmin() || auth()->user()->isSuper())
                                                     <a href="{{ route('user.edit',[Crypt::encrypt($data_user->id)]) }}"
                                                         target="_blank" class="dropdown-item">
                                                         <i class="fa fa-pencil"></i>&nbsp;
-                                                        Edit Data
+                                                        {{__('data_user.table.btn_edit')}}
                                                     </a>
                                                     <form
                                                         action="{{route('user.destroy', [Crypt::encrypt($data_user->id)])}}"
@@ -368,7 +368,7 @@
                                                             id="btndel{{Crypt::encrypt($data_user->id)}}"
                                                             class="dropdown-item" onclick="delFunction()">
                                                             <i class="fa fa-trash-o"></i>&nbsp;
-                                                            Delete Data
+                                                            {{__('data_user.table.btn_delete')}}
                                                         </button>
                                                     </form>
                                                     <script>
