@@ -42,7 +42,9 @@ class ProductSeeder extends Seeder
             ]);
         }
 
-        $categoryProduct = Product::Category()->get();
+        // $categoryProduct = Product::Category();
+        $categoryProduct = Product::nameCategory()->get();
+        // for ($i=0; $i < $categoryProduct; $i++) {
         for ($i=0; $i < sizeof($categoryProduct); $i++) {
             DB::table('products_category')->insert([
                 'name'=> $categoryProduct[$i]->category,
@@ -51,7 +53,9 @@ class ProductSeeder extends Seeder
             ]);
         }
 
-        $brandProduct = Product::Brand()->get();
+        // $brandProduct = Product::Brand();
+        $brandProduct = Product::nameBrand()->get();
+        // for ($i=0; $i < $brandProduct; $i++) {
         for ($i=0; $i < sizeof($brandProduct); $i++) {
             DB::table('products_brand')->insert([
                 'name'=> $brandProduct[$i]->brand,
