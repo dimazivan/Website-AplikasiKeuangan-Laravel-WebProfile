@@ -29,6 +29,16 @@ class Product extends Model
         return $query->where('fvoid', 1);
     }
 
+    public function scopenameCategory($query)
+    {
+        return $query->select('category')->groupBy('category');
+    }
+
+    public function scopenameBrand($query)
+    {
+        return $query->select('brand')->groupBy('brand');
+    }
+
     public function scopeCategory($query)
     {
         return $query->select('category')->distinct()->count('category');
@@ -36,7 +46,7 @@ class Product extends Model
 
     public function scopeBrand($query)
     {
-        return $query->select('brand')->groupBy('brand');
+        return $query->select('brand')->distinct()->count('brand');
     }
 
     public function scopefVoid($query)
