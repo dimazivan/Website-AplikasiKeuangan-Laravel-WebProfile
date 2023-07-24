@@ -51,6 +51,10 @@ class DashboardController extends Controller
 
         $jml_tgl = Carbon::now()->month()->daysInMonth;
 
+        $logauth_success = [];
+        $logauth_failed = [];
+        $logauth_date = [];
+
         foreach ($jml_log as $data) {
             $logauth_success[] = $data->success;
             $logauth_failed[] = $data->failed;

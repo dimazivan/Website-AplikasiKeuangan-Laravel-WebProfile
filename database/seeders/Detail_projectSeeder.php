@@ -152,5 +152,61 @@ class Detail_projectSeeder extends Seeder
             'updated_at' => Carbon::now(),
         ]);
 
+        DB::table('detail_projects')->insert([
+            'projects_id'=> '7',
+            'language'=> 'laravel',
+            'color'=> '#902722',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('detail_projects')->insert([
+            'projects_id'=> '7',
+            'language'=> 'php',
+            'color'=> '#4f5b93',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('detail_projects')->insert([
+            'projects_id'=> '7',
+            'language'=> 'bootstrap',
+            'color'=> '#7b12f5',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('detail_projects')->insert([
+            'projects_id'=> '8',
+            'language'=> 'php',
+            'color'=> '#4f5b93',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('detail_projects')->insert([
+            'projects_id'=> '8',
+            'language'=> 'bootstrap',
+            'color'=> '#7b12f5',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('detail_projects')->insert([
+            'projects_id'=> '9',
+            'language'=> 'vue js',
+            'color'=> '#44c088',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('detail_projects')->insert([
+            'projects_id'=> '9',
+            'language'=> 'bootstrap',
+            'color'=> '#7b12f5',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
     }
 }

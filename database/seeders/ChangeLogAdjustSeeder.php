@@ -693,6 +693,5 @@ class ChangeLogAdjustSeeder extends Seeder
             'created_at' => "2023-07-06",
             'updated_at' => Carbon::now(),
         ]);
-
     }
 }

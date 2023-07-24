@@ -97,6 +97,45 @@ class ProjectSeeder extends Seeder
             'updated_at' => Carbon::now(),
         ]);
 
+        DB::table('projects')->insert([
+            'title'=> 'Aplikasi Keuangan dan Web Profile - Complete Edition',
+            'date'=> '2023-07-23',
+            'status'=> 'private',
+            'type'=> 'fs',
+            'feature'=> 'Data Master,Dashboard,API,Eksport,Authentication,Enkripsi,Mail Sender,Dll',
+            'description'=> 'Aplikasi keuangan dan dashboard yang berisi tentang Data Master, API, dan juga hal yang menarik lainnya.',
+            'github'=> 'https://github.com/dimazivan/',
+            'images'=> 'dashboard.png',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('projects')->insert([
+            'title'=> 'Aplikasi Transform Keyboard - PHP',
+            'date'=> '2023-07-12',
+            'status'=> 'public',
+            'type'=> 'fs',
+            'feature'=> 'Change Subject Based On Keyboard Transform',
+            'description'=> 'Aplikasi perubahan bentuk dari suatu data berdasarkan perintah dari user',
+            'github'=> 'https://github.com/dimazivan/Program-Keyboard-Transform-PHP',
+            'images'=> 'dummy.png',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('projects')->insert([
+            'title'=> 'CRUD /w VUE JS',
+            'date'=> '2023-06-01',
+            'status'=> 'public',
+            'type'=> 'fe',
+            'feature'=> 'CRUD With Vue and API Laravel',
+            'description'=> 'Aplikasi CRUD Data dengan menggunakan VUE JS sebagai front end dan laravel sebagai back end',
+            'github'=> 'https://github.com/dimazivan/Vue3_CRUD',
+            'images'=> 'dummy.png',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
         for ($i=0; $i < 100; $i++) {
             DB::table('projects')->insert([
                 'title'=> 'Dummy Project'.$i,

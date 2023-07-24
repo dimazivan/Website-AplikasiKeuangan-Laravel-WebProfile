@@ -64,7 +64,7 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h1 class="modal-title fs-5" id="picModalLabel{{ $data_project->id }}">
-                                            {{ $title_limit = Str::limit($data_project->title,100) }}
+                                            {{ $title_limit = Str::limit($data_project->title,150) }}
                                         </h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
@@ -120,7 +120,7 @@
                         </div>
                         <h3 class="ud-blog-title">
                             <a href="{{ $data_project->github }}" target="_blank" style="text-transform:capitalize;">
-                                {{ $title_limit = Str::limit($data_project->title,50) }}
+                                {{ $title_limit = Str::limit($data_project->title,100) }}
                             </a>
                         </h3>
                         <p class="ud-blog-desc" style="text-align:justify;">

@@ -207,6 +207,44 @@ class ChangeLogUpdateSeeder extends Seeder
             'updated_at' => Carbon::now(),
         ]);
 
+        DB::table('change_logs')->insert([
+            'title' => "add dashboard",
+            'users_id' => "1",
+            'type' => "update",
+            'description' => "add several change on complete edition",
+            'version' => "v.1.2.0.1",
+            'created_at' => "2023-07-20",
+            'updated_at' => Carbon::now(),
+        ]);
 
+        DB::table('change_logs')->insert([
+            'title' => "add dashboard",
+            'users_id' => "1",
+            'type' => "update",
+            'description' => "add several change on complete edition",
+            'version' => "v.1.2.0.2",
+            'created_at' => "2023-07-21",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "add dashboard",
+            'users_id' => "1",
+            'type' => "update",
+            'description' => "add several change on complete edition",
+            'version' => "v.1.2.0.3",
+            'created_at' => "2023-07-22",
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('change_logs')->insert([
+            'title' => "add dashboard",
+            'users_id' => "1",
+            'type' => "update",
+            'description' => "add several change on complete edition",
+            'version' => "v.1.2.0.4",
+            'created_at' => "2023-07-23",
+            'updated_at' => Carbon::now(),
+        ]);
     }
 }
