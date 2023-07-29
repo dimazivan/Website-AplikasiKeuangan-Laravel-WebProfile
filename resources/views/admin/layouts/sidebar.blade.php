@@ -122,17 +122,18 @@
         <!-- <div class="sidebar-footer hidden-small" style="margin-bottom:40px;">
             <span id="time">#</span>
         </div> -->
-        <div class="sidebar-footer hidden-small" id="bgsidebar4">
-            <a data-toggle="tooltip" data-placement="top" title="Settings">
+        <div class="sidebar-footer hidden-small" id="bgsidebar4" style="padding-top:10px;">
+            <a data-toggle="tooltip" data-placement="top" title="Settings" id="bgtooltips1">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
             </a>
-            <a data-toggle="tooltip" data-placement="top" title="FullScreen" onClick="go_full_screen();">
+            <a data-toggle="tooltip" data-placement="top" title="FullScreen" onClick="go_full_screen();"
+                id="bgtooltips2">
                 <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
             </a>
-            <a data-toggle="tooltip" data-placement="top" title="Lock">
+            <a data-toggle="tooltip" data-placement="top" title="Lock" id="bgtooltips3">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
             </a>
-            <a data-toggle="tooltip" data-placement="top" title="Logout" href="/logout">
+            <a data-toggle="tooltip" data-placement="top" title="Logout" href="/logout" id="bgtooltips4">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
             </a>
         </div>

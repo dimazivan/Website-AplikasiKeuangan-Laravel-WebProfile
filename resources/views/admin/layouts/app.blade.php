@@ -35,6 +35,15 @@ $bg = asset('asset/icon/logogif.gif');
         .dark-mode-text {
             color: white;
         }
+
+        #bgsidebar1 {
+            z-index: 9999;
+        }
+
+        footer {
+            padding: none;
+            z-index: 9998;
+        }
     </style>
     <!-- Bootstrap -->
     <link href="{{ asset('backend/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -315,6 +324,10 @@ $bg = asset('asset/icon/logogif.gif');
             var elementbg8 = document.getElementById("footer");
             var elementbg9 = document.getElementById("navbarDropdown");
             var elementbg10 = document.getElementById("namauser");
+            var elementbg11 = document.getElementById("bgtooltips1");
+            var elementbg12 = document.getElementById("bgtooltips2");
+            var elementbg13 = document.getElementById("bgtooltips3");
+            var elementbg14 = document.getElementById("bgtooltips4");
             elementbg1.classList.toggle("dark-mode-bg");
             elementbg2.classList.toggle("dark-mode-bg");
             elementbg3.classList.toggle("dark-mode-bg");
@@ -325,6 +338,10 @@ $bg = asset('asset/icon/logogif.gif');
             elementbg8.classList.toggle("dark-mode-bg");
             elementbg9.classList.toggle("dark-mode-text");
             elementbg10.classList.toggle("dark-mode-text");
+            elementbg11.classList.toggle("dark-mode-bg");
+            elementbg12.classList.toggle("dark-mode-bg");
+            elementbg13.classList.toggle("dark-mode-bg");
+            elementbg14.classList.toggle("dark-mode-bg");
             localStorage.setItem("dark-mode-dashboard", "dark");
             console.log(localStorage.getItem("dark-mode-dashboard"));
             document.getElementById("switch").checked = true;
@@ -383,6 +400,10 @@ $bg = asset('asset/icon/logogif.gif');
                 var elementbg8 = document.getElementById("footer");
                 var elementbg9 = document.getElementById("navbarDropdown");
                 var elementbg10 = document.getElementById("namauser");
+                var elementbg11 = document.getElementById("bgtooltips1");
+                var elementbg12 = document.getElementById("bgtooltips2");
+                var elementbg13 = document.getElementById("bgtooltips3");
+                var elementbg14 = document.getElementById("bgtooltips4");
                 elementbg1.classList.toggle("dark-mode-bg");
                 elementbg2.classList.toggle("dark-mode-bg");
                 elementbg3.classList.toggle("dark-mode-bg");
@@ -393,6 +414,10 @@ $bg = asset('asset/icon/logogif.gif');
                 elementbg8.classList.toggle("dark-mode-bg");
                 elementbg9.classList.toggle("dark-mode-text");
                 elementbg10.classList.toggle("dark-mode-text");
+                elementbg11.classList.toggle("dark-mode-bg");
+                elementbg12.classList.toggle("dark-mode-bg");
+                elementbg13.classList.toggle("dark-mode-bg");
+                elementbg14.classList.toggle("dark-mode-bg");
                 // elementbg10.classList.toggle("dark-mode-text");
                 // elementbg11.classList.toggle("dark-mode-text");
                 localStorage.setItem("dark-mode-dashboard", "dark");
@@ -410,6 +435,10 @@ $bg = asset('asset/icon/logogif.gif');
                 var elementbg8 = document.getElementById("footer");
                 var elementbg9 = document.getElementById("navbarDropdown");
                 var elementbg10 = document.getElementById("namauser");
+                var elementbg11 = document.getElementById("bgtooltips1");
+                var elementbg12 = document.getElementById("bgtooltips2");
+                var elementbg13 = document.getElementById("bgtooltips3");
+                var elementbg14 = document.getElementById("bgtooltips4");
                 elementbg1.classList.toggle("dark-mode-bg");
                 elementbg2.classList.toggle("dark-mode-bg");
                 elementbg3.classList.toggle("dark-mode-bg");
@@ -420,6 +449,10 @@ $bg = asset('asset/icon/logogif.gif');
                 elementbg8.classList.toggle("dark-mode-bg");
                 elementbg9.classList.toggle("dark-mode-text");
                 elementbg10.classList.toggle("dark-mode-text");
+                elementbg11.classList.toggle("dark-mode-bg");
+                elementbg12.classList.toggle("dark-mode-bg");
+                elementbg13.classList.toggle("dark-mode-bg");
+                elementbg14.classList.toggle("dark-mode-bg");
                 localStorage.setItem("dark-mode-dashboard", "light");
                 console.log(localStorage.getItem("dark-mode-dashboard"));
                 document.getElementById("switch").checked = false;
